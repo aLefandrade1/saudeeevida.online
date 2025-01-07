@@ -466,20 +466,23 @@ function getParams() {
 }();
 </script>
 
-        <script>
-    var urlBackRedirect = 'https://saudeeevida.online/br/br';
-    urlBackRedirect = urlBackRedirect = urlBackRedirect.trim() +
-            (urlBackRedirect.indexOf("?") > 0 ? '&' : '?') +
-            document.location.search.replace('?', '').toString();
-    history.pushState({}, "", location.href);
-    history.pushState({}, "", location.href);
-    window.onpopstate = function () {
-        setTimeout(function () {
-            location.href = urlBackRedirect;
-        }, 1);
-    };
-</script>
+        <script type="text/javascript">
+      var back_redirect_back_link = "https://saudeeevida.online/br/br" + location.search;
+      history.pushState({}, "", location.href);
+      history.pushState({}, "", location.href);
 
+      window.addEventListener(
+        "popstate",
+        function (event) {
+          if (event.state) {
+            setTimeout(function () {
+              location.href = https://saudeeevida.online/;
+            }, 1);
+          }
+        },
+        false
+      );
+    </script>
           
   </footer>
 
