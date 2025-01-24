@@ -23,6 +23,7 @@
 
         h1, h2, h3 {
             color: #2c3e50;
+            margin-bottom: 20px;
         }
 
         h1 {
@@ -105,6 +106,7 @@
             color: #7f8c8d;
         }
 
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
@@ -114,9 +116,29 @@
                 font-size: 1.5em;
             }
 
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
             .cta-button {
                 font-size: 16px;
                 padding: 12px 24px;
+            }
+
+            .discount {
+                font-size: 18px;
+            }
+
+            .timer {
+                font-size: 18px;
+            }
+
+            .testimonial {
+                font-size: 14px;
             }
         }
     </style>
@@ -165,6 +187,13 @@
             <p><strong>Oferta limitada!</strong> Só mais <span id="countdown"></span> para aproveitar o preço especial!</p>
         </div>
 
+        <div class="testimonial">
+            <p>"Este protocolo mudou minha vida! Eu me sentia preso à gastrite e os alimentos que comia só pioravam. Com esse guia, meu estômago melhorou em poucos dias, e a sensação de queimação nunca mais voltou!"</p>
+            <p class="author">- Carla M., Cliente Satisfeita</p>
+        </div>
+
+        <a href="#comprar" class="cta-button">Adicione o Protocolo de Alimentação Avançado Agora Mesmo!</a>
+    </div>
 
     <script>
         var countdownDate = new Date().getTime() + 600000; // 10 minutos a partir de agora
