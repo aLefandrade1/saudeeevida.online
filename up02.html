@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,91 +12,162 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600&display=swap" as="style">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Dosis:wght@200;300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&family=Signika:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/com.css">
 
+    <!-- Título da Página -->
     <title>Bienestar y Salud</title>
 
     <style type="text/css">
-    /* CSS otimizado */
     header {
-        color: black;
-        background-color: rgb(255, 255, 255);
-        background-position: center;
-        background-size: cover;
-        background-attachment: fixed;
-        background-blend-mode: darken;
+      color: black;
+      background-image: rgb(8, 0, 45);
+      background-color: rgb(255, 255, 255);
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      background-blend-mode: darken;
     }
 
-    .center {
+.center {
         text-align: center;
-    }
+      }
 
-    .banner {
+.banner {
         font-size: 2vw;
         background-color: rgb(255, 0, 0);
         font-family: sans-serif;
         font-weight: bold;
         color: #fff;
-    }
+      }
     </style>
 
-    <script defer>
-        // Definindo a data de forma assíncrona
-        document.addEventListener('DOMContentLoaded', function() {
-            const dayName = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
-            const monName = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro"];
-            const now = new Date();
-            document.getElementById('discount-date').innerHTML = `Cupom de desconto válido até hoje, <b>${dayName[now.getDay()]}, ${now.getDate()} de ${monName[now.getMonth()]} de ${now.getFullYear()}!</b>`;
-        });
-    </script>
+<script language=javascript type="text/javascript">
+dayName = new Array ("domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado")
+monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro")
+now = new Date
+</script>
+
 </head>
 
 <body>
 
-    <div class="banner py-lg-1 py-sm-1 center white">
-        <h5 id="discount-date"></h5>
+<div class="banner py-lg-1 py-sm-1 center white">
+<script language=javascript type="text/javascript">
+now = new Date
+document.write ("<br><h5> Cupom de desconto válido até hoje, <b>" + dayName[now.getDay() ] + ", " + now.getDate () + " de " + monName [now.getMonth() ]   +  " de "  +     now.getFullYear () + "! </b></h5><br>")
+
+</script>
     </div>
 
     <header class="py-4">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h1>Essa é sua <span class="highlight-red underline">ÚLTIMA CHANCE</span> de acabar com a gastrite por um preço simbólico!</h1>
 
-                    <p>Nós entendemos que talvez você ainda esteja em dúvida...</p>
-                    <p>Mas a verdade é que continuar convivendo com a dor, o desconforto e a queimação <span class="highlight-red">não precisa ser sua realidade</span>.</p>
-                    <p>Você já sabe que o <span class="highlight-green">Chá da Reconstrução da Barreira Ácida</span> é a solução mais simples e natural para acabar com a gastrite em apenas 7 dias.</p>
-                    <p><b>Então, por que adiar mais uma vez a decisão de cuidar da sua saúde?</b></p>
+             <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Final - Gastrite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
 
-                    <p>Imagine poder:</p>
-                    <ul>
-                        <li><b class="highlight-green">Comer sem medo e sem dor.</b></li>
-                        <li><b class="highlight-green">Eliminar a queimação e o desconforto no estômago de uma vez por todas.</b></li>
-                        <li><b class="highlight-green">Voltar a viver com energia e bem-estar, sem depender de remédios.</b></li>
-                    </ul>
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-                    <div class="bonus">
-                        <p>- Truque Natural para aliviar dores no estômago.</p>
-                        <p>- Bebida ativadora para queima de gordura e redução da barriguinha.</p>
-                    </div>
+        h1, h2 {
+            color: #c0392b; /* Vermelho para chamar atenção */
+        }
 
-                    <p class="price">De <del>R$10</del> por apenas <span class="highlight-red">R$5!</span></p>
+        h1 {
+            font-size: 2.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-                    <p class="highlight-red underline">Essa é a ÚLTIMA chance de garantir essa oferta.</p>
-                    <p class="highlight-red"><b>Se você fechar esta página, ela desaparecerá para sempre.</b></p>
+        h2 {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
 
-                    <div class="urgent">
-                        <p><b>Imagine sua vida sem dores de estômago, sem queimação e comendo o que você gosta...</b></p>
-                        <p><b><span class="highlight-red">Não deixe sua saúde para depois!</span></b></p>
-                    </div>
+        p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
 
-                    <button class="button" onclick="redirectToCheckout()">Sim, quero minha receita agora por R$5!</button>
-                </div>
-            </div>
-        </div>
-    </header>
+        .highlight-green {
+            color: #27ae60; /* Verde para destacar benefícios */
+            font-weight: bold;
+        }
 
+        .highlight-red {
+            color: #e74c3c; /* Vermelho para urgência */
+            font-weight: bold;
+        }
+
+        .button {
+            display: block;
+            background-color: #27ae60; /* Verde para chamada à ação */
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #1e8449;
+        }
+
+        .bonus {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .price {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e67e22; /* Tom laranja para destaque */
+        }
+
+        .urgent {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+    </style>
     <script>
         function redirectToCheckout() {
             // Substitua o link abaixo pelo seu link de checkout real
@@ -103,6 +175,43 @@
             window.location.href = checkoutLink;
         }
     </script>
-</body>
+</head>
+<body>
+    <div class="container">
+        <h1>Essa é sua <span class="highlight-red underline">ÚLTIMA CHANCE</span> de acabar com a gastrite por um preço simbólico!</h1>
 
+        <p>Nós entendemos que talvez você ainda esteja em dúvida...</p>
+        <p>Mas a verdade é que continuar convivendo com a dor, o desconforto e a queimação <span class="highlight-red">não precisa ser sua realidade</span>.</p>
+        <p>Você já sabe que o <span class="highlight-green">Chá da Reconstrução da Barreira Ácida</span> é a solução mais simples e natural para acabar com a gastrite em apenas 7 dias.</p>
+        <p><b>Então, por que adiar mais uma vez a decisão de cuidar da sua saúde?</b></p>
+
+        <p>Imagine poder:</p>
+        <ul>
+            <li><b class="highlight-green">Comer sem medo e sem dor.</b></li>
+            <li><b class="highlight-green">Eliminar a queimação e o desconforto no estômago de uma vez por todas.</b></li>
+            <li><b class="highlight-green">Voltar a viver com energia e bem-estar, sem depender de remédios.</b></li>
+        </ul>
+
+        <div class="bonus">
+            <p>- Truque Natural para aliviar dores no estômago.</p>
+            <p>- Bebida ativadora para queima de gordura e redução da barriguinha.</p>
+        </div>
+
+       <p class="price">De <del>R$10</del> por apenas <span class="highlight-red">R$5!</span></p>
+
+        <p class="highlight-red underline">Essa é a ÚLTIMA chance de garantir essa oferta.</p>
+        <p class="highlight-red"><b>Se você fechar esta página, ela desaparecerá para sempre.</b></p>
+
+        <div class="urgent">
+            <p><b>Imagine sua vida sem dores de estômago, sem queimação e comendo o que você gosta...</b></p>
+            <p><b><span class="highlight-red">Não deixe sua saúde para depois!</span></b></p>
+        </div>
+
+        <button class="button" onclick="redirectToCheckout()">Sim, quero minha receita agora por R$5!</button>
+    </div>
+</body>
 </html>
+
+
+
+                    
