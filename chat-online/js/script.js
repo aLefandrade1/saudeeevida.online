@@ -1,8 +1,10 @@
 const chatBox = document.getElementById("chat-box");
 const typingIndicator = document.getElementById("typing-indicator");
+const userInputContainer = document.getElementById("age-input-container");
 const userInput = document.getElementById("user-input");
+const sendAgeBtn = document.getElementById("send-age-btn");
 
-// Exibir mensagens com delay individual (todas as mensagens agora têm delay próprio)
+// Exibir mensagens com delay
 function displayMessage(text, isUser = false, buttons = [], delay = 4000) {
     typingIndicator.style.display = "block";
 
@@ -40,38 +42,27 @@ function askAge() {
     displayMessage("Quantos anos você tem? Digite abaixo.", false, [], 4000);
 
     setTimeout(() => {
-        let userInput = document.getElementById("user-input"); // Verifica se o input existe
+        userInputContainer.style.display = "flex";  // Exibe o campo e o botão
 
-        if (userInput) { 
-            userInput.style.display = "block";  // Agora o campo aparece corretamente
-            userInput.focus();  // Cursor ativado automaticamente
+        sendAgeBtn.onclick = function () {
+            let age = userInput.value.trim();
+            if (age !== "") {
+                displayMessage(`Você: ${age} anos`, true);
+                userInput.value = "";
+                userInputContainer.style.display = "none"; // Esconde o campo e o botão
 
-            userInput.onkeypress = function (event) {
-                if (event.key === "Enter") {  // Se o usuário pressionar "Enter"
-                    let age = userInput.value.trim();
-                    if (age !== "") {  // Se o campo não estiver vazio
-                        displayMessage(`Você: ${age} anos`, true);
-                        userInput.value = "";  // Limpa o campo
-                        userInput.style.display = "none";  // Esconde novamente
-
-                        setTimeout(() => {
-                            displayMessage("Qual seu peso aproximado?", false, [
-                                "Até 60 Kg",
-                                "Entre 61Kg e 70Kg",
-                                "Entre 71Kg e 90 Kg",
-                                "Mais de 90Kg"
-                            ]);
-                        }, 4000);
-                    }
-                }
-            };
-        } else {
-            console.error("Erro: Campo de digitação `user-input` não encontrado no HTML!");
-        }
+                setTimeout(() => {
+                    displayMessage("Qual seu peso aproximado?", false, [
+                        "Até 60 Kg",
+                        "Entre 61Kg e 70Kg",
+                        "Entre 71Kg e 90 Kg",
+                        "Mais de 90Kg"
+                    ]);
+                }, 4000);
+            }
+        };
     }, 4000);
 }
-
-
 
 // Fluxo do Funil
 function handleResponse(response) {
@@ -144,6 +135,7 @@ function displayVideoProofs() {
         video1.innerHTML = `
             <script src="https://fast.wistia.com/player.js" async></script>
             <script src="https://fast.wistia.com/embed/38n82fs7br.js" async type="module"></script>
+            <style>wistia-player[media-id='38n82fs7br']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/38n82fs7br/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
             <wistia-player media-id="38n82fs7br" seo="false" aspect="0.5625"></wistia-player>
         `;
         chatBox.appendChild(video1);
@@ -154,41 +146,20 @@ function displayVideoProofs() {
         video2.innerHTML = `
             <script src="https://fast.wistia.com/player.js" async></script>
             <script src="https://fast.wistia.com/embed/y6s61jiyyr.js" async type="module"></script>
+            <style>wistia-player[media-id='y6s61jiyyr']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/y6s61jiyyr/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
             <wistia-player media-id="y6s61jiyyr" seo="false" aspect="0.5625"></wistia-player>
         `;
         chatBox.appendChild(video2);
     }, 8000);
-
-    setTimeout(() => {
-        displayMessage("E sabe o que todos eles têm em comum?", false, [], 4000);
-        displayMessage("Todos utilizaram o Chá da Reconstrução da Barreira Ácida!", false, ["Sim! EU quero!"], 4000);
-    }, 12000);
 }
 
-// Função para exibir o checkout no final
-function displayCheckout() {
-    setTimeout(() => {
-        let checkoutDiv = document.createElement("div");
-        checkoutDiv.classList.add("checkout-box");
-        checkoutDiv.innerHTML = `
-            🔥 <b>De R$ 197,00 por apenas R$ 10,00!</b> 🔥<br>
-            <a href="https://seusite.com/checkout" class="button-response">Ir para o Checkout</a>
-        `;
-        chatBox.appendChild(checkoutDiv);
-    }, 4000);
-}
-
-// Iniciar o chat com delay correto em cada mensagem
+// Iniciar o chat com delay correto
 function startChat() {
     displayMessage("Olá, tudo bem? É um prazer ter você aqui!", false, [], 4000);
     setTimeout(() => {
         displayMessage("Meu nome é Roberto Nóbrega.", false, [], 4000);
-        setTimeout(() => {
-            displayMessage("Sou especialista em Gastrite e Saúde Digestiva.", false, [], 4000);
-            setTimeout(() => {
-                displayMessage("Você gostaria de receber a receita do Chá da Reconstrução da Barreira Ácida?", false, ["Sim! Sem dúvidas!"], 4000);
-            }, 4000);
-        }, 4000);
+        displayMessage("Sou especialista em Gastrite e Saúde Digestiva.", false, [], 4000);
+        displayMessage("Você gostaria de receber a receita do Chá da Reconstrução da Barreira Ácida?", false, ["Sim! Sem dúvidas!"], 4000);
     }, 4000);
 }
 
