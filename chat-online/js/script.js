@@ -40,16 +40,17 @@ function askAge() {
     displayMessage("Quantos anos você tem? Digite abaixo.", false, [], 4000);
 
     setTimeout(() => {
-        userInput.style.display = "block";
-        userInput.focus();
+        userInput.style.display = "block";  // Agora o campo de digitação aparece corretamente
+        userInput.focus();  // Cursor ativado no campo de texto automaticamente
 
         userInput.onkeypress = function (event) {
-            if (event.key === "Enter") {
-                let age = event.target.value.trim();
-                if (age !== "") {
-                    displayMessage(`Você: ${age} anos`, true);
-                    event.target.value = "";
-                    userInput.style.display = "none";
+            if (event.key === "Enter") {  // Se a tecla "Enter" for pressionada
+                let age = event.target.value.trim();  // Captura o valor digitado e remove espaços extras
+                
+                if (age !== "") {  // Verifica se o usuário digitou algo
+                    displayMessage(`Você: ${age} anos`, true);  // Exibe a resposta do usuário no chat
+                    event.target.value = "";  // Limpa o campo de entrada
+                    userInput.style.display = "none";  // Esconde o campo de digitação
 
                     setTimeout(() => {
                         displayMessage("Qual seu peso aproximado?", false, [
@@ -58,12 +59,13 @@ function askAge() {
                             "Entre 71Kg e 90 Kg",
                             "Mais de 90Kg"
                         ]);
-                    }, 4000);
+                    }, 4000);  // Após digitar a idade, exibe a próxima pergunta após 4 segundos
                 }
             }
         };
     }, 4000);
 }
+
 
 // Fluxo do Funil
 function handleResponse(response) {
