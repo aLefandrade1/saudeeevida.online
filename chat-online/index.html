@@ -26,9 +26,13 @@
     <div id="typing-indicator" class="hidden">Especialista está digitando...</div>
 
     <!-- Campo de Digitação da Idade + Botão de Enviar -->
-    <div id="age-input-container" style="display:none; display: flex; gap: 10px;">
-        <input type="text" id="user-input" placeholder="Digite sua idade..." style="flex: 1; padding: 10px; font-size: 16px;">
-        <button id="send-age-btn" style="padding: 10px; background: #28a745; color: white; border: none; cursor: pointer; border-radius: 8px;">Enviar</button>
+    <div id="age-input-container" style="display: none; flex-direction: column; gap: 10px; align-items: center;">
+        <input type="number" id="user-input" placeholder="Digite sua idade..." 
+               style="width: 80%; padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc;">
+        <button id="send-age-btn" 
+                style="padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; border-radius: 8px;">
+            Enviar
+        </button>
     </div>
 </div>
 
