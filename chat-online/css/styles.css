@@ -88,27 +88,28 @@ body {
     padding-left: 10px;
 }
 
-/* Botões de resposta (Agora alinhados à direita) */
+/* Botões de resposta (um abaixo do outro e do tamanho do botão azul) */
 .button-container {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    flex-direction: column; /* Botões um abaixo do outro */
+    align-items: flex-end; /* Mantém os botões alinhados à direita */
 }
 
 .button-response {
     background-color: #28a745; /* Verde */
     color: white;
-    padding: 8px 12px;
+    padding: 8px 12px; /* Mesmo padding do botão azul */
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: 5px; /* Espaço entre os botões */
     cursor: pointer;
     text-align: center;
     border: none;
     max-width: 200px; /* Agora o botão tem o mesmo tamanho do botão azul */
     min-width: auto;
 }
+
 .button-response:hover {
     background-color: #218838; /* Verde escuro */
 }
