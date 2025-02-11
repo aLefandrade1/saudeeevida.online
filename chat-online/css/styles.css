@@ -90,4 +90,33 @@ body {
     text-align: center;
     font-weight: bold;
     margin-top: 15px;
+
+    /* Estilos das mensagens */
+.message {
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px;
+    max-width: 70%;
+    word-wrap: break-word;
+    display: flex;
+}
+
+/* Mensagens do especialista (Azul, à esquerda) */
+.specialist {
+    background: #007bff;
+    color: white;
+    text-align: left;
+    align-self: flex-start;
+    border-radius: 10px 10px 10px 0;
+}
+
+/* Mensagens do usuário (Cinza, à direita) */
+.user {
+    background: #e0e0e0;
+    color: black;
+    text-align: right;
+    align-self: flex-end;
+    border-radius: 10px 10px 0 10px;
+}
+
 }
