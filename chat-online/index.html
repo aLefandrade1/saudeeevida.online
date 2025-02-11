@@ -20,19 +20,22 @@
         <span class="status-online">🟢 Online</span>
     </div>
 
-    <!-- Área do Chat -->
+   <!-- Área do Chat -->
 <div class="chat-container">
     <div id="chat-box"></div>
     <div id="typing-indicator" class="hidden">Especialista está digitando...</div>
 
     <!-- Campo de Digitação da Idade + Botão de Enviar -->
-    <div id="age-input-container" style="display: none; flex-direction: column; gap: 10px; align-items: center;">
-        <input type="number" id="user-input" placeholder="Digite sua idade..." 
-               style="width: 80%; padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc;">
-        <button id="send-age-btn" 
-                style="padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; border-radius: 8px;">
-            Enviar
-        </button>
+    <div id="age-input-container" style="display: none; display: flex; gap: 10px; align-items: center;">
+        <div style="position: relative; width: 100%;">
+            <input type="number" id="user-input" placeholder="Digite sua idade..." 
+                style="width: 100%; padding: 12px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc;">
+            <button id="send-age-btn" 
+                style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%);
+                background: #28a745; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 8px;">
+                ✔
+            </button>
+        </div>
     </div>
 </div>
 
