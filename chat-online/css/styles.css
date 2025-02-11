@@ -88,7 +88,7 @@ body {
 .button-response {
     display: block;
     text-align: center;
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     padding: 10px;
     border-radius: 8px;
@@ -98,7 +98,7 @@ body {
     cursor: pointer;
 }
 .button-response:hover {
-    background-color: #0056b3;
+    background-color: #218838;
 }
 
 /* Estilização do checkout */
