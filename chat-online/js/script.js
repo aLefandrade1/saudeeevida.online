@@ -37,22 +37,22 @@ function displayMessage(text, isUser = false, buttons = [], delay = 4000) {
     }, delay);
 }
 
-// Pergunta de idade aceita digitação antes de continuar
+// Pergunta de idade: exibe o campo de digitação + botão de enviar
 function askAge() {
-    displayMessage("Quantos anos você tem? Digite abaixo e clique no ✔ para enviar.", false, [], 4000);
+    displayMessage("Quantos anos você tem? Digite abaixo e clique em 'Enviar'.", false, [], 4000);
 
     setTimeout(() => {
         userInputContainer.style.display = "flex";  // Exibe o campo de idade e o botão
-        userInput.focus();  // Foca automaticamente no campo de digitação
+        userInput.focus();  // Coloca o cursor na caixa de digitação automaticamente
 
-        // Evento ao pressionar "Enter"
+        // Permitir envio ao pressionar "Enter"
         userInput.onkeypress = function (event) {
             if (event.key === "Enter") {
                 sendAge();
             }
         };
 
-        // Evento ao clicar no botão ✔
+        // Permitir envio ao clicar no botão "Enviar"
         sendAgeBtn.onclick = function () {
             sendAge();
         };
@@ -129,50 +129,19 @@ function handleResponse(response) {
                         
                         setTimeout(() => {
                             displayMessage("Para o seu caso, tem solução e é mais fácil do que você pensa!", false, [], 4000);
-                            displayMessage("Veja essa paciente que também está se tratando com o Chá da Reconstrução:", false, [], 4000);
-                            displayVideoProofs();
                         }, 4000);
                     }, 4000);
                 }, 4000);
                 break;
-
-            case "Sim! EU quero!":
-                displayCheckout();
-                break;
         }
     }, 4000);
-}
-
-// Função para exibir os vídeos do Wistia no chat
-function displayVideoProofs() {
-    setTimeout(() => {
-        let video1 = document.createElement("div");
-        video1.innerHTML = `
-            <script src="https://fast.wistia.com/player.js" async></script>
-            <script src="https://fast.wistia.com/embed/38n82fs7br.js" async type="module"></script>
-            <style>wistia-player[media-id='38n82fs7br']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/38n82fs7br/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
-            <wistia-player media-id="38n82fs7br" seo="false" aspect="0.5625"></wistia-player>
-        `;
-        chatBox.appendChild(video1);
-    }, 4000);
-
-    setTimeout(() => {
-        let video2 = document.createElement("div");
-        video2.innerHTML = `
-            <script src="https://fast.wistia.com/player.js" async></script>
-            <script src="https://fast.wistia.com/embed/y6s61jiyyr.js" async type="module"></script>
-            <style>wistia-player[media-id='y6s61jiyyr']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/y6s61jiyyr/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
-            <wistia-player media-id="y6s61jiyyr" seo="false" aspect="0.5625"></wistia-player>
-        `;
-        chatBox.appendChild(video2);
-    }, 8000);
 }
 
 // Iniciar o chat com delay correto
 function startChat() {
     displayMessage("Olá, tudo bem? É um prazer ter você aqui!", false, [], 4000);
     setTimeout(() => {
-        displayMessage("Meu nome é Roberto Nóbrega.", false, [], 4000);
+        displayMessage("Meu nome é João.", false, [], 4000);
         displayMessage("Sou especialista em Gastrite e Saúde Digestiva.", false, [], 4000);
         displayMessage("Você gostaria de receber a receita do Chá da Reconstrução da Barreira Ácida?", false, ["Sim! Sem dúvidas!"], 4000);
     }, 4000);
