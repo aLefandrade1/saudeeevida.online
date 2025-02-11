@@ -1,7 +1,8 @@
 const chatBox = document.getElementById("chat-box");
 const typingIndicator = document.getElementById("typing-indicator");
+const userInput = document.getElementById("user-input");
 
-// Função para exibir mensagens no chat com delay maior (3-4 segundos)
+// Exibir mensagens com delay
 function displayMessage(text, isUser = false, buttons = []) {
     typingIndicator.style.display = "block";
 
@@ -13,6 +14,7 @@ function displayMessage(text, isUser = false, buttons = []) {
         messageDiv.innerText = text;
         chatBox.appendChild(messageDiv);
 
+        // Botões aparecem alinhados à direita
         if (buttons.length > 0) {
             let buttonContainer = document.createElement("div");
             buttonContainer.classList.add("button-container");
@@ -29,29 +31,33 @@ function displayMessage(text, isUser = false, buttons = []) {
         }
 
         chatBox.scrollTop = chatBox.scrollHeight;
-    }, 3000); // Agora todas as mensagens têm um delay de 3 segundos
+    }, 4000); // Delay de 4 segundos
 }
 
 // Pergunta de idade aceita digitação antes de continuar
 function askAge() {
     displayMessage("Quantos anos você tem? Digite abaixo.");
-    
-    document.getElementById("user-input").style.display = "block";
-    document.getElementById("user-input").onkeypress = function (event) {
-        if (event.key === "Enter") {
-            let age = event.target.value;
-            displayMessage(age, true);
-            event.target.value = "";
-            document.getElementById("user-input").style.display = "none";
 
-            setTimeout(() => {
-                displayMessage("Qual seu peso aproximado?", false, [
-                    "Até 60 Kg",
-                    "Entre 61Kg e 70Kg",
-                    "Entre 71Kg e 90 Kg",
-                    "Mais de 90Kg"
-                ]);
-            }, 4000); // Delay maior para dar tempo do usuário ler
+    userInput.style.display = "block";
+    userInput.focus();
+    
+    userInput.onkeypress = function (event) {
+        if (event.key === "Enter") {
+            let age = event.target.value.trim();
+            if (age !== "") {
+                displayMessage(`Você: ${age} anos`, true);
+                event.target.value = "";
+                userInput.style.display = "none";
+
+                setTimeout(() => {
+                    displayMessage("Qual seu peso aproximado?", false, [
+                        "Até 60 Kg",
+                        "Entre 61Kg e 70Kg",
+                        "Entre 71Kg e 90 Kg",
+                        "Mais de 90Kg"
+                    ]);
+                }, 4000);
+            }
         }
     };
 }
@@ -88,7 +94,7 @@ function handleResponse(response) {
             case "Uma semana":
             case "Mais de um mês":
             case "Mais de um ano":
-                askAge(); // Chama a função para digitar idade
+                askAge(); // Agora a pergunta de idade aceita digitação antes de continuar
                 break;
 
             case "Até 60 Kg":
@@ -118,21 +124,30 @@ function handleResponse(response) {
     }, 4000);
 }
 
-// Função para exibir o vídeo do Wistia
+// Função para exibir os vídeos do Wistia no chat
 function displayVideoProofs() {
-    let videoContainer = document.createElement("div");
-    videoContainer.innerHTML = `
+    let video1 = document.createElement("div");
+    video1.innerHTML = `
         <script src="https://fast.wistia.com/player.js" async></script>
         <script src="https://fast.wistia.com/embed/38n82fs7br.js" async type="module"></script>
         <wistia-player media-id="38n82fs7br" seo="false" aspect="0.5625"></wistia-player>
     `;
-    
-    chatBox.appendChild(videoContainer);
-    
+    chatBox.appendChild(video1);
+
+    setTimeout(() => {
+        let video2 = document.createElement("div");
+        video2.innerHTML = `
+            <script src="https://fast.wistia.com/player.js" async></script>
+            <script src="https://fast.wistia.com/embed/y6s61jiyyr.js" async type="module"></script>
+            <wistia-player media-id="y6s61jiyyr" seo="false" aspect="0.5625"></wistia-player>
+        `;
+        chatBox.appendChild(video2);
+    }, 5000);
+
     setTimeout(() => {
         displayMessage("E sabe o que todos eles têm em comum?");
         displayMessage("Todos utilizaram o Chá da Reconstrução da Barreira Ácida!", false, ["Sim! EU quero!"]);
-    }, 4000);
+    }, 8000);
 }
 
 // Função para exibir o checkout no final
