@@ -45,6 +45,8 @@ body {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 /* Estilos das mensagens */
@@ -64,6 +66,7 @@ body {
     text-align: left;
     align-self: flex-start;
     border-radius: 10px 10px 10px 0;
+    align-items: flex-start;
 }
 
 /* Mensagens do usuário (Cinza, à direita) */
@@ -73,6 +76,7 @@ body {
     text-align: right;
     align-self: flex-end;
     border-radius: 10px 10px 0 10px;
+    align-items: flex-end;
 }
 
 /* Indicador de digitação */
@@ -84,11 +88,14 @@ body {
     padding-left: 10px;
 }
 
-/* Botões de resposta */
+/* Botões de resposta (Agora alinhados à direita) */
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .button-response {
-    display: block;
-    text-align: center;
-    background-color: #28a745;
+    background-color: #28a745; /* Verde */
     color: white;
     padding: 10px;
     border-radius: 8px;
@@ -96,12 +103,14 @@ body {
     font-weight: bold;
     margin-top: 10px;
     cursor: pointer;
+    text-align: center;
+    border: none;
 }
 .button-response:hover {
-    background-color: #218838;
+    background-color: #218838; /* Verde escuro */
 }
 
-/* Estilização do checkout */
+/* Caixa de checkout no final */
 .checkout-box {
     background: #ffcc00;
     padding: 10px;
