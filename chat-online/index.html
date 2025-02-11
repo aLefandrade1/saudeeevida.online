@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Online</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Banner no topo -->
+    <div class="banner-container">
+        <img src="img/banner.jpg" alt="Banner do Chat" class="banner">
+    </div>
+
+    <!-- Cabeçalho do Chat -->
+    <div class="chat-header">
+        <img src="img/especialista.jpg" alt="Especialista" class="especialista-img">
+        <h2>João - Especialista</h2>
+        <span class="status-online">🟢 Online</span>
+    </div>
+
+    <!-- Área do Chat -->
+    <div class="chat-container">
+        <div id="chat-box">
+            <div class="message specialist">Olá! Eu sou o João, especialista. Vou te ajudar! Qual é o seu nome?</div>
+        </div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Digite sua resposta...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

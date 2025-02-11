@@ -1,0 +1,111 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Banner */
+.banner-container {
+    text-align: center;
+    background-color: #0044cc;
+    padding: 10px 0;
+}
+
+.banner {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Cabeçalho do chat */
+.chat-header {
+    display: flex;
+    align-items: center;
+    background: #007bff;
+    color: white;
+    padding: 15px;
+    justify-content: center;
+}
+
+.especialista-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.status-online {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+/* Área do chat */
+.chat-container {
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#chat-box {
+    height: 300px;
+    overflow-y: auto;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+}
+
+/* Estilos para as mensagens */
+.message {
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
+    max-width: 80%;
+}
+
+.specialist {
+    background: #007bff;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.user {
+    background: #e0e0e0;
+    color: black;
+    text-align: right;
+    margin-left: auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Input e Botão */
+.input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 5px;
+}
