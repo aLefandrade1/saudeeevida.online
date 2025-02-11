@@ -2,8 +2,8 @@ const chatBox = document.getElementById("chat-box");
 const typingIndicator = document.getElementById("typing-indicator");
 const userInput = document.getElementById("user-input");
 
-// Exibir mensagens com delay
-function displayMessage(text, isUser = false, buttons = []) {
+// Exibir mensagens com delay individual (todas as mensagens agora têm delay próprio)
+function displayMessage(text, isUser = false, buttons = [], delay = 4000) {
     typingIndicator.style.display = "block";
 
     setTimeout(() => {
@@ -14,52 +14,55 @@ function displayMessage(text, isUser = false, buttons = []) {
         messageDiv.innerText = text;
         chatBox.appendChild(messageDiv);
 
-        // Botões aparecem alinhados à direita
         if (buttons.length > 0) {
-            let buttonContainer = document.createElement("div");
-            buttonContainer.classList.add("button-container");
+            setTimeout(() => {
+                let buttonContainer = document.createElement("div");
+                buttonContainer.classList.add("button-container");
 
-            buttons.forEach(buttonText => {
-                let button = document.createElement("button");
-                button.classList.add("button-response");
-                button.innerText = buttonText;
-                button.onclick = () => handleResponse(buttonText);
-                buttonContainer.appendChild(button);
-            });
+                buttons.forEach(buttonText => {
+                    let button = document.createElement("button");
+                    button.classList.add("button-response");
+                    button.innerText = buttonText;
+                    button.onclick = () => handleResponse(buttonText);
+                    buttonContainer.appendChild(button);
+                });
 
-            chatBox.appendChild(buttonContainer);
+                chatBox.appendChild(buttonContainer);
+            }, 4000);
         }
 
         chatBox.scrollTop = chatBox.scrollHeight;
-    }, 4000); // Delay de 4 segundos
+    }, delay);
 }
 
 // Pergunta de idade aceita digitação antes de continuar
 function askAge() {
-    displayMessage("Quantos anos você tem? Digite abaixo.");
+    displayMessage("Quantos anos você tem? Digite abaixo.", false, [], 4000);
 
-    userInput.style.display = "block";
-    userInput.focus();
-    
-    userInput.onkeypress = function (event) {
-        if (event.key === "Enter") {
-            let age = event.target.value.trim();
-            if (age !== "") {
-                displayMessage(`Você: ${age} anos`, true);
-                event.target.value = "";
-                userInput.style.display = "none";
+    setTimeout(() => {
+        userInput.style.display = "block";
+        userInput.focus();
 
-                setTimeout(() => {
-                    displayMessage("Qual seu peso aproximado?", false, [
-                        "Até 60 Kg",
-                        "Entre 61Kg e 70Kg",
-                        "Entre 71Kg e 90 Kg",
-                        "Mais de 90Kg"
-                    ]);
-                }, 4000);
+        userInput.onkeypress = function (event) {
+            if (event.key === "Enter") {
+                let age = event.target.value.trim();
+                if (age !== "") {
+                    displayMessage(`Você: ${age} anos`, true);
+                    event.target.value = "";
+                    userInput.style.display = "none";
+
+                    setTimeout(() => {
+                        displayMessage("Qual seu peso aproximado?", false, [
+                            "Até 60 Kg",
+                            "Entre 61Kg e 70Kg",
+                            "Entre 71Kg e 90 Kg",
+                            "Mais de 90Kg"
+                        ]);
+                    }, 4000);
+                }
             }
-        }
-    };
+        };
+    }, 4000);
 }
 
 // Fluxo do Funil
@@ -69,14 +72,14 @@ function handleResponse(response) {
     setTimeout(() => {
         switch (response) {
             case "Sim! Sem dúvidas!":
-                displayMessage("Perfeito! Vamos começar sua receita personalizada.");
+                displayMessage("Perfeito! Vamos começar sua receita personalizada.", false, [], 4000);
                 setTimeout(() => {
                     displayMessage("Qual é o principal problema que você deseja resolver?", false, [
                         "Aliviar as dores no estômago",
                         "Eliminar a queimação e o desconforto",
                         "Melhorar a digestão e comer sem medo",
                         "Prevenir complicações graves"
-                    ]);
+                    ], 4000);
                 }, 4000);
                 break;
 
@@ -88,31 +91,33 @@ function handleResponse(response) {
                     "Uma semana",
                     "Mais de um mês",
                     "Mais de um ano"
-                ]);
+                ], 4000);
                 break;
 
             case "Uma semana":
             case "Mais de um mês":
             case "Mais de um ano":
-                askAge(); // Agora a pergunta de idade aceita digitação antes de continuar
+                askAge();
                 break;
 
             case "Até 60 Kg":
             case "Entre 61Kg e 70Kg":
             case "Entre 71Kg e 90 Kg":
             case "Mais de 90Kg":
-                displayMessage("Acabei de analisar suas respostas e vou deixar o diagnóstico personalizado logo abaixo!");
+                displayMessage("Acabei de analisar suas respostas e vou deixar o diagnóstico personalizado logo abaixo!", false, [], 4000);
                 setTimeout(() => {
-                    displayMessage("⚠️ Nível Elevado! Ignorar os cuidados com a gastrite pode ser perigoso.");
-                    displayMessage("Veja os riscos para sua saúde:");
-                    displayMessage("✅ Úlceras Gástricas: Pode causar dores intensas.");
-                    displayMessage("✅ Sangramento Interno: Pode colocar sua saúde em risco.");
-                    displayMessage("✅ Impacto na Qualidade de Vida: A dor constante afeta seu bem-estar.");
-                    
+                    displayMessage("⚠️ Nível Elevado! Ignorar os cuidados com a gastrite pode ser perigoso.", false, [], 4000);
                     setTimeout(() => {
-                        displayMessage("Para o seu caso, tem solução e é mais fácil do que você pensa!");
-                        displayMessage("Veja essa paciente que também está se tratando com o Chá da Reconstrução:");
-                        displayVideoProofs();
+                        displayMessage("Veja os riscos para sua saúde:", false, [], 4000);
+                        displayMessage("✅ Úlceras Gástricas: Pode causar dores intensas.", false, [], 4000);
+                        displayMessage("✅ Sangramento Interno: Pode colocar sua saúde em risco.", false, [], 4000);
+                        displayMessage("✅ Impacto na Qualidade de Vida: A dor constante afeta seu bem-estar.", false, [], 4000);
+                        
+                        setTimeout(() => {
+                            displayMessage("Para o seu caso, tem solução e é mais fácil do que você pensa!", false, [], 4000);
+                            displayMessage("Veja essa paciente que também está se tratando com o Chá da Reconstrução:", false, [], 4000);
+                            displayVideoProofs();
+                        }, 4000);
                     }, 4000);
                 }, 4000);
                 break;
@@ -126,13 +131,15 @@ function handleResponse(response) {
 
 // Função para exibir os vídeos do Wistia no chat
 function displayVideoProofs() {
-    let video1 = document.createElement("div");
-    video1.innerHTML = `
-        <script src="https://fast.wistia.com/player.js" async></script>
-        <script src="https://fast.wistia.com/embed/38n82fs7br.js" async type="module"></script>
-        <wistia-player media-id="38n82fs7br" seo="false" aspect="0.5625"></wistia-player>
-    `;
-    chatBox.appendChild(video1);
+    setTimeout(() => {
+        let video1 = document.createElement("div");
+        video1.innerHTML = `
+            <script src="https://fast.wistia.com/player.js" async></script>
+            <script src="https://fast.wistia.com/embed/38n82fs7br.js" async type="module"></script>
+            <wistia-player media-id="38n82fs7br" seo="false" aspect="0.5625"></wistia-player>
+        `;
+        chatBox.appendChild(video1);
+    }, 4000);
 
     setTimeout(() => {
         let video2 = document.createElement("div");
@@ -142,12 +149,12 @@ function displayVideoProofs() {
             <wistia-player media-id="y6s61jiyyr" seo="false" aspect="0.5625"></wistia-player>
         `;
         chatBox.appendChild(video2);
-    }, 5000);
+    }, 8000);
 
     setTimeout(() => {
-        displayMessage("E sabe o que todos eles têm em comum?");
-        displayMessage("Todos utilizaram o Chá da Reconstrução da Barreira Ácida!", false, ["Sim! EU quero!"]);
-    }, 8000);
+        displayMessage("E sabe o que todos eles têm em comum?", false, [], 4000);
+        displayMessage("Todos utilizaram o Chá da Reconstrução da Barreira Ácida!", false, ["Sim! EU quero!"], 4000);
+    }, 12000);
 }
 
 // Função para exibir o checkout no final
@@ -163,13 +170,17 @@ function displayCheckout() {
     }, 4000);
 }
 
-// Iniciar o chat
+// Iniciar o chat com delay correto em cada mensagem
 function startChat() {
-    displayMessage("Olá, tudo bem? É um prazer ter você aqui!");
+    displayMessage("Olá, tudo bem? É um prazer ter você aqui!", false, [], 4000);
     setTimeout(() => {
-        displayMessage("Meu nome é Roberto Nóbrega.");
-        displayMessage("Sou especialista em Gastrite e Saúde Digestiva.");
-        displayMessage("Você gostaria de receber a receita do Chá da Reconstrução da Barreira Ácida?", false, ["Sim! Sem dúvidas!"]);
+        displayMessage("Meu nome é Roberto Nóbrega.", false, [], 4000);
+        setTimeout(() => {
+            displayMessage("Sou especialista em Gastrite e Saúde Digestiva.", false, [], 4000);
+            setTimeout(() => {
+                displayMessage("Você gostaria de receber a receita do Chá da Reconstrução da Barreira Ácida?", false, ["Sim! Sem dúvidas!"], 4000);
+            }, 4000);
+        }, 4000);
     }, 4000);
 }
 
