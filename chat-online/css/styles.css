@@ -91,6 +91,7 @@ body {
 /* Botões de resposta (Agora alinhados à direita) */
 .button-container {
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
 }
 
