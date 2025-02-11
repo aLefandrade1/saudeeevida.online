@@ -40,31 +40,37 @@ function askAge() {
     displayMessage("Quantos anos você tem? Digite abaixo.", false, [], 4000);
 
     setTimeout(() => {
-        userInput.style.display = "block";  // Agora o campo de digitação aparece corretamente
-        userInput.focus();  // Cursor ativado no campo de texto automaticamente
+        let userInput = document.getElementById("user-input"); // Verifica se o input existe
 
-        userInput.onkeypress = function (event) {
-            if (event.key === "Enter") {  // Se a tecla "Enter" for pressionada
-                let age = event.target.value.trim();  // Captura o valor digitado e remove espaços extras
-                
-                if (age !== "") {  // Verifica se o usuário digitou algo
-                    displayMessage(`Você: ${age} anos`, true);  // Exibe a resposta do usuário no chat
-                    event.target.value = "";  // Limpa o campo de entrada
-                    userInput.style.display = "none";  // Esconde o campo de digitação
+        if (userInput) { 
+            userInput.style.display = "block";  // Agora o campo aparece corretamente
+            userInput.focus();  // Cursor ativado automaticamente
 
-                    setTimeout(() => {
-                        displayMessage("Qual seu peso aproximado?", false, [
-                            "Até 60 Kg",
-                            "Entre 61Kg e 70Kg",
-                            "Entre 71Kg e 90 Kg",
-                            "Mais de 90Kg"
-                        ]);
-                    }, 4000);  // Após digitar a idade, exibe a próxima pergunta após 4 segundos
+            userInput.onkeypress = function (event) {
+                if (event.key === "Enter") {  // Se o usuário pressionar "Enter"
+                    let age = userInput.value.trim();
+                    if (age !== "") {  // Se o campo não estiver vazio
+                        displayMessage(`Você: ${age} anos`, true);
+                        userInput.value = "";  // Limpa o campo
+                        userInput.style.display = "none";  // Esconde novamente
+
+                        setTimeout(() => {
+                            displayMessage("Qual seu peso aproximado?", false, [
+                                "Até 60 Kg",
+                                "Entre 61Kg e 70Kg",
+                                "Entre 71Kg e 90 Kg",
+                                "Mais de 90Kg"
+                            ]);
+                        }, 4000);
+                    }
                 }
-            }
-        };
+            };
+        } else {
+            console.error("Erro: Campo de digitação `user-input` não encontrado no HTML!");
+        }
     }, 4000);
 }
+
 
 
 // Fluxo do Funil
