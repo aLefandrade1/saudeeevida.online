@@ -16,20 +16,34 @@ function displayMessage(text, isUser = false, buttons = []) {
     typingIndicator.style.display = "block";
     setTimeout(() => {
         typingIndicator.style.display = "none";
+        
         let messageDiv = document.createElement("div");
         messageDiv.classList.add("message", isUser ? "user" : "specialist");
         messageDiv.innerText = text;
+
+        // Adiciona a mensagem ao chat
         chatBox.appendChild(messageDiv);
 
+        // Se houver botões, adiciona após a mensagem
         if (buttons.length > 0) {
+            let buttonContainer = document.createElement("div");
+            buttonContainer.classList.add("button-container");
+
             buttons.forEach(buttonText => {
                 let button = document.createElement("button");
                 button.classList.add("button-response");
                 button.innerText = buttonText;
                 button.onclick = () => handleResponse(buttonText);
-                chatBox.appendChild(button);
+                buttonContainer.appendChild(button);
             });
+
+            chatBox.appendChild(buttonContainer);
         }
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 1500);
+}
+
 
         chatBox.scrollTop = chatBox.scrollHeight;
     }, 1500);
