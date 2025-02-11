@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Online</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Banner no topo -->
+    <div class="banner-container">
+        <img src="img/banner.jpg" alt="Banner do Chat" class="banner">
+    </div>
+
+    <!-- Cabeçalho do Chat -->
+    <div class="chat-header">
+        <img src="img/especialista.jpg" alt="Especialista" class="especialista-img">
+        <h2>Roberto Nóbrega - Especialista</h2>
+        <span class="status-online">🟢 Online</span>
+    </div>
+
+    <!-- Área do Chat -->
+    <div class="chat-container">
+        <div id="chat-box"></div>
+        <div id="typing-indicator" class="hidden">Especialista está digitando...</div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Digite sua resposta..." style="display:none;">
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

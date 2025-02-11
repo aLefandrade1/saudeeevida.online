@@ -1,0 +1,93 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Banner */
+.banner-container {
+    text-align: center;
+    background-color: #0044cc;
+    padding: 10px 0;
+}
+
+.banner {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Cabeçalho do chat */
+.chat-header {
+    display: flex;
+    align-items: center;
+    background: #007bff;
+    color: white;
+    padding: 15px;
+    justify-content: center;
+}
+
+.especialista-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Área do chat */
+.chat-container {
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#chat-box {
+    height: 300px;
+    overflow-y: auto;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+}
+
+/* Indicador de digitação */
+#typing-indicator {
+    font-style: italic;
+    color: #555;
+    display: none;
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* Botões de resposta */
+.button-response {
+    display: block;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.button-response:hover {
+    background-color: #0056b3;
+}
+
+/* Estilização do checkout */
+.checkout-box {
+    background: #ffcc00;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 15px;
+}
