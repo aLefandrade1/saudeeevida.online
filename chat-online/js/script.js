@@ -39,7 +39,7 @@ function displayMessage(text, isUser = false, buttons = [], delay = 4000) {
 
 // Pergunta de idade aceita digitação antes de continuar
 function askAge() {
-    displayMessage("Quantos anos você tem? Digite abaixo e clique em 'Enviar'.", false, [], 4000);
+    displayMessage("Quantos anos você tem? Digite abaixo e clique no ✔ para enviar.", false, [], 4000);
 
     setTimeout(() => {
         userInputContainer.style.display = "flex";  // Exibe o campo de idade e o botão
@@ -52,7 +52,7 @@ function askAge() {
             }
         };
 
-        // Evento ao clicar no botão "Enviar"
+        // Evento ao clicar no botão ✔
         sendAgeBtn.onclick = function () {
             sendAge();
         };
