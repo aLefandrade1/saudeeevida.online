@@ -98,14 +98,16 @@ body {
 .button-response {
     background-color: #28a745; /* Verde */
     color: white;
-    padding: 10px;
+    padding: 8px 12px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 5px;
     cursor: pointer;
     text-align: center;
     border: none;
+    max-width: 200px; /* Agora o botão tem o mesmo tamanho do botão azul */
+    min-width: auto;
 }
 .button-response:hover {
     background-color: #218838; /* Verde escuro */
