@@ -39,29 +39,44 @@ function displayMessage(text, isUser = false, buttons = [], delay = 4000) {
 
 // Pergunta de idade aceita digitação antes de continuar
 function askAge() {
-    displayMessage("Quantos anos você tem? Digite abaixo.", false, [], 4000);
+    displayMessage("Quantos anos você tem? Digite abaixo e clique em 'Enviar'.", false, [], 4000);
 
     setTimeout(() => {
-        userInputContainer.style.display = "flex";  // Exibe o campo e o botão
+        userInputContainer.style.display = "flex";  // Exibe o campo de idade e o botão
+        userInput.focus();  // Foca automaticamente no campo de digitação
 
-        sendAgeBtn.onclick = function () {
-            let age = userInput.value.trim();
-            if (age !== "") {
-                displayMessage(`Você: ${age} anos`, true);
-                userInput.value = "";
-                userInputContainer.style.display = "none"; // Esconde o campo e o botão
-
-                setTimeout(() => {
-                    displayMessage("Qual seu peso aproximado?", false, [
-                        "Até 60 Kg",
-                        "Entre 61Kg e 70Kg",
-                        "Entre 71Kg e 90 Kg",
-                        "Mais de 90Kg"
-                    ]);
-                }, 4000);
+        // Evento ao pressionar "Enter"
+        userInput.onkeypress = function (event) {
+            if (event.key === "Enter") {
+                sendAge();
             }
         };
+
+        // Evento ao clicar no botão "Enviar"
+        sendAgeBtn.onclick = function () {
+            sendAge();
+        };
     }, 4000);
+}
+
+// Captura a idade digitada e continua o funil
+function sendAge() {
+    let age = userInput.value.trim();
+
+    if (age !== "" && !isNaN(age)) {  // Verifica se a idade foi digitada corretamente
+        displayMessage(`Você: ${age} anos`, true);
+        userInput.value = "";
+        userInputContainer.style.display = "none"; // Esconde o campo e o botão
+
+        setTimeout(() => {
+            displayMessage("Qual seu peso aproximado?", false, [
+                "Até 60 Kg",
+                "Entre 61Kg e 70Kg",
+                "Entre 71Kg e 90 Kg",
+                "Mais de 90Kg"
+            ]);
+        }, 4000);
+    }
 }
 
 // Fluxo do Funil
