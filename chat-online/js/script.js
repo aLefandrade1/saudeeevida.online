@@ -129,12 +129,37 @@ function handleResponse(response) {
                         
                         setTimeout(() => {
                             displayMessage("Para o seu caso, tem solução e é mais fácil do que você pensa!", false, [], 4000);
+                            displayMessage("Veja essa paciente que também está se tratando com o Chá da Reconstrução:", false, [], 4000);
+                            displayVideoProofs();
                         }, 4000);
                     }, 4000);
                 }, 4000);
                 break;
         }
     }, 4000);
+}
+
+// Função para exibir os vídeos do Wistia no chat
+function displayVideoProofs() {
+    setTimeout(() => {
+        let video1 = document.createElement("div");
+        video1.innerHTML = `
+            <script src="https://fast.wistia.com/player.js" async></script>
+            <script src="https://fast.wistia.com/embed/38n82fs7br.js" async type="module"></script>
+            <wistia-player media-id="38n82fs7br" seo="false" aspect="0.5625"></wistia-player>
+        `;
+        chatBox.appendChild(video1);
+    }, 4000);
+
+    setTimeout(() => {
+        let video2 = document.createElement("div");
+        video2.innerHTML = `
+            <script src="https://fast.wistia.com/player.js" async></script>
+            <script src="https://fast.wistia.com/embed/y6s61jiyyr.js" async type="module"></script>
+            <wistia-player media-id="y6s61jiyyr" seo="false" aspect="0.5625"></wistia-player>
+        `;
+        chatBox.appendChild(video2);
+    }, 8000);
 }
 
 // Iniciar o chat com delay correto
