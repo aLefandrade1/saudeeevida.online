@@ -2,31 +2,36 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    text-align: center;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Banner */
+/* Banner no topo */
 .banner-container {
+    width: 100%;
+    max-width: 600px;
     text-align: center;
-    background-color: #0044cc;
-    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 .banner {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    border-radius: 10px;
 }
 
-/* Cabeçalho do chat */
+/* Cabeçalho do Chat */
 .chat-header {
     display: flex;
     align-items: center;
     background: #007bff;
     color: white;
     padding: 15px;
-    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px 10px 0 0;
 }
 
 .especialista-img {
@@ -36,105 +41,101 @@ body {
     margin-right: 10px;
 }
 
-/* Área do chat */
-.chat-container {
-    width: 90%;
-    max-width: 400px;
-    margin: 20px auto;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
+.status-online {
+    margin-left: auto;
+    font-weight: bold;
 }
 
-/* Estilos das mensagens */
+/* Área do Chat */
+.chat-container {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    height: 500px;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+/* Mensagens do chat */
 .message {
     padding: 10px;
     border-radius: 8px;
-    margin: 5px;
-    max-width: 70%;
-    word-wrap: break-word;
-    display: flex;
+    margin: 5px 0;
+    max-width: 80%;
 }
 
-/* Mensagens do especialista (Azul, à esquerda) */
+/* Mensagem do especialista */
 .specialist {
+    background: #f1f1f1;
+    align-self: flex-start;
+}
+
+/* Mensagem do usuário */
+.user {
     background: #007bff;
     color: white;
-    text-align: left;
-    align-self: flex-start;
-    border-radius: 10px 10px 10px 0;
-    align-items: flex-start;
-}
-
-/* Mensagens do usuário (Cinza, à direita) */
-.user {
-    background: #e0e0e0;
-    color: black;
-    text-align: right;
     align-self: flex-end;
-    border-radius: 10px 10px 0 10px;
-    align-items: flex-end;
 }
 
-/* Indicador de digitação */
+/* Indicador "digitando..." */
 #typing-indicator {
     font-style: italic;
     color: #555;
-    display: none;
-    text-align: left;
-    padding-left: 10px;
+    margin-bottom: 10px;
 }
 
-/* Botões de resposta (agora do mesmo tamanho dos botões azuis) */
+/* Botões de resposta */
 .button-container {
     display: flex;
-    flex-direction: column; /* Botões um abaixo do outro */
-    align-items: flex-end; /* Mantém os botões alinhados à direita */
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .button-response {
-    background-color: #28a745; /* Verde */
+    background-color: #28a745;
     color: white;
-    padding: 12px 16px; /* Ajustado para altura maior */
+    padding: 12px 16px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    margin-top: 5px; /* Espaço entre os botões */
+    margin-top: 5px;
     cursor: pointer;
     text-align: center;
     border: none;
     width: auto;
     min-width: 150px;
-    max-width: 250px; /* Agora igual ao botão azul */
-    font-size: 16px; /* Tamanho do texto ajustado */
+    max-width: 250px;
+    font-size: 16px;
 }
 
 .button-response:hover {
-    background-color: #218838; /* Verde escuro */
+    background-color: #218838;
 }
 
 /* Campo de digitação da idade */
-#user-input {
+#age-input-container {
     display: none;
     width: 100%;
-    max-width: 250px;
+    max-width: 600px;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-top: 10px;
 }
 
-
-/* Caixa de checkout no final */
-.checkout-box {
-    background: #ffcc00;
+#user-input {
+    width: 80%;
     padding: 10px;
+    font-size: 16px;
     border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 15px;
+    border: 1px solid #ccc;
+}
+
+#send-age-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
 }
