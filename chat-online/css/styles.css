@@ -1,141 +1,50 @@
-/* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
     margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 20px;
 }
 
-/* Banner no topo */
-.banner-container {
-    width: 100%;
+.container {
     max-width: 600px;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.banner {
-    width: 100%;
-    border-radius: 10px;
-}
-
-/* Cabeçalho do Chat */
-.chat-header {
-    display: flex;
-    align-items: center;
-    background: #007bff;
-    color: white;
-    padding: 15px;
-    width: 100%;
-    max-width: 600px;
-    border-radius: 10px 10px 0 0;
-}
-
-.especialista-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.status-online {
-    margin-left: auto;
-    font-weight: bold;
-}
-
-/* Área do Chat */
-.chat-container {
+    margin: 0 auto;
     background: white;
-    width: 100%;
-    max-width: 600px;
-    height: 500px;
-    border-radius: 0 0 10px 10px;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    overflow-y: auto;
-}
-
-/* Mensagens do chat */
-.message {
-    padding: 10px;
     border-radius: 8px;
-    margin: 5px 0;
-    max-width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
-/* Mensagem do especialista */
-.specialist {
-    background: #f1f1f1;
-    align-self: flex-start;
+header {
+    text-align: center;
 }
 
-/* Mensagem do usuário */
-.user {
-    background: #007bff;
-    color: white;
-    align-self: flex-end;
+.especialista {
+    width: 100px;
+    border-radius: 50%;
 }
 
-/* Indicador "digitando..." */
-#typing-indicator {
-    font-style: italic;
-    color: #555;
+.chat-box {
+    margin-top: 20px;
+}
+
+.messages {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
     margin-bottom: 10px;
 }
 
-/* Botões de resposta */
-.button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+.messages p {
+    margin: 5px 0;
 }
 
-.button-response {
-    background-color: #28a745;
-    color: white;
-    padding: 12px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 5px;
-    cursor: pointer;
-    text-align: center;
-    border: none;
-    width: auto;
-    min-width: 150px;
-    max-width: 250px;
-    font-size: 16px;
-}
-
-.button-response:hover {
-    background-color: #218838;
-}
-
-/* Campo de digitação da idade */
-#age-input-container {
-    display: none;
-    width: 100%;
-    max-width: 600px;
-    padding: 10px;
-}
-
-#user-input {
+input[type="text"] {
     width: 80%;
     padding: 10px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    margin-right: 5px;
 }
 
-#send-age-btn {
-    background: #28a745;
-    color: white;
-    border: none;
+button {
     padding: 10px;
-    cursor: pointer;
-    border-radius: 8px;
 }
