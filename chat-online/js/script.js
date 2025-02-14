@@ -1,23 +1,18 @@
-document.getElementById('sendButton').addEventListener('click', function() {
-    const userInput = document.getElementById('userInput');
-    const message = userInput.value;
+const messagesDiv = document.getElementById('messages');
+const messageInput = document.getElementById('message-input');
+const sendButton = document.getElementById('send-button');
 
-    if (message.trim() !== "") {
-        // Adiciona a mensagem do usuário ao chat
-        addMessage('Você: ' + message);
-        userInput.value = '';
-
-        // Simula a resposta do especialista
-        setTimeout(() => {
-            addMessage('Dr. João Silva: Obrigado pela sua mensagem! Estou aqui para ajudar.');
-        }, 1000); // Resposta após 1 segundo
+sendButton.addEventListener('click', () => {
+    const message = messageInput.value;
+    if (message) {
+        addMessage(message);
+        messageInput.value = '';
+        // Aqui você deve enviar a mensagem para o backend
     }
 });
 
 function addMessage(message) {
-    const messagesDiv = document.getElementById('messages');
-    const newMessage = document.createElement('p');
-    newMessage.textContent = message;
-    messagesDiv.appendChild(newMessage);
-    messagesDiv.scrollTop = messagesDiv.scrollHeight; // Rolagem automática
+    const messageElement = document.createElement('div');
+    messageElement.textContent = message;
+    messagesDiv.appendChild(messageElement);
 }
