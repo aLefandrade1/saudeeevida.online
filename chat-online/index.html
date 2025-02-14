@@ -3,39 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Online</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Chat com Especialista</title>
 </head>
 <body>
-
-    <!-- Banner no topo -->
-    <div class="banner-container">
-        <img src="images/banner.jpg" alt="Banner do Chat" class="banner">
-    </div>
-
-    <!-- Cabeçalho do Chat -->
-    <div class="chat-header">
-        <img src="images/especialista.jpg" alt="Especialista" class="especialista-img">
-        <h2>João - Especialista</h2>
-        <span class="status-online">🟢 Online</span>
-    </div>
-
-    <!-- Área do Chat -->
-    <div class="chat-container">
-        <div id="chat-box"></div>
-        <div id="typing-indicator" class="hidden">Especialista está digitando...</div>
-
-        <!-- Campo de Digitação da Idade + Botão de Enviar -->
-        <div id="age-input-container" style="display: none; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;">
-            <input type="number" id="user-input" placeholder="Digite sua idade..." 
-                style="width: 90%; padding: 12px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc;">
-            <button id="send-age-btn" 
-                style="padding: 10px 15px; background: #28a745; color: white; border: none; cursor: pointer; border-radius: 8px;">
-                Enviar
-            </button>
+    <div class="container">
+        <header>
+            <h1>Converse com nosso Especialista</h1>
+            <img src="especialista.jpg" alt="Especialista" class="especialista">
+            <p>Dr. João Silva</p>
+        </header>
+        
+        <div class="chat-box">
+            <div class="messages" id="messages"></div>
+            <input type="text" id="userInput" placeholder="Digite sua mensagem...">
+            <button id="sendButton">Enviar</button>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
