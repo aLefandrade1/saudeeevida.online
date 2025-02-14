@@ -3,24 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Chat com Especialista</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Chat</title>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Converse com nosso Especialista</h1>
-            <img src="especialista.jpg" alt="Especialista" class="especialista">
-            <p>Dr. João Silva</p>
-        </header>
-        
-        <div class="chat-box">
-            <div class="messages" id="messages"></div>
-            <input type="text" id="userInput" placeholder="Digite sua mensagem...">
-            <button id="sendButton">Enviar</button>
-        </div>
+    <div id="chat-box">
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Digite sua mensagem...">
+        <button id="send-button">Enviar</button>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
