@@ -57,18 +57,18 @@
            
           <link rel="prerender" href="https://pay.hotmart.com/123456789?checkoutMode=10"/>
 
-          <!-- Botão 1 -->
-            <div id="cta1" class="mt-4 d-none">
-              <a href="https://pay.hotmart.com/123456789?checkoutMode=10" class="btn btn-success btn-lg btn-block" style="text-decoration: none;">
-              <br>
-              <span class="span-btn">¡HABLA CON ELENA NAVARRO!</span>   
-              <br>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+          <div id="cta-button" style="display: none; text-align: center; margin-top: 20px;">
+        <a href="https://tudestino.com" style="background-color: #28a745; color: #fff; padding: 15px 25px; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 5px; display: inline-block;">
+            ¡HABLA CON ELENA NAVARRO!
+        </a>
+    </div>
+    
+    <script>
+        setTimeout(function() {
+            document.getElementById('cta-button').style.display = 'block';
+        }, 60000); // Exibe o botão após 60 segundos (ajuste conforme necessário)
+    </script>
+</div>
 
   <section class="comments py-4">
 
@@ -129,10 +129,6 @@ function getParams() {
     </script>
           
   </footer>
-
-      <script type="text/javascript">
-      setTimeout(() => {document.getElementById("cta1").classList.remove("d-none"); document.getElementById("cta2").classList.remove("d-none")}, 60000); // temporização da Call to Action (em milissegundos)
-    </script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
