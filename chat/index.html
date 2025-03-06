@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Consultório</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .chat-container {
+            width: 360px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            background: #0d47a1;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+        .doctor-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .chat-box {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .message {
+            max-width: 75%;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+        .doctor {
+            background: #bbdefb;
+            align-self: flex-start;
+        }
+        .user {
+            background: #1976d2;
+            color: white;
+            align-self: flex-end;
+        }
+        .chat-input-container {
+            display: flex;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            background: white;
+        }
+        .chat-input-container input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+        .chat-input-container button {
+            background: #0d47a1;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .chat-input-container button:hover {
+            background: #1565c0;
+        }
+
+        /* Estilo para os botões de opções */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .options button {
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .options button:hover {
+            background-color: #1565c0;
+            transform: translateY(-3px);
+        }
+
+        .options button:active {
+            transform: translateY(1px);
+        }
+
+        .options button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <img src="doctor.png" alt="Dr. Nome" class="doctor-image">
+            <h2>Dr. Nome</h2>
+        </div>
+        <div class="chat-box" id="chat-box"></div>
+        <div class="chat-input-container">
+            <input type="text" id="user-input" placeholder="Digite sua mensagem...">
+            <button id="send-btn">📨</button>
+        </div>
+    </div>
+    
+    <script>
+        const chatBox = document.getElementById("chat-box");
+        const userInput = document.getElementById("user-input");
+        const sendBtn = document.getElementById("send-btn");
+
+        const messages = [
+            { sender: "doctor", text: "Oi, que bom que você chegou! Eu sou o Dr. Nome e já estou com a sua análise inicial aqui. 📌" },
+            { sender: "doctor", text: "Antes de tudo, me diz: Qual dessas situações mais parece com você?" },
+            { sender: "options", options: [
+                "Já tentei de tudo, mas meu peso não baixa.",
+                "Até perco peso, mas engordo tudo de novo.",
+                "Meu metabolismo é muito lento, engordo fácil."
+            ] }
+        ];
+
+        let index = 0;
+
+        function addMessage(sender, text) {
+            const msgDiv = document.createElement("div");
+            msgDiv.classList.add("message", sender);
+            msgDiv.textContent = text;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function addOptions(options) {
+            const optionsDiv = document.createElement("div");
+            optionsDiv.classList.add("options");
+            options.forEach(option => {
+                const btn = document.createElement("button");
+                btn.textContent = option;
+                btn.onclick = () => handleUserResponse(option);
+                optionsDiv.appendChild(btn);
+            });
+            chatBox.appendChild(optionsDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function handleUserResponse(response) {
+            addMessage("user", response);
+            document.querySelectorAll(".options").forEach(el => el.remove());
+            index++;
+            setTimeout(nextMessage, 4000); // Delay de 4 segundos para a próxima mensagem
+        }
+
+        function nextMessage() {
+            if (index < messages.length) {
+                const msg = messages[index];
+                if (msg.sender === "doctor") {
+                    addMessage("doctor", msg.text);
+                } else if (msg.sender === "options") {
+                    addOptions(msg.options);
+                }
+                index++;
+            }
+        }
+
+        // Enviar todas as mensagens inicial até os botões de opções
+        function sendInitialMessages() {
+            for (let i = 0; i < messages.length; i++) {
+                const msg = messages[i];
+                if (msg.sender === "doctor") {
+                    addMessage("doctor", msg.text);
+                } else if (msg.sender === "options") {
+                    addOptions(msg.options);
+                }
+            }
+        }
+
+        sendBtn.addEventListener("click", () => {
+            const text = userInput.value.trim();
+            if (text) {
+                handleUserResponse(text);
+                userInput.value = "";
+            }
+        });
+
+        userInput.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                sendBtn.click();
+            }
+        });
+
+        // Enviar a mensagem inicial com delay de 4 segundos
+        setTimeout(sendInitialMessages, 4000);
+    </script>
+</body>
+</html>
