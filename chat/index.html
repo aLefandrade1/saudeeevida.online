@@ -4,26 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Consultório</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #e3f2fd;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            height: 100vh;
+            overflow: hidden; /* Evita barras de rolagem no body */
         }
         .chat-container {
-            width: 360px;
+            width: 100%; /* Ocupa toda a largura */
+            height: 100vh; /* Ocupa toda a altura */
             background: #fff;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
+            border-radius: 0; /* Remove bordas arredondadas para tela cheia */
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+        }
+        .banner {
+            width: 100%;
+            height: 15vh; /* Altura proporcional à tela */
+            min-height: 100px; /* Altura mínima para telas pequenas */
+            overflow: hidden;
+        }
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .chat-header {
             background: #0d47a1;
@@ -31,6 +39,7 @@
             display: flex;
             align-items: center;
             padding: 10px;
+            flex-shrink: 0; /* Impede que o cabeçalho encolha */
         }
         .doctor-image {
             width: 40px;
@@ -39,17 +48,18 @@
             margin-right: 10px;
         }
         .chat-box {
-            flex: 1;
+            flex: 1; /* Ocupa o espaço restante */
             padding: 10px;
-            overflow-y: auto;
+            overflow-y: auto; /* Rolagem apenas no chat */
             display: flex;
             flex-direction: column;
         }
         .message {
-            max-width: 75%;
+            max-width: 80%; /* Ajustado para responsividade */
             padding: 10px;
             border-radius: 10px;
             margin-bottom: 8px;
+            font-size: 1rem; /* Tamanho de fonte relativo */
         }
         .doctor {
             background: #bbdefb;
@@ -65,6 +75,7 @@
             border-top: 1px solid #ccc;
             padding: 10px;
             background: white;
+            flex-shrink: 0; /* Impede que o input encolha */
         }
         .chat-input-container input {
             flex: 1;
@@ -72,7 +83,7 @@
             border: none;
             border-radius: 5px;
             outline: none;
-            font-size: 16px;
+            font-size: 1rem;
         }
         .chat-input-container button {
             background: #0d47a1;
@@ -82,55 +93,83 @@
             border-radius: 5px;
             margin-left: 5px;
             cursor: pointer;
+            font-size: 1rem;
         }
         .chat-input-container button:hover {
             background: #1565c0;
         }
-
-        /* Estilo para os botões de opções */
         .options {
             display: flex;
             flex-direction: column;
             gap: 10px;
             margin-top: 10px;
+            align-self: flex-end;
         }
-
         .options button {
             background-color: #1976d2;
             color: white;
             border: none;
             padding: 12px 20px;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            max-width: 80%; /* Limita a largura dos botões em telas grandes */
         }
-
         .options button:hover {
             background-color: #1565c0;
             transform: translateY(-3px);
         }
-
         .options button:active {
             transform: translateY(1px);
         }
-
         .options button:focus {
             outline: none;
+        }
+
+        /* Media Queries para responsividade */
+        @media (max-width: 600px) { /* Celulares */
+            .banner {
+                height: 10vh; /* Menor em telas pequenas */
+            }
+            .doctor-image {
+                width: 30px;
+                height: 30px;
+            }
+            .chat-header h2 {
+                font-size: 1.2rem;
+            }
+            .message {
+                max-width: 90%; /* Mais espaço em telas pequenas */
+                font-size: 0.9rem;
+            }
+            .options button {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            .chat-input-container input {
+                font-size: 0.9rem;
+            }
+            .chat-input-container button {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="chat-container">
+        <div class="banner" id="banner"></div>
         <div class="chat-header">
-            <img src="doctor.png" alt="Dr. Nome" class="doctor-image">
+            <img id="doctor-image" alt="Dr. Nome" class="doctor-image">
             <h2>Dr. Nome</h2>
         </div>
         <div class="chat-box" id="chat-box"></div>
         <div class="chat-input-container">
             <input type="text" id="user-input" placeholder="Digite sua mensagem...">
-            <button id="send-btn">📨</button>
+            <button id="send-btn">➡️</button>
         </div>
     </div>
     
@@ -138,6 +177,20 @@
         const chatBox = document.getElementById("chat-box");
         const userInput = document.getElementById("user-input");
         const sendBtn = document.getElementById("send-btn");
+        const doctorImage = document.getElementById("doctor-image");
+        const banner = document.getElementById("banner");
+
+        // Defina os links das imagens aqui
+        const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua pelo link da imagem do doutor
+        const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua pelo link do banner
+
+        // Aplica as imagens via JavaScript
+        doctorImage.src = doctorImageUrl;
+        if (bannerImageUrl) {
+            const bannerImg = document.createElement("img");
+            bannerImg.src = bannerImageUrl;
+            banner.appendChild(bannerImg);
+        }
 
         const messages = [
             { sender: "doctor", text: "Oi, que bom que você chegou! Eu sou o Dr. Nome e já estou com a sua análise inicial aqui. 📌" },
@@ -146,10 +199,53 @@
                 "Já tentei de tudo, mas meu peso não baixa.",
                 "Até perco peso, mas engordo tudo de novo.",
                 "Meu metabolismo é muito lento, engordo fácil."
+            ] },
+            { sender: "doctor", text: "Entendi! Isso acontece porque seu corpo pode estar preso em um modo de acúmulo de gordura, impedindo a queima natural." },
+            { sender: "doctor", text: "E a causa disso não é dieta, genética ou idade… O verdadeiro problema é um bloqueio metabólico oculto causado pelo desequilíbrio das bactérias do seu intestino!" },
+            { sender: "doctor", text: "Agora eu vou calcular sua receita personalizada para destravar isso. Mas antes, me conta:" },
+            { sender: "doctor", text: "Qual é a sua altura?" },
+            { sender: "doctor", text: "Qual é o seu peso atual?" },
+            { sender: "doctor", text: "Você quer perder quantos quilos?" },
+            { sender: "doctor", text: "Ótimo! Estou analisando seus dados… ⚕️💡" },
+            { sender: "doctor", text: "De acordo com suas informações (altura: [ALTURA], peso: [PESO], objetivo: [OBJETIVO]), seu metabolismo pode aumentar em até X% SE você usar a receita na proporção correta." },
+            { sender: "doctor", text: "Mas atenção! Se for feita da forma errada, os efeitos serão reduzidos." },
+            { sender: "doctor", text: "Agora, preciso de mais um detalhe para ajustar a receita corretamente para você." },
+            { sender: "options", options: [
+                "Tenho rotina corrida, sem tempo para academia.",
+                "Tento me alimentar bem, mas exagero às vezes.",
+                "Já tentei várias dietas e nenhuma funcionou como eu queria."
+            ] },
+            { sender: "doctor", text: "Perfeito, com base no seu perfil, a sua receita personalizada será:" },
+            { sender: "doctor", text: "✅ X copos de chá com [Ingrediente Secreto] antes do café da manhã." },
+            { sender: "doctor", text: "✅ A combinação certa de X e Y ingredientes para acelerar seu metabolismo." },
+            { sender: "doctor", text: "Mas para garantir que você faça do jeito certo e não corra o risco de errar, eu preparei um material exclusivo explicando tudo." },
+            { sender: "doctor", text: "Posso te enviar agora?" },
+            { sender: "options", options: [
+                "Sim, quero minha receita personalizada!"
+            ] },
+            { sender: "doctor", text: "Ótima decisão! Sua receita personalizada está pronta e agora você tem dois caminhos:" },
+            { sender: "doctor", text: "❌ Continuar tentando sozinho(a), correndo o risco de errar na preparação e não ver resultados…" },
+            { sender: "doctor", text: "✅ Ou garantir agora o acesso ao material completo, que vai te guiar passo a passo para fazer tudo da maneira certa e finalmente destravar seu metabolismo!" },
+            { sender: "doctor", text: "Agora, deixa eu te contar uma coisa… Quando eu disponibilizei esse material pela primeira vez, eu cobrava R$97 por ele – e muitas pessoas pagavam esse valor sem pensar duas vezes, porque os resultados falavam por si só." },
+            { sender: "doctor", text: "🔴 Mas hoje, para que mais pessoas tenham acesso, eu reduzi o valor para apenas R$17!" },
+            { sender: "doctor", text: "💰 Isso mesmo, por apenas R$17, você vai receber:" },
+            { sender: "doctor", text: "✅ Sua receita personalizada, calculada sob medida para o seu metabolismo." },
+            { sender: "doctor", text: "✅ O passo a passo detalhado para preparar corretamente e ativar a queima de gordura." },
+            { sender: "doctor", text: "✅ Os horários ideais para maximizar os resultados e acelerar o emagrecimento." },
+            { sender: "doctor", text: "✅ E o mais importante: evitar os erros comuns que impedem as pessoas de perder peso!" },
+            { sender: "doctor", text: "⚠️ Mas atenção! Esse valor promocional de R$17 só estará disponível até o contador zerar ou até atingirmos o limite de atendimentos diários." },
+            { sender: "options", options: [
+                "Quero minha Receita Agora!"
             ] }
         ];
 
         let index = 0;
+        let waitingForInput = false;
+        let userData = {
+            altura: "",
+            peso: "",
+            objetivo: ""
+        };
 
         function addMessage(sender, text) {
             const msgDiv = document.createElement("div");
@@ -170,55 +266,69 @@
             });
             chatBox.appendChild(optionsDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
+            waitingForInput = true;
         }
 
         function handleUserResponse(response) {
+            if (!waitingForInput) return;
             addMessage("user", response);
             document.querySelectorAll(".options").forEach(el => el.remove());
+            waitingForInput = false;
             index++;
-            setTimeout(nextMessage, 4000); // Delay de 4 segundos para a próxima mensagem
+            setTimeout(nextMessage, 1000);
+        }
+
+        function handleManualInput() {
+            const text = userInput.value.trim();
+            if (text && waitingForInput) {
+                addMessage("user", text);
+
+                if (index === 6) { // "Qual é a sua altura?"
+                    userData.altura = text;
+                } else if (index === 7) { // "Qual é o seu peso atual?"
+                    userData.peso = text;
+                } else if (index === 8) { // "Você quer perder quantos quilos?"
+                    userData.objetivo = text;
+                }
+
+                userInput.value = "";
+                waitingForInput = false;
+                index++;
+                setTimeout(nextMessage, 1000);
+            }
         }
 
         function nextMessage() {
-            if (index < messages.length) {
-                const msg = messages[index];
-                if (msg.sender === "doctor") {
-                    addMessage("doctor", msg.text);
-                } else if (msg.sender === "options") {
-                    addOptions(msg.options);
+            if (index >= messages.length || waitingForInput) return;
+
+            const msg = messages[index];
+            if (msg.sender === "doctor") {
+                let text = msg.text;
+                if (index === 10) { // Mensagem com os dados
+                    text = text.replace("[ALTURA]", userData.altura)
+                              .replace("[PESO]", userData.peso)
+                              .replace("[OBJETIVO]", userData.objetivo);
                 }
-                index++;
+                addMessage("doctor", text);
+
+                if (index === 6 || index === 7 || index === 8) { // Perguntas de entrada manual
+                    waitingForInput = true;
+                } else {
+                    index++;
+                    setTimeout(nextMessage, 2000);
+                }
+            } else if (msg.sender === "options") {
+                addOptions(msg.options);
             }
         }
 
-        // Enviar todas as mensagens inicial até os botões de opções
-        function sendInitialMessages() {
-            for (let i = 0; i < messages.length; i++) {
-                const msg = messages[i];
-                if (msg.sender === "doctor") {
-                    addMessage("doctor", msg.text);
-                } else if (msg.sender === "options") {
-                    addOptions(msg.options);
-                }
-            }
-        }
-
-        sendBtn.addEventListener("click", () => {
-            const text = userInput.value.trim();
-            if (text) {
-                handleUserResponse(text);
-                userInput.value = "";
-            }
+        sendBtn.addEventListener("click", handleManualInput);
+        userInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") handleManualInput();
         });
 
-        userInput.addEventListener("keypress", (event) => {
-            if (event.key === "Enter") {
-                sendBtn.click();
-            }
-        });
-
-        // Enviar a mensagem inicial com delay de 4 segundos
-        setTimeout(sendInitialMessages, 4000);
+        // Inicia o chat
+        nextMessage();
     </script>
 </body>
 </html>
