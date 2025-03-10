@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Consultório</title>
+    <title>Chat Consultorio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,7 +38,7 @@
             color: white;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Distribui os elementos: nome à esquerda, status à direita */
+            justify-content: space-between;
             padding: 10px;
             flex-shrink: 0;
         }
@@ -96,6 +96,98 @@
             color: white;
             align-self: flex-end;
         }
+        .audio-message, .report-message, .video-message, .price-message {
+            max-width: 80%;
+            padding: 10px;
+            background: #bbdefb;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            align-self: flex-start;
+        }
+        .audio-message audio, .video-message video {
+            width: 100%;
+            outline: none;
+        }
+        .price-message .price-box {
+            border: 3px solid #00cc00; /* Borda verde */
+            padding: 10px;
+            border-radius: 8px;
+            background: #fff;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+        .price-message .price-box .original-price {
+            color: #ff0000; /* Vermelho */
+            font-size: 1.2rem;
+            text-decoration: line-through; /* Tachado */
+            margin-right: 5px;
+        }
+        .price-message .price-box .promo-price {
+            color: #00cc00; /* Verde */
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+        .price-message .currency-box {
+            border: 3px solid #ffcc00; /* Borda amarela */
+            padding: 10px;
+            border-radius: 8px;
+            background: #fff9e6; /* Fundo amarelo claro */
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin-top: 10px;
+            color: #333;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .report-message .report {
+            background: linear-gradient(135deg, #ffffff 0%, #e0f7fa 100%);
+            border: 2px solid #0d47a1;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+        .report-message .report h3 {
+            color: #0d47a1;
+            font-size: 1.4rem;
+            margin: 0 0 15px;
+            text-align: center;
+            border-bottom: 2px solid #bbdefb;
+            padding-bottom: 5px;
+        }
+        .report-message .report p {
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #333;
+        }
+        .report-message .report p strong {
+            color: #0d47a1;
+            font-weight: bold;
+        }
+        .report-message .report .diagnosis {
+            background-color: #ff4444;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        .highlight-price {
+            background-color: #00cc00; /* Verde */
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .report-message .report::before {
+            content: "📋";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 1.5rem;
+        }
         .chat-input-container {
             display: flex;
             border-top: 1px solid #ccc;
@@ -110,6 +202,9 @@
             border-radius: 5px;
             outline: none;
             font-size: 1rem;
+        }
+        .chat-input-container input::placeholder {
+            color: #888;
         }
         .chat-input-container button {
             background: #0d47a1;
@@ -129,20 +224,23 @@
             flex-direction: column;
             gap: 10px;
             margin-top: 10px;
-            align-self: flex-end;
+            align-self: flex-start;
         }
         .options button {
             background-color: #1976d2;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 8px 15px;
             font-size: 1rem;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            text-align: center;
-            max-width: 80%;
+            text-align: left;
+            max-width: 100%;
+            width: auto;
+            white-space: normal;
+            overflow-wrap: break-word;
         }
         .options button:hover {
             background-color: #1565c0;
@@ -154,8 +252,6 @@
         .options button:focus {
             outline: none;
         }
-
-        /* Media Queries para responsividade */
         @media (max-width: 600px) {
             .banner {
                 height: 15vh;
@@ -174,13 +270,26 @@
                 width: 8px;
                 height: 8px;
             }
-            .message {
+            .message, .audio-message, .report-message, .video-message, .price-message {
                 max-width: 90%;
                 font-size: 0.9rem;
             }
-            .options button {
-                padding: 10px 15px;
+            .report-message .report h3 {
+                font-size: 1.2rem;
+            }
+            .report-message .report p {
                 font-size: 0.9rem;
+            }
+            .price-message .price-box .original-price {
+                font-size: 1rem;
+            }
+            .price-message .price-box .promo-price {
+                font-size: 1.2rem;
+            }
+            .options button {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+                max-width: 95%;
             }
             .chat-input-container input {
                 font-size: 0.9rem;
@@ -197,14 +306,14 @@
         <div class="banner" id="banner"></div>
         <div class="chat-header">
             <div class="header-left">
-                <img id="doctor-image" alt=" DR HELENA" class="doctor-image">
-                <h2>DR. HELENA</h2>
+                <img id="doctor-image" alt="Dra. Hellena Navarro" class="doctor-image">
+                <h2>Dra. Hellena Navarro</h2>
             </div>
-            <span class="online-status"><span class="online-dot"></span>Online</span>
+            <span class="online-status"><span class="online acer-dot"></span>En línea</span>
         </div>
         <div class="chat-box" id="chat-box"></div>
         <div class="chat-input-container">
-            <input type="text" id="user-input" placeholder="Digite sua mensagem...">
+            <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
             <button id="send-btn">➡️</button>
         </div>
     </div>
@@ -216,9 +325,14 @@
         const doctorImage = document.getElementById("doctor-image");
         const banner = document.getElementById("banner");
 
-        // Defina os links das imagens aqui
-        const doctorImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/b441830f-f0a7-4f9b-be42-fb1a69da3ca0.png"; // Substitua pelo link da imagem do doutor
-        const bannerImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/5f3e1549-b8e6-4da6-8ef9-ed721a3038b7.png"; // Substitua pelo link do banner
+        // Defina os links das imagens, áudio e vídeo aqui
+        const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua pelo link da imagem do doutor
+        const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua pelo link do banner
+        const audioUrl1 = "https://example.com/audio1.mp3"; // Substitua pelo link do primeiro áudio
+        const audioUrl2 = "https://example.com/audio2.mp3"; // Substitua pelo link do segundo áudio
+        const videoUrl1 = "https://example.com/video1.mp4"; // Substitua pelo link do primeiro vídeo (Parte 2)
+        const videoUrl2 = "https://example.com/testimonials.mp4"; // Substitua pelo link do vídeo de testemunhos (Parte 3)
+        const audioUrl3 = "https://example.com/audio3.mp3"; // Substitua pelo link do áudio explicativo (Parte 3)
 
         // Aplica as imagens via JavaScript
         doctorImage.src = doctorImageUrl;
@@ -228,66 +342,190 @@
             banner.appendChild(bannerImg);
         }
 
+        // Funil com Parte 1, Parte 2, Parte 3 e Parte 4
         const messages = [
-            { sender: "doctor", text: "Oi, que bom que você chegou! Eu sou o Dr. Nome e já estou com a sua análise inicial aqui. 📌" },
-            { sender: "doctor", text: "Antes de tudo, me diz: Qual dessas situações mais parece com você?" },
+            // Parte 1
+            { sender: "doctor", text: "¡Hola! ¡Qué bueno verte por aquí! Es un placer tenerte aquí conmigo.", wait: 2000 },
+            { sender: "doctor", text: "Mi nombre es Hellena Navarro, soy especialista en metabolismo y pérdida de peso saludable. Hoy te mostraré cómo acelerar la quema de grasa usando solo un café especial por la mañana.", wait: 3000 },
+            { sender: "doctor", text: "¿Te gustaría recibir la receta del Café Adelgazante Personalizado, que ya ha ayudado a más de 17.000 personas a desbloquear su metabolismo y perder grasa sin dietas extremas?" },
+            { sender: "options", options: ["¡SÍ! Quiero mi receta personalizada."] },
+            { sender: "audio", audioSrc: audioUrl1, wait: 15000 },
+            { sender: "doctor", text: "¿Cuál es tu nombre?", waitForInput: true },
+            { sender: "doctor", text: "{NOMBRE}, antes de preparar tu receta personalizada, dime: ¿cuál de estas situaciones describe mejor lo que sientes con respecto a tu peso o metabolismo?" },
             { sender: "options", options: [
-                "Já tentei de tudo, mas meu peso não baixa.",
-                "Até perco peso, mas engordo tudo de novo.",
-                "Meu metabolismo é muito lento, engordo fácil."
+                "Hago dieta y ejercicio, pero mi peso no baja",
+                "Pierdo peso, pero siempre vuelvo a engordar",
+                "Siento mucha hambre y ansiedad por la comida",
+                "Mi metabolismo es lento y subo de peso fácilmente"
             ] },
-            { sender: "doctor", text: "Entendi! Isso acontece porque seu corpo pode estar preso em um modo de acúmulo de gordura, impedindo a queima natural." },
-            { sender: "doctor", text: "E a causa disso não é dieta, genética ou idade… O verdadeiro problema é um bloqueio metabólico oculto causado pelo desequilíbrio das bactérias do seu intestino!" },
-            { sender: "doctor", text: "Agora eu vou calcular sua receita personalizada para destravar isso. Mas antes, me conta:" },
-            { sender: "doctor", text: "Qual é a sua altura?" },
-            { sender: "doctor", text: "Qual é o seu peso atual?" },
-            { sender: "doctor", text: "Você quer perder quantos quilos?" },
-            { sender: "doctor", text: "Ótimo! Estou analisando seus dados… ⚕️💡" },
-            { sender: "doctor", text: "De acordo com suas informações (altura: [ALTURA], peso: [PESO], objetivo: [OBJETIVO]), seu metabolismo pode aumentar em até X% SE você usar a receita na proporção correta." },
-            { sender: "doctor", text: "Mas atenção! Se for feita da forma errada, os efeitos serão reduzidos." },
-            { sender: "doctor", text: "Agora, preciso de mais um detalhe para ajustar a receita corretamente para você." },
+
+            // Parte 2: Recopilación de Información Personal
+            { sender: "doctor", text: "¿Cuánto tiempo llevas teniendo dificultades para bajar de peso?", wait: 2000 },
             { sender: "options", options: [
-                "Tenho rotina corrida, sem tempo para academia.",
-                "Tento me alimentar bem, mas exagero às vezes.",
-                "Já tentei várias dietas e nenhuma funcionou como eu queria."
+                "Menos de 3 meses",
+                "Entre 3 y 12 meses",
+                "Más de 1 año",
+                "Toda mi vida"
             ] },
-            { sender: "doctor", text: "Perfeito, com base no seu perfil, a sua receita personalizada será:" },
-            { sender: "doctor", text: "✅ X copos de chá com [Ingrediente Secreto] antes do café da manhã." },
-            { sender: "doctor", text: "✅ A combinação certa de X e Y ingredientes para acelerar seu metabolismo." },
-            { sender: "doctor", text: "Mas para garantir que você faça do jeito certo e não corra o risco de errar, eu preparei um material exclusivo explicando tudo." },
-            { sender: "doctor", text: "Posso te enviar agora?" },
+            { sender: "doctor", text: "¿Cuántos años tienes?", wait: 2000 },
             { sender: "options", options: [
-                "Sim, quero minha receita personalizada!"
+                "Menos de 30 años",
+                "Entre 30 y 45 años",
+                "Entre 46 y 59 años",
+                "Más de 60 años"
             ] },
-            { sender: "doctor", text: "Ótima decisão! Sua receita personalizada está pronta e agora você tem dois caminhos:" },
-            { sender: "doctor", text: "❌ Continuar tentando sozinho(a), correndo o risco de errar na preparação e não ver resultados…" },
-            { sender: "doctor", text: "✅ Ou garantir agora o acesso ao material completo, que vai te guiar passo a passo para fazer tudo da maneira certa e finalmente destravar seu metabolismo!" },
-            { sender: "doctor", text: "Agora, deixa eu te contar uma coisa… Quando eu disponibilizei esse material pela primeira vez, eu cobrava R$97 por ele – e muitas pessoas pagavam esse valor sem pensar duas vezes, porque os resultados falavam por si só." },
-            { sender: "doctor", text: "🔴 Mas hoje, para que mais pessoas tenham acesso, eu reduzi o valor para apenas R$17!" },
-            { sender: "doctor", text: "💰 Isso mesmo, por apenas R$17, você vai receber:" },
-            { sender: "doctor", text: "✅ Sua receita personalizada, calculada sob medida para o seu metabolismo." },
-            { sender: "doctor", text: "✅ O passo a passo detalhado para preparar corretamente e ativar a queima de gordura." },
-            { sender: "doctor", text: "✅ Os horários ideais para maximizar os resultados e acelerar o emagrecimento." },
-            { sender: "doctor", text: "✅ E o mais importante: evitar os erros comuns que impedem as pessoas de perder peso!" },
-            { sender: "doctor", text: "⚠️ Mas atenção! Esse valor promocional de R$17 só estará disponível até o contador zerar ou até atingirmos o limite de atendimentos diários." },
+            { sender: "doctor", text: "Ahora dime, ¿cuál es tu peso aproximado?", wait: 2000 },
             { sender: "options", options: [
-                "Quero minha Receita Agora!"
-            ] }
+                "Hasta 60 kg",
+                "Entre 61 kg e 70 kg",
+                "Entre 71 kg e 90 kg",
+                "Más de 90 kg"
+            ] },
+            { sender: "audio", audioSrc: audioUrl2, wait: 10000 },
+            { sender: "doctor", text: "Basado en lo que me contaste, ya estoy preparando tu receta exclusiva. ¡Mira esto!" },
+            { sender: "report", wait: 4000 }, // Laudo personalizado
+            { sender: "doctor", text: "{NOMBRE}, este análisis muestra que tu problema con el metabolismo está limitando tus resultados, pero no te preocupes: ¡el Café Adelgazante Personalizado va a activar tu quema de grasa en pocas semanas!", wait: 3000 },
+            { sender: "doctor", text: "Ahora, mira este video de 20 segundos que preparé para ti. Aquí te explico exactamente cómo el Café Adelgazante actuará en tu cuerpo para activar la quema de grasa." },
+            { sender: "video", videoSrc: videoUrl1, wait: 21000 },
+
+            // Parte 3: Pitch de Venta
+            { sender: "doctor", text: "Con base en tus respuestas, ya sé exactamente qué está impidiendo que tu cuerpo baje de peso... ¡Pero la buena noticia es que hay una solución simple y natural para esto!", wait: 4000 },
+            { sender: "doctor", text: "Antes de explicarte cómo funciona tu receta personalizada, mira lo que algunas personas que ya usaron el Café Adelgazante tienen para decir:" },
+            { sender: "video", videoSrc: videoUrl2, wait: 45000 }, // Vídeo de testemunhos
+            { sender: "doctor", text: "¿Y sabes qué tienen en común todas estas personas?" },
+            { sender: "doctor", text: "Descubrieron que no era su culpa no poder bajar de peso… ¡Su cuerpo simplemente estaba bloqueado para quemar grasa!" },
+            { sender: "doctor", text: "Pero cuando activaron este mecanismo natural con el Café Adelgazante, ¡el peso finalmente comenzó a desaparecer!", wait: 4000 },
+            { sender: "doctor", text: "Ahora quiero que tengas tu propia experiencia y veas con tus propios ojos cómo el Café Adelgazante puede transformar tu metabolismo." },
+            { sender: "doctor", text: "Estoy liberando solo algunas recetas personalizadas para quienes quieran probar el método ahora mismo." },
+            { sender: "doctor", text: "¿Quieres asegurar la tuya?" },
+            { sender: "options", options: ["¡Sí! Quiero mi receta personalizada ahora."], wait: 2000 },
+            { sender: "audio", audioSrc: audioUrl3, wait: 38000 }, // Áudio explicativo
+            { sender: "doctor", text: "Mira todo lo que recibirás ahora:", wait: 2000 },
+            { sender: "doctor", text: "✅ Receta Personalizada del Café Adelgazante – ajustada según tus respuestas para activar la quema de grasa.", wait: 2000 },
+            { sender: "doctor", text: "✅ Guía Completa de Uso y Preparación – para que lo hagas correctamente y aproveches al máximo los efectos del café.", wait: 3000 },
+            { sender: "doctor", text: "✅ [BONO GRATIS] Lista Secreta de Alimentos Termogénicos – alimentos que potencian aún más los efectos del café y aceleran el metabolismo.", wait: 3000 },
+            { sender: "doctor", text: "✅ [BONO GRATIS] Técnica Japonesa para eliminar grasa abdominal – un método simple que puedes aplicar junto con el café para reducir medidas más rápido.", wait: 3000 },
+            { sender: "doctor", text: "Ahora, sé que muchas personas han pagado más de $197 por consultas que no resolvieron nada...", wait: 3000 },
+            { sender: "doctor", text: "Pero tranquilo, NO vas a pagar eso.", wait: 3000 },
+            { sender: "doctor", text: "¡Solo por hoy, para las primeras personas que aseguren su receta personalizada, voy a liberar todo esto por solo <span class='highlight-price'>$10</span>!", wait: 3000 },
+            { sender: "doctor", text: "¡Así es! Menos de lo que cuesta un refrigerio.", wait: 3000 },
+
+            // Parte 4: Oferta y Cierre de Venta
+            { sender: "doctor", text: "¡Así es! Por solo <span class='highlight-price'>$10</span>, tendrás acceso inmediato a tu Receta Personalizada del Café Adelgazante + ¡TODOS los bonos exclusivos!", wait: 3000 },
+            { sender: "price" }, // Imagem de preço com "De $197 por solo $10" + conversão de moeda
+            { sender: "doctor", text: "¡Menos de lo que cuesta una hamburguesa… y con esto puedes activar la quema de grasa de forma natural y definitiva!", wait: 3000 },
+            { sender: "doctor", text: "¡Pero atención! Como la personalización de la receta requiere una atención individual, solo puedo liberar unas pocas recetas al día." },
+            { sender: "doctor", text: "¡Y ahora, solo quedan 5 cupos disponibles!", wait: 3000 }, // Número ajustável
+            { sender: "doctor", text: "Si sales ahora y tratas de volver después, es posible que tu cupo ya haya sido tomado.", wait: 3000 },
+            { sender: "doctor", text: "Imagina despertar en los próximos días sintiéndote más liviano(a), con tu ropa volviendo a quedarte bien y esa hinchazón desapareciendo…" },
+            { sender: "doctor", text: "Ahora tienes dos opciones:", wait: 3000 },
+            { sender: "doctor", text: "❌ Opción 1: Ignorar esta oportunidad, seguir intentando adelgazar por tu cuenta, sin saber si lo estás haciendo bien, y continuar frustrado(a) con la báscula…<br>✅ Opción 2: Asegurar tu receta personalizada ahora, comenzar a quemar grasa en los próximos días y finalmente ver los resultados que siempre has querido.", wait: 3000 },
+            { sender: "doctor", text: "¡Haz clic en el botón de abajo ahora y activa tu Receta Personalizada del Café Adelgazante antes de que se acaben los cupos!" },
+            { sender: "options", options: ["¡SÍ! Quiero mi Receta Personalizada y empezar ahora."] }
         ];
 
         let index = 0;
         let waitingForInput = false;
-        let userData = {
-            altura: "",
-            peso: "",
-            objetivo: ""
-        };
+        let userName = "";
+        let userData = { problema: "", tiempo: "", edad: "", peso: "" }; // Armazena as respostas
+        const amountInUSD = 10; // Valor fixo em dólares para conversão
 
         function addMessage(sender, text) {
             const msgDiv = document.createElement("div");
             msgDiv.classList.add("message", sender);
-            msgDiv.textContent = text;
+            msgDiv.innerHTML = text.replace("{NOMBRE}", userName || "amigo/a"); // Usar innerHTML para interpretar <span> e <br>
             chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function addAudio(audioSrc) {
+            const audioDiv = document.createElement("div");
+            audioDiv.classList.add("audio-message");
+            const audioElement = document.createElement("audio");
+            audioElement.controls = true;
+            audioElement.src = audioSrc;
+            audioDiv.appendChild(audioElement);
+            chatBox.appendChild(audioDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function addReport() {
+            const reportDiv = document.createElement("div");
+            reportDiv.classList.add("report-message");
+            const report = document.createElement("div");
+            report.classList.add("report");
+
+            report.innerHTML = `
+                <h3>Tus Datos y Diagnóstico</h3>
+                <p><strong>Nombre:</strong> ${userName || "Usuario"}</p>
+                <p><strong>Problema Principal:</strong> ${userData.problema || "No especificado"}</p>
+                <p><strong>Tiempo con Dificultad:</strong> ${userData.tiempo || "No especificado"}</p>
+                <p><strong>Edad:</strong> ${userData.edad || "No especificado"}</p>
+                <p><strong>Peso Aproximado:</strong> ${userData.peso || "No especificado"}</p>
+                <p><strong>Diagnóstico:</strong> <span class="diagnosis">Grave</span></p>
+            `;
+
+            reportDiv.appendChild(report);
+            chatBox.appendChild(reportDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        async function getUserCountry() {
+            try {
+                let response = await fetch("https://ipapi.co/json/"); // API rápida para geolocalização
+                let data = await response.json();
+                return data.currency;
+            } catch (error) {
+                console.error("Error obteniendo el país del usuario", error);
+                return "USD"; // Fallback para USD em caso de erro
+            }
+        }
+
+        async function convertCurrency(amount, currencyCode) {
+            try {
+                let response = await fetch("https://api.exchangerate-api.com/v4/latest/USD"); // API rápida para conversão
+                let data = await response.json();
+                let rate = data.rates[currencyCode] || 1;
+                let convertedAmount = (amount * rate).toFixed(2);
+                return `${convertedAmount} ${currencyCode}`;
+            } catch (error) {
+                console.error("Error al convertir moneda", error);
+                return "Error al cargar";
+            }
+        }
+
+        async function addPriceImage() {
+            const priceDiv = document.createElement("div");
+            priceDiv.classList.add("price-message");
+            const priceBox = document.createElement("div");
+            priceBox.classList.add("price-box");
+
+            priceBox.innerHTML = `
+                <span>De <span class="original-price">$197</span> por solo <span class="promo-price">$10</span></span>
+            `;
+
+            const currencyBox = document.createElement("div");
+            currencyBox.classList.add("currency-box");
+            currencyBox.textContent = "Calculando tu moneda local...";
+
+            priceDiv.appendChild(priceBox);
+            priceDiv.appendChild(currencyBox);
+            chatBox.appendChild(priceDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            let currencyCode = await getUserCountry();
+            let convertedPrice = await convertCurrency(amountInUSD, currencyCode);
+            currencyBox.textContent = `Valor convertido na tua moeda: ${convertedPrice}`;
+        }
+
+        function addVideo(videoSrc) {
+            const videoDiv = document.createElement("div");
+            videoDiv.classList.add("video-message");
+            const videoElement = document.createElement("video");
+            videoElement.controls = true;
+            videoElement.src = videoSrc;
+            videoDiv.appendChild(videoElement);
+            chatBox.appendChild(videoDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
@@ -307,7 +545,22 @@
 
         function handleUserResponse(response) {
             if (!waitingForInput) return;
-            addMessage("user", response);
+            const msgDiv = document.createElement("div");
+            msgDiv.classList.add("message", "user");
+            msgDiv.textContent = response;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Armazena as respostas dos botões
+            if (index === 7) userData.problema = response; // Problema principal
+            else if (index === 9) userData.tiempo = response; // Tempo com dificuldade
+            else if (index === 11) userData.edad = response; // Idade
+            else if (index === 13) userData.peso = response; // Peso
+            else if (index === 45) {
+                // Redireciona para o pagamento no último CTA
+                window.location.href = "https://example.com/pago"; // Substitua pelo link real do pagamento
+            }
+
             document.querySelectorAll(".options").forEach(el => el.remove());
             waitingForInput = false;
             index++;
@@ -319,12 +572,9 @@
             if (text && waitingForInput) {
                 addMessage("user", text);
 
-                if (index === 6) { // "Qual é a sua altura?"
-                    userData.altura = text;
-                } else if (index === 7) { // "Qual é o seu peso atual?"
-                    userData.peso = text;
-                } else if (index === 8) { // "Você quer perder quantos quilos?"
-                    userData.objetivo = text;
+                // Armazena apenas o nome digitado manualmente
+                if (index === 5) {
+                    userName = text; // Nome
                 }
 
                 userInput.value = "";
@@ -339,22 +589,31 @@
 
             const msg = messages[index];
             if (msg.sender === "doctor") {
-                let text = msg.text;
-                if (index === 10) { // Mensagem com os dados
-                    text = text.replace("[ALTURA]", userData.altura)
-                              .replace("[PESO]", userData.peso)
-                              .replace("[OBJETIVO]", userData.objetivo);
-                }
-                addMessage("doctor", text);
-
-                if (index === 6 || index === 7 || index === 8) { // Perguntas de entrada manual
+                addMessage("doctor", msg.text);
+                if (msg.waitForInput) {
                     waitingForInput = true;
                 } else {
                     index++;
-                    setTimeout(nextMessage, 2000);
+                    setTimeout(nextMessage, msg.wait || 2000);
                 }
             } else if (msg.sender === "options") {
                 addOptions(msg.options);
+            } else if (msg.sender === "audio") {
+                addAudio(msg.audioSrc);
+                index++;
+                setTimeout(nextMessage, msg.wait || 2000);
+            } else if (msg.sender === "report") {
+                addReport();
+                index++;
+                setTimeout(nextMessage, msg.wait || 2000);
+            } else if (msg.sender === "video") {
+                addVideo(msg.videoSrc);
+                index++;
+                setTimeout(nextMessage, msg.wait || 2000);
+            } else if (msg.sender === "price") {
+                addPriceImage();
+                index++;
+                setTimeout(nextMessage, 3000); // Espera fixa de 3 segundos para a imagem de preço
             }
         }
 
