@@ -24,7 +24,7 @@
         }
         .banner {
             width: 100%;
-            height: 25vh; /* Altura aumentada */
+            height: 25vh;
             min-height: 100px;
             overflow: hidden;
         }
@@ -34,7 +34,7 @@
             object-fit: cover;
         }
         .chat-header {
-            background: #2e7d32; /* Verde escuro */
+            background: #2e7d32;
             color: white;
             display: flex;
             align-items: center;
@@ -88,28 +88,36 @@
             font-size: 1rem;
         }
         .doctor {
-            background: #c8e6c9; /* Verde claro */
+            background: #c8e6c9;
             align-self: flex-start;
         }
         .user {
-            background: #4caf50; /* Verde médio */
+            background: #4caf50;
             color: white;
             align-self: flex-end;
         }
-        .audio-message, .report-message, .video-message, .price-message {
+        .audio-message {
+            max-width: 80%;
+            margin-bottom: 8px;
+            align-self: flex-start;
+        }
+        .audio-message audio {
+            width: 300px; /* Largura padrão */
+        }
+        .report-message, .video-message, .price-message {
             max-width: 80%;
             padding: 10px;
-            background: #c8e6c9; /* Verde claro */
+            background: #c8e6c9;
             border-radius: 10px;
             margin-bottom: 8px;
             align-self: flex-start;
         }
-        .audio-message audio, .video-message video {
+        .video-message video {
             width: 100%;
             outline: none;
         }
         .price-message .price-box {
-            border: 3px solid #00cc00; /* Borda verde */
+            border: 3px solid #00cc00;
             padding: 10px;
             border-radius: 8px;
             background: #fff;
@@ -117,19 +125,19 @@
             font-family: 'Arial', sans-serif;
         }
         .price-message .price-box .original-price {
-            color: #ff0000; /* Vermelho */
+            color: #ff0000;
             font-size: 1.2rem;
-            text-decoration: line-through; /* Tachado */
+            text-decoration: line-through;
             margin-right: 5px;
         }
         .price-message .price-box .promo-price {
-            color: #00cc00; /* Verde */
+            color: #00cc00;
             font-size: 1.4rem;
             font-weight: bold;
         }
         .report-message .report {
-            background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%); /* Gradiente verde claro */
-            border: 2px solid #2e7d32; /* Verde escuro */
+            background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
+            border: 2px solid #2e7d32;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -137,11 +145,11 @@
             position: relative;
         }
         .report-message .report h3 {
-            color: #2e7d32; /* Verde escuro */
+            color: #2e7d32;
             font-size: 1.4rem;
             margin: 0 0 15px;
             text-align: center;
-            border-bottom: 2px solid #c8e6c9; /* Verde claro */
+            border-bottom: 2px solid #c8e6c9;
             padding-bottom: 5px;
         }
         .report-message .report p {
@@ -150,7 +158,7 @@
             color: #333;
         }
         .report-message .report p strong {
-            color: #2e7d32; /* Verde escuro */
+            color: #2e7d32;
             font-weight: bold;
         }
         .report-message .report .diagnosis {
@@ -162,7 +170,7 @@
             font-weight: bold;
         }
         .highlight-price {
-            background-color: #00cc00; /* Verde para destaque */
+            background-color: #00cc00;
             color: white;
             padding: 2px 6px;
             border-radius: 4px;
@@ -195,7 +203,7 @@
             color: #888;
         }
         .chat-input-container button {
-            background: #2e7d32; /* Verde escuro */
+            background: #2e7d32;
             color: white;
             border: none;
             padding: 10px;
@@ -205,7 +213,7 @@
             font-size: 1rem;
         }
         .chat-input-container button:hover {
-            background: #388e3c; /* Verde mais claro */
+            background: #388e3c;
         }
         .options {
             display: flex;
@@ -215,7 +223,7 @@
             align-self: flex-start;
         }
         .options button {
-            background-color: #4caf50; /* Verde médio */
+            background-color: #4caf50;
             color: white;
             border: none;
             padding: 8px 15px;
@@ -231,7 +239,7 @@
             overflow-wrap: break-word;
         }
         .options button:hover {
-            background-color: #388e3c; /* Verde mais claro */
+            background-color: #388e3c;
             transform: translateY(-3px);
         }
         .options button:active {
@@ -242,7 +250,7 @@
         }
         @media (max-width: 600px) {
             .banner {
-                height: 20vh; /* Ajustado para telas menores */
+                height: 20vh;
             }
             .doctor-image {
                 width: 40px;
@@ -261,6 +269,10 @@
             .message, .audio-message, .report-message, .video-message, .price-message {
                 max-width: 90%;
                 font-size: 0.9rem;
+            }
+            .audio-message audio {
+                width: 100%;
+                max-width: 300px;
             }
             .report-message .report h3 {
                 font-size: 1.2rem;
@@ -316,7 +328,7 @@
         // Defina os links das imagens, áudio e vídeo aqui
         const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua pelo link da imagem do doutor
         const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua pelo link do banner
-        const audioUrl1 = "https://audio.jukehost.co.uk/sujMskMxWPbSRMTwXsYxDHibFUzdcd7k"; // Substitua pelo link do primeiro áudio
+        const audioUrl1 = "https://media1.vocaroo.com/mp3/1edYE6S4fLkI"; // Link direto do MP3 do Vocaroo
         const audioUrl2 = "https://example.com/audio2.mp3"; // Substitua pelo link do segundo áudio
         const videoUrl1 = "https://example.com/video1.mp4"; // Substitua pelo link do primeiro vídeo (Parte 2)
         const videoUrl2 = "https://example.com/testimonials.mp4"; // Substitua pelo link do vídeo de testemunhos (Parte 3)
@@ -371,7 +383,7 @@
             ] },
             { sender: "audio", audioSrc: audioUrl2, wait: 10000 },
             { sender: "doctor", text: "Basado en lo que me contaste, ya estoy preparando tu receta exclusiva. ¡Mira esto!" },
-            { sender: "report", wait: 4000 }, // Laudo personalizado
+            { sender: "report", wait: 4000 },
             { sender: "doctor", text: "{NOMBRE}, este análisis muestra que tu problema con el metabolismo está limitando tus resultados, pero no te preocupes: ¡el Café Adelgazante Personalizado va a activar tu quema de grasa en pocas semanas!", wait: 3000 },
             { sender: "doctor", text: "Ahora, mira este video de 20 segundos que preparé para ti. Aquí te explico exactamente cómo el Café Adelgazante actuará en tu cuerpo para activar la quema de grasa." },
             { sender: "video", videoSrc: videoUrl1, wait: 21000 },
@@ -379,7 +391,7 @@
             // Parte 3: Pitch de Venta
             { sender: "doctor", text: "Con base en tus respuestas, ya sé exactamente qué está impidiendo que tu cuerpo baje de peso... ¡Pero la buena noticia es que hay una solución simple y natural para esto!", wait: 4000 },
             { sender: "doctor", text: "Antes de explicarte cómo funciona tu receta personalizada, mira lo que algunas personas que ya usaron el Café Adelgazante tienen para decir:" },
-            { sender: "video", videoSrc: videoUrl2, wait: 45000 }, // Vídeo de testemunhos
+            { sender: "video", videoSrc: videoUrl2, wait: 45000 },
             { sender: "doctor", text: "¿Y sabes qué tienen en común todas estas personas?" },
             { sender: "doctor", text: "Descubrieron que no era su culpa no poder bajar de peso… ¡Su cuerpo simplemente estaba bloqueado para quemar grasa!" },
             { sender: "doctor", text: "Pero cuando activaron este mecanismo natural con el Café Adelgazante, ¡el peso finalmente comenzó a desaparecer!", wait: 4000 },
@@ -387,7 +399,7 @@
             { sender: "doctor", text: "Estoy liberando solo algunas recetas personalizadas para quienes quieran probar el método ahora mismo." },
             { sender: "doctor", text: "¿Quieres asegurar la tuya?" },
             { sender: "options", options: ["¡Sí! Quiero mi receta personalizada ahora."], wait: 2000 },
-            { sender: "audio", audioSrc: audioUrl3, wait: 38000 }, // Áudio explicativo
+            { sender: "audio", audioSrc: audioUrl3, wait: 38000 },
             { sender: "doctor", text: "Mira todo lo que recibirás ahora:", wait: 2000 },
             { sender: "doctor", text: "✅ Receta Personalizada del Café Adelgazante – ajustada según tus respuestas para activar la quema de grasa.", wait: 2000 },
             { sender: "doctor", text: "✅ Guía Completa de Uso y Preparación – para que lo hagas correctamente y aproveches al máximo los efectos del café.", wait: 3000 },
@@ -400,10 +412,10 @@
 
             // Parte 4: Oferta y Cierre de Venta
             { sender: "doctor", text: "¡Así es! Por solo <span class='highlight-price'>$10</span>, tendrás acceso inmediato a tu Receta Personalizada del Café Adelgazante + ¡TODOS los bonos exclusivos!", wait: 3000 },
-            { sender: "price" }, // Quadro de preço mantido
+            { sender: "price" },
             { sender: "doctor", text: "¡Menos de lo que cuesta una hamburguesa… y con esto puedes activar la quema de grasa de forma natural y definitiva!", wait: 3000 },
             { sender: "doctor", text: "¡Pero atención! Como la personalización de la receta requiere una atención individual, solo puedo liberar unas pocas recetas al día." },
-            { sender: "doctor", text: "¡Y ahora, solo quedan 5 cupos disponibles!", wait: 3000 }, // Número ajustável
+            { sender: "doctor", text: "¡Y ahora, solo quedan 5 cupos disponibles!", wait: 3000 },
             { sender: "doctor", text: "Si sales ahora y tratas de volver después, es posible que tu cupo ya haya sido tomado.", wait: 3000 },
             { sender: "doctor", text: "Imagina despertar en los próximos días sintiéndote más liviano(a), con tu ropa volviendo a quedarte bien y esa hinchazón desapareciendo…" },
             { sender: "doctor", text: "Ahora tienes dos opciones:", wait: 3000 },
@@ -415,12 +427,12 @@
         let index = 0;
         let waitingForInput = false;
         let userName = "";
-        let userData = { problema: "", tiempo: "", edad: "", peso: "" }; // Armazena as respostas
+        let userData = { problema: "", tiempo: "", edad: "", peso: "" };
 
         function addMessage(sender, text) {
             const msgDiv = document.createElement("div");
             msgDiv.classList.add("message", sender);
-            msgDiv.innerHTML = text.replace("{NOMBRE}", userName || "amigo/a"); // Usar innerHTML para interpretar <span> e <br>
+            msgDiv.innerHTML = text.replace("{NOMBRE}", userName || "amigo/a");
             chatBox.appendChild(msgDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
@@ -428,12 +440,27 @@
         function addAudio(audioSrc) {
             const audioDiv = document.createElement("div");
             audioDiv.classList.add("audio-message");
+
             const audioElement = document.createElement("audio");
-            audioElement.controls = true;
             audioElement.src = audioSrc;
+            audioElement.controls = true; // Mostra os controles padrão
+            audioElement.preload = "auto"; // Carrega o áudio
+
+            // Fallback caso o áudio não carregue
+            audioElement.innerHTML = "Tu navegador no soporta el elemento de audio. <a href='" + audioSrc + "'>Descarga el audio aquí</a>.";
+
             audioDiv.appendChild(audioElement);
             chatBox.appendChild(audioDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Verificação de carregamento
+            audioElement.addEventListener("loadeddata", () => {
+                console.log("Áudio carregado com sucesso:", audioSrc);
+            });
+            audioElement.addEventListener("error", (e) => {
+                console.error("Erro ao carregar o áudio:", e);
+                alert("No se pudo cargar el audio. Por favor, revisa tu conexión o intenta en otro navegador.");
+            });
         }
 
         function addReport() {
@@ -505,14 +532,12 @@
             chatBox.appendChild(msgDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // Armazena as respostas dos botões
-            if (index === 7) userData.problema = response; // Problema principal
-            else if (index === 9) userData.tiempo = response; // Tempo com dificuldade
-            else if (index === 11) userData.edad = response; // Idade
-            else if (index === 13) userData.peso = response; // Peso
+            if (index === 7) userData.problema = response;
+            else if (index === 9) userData.tiempo = response;
+            else if (index === 11) userData.edad = response;
+            else if (index === 13) userData.peso = response;
             else if (index === 45) {
-                // Redireciona para o pagamento no último CTA
-                window.location.href = "https://example.com/pago"; // Substitua pelo link real do pagamento
+                window.location.href = "https://example.com/pago";
             }
 
             document.querySelectorAll(".options").forEach(el => el.remove());
@@ -526,9 +551,8 @@
             if (text && waitingForInput) {
                 addMessage("user", text);
 
-                // Armazena apenas o nome digitado manualmente
                 if (index === 5) {
-                    userName = text; // Nome
+                    userName = text;
                 }
 
                 userInput.value = "";
@@ -567,7 +591,7 @@
             } else if (msg.sender === "price") {
                 addPriceImage();
                 index++;
-                setTimeout(nextMessage, 3000); // Espera fixa de 3 segundos para o quadro de preço
+                setTimeout(nextMessage, 3000);
             }
         }
 
