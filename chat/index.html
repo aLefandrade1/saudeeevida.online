@@ -24,7 +24,7 @@
         }
         .banner {
             width: 100%;
-            height: 25vh; /* Aumentado de 20vh para 25vh */
+            height: 25vh; /* Altura aumentada */
             min-height: 100px;
             overflow: hidden;
         }
@@ -34,7 +34,7 @@
             object-fit: cover;
         }
         .chat-header {
-            background: #2e7d32; /* Verde escuro substituindo azul escuro #0d47a1 */
+            background: #2e7d32; /* Verde escuro */
             color: white;
             display: flex;
             align-items: center;
@@ -88,18 +88,18 @@
             font-size: 1rem;
         }
         .doctor {
-            background: #c8e6c9; /* Verde claro substituindo azul claro #bbdefb */
+            background: #c8e6c9; /* Verde claro */
             align-self: flex-start;
         }
         .user {
-            background: #4caf50; /* Verde médio substituindo azul médio #1976d2 */
+            background: #4caf50; /* Verde médio */
             color: white;
             align-self: flex-end;
         }
-        .audio-message, .report-message, .video-message {
+        .audio-message, .report-message, .video-message, .price-message {
             max-width: 80%;
             padding: 10px;
-            background: #c8e6c9; /* Verde claro substituindo azul claro #bbdefb */
+            background: #c8e6c9; /* Verde claro */
             border-radius: 10px;
             margin-bottom: 8px;
             align-self: flex-start;
@@ -108,9 +108,28 @@
             width: 100%;
             outline: none;
         }
+        .price-message .price-box {
+            border: 3px solid #00cc00; /* Borda verde */
+            padding: 10px;
+            border-radius: 8px;
+            background: #fff;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+        .price-message .price-box .original-price {
+            color: #ff0000; /* Vermelho */
+            font-size: 1.2rem;
+            text-decoration: line-through; /* Tachado */
+            margin-right: 5px;
+        }
+        .price-message .price-box .promo-price {
+            color: #00cc00; /* Verde */
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
         .report-message .report {
             background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%); /* Gradiente verde claro */
-            border: 2px solid #2e7d32; /* Verde escuro substituindo azul escuro #0d47a1 */
+            border: 2px solid #2e7d32; /* Verde escuro */
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -118,11 +137,11 @@
             position: relative;
         }
         .report-message .report h3 {
-            color: #2e7d32; /* Verde escuro substituindo azul escuro #0d47a1 */
+            color: #2e7d32; /* Verde escuro */
             font-size: 1.4rem;
             margin: 0 0 15px;
             text-align: center;
-            border-bottom: 2px solid #c8e6c9; /* Verde claro substituindo azul claro #bbdefb */
+            border-bottom: 2px solid #c8e6c9; /* Verde claro */
             padding-bottom: 5px;
         }
         .report-message .report p {
@@ -131,7 +150,7 @@
             color: #333;
         }
         .report-message .report p strong {
-            color: #2e7d32; /* Verde escuro substituindo azul escuro #0d47a1 */
+            color: #2e7d32; /* Verde escuro */
             font-weight: bold;
         }
         .report-message .report .diagnosis {
@@ -143,7 +162,7 @@
             font-weight: bold;
         }
         .highlight-price {
-            background-color: #00cc00; /* Mantido verde para destaque */
+            background-color: #00cc00; /* Verde para destaque */
             color: white;
             padding: 2px 6px;
             border-radius: 4px;
@@ -176,7 +195,7 @@
             color: #888;
         }
         .chat-input-container button {
-            background: #2e7d32; /* Verde escuro substituindo azul escuro #0d47a1 */
+            background: #2e7d32; /* Verde escuro */
             color: white;
             border: none;
             padding: 10px;
@@ -186,7 +205,7 @@
             font-size: 1rem;
         }
         .chat-input-container button:hover {
-            background: #388e3c; /* Verde um pouco mais claro substituindo #1565c0 */
+            background: #388e3c; /* Verde mais claro */
         }
         .options {
             display: flex;
@@ -196,7 +215,7 @@
             align-self: flex-start;
         }
         .options button {
-            background-color: #4caf50; /* Verde médio substituindo azul médio #1976d2 */
+            background-color: #4caf50; /* Verde médio */
             color: white;
             border: none;
             padding: 8px 15px;
@@ -212,7 +231,7 @@
             overflow-wrap: break-word;
         }
         .options button:hover {
-            background-color: #388e3c; /* Verde um pouco mais claro substituindo #1565c0 */
+            background-color: #388e3c; /* Verde mais claro */
             transform: translateY(-3px);
         }
         .options button:active {
@@ -223,7 +242,7 @@
         }
         @media (max-width: 600px) {
             .banner {
-                height: 20vh; /* Ajustado para 20vh em telas menores */
+                height: 20vh; /* Ajustado para telas menores */
             }
             .doctor-image {
                 width: 40px;
@@ -239,7 +258,7 @@
                 width: 8px;
                 height: 8px;
             }
-            .message, .audio-message, .report-message, .video-message {
+            .message, .audio-message, .report-message, .video-message, .price-message {
                 max-width: 90%;
                 font-size: 0.9rem;
             }
@@ -248,6 +267,12 @@
             }
             .report-message .report p {
                 font-size: 0.9rem;
+            }
+            .price-message .price-box .original-price {
+                font-size: 1rem;
+            }
+            .price-message .price-box .promo-price {
+                font-size: 1.2rem;
             }
             .options button {
                 padding: 6px 12px;
@@ -289,9 +314,9 @@
         const banner = document.getElementById("banner");
 
         // Defina os links das imagens, áudio e vídeo aqui
-        const doctorImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/3c364f88-3f63-4b37-b5d5-3f4dcb81b2a2.jpeg"; // Substitua pelo link da imagem do doutor
-        const bannerImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/fe3fc603-0eaa-400b-84ab-8bceda6cb78d.png"; // Substitua pelo link do banner
-        const audioUrl1 =  // Substitua pelo link do primeiro áudio
+        const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua pelo link da imagem do doutor
+        const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua pelo link do banner
+        const audioUrl1 = "https://example.com/audio1.mp3"; // Substitua pelo link do primeiro áudio
         const audioUrl2 = "https://example.com/audio2.mp3"; // Substitua pelo link do segundo áudio
         const videoUrl1 = "https://example.com/video1.mp4"; // Substitua pelo link do primeiro vídeo (Parte 2)
         const videoUrl2 = "https://example.com/testimonials.mp4"; // Substitua pelo link do vídeo de testemunhos (Parte 3)
@@ -375,6 +400,7 @@
 
             // Parte 4: Oferta y Cierre de Venta
             { sender: "doctor", text: "¡Así es! Por solo <span class='highlight-price'>$10</span>, tendrás acceso inmediato a tu Receta Personalizada del Café Adelgazante + ¡TODOS los bonos exclusivos!", wait: 3000 },
+            { sender: "price" }, // Quadro de preço mantido
             { sender: "doctor", text: "¡Menos de lo que cuesta una hamburguesa… y con esto puedes activar la quema de grasa de forma natural y definitiva!", wait: 3000 },
             { sender: "doctor", text: "¡Pero atención! Como la personalización de la receta requiere una atención individual, solo puedo liberar unas pocas recetas al día." },
             { sender: "doctor", text: "¡Y ahora, solo quedan 5 cupos disponibles!", wait: 3000 }, // Número ajustável
@@ -431,6 +457,21 @@
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
+        function addPriceImage() {
+            const priceDiv = document.createElement("div");
+            priceDiv.classList.add("price-message");
+            const priceBox = document.createElement("div");
+            priceBox.classList.add("price-box");
+
+            priceBox.innerHTML = `
+                <span>De <span class="original-price">$197</span> por solo <span class="promo-price">$10</span></span>
+            `;
+
+            priceDiv.appendChild(priceBox);
+            chatBox.appendChild(priceDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
         function addVideo(videoSrc) {
             const videoDiv = document.createElement("div");
             videoDiv.classList.add("video-message");
@@ -469,7 +510,7 @@
             else if (index === 9) userData.tiempo = response; // Tempo com dificuldade
             else if (index === 11) userData.edad = response; // Idade
             else if (index === 13) userData.peso = response; // Peso
-            else if (index === 44) {
+            else if (index === 45) {
                 // Redireciona para o pagamento no último CTA
                 window.location.href = "https://example.com/pago"; // Substitua pelo link real do pagamento
             }
@@ -523,6 +564,10 @@
                 addVideo(msg.videoSrc);
                 index++;
                 setTimeout(nextMessage, msg.wait || 2000);
+            } else if (msg.sender === "price") {
+                addPriceImage();
+                index++;
+                setTimeout(nextMessage, 3000); // Espera fixa de 3 segundos para o quadro de preço
             }
         }
 
