@@ -101,11 +101,29 @@
             margin-bottom: 8px;
             align-self: flex-start;
         }
-        .audio-message iframe {
+        .audio-message .audio-player {
+            display: flex;
+            align-items: center;
+            background: #e1f3d8; /* Verde claro, similar ao WhatsApp */
+            padding: 5px 10px;
+            border-radius: 10px;
             width: 100%;
             max-width: 300px;
-            height: 60px;
-            border: none;
+        }
+        .audio-message audio {
+            width: 100%;
+            height: 35px;
+            outline: none;
+        }
+        .audio-message audio::-webkit-media-controls-panel {
+            background: #e1f3d8;
+            border-radius: 10px;
+        }
+        .audio-message audio::-webkit-media-controls-play-button {
+            background: #075e54; /* Verde escuro do WhatsApp */
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
         }
         .video-message wistia-player {
             width: 100%;
@@ -273,7 +291,7 @@
                 max-width: 90%;
                 font-size: 0.9rem;
             }
-            .audio-message iframe {
+            .audio-message .audio-player {
                 max-width: 250px;
             }
             .video-message wistia-player {
@@ -336,7 +354,7 @@
         // Links das imagens e mídia
         const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua
         const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua
-        const audioUrl1 = "https://vocaroo.com/embed/1edYE6S4fLkI"; // Áudio 1
+        const audioUrl1 = "https://media.vocaroo.com/mp3/1edYE6S4fLkI"; // Áudio 1 direto
         const videoUrl2 = "https://example.com/testimonials.mp4"; // Video 2 (mantido como placeholder)
 
         // Aplica as imagens via JavaScript
@@ -443,9 +461,13 @@
         function addAudio(audioSrc) {
             const audioDiv = document.createElement("div");
             audioDiv.classList.add("audio-message");
-            const iframe = document.createElement("iframe");
-            iframe.src = audioSrc;
-            audioDiv.appendChild(iframe);
+            const playerDiv = document.createElement("div");
+            playerDiv.classList.add("audio-player");
+            const audioElement = document.createElement("audio");
+            audioElement.controls = true;
+            audioElement.src = audioSrc;
+            playerDiv.appendChild(audioElement);
+            audioDiv.appendChild(playerDiv);
             chatBox.appendChild(audioDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
             console.log("Áudio adicionado:", audioSrc);
