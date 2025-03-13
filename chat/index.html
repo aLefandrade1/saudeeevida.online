@@ -100,7 +100,8 @@
             margin-bottom: 8px;
             align-self: flex-start;
         }
-        .audio-message .audio-player {
+        /* Estilo do player de áudio personalizado */
+        .audio-player {
             display: flex;
             align-items: center;
             background: #e1f3d8; /* Verde claro do WhatsApp */
@@ -110,47 +111,51 @@
             max-width: 300px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .audio-message audio {
-            width: 100%;
-            height: 40px;
-            outline: none;
-        }
-        .audio-message audio::-webkit-media-controls-panel {
-            background: #e1f3d8;
-            border-radius: 10px;
-            padding: 5px;
-            display: flex;
-            align-items: center;
-        }
-        .audio-message audio::-webkit-media-controls-play-button {
-            background: #075e54; /* Verde escuro do WhatsApp */
-            border-radius: 50%;
+        .audio-player .play-pause-btn {
             width: 30px;
             height: 30px;
+            background: #075e54; /* Verde escuro do WhatsApp */
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-right: 10px;
+            color: white;
+            font-size: 16px;
         }
-        .audio-message audio::-webkit-media-controls-timeline {
+        .audio-player .progress-container {
+            flex: 1;
             height: 4px;
-            background: #075e54; /* Barra verde */
+            background: #ccc;
             border-radius: 2px;
+            position: relative;
+            cursor: pointer;
         }
-        .audio-message audio::-webkit-media-controls-current-time-display,
-        .audio-message audio::-webkit-media-controls-time-remaining-display {
+        .audio-player .progress-bar {
+            height: 100%;
+            width: 0;
+            background: #075e54; /* Verde escuro */
+            border-radius: 2px;
+            position: relative;
+        }
+        .audio-player .progress-bar::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: -4px;
+            width: 12px;
+            height: 12px;
+            background: #075e54;
+            border-radius: 50%;
+        }
+        .audio-player .time-display {
+            margin-left: 10px;
             font-size: 12px;
             color: #333;
-        }
-        /* Fallback para erro de carregamento */
-        .audio-message audio:invalid {
-            display: none;
-        }
-        .audio-message .audio-player::after {
-            content: "Carregando áudio...";
-            color: #075e54;
-            font-size: 14px;
-            display: none;
-        }
-        .audio-message audio:invalid + .audio-player::after {
-            display: block;
+            min-width: 60px;
+            text-align: right;
         }
         .video-message wistia-player {
             width: 100%;
@@ -185,7 +190,7 @@
         .report-message .report {
             background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
             border: 2px solid #2e7d32;
-            border-radius: 10px;
+            border silva-border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
@@ -316,7 +321,7 @@
                 max-width: 90%;
                 font-size: 0.9rem;
             }
-            .audio-message .audio-player {
+            .audio-player {
                 max-width: 250px;
             }
             .video-message wistia-player {
@@ -379,10 +384,10 @@
         // Links das imagens e mídia
         const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua
         const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua
-        const audioUrl1 = "https://audio.jukehost.co.uk/sujMskMxWPbSRMTwXsYxDHibFUzdcd7k"; // Áudio 1 (funcional)
-        const audioUrl2 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"; // Áudio 2 (funcional)
-        const audioUrl3 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"; // Áudio 3 (funcional)
-        const videoUrl2 = "https://example.com/testimonials.mp4"; // Video 2 (substitua se tiver o link real)
+        const audioUrl1 = "https://audio.jukehost.co.uk/sujMskMxWPbSRMTwXsYxDHibFUzdcd7k"; // Áudio 1
+        const audioUrl2 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"; // Áudio 2
+        const audioUrl3 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"; // Áudio 3
+        const videoUrl2 = "https://example.com/testimonials.mp4"; // Video 2 (substitua)
 
         // Aplica as imagens via JavaScript
         doctorImage.src = doctorImageUrl;
@@ -394,7 +399,6 @@
 
         // Funil completo com áudios
         const messages = [
-            // Parte 1
             { sender: "doctor", text: "¡Hola! ¡Qué bueno verte por aquí! Es un placer tenerte aquí conmigo.", wait: 2000 },
             { sender: "doctor", text: "Mi nombre es Hellena Navarro, soy especialista en metabolismo y pérdida de peso saludable. Hoy te mostraré cómo acelerar la quema de grasa usando solo un café especial por la mañana.", wait: 3000 },
             { sender: "doctor", text: "¿Te gustaría recibir la receta del Café Adelgazante Personalizado, que ya ha ayudado a más de 17.000 personas a desbloquear su metabolismo y perder grasa sin dietas extremas?" },
@@ -408,8 +412,6 @@
                 "Siento mucha hambre y ansiedad por la comida",
                 "Mi metabolismo es lento y subo de peso fácilmente"
             ] },
-
-            // Parte 2: Recopilación de Información Personal
             { sender: "doctor", text: "¿Cuánto tiempo llevas teniendo dificultades para bajar de peso?", wait: 2000 },
             { sender: "options", options: [
                 "Menos de 3 meses",
@@ -438,8 +440,6 @@
             { sender: "doctor", text: "Ahora, mira este video de 20 segundos que preparé para ti. Aquí te explico exactamente cómo el Café Adelgazante actuará en tu cuerpo para activar la quema de grasa." },
             { sender: "wistia", mediaId: "z996khhkm5", wait: 21000 }, // Video 1 (Wistia)
             { sender: "audio", audioSrc: audioUrl3, wait: 15000 }, // Áudio 3
-
-            // Parte 3: Pitch de Venta
             { sender: "doctor", text: "Con base en tus respuestas, ya sé exactamente qué está impidiendo que tu cuerpo baje de peso... ¡Pero la buena noticia es que hay una solución simple y natural para esto!", wait: 4000 },
             { sender: "doctor", text: "Antes de explicarte cómo funciona tu receta personalizada, mira lo que algunas personas que ya usaron el Café Adelgazante tienen para decir:" },
             { sender: "video", videoSrc: videoUrl2, wait: 45000 }, // Video 2 (testemunhos)
@@ -459,8 +459,6 @@
             { sender: "doctor", text: "Pero tranquilo, NO vas a pagar eso.", wait: 3000 },
             { sender: "doctor", text: "¡Solo por hoy, para las primeras personas que aseguren su receta personalizada, voy a liberar todo esto por solo <span class='highlight-price'>$10</span>!", wait: 3000 },
             { sender: "doctor", text: "¡Así es! Menos de lo que cuesta un refrigerio.", wait: 3000 },
-
-            // Parte 4: Oferta y Cierre de Venta
             { sender: "doctor", text: "¡Así es! Por solo <span class='highlight-price'>$10</span>, tendrás acceso inmediato a tu Receta Personalizada del Café Adelgazante + ¡TODOS los bonos exclusivos!", wait: 3000 },
             { sender: "price" },
             { sender: "doctor", text: "¡Menos de lo que cuesta una hamburguesa… y con esto puedes activar la quema de grasa de forma natural y definitiva!", wait: 3000 },
@@ -492,21 +490,81 @@
             audioDiv.classList.add("audio-message");
             const playerDiv = document.createElement("div");
             playerDiv.classList.add("audio-player");
-            const audioElement = document.createElement("audio");
-            audioElement.controls = true;
-            audioElement.autoplay = true; // Autoplay
-            audioElement.preload = "auto";
-            audioElement.src = audioSrc;
-            audioElement.addEventListener("error", () => {
-                console.error("Erro ao carregar o áudio:", audioSrc);
-            });
-            audioElement.addEventListener("loadeddata", () => {
-                console.log("Áudio carregado com sucesso:", audioSrc);
-            });
-            playerDiv.appendChild(audioElement);
+
+            const audio = new Audio(audioSrc);
+            const playPauseBtn = document.createElement("button");
+            playPauseBtn.classList.add("play-pause-btn");
+            playPauseBtn.innerHTML = "▶"; // Ícone de play
+            const progressContainer = document.createElement("div");
+            progressContainer.classList.add("progress-container");
+            const progressBar = document.createElement("div");
+            progressBar.classList.add("progress-bar");
+            const timeDisplay = document.createElement("span");
+            timeDisplay.classList.add("time-display");
+            timeDisplay.textContent = "0:00 / 0:00";
+
+            progressContainer.appendChild(progressBar);
+            playerDiv.appendChild(playPauseBtn);
+            playerDiv.appendChild(progressContainer);
+            playerDiv.appendChild(timeDisplay);
             audioDiv.appendChild(playerDiv);
             chatBox.appendChild(audioDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Controle do áudio
+            let isPlaying = false;
+
+            audio.addEventListener("loadedmetadata", () => {
+                const duration = audio.duration;
+                timeDisplay.textContent = formatTime(audio.currentTime) + " / " + formatTime(duration);
+            });
+
+            audio.addEventListener("timeupdate", () => {
+                const currentTime = audio.currentTime;
+                const duration = audio.duration;
+                const progress = (currentTime / duration) * 100;
+                progressBar.style.width = progress + "%";
+                timeDisplay.textContent = formatTime(currentTime) + " / " + formatTime(duration);
+            });
+
+            playPauseBtn.addEventListener("click", () => {
+                if (isPlaying) {
+                    audio.pause();
+                    playPauseBtn.innerHTML = "▶";
+                } else {
+                    audio.play().then(() => {
+                        playPauseBtn.innerHTML = "⏸"; // Ícone de pause
+                    }).catch(err => console.error("Erro ao tocar áudio:", err));
+                }
+                isPlaying = !isPlaying;
+            });
+
+            progressContainer.addEventListener("click", (e) => {
+                const rect = progressContainer.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+
+            audio.addEventListener("error", () => {
+                console.error("Erro ao carregar o áudio:", audioSrc);
+                timeDisplay.textContent = "Erro";
+            });
+
+            audio.addEventListener("canplay", () => {
+                console.log("Áudio pronto para tocar:", audioSrc);
+                audio.play().then(() => {
+                    playPauseBtn.innerHTML = "⏸";
+                    isPlaying = true;
+                }).catch(err => console.error("Erro ao iniciar áudio:", err));
+            });
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
         }
 
         function addWistiaVideo(mediaId) {
