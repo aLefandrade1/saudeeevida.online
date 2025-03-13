@@ -109,21 +109,27 @@
             border-radius: 10px;
             width: 100%;
             max-width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .audio-message audio {
             width: 100%;
-            height: 35px;
+            height: 40px;
             outline: none;
         }
         .audio-message audio::-webkit-media-controls-panel {
             background: #e1f3d8;
             border-radius: 10px;
+            padding: 5px;
         }
         .audio-message audio::-webkit-media-controls-play-button {
             background: #075e54; /* Verde escuro do WhatsApp */
             border-radius: 50%;
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 30px;
+        }
+        .audio-message audio::-webkit-media-controls-timeline {
+            height: 4px;
+            background: #075e54; /* Barra de progresso verde */
         }
         .video-message wistia-player {
             width: 100%;
@@ -354,7 +360,7 @@
         // Links das imagens e mídia
         const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua
         const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua
-        const audioUrl1 = "https://media.vocaroo.com/mp3/1edYE6S4fLkI"; // Áudio 1 direto
+        const audioUrl1 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"; // Áudio de teste funcional
         const videoUrl2 = "https://example.com/testimonials.mp4"; // Video 2 (mantido como placeholder)
 
         // Aplica as imagens via JavaScript
@@ -372,7 +378,7 @@
             { sender: "doctor", text: "Mi nombre es Hellena Navarro, soy especialista en metabolismo y pérdida de peso saludable. Hoy te mostraré cómo acelerar la quema de grasa usando solo un café especial por la mañana.", wait: 3000 },
             { sender: "doctor", text: "¿Te gustaría recibir la receta del Café Adelgazante Personalizado, que ya ha ayudado a más de 17.000 personas a desbloquear su metabolismo y perder grasa sin dietas extremas?" },
             { sender: "options", options: ["¡SÍ! Quiero mi receta personalizada."] },
-            { sender: "audio", audioSrc: audioUrl1, wait: 15000 }, // Áudio 1
+            { sender: "audio", audioSrc: audioUrl1, wait: 15000 }, // Áudio 1 com autoplay
             { sender: "doctor", text: "¿Cuál es tu nombre?", waitForInput: true },
             { sender: "doctor", text: "{NOMBRE}, antes de preparar tu receta personalizada, dime: ¿cuál de estas situaciones describe mejor lo que sientes con respecto a tu peso o metabolismo?" },
             { sender: "options", options: [
@@ -465,12 +471,19 @@
             playerDiv.classList.add("audio-player");
             const audioElement = document.createElement("audio");
             audioElement.controls = true;
+            audioElement.autoplay = true; // Ativa o autoplay
+            audioElement.preload = "auto";
             audioElement.src = audioSrc;
+            audioElement.addEventListener("error", () => {
+                console.error("Erro ao carregar o áudio:", audioSrc);
+            });
+            audioElement.addEventListener("loadeddata", () => {
+                console.log("Áudio carregado com sucesso:", audioSrc);
+            });
             playerDiv.appendChild(audioElement);
             audioDiv.appendChild(playerDiv);
             chatBox.appendChild(audioDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
-            console.log("Áudio adicionado:", audioSrc);
         }
 
         function addWistiaVideo(mediaId) {
