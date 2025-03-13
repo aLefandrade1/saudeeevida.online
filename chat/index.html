@@ -139,6 +139,19 @@
             font-size: 12px;
             color: #333;
         }
+        /* Fallback para erro de carregamento */
+        .audio-message audio:invalid {
+            display: none;
+        }
+        .audio-message .audio-player::after {
+            content: "Carregando áudio...";
+            color: #075e54;
+            font-size: 14px;
+            display: none;
+        }
+        .audio-message audio:invalid + .audio-player::after {
+            display: block;
+        }
         .video-message wistia-player {
             width: 100%;
             max-width: 300px;
@@ -187,7 +200,7 @@
         }
         .report-message .report p {
             margin: 10px 0;
-            font-size: szabado1rem;
+            font-size: 1rem;
             color: #333;
         }
         .report-message .report p strong {
@@ -349,7 +362,7 @@
             </div>
             <span class="online-status"><span class="online-dot"></span>En línea</span>
         </div>
-        <div class="chat-box" id="chat boxed-box"></div>
+        <div class="chat-box" id="chat-box"></div>
         <div class="chat-input-container">
             <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
             <button id="send-btn">➡️</button>
@@ -366,9 +379,9 @@
         // Links das imagens e mídia
         const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua
         const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua
-        const audioUrl1 = "https://audio.jukehost.co.uk/sujMskMxWPbSRMTwXsYxDHibFUzdcd7k"; // Áudio 1 (placeholder)
-        const audioUrl2 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"; // Áudio 2 (placeholder)
-        const audioUrl3 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"; // Áudio 3 (placeholder)
+        const audioUrl1 = "https://audio.jukehost.co.uk/sujMskMxWPbSRMTwXsYxDHibFUzdcd7k"; // Áudio 1 (funcional)
+        const audioUrl2 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"; // Áudio 2 (funcional)
+        const audioUrl3 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"; // Áudio 3 (funcional)
         const videoUrl2 = "https://example.com/testimonials.mp4"; // Video 2 (substitua se tiver o link real)
 
         // Aplica as imagens via JavaScript
@@ -379,7 +392,7 @@
             banner.appendChild(bannerImg);
         }
 
-        // Funil completo com áudios restaurados
+        // Funil completo com áudios
         const messages = [
             // Parte 1
             { sender: "doctor", text: "¡Hola! ¡Qué bueno verte por aquí! Es un placer tenerte aquí conmigo.", wait: 2000 },
@@ -420,11 +433,11 @@
             ] },
             { sender: "doctor", text: "Basado en lo que me contaste, ya estoy preparando tu receta exclusiva. ¡Mira esto!" },
             { sender: "report", wait: 4000 },
-            { sender: "audio", audioSrc: audioUrl2, wait: 15000 }, // Áudio 2 (após relatório)
+            { sender: "audio", audioSrc: audioUrl2, wait: 15000 }, // Áudio 2
             { sender: "doctor", text: "{NOMBRE}, este análisis muestra que tu problema con el metabolismo está limitando tus resultados, pero no te preocupes: ¡el Café Adelgazante Personalizado va a activar tu quema de grasa en pocas semanas!", wait: 3000 },
             { sender: "doctor", text: "Ahora, mira este video de 20 segundos que preparé para ti. Aquí te explico exactamente cómo el Café Adelgazante actuará en tu cuerpo para activar la quema de grasa." },
             { sender: "wistia", mediaId: "z996khhkm5", wait: 21000 }, // Video 1 (Wistia)
-            { sender: "audio", audioSrc: audioUrl3, wait: 15000 }, // Áudio 3 (antes do pitch)
+            { sender: "audio", audioSrc: audioUrl3, wait: 15000 }, // Áudio 3
 
             // Parte 3: Pitch de Venta
             { sender: "doctor", text: "Con base en tus respuestas, ya sé exactamente qué está impidiendo que tu cuerpo baje de peso... ¡Pero la buena noticia es que hay una solución simple y natural para esto!", wait: 4000 },
