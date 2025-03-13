@@ -360,8 +360,8 @@
         // Links das imagens e mídia
         const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua
         const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua
-        const audioUrl1 = "https://audio.jukehost.co.uk/sujMskMxWPbSRMTwXsYxDHibFUzdcd7k"; // Áudio de teste funcional
-        const videoUrl2 = "https://example.com/testimonials.mp4"; // Video 2 (mantido como placeholder)
+        const audioUrl1 = "https://audio.jukehost.co.uk/sujMskMxWPbSRMTwXsYxDHibFUzdcd7k"; // Placeholder funcional
+        const videoUrl2 = "https://example.com/testimonials.mp4"; // Video 2 (substitua se tiver o link real)
 
         // Aplica as imagens via JavaScript
         doctorImage.src = doctorImageUrl;
@@ -371,7 +371,7 @@
             banner.appendChild(bannerImg);
         }
 
-        // Funil com Parte 1, Parte 2, Parte 3 e Parte 4
+        // Funil completo restaurado
         const messages = [
             // Parte 1
             { sender: "doctor", text: "¡Hola! ¡Qué bueno verte por aquí! Es un placer tenerte aquí conmigo.", wait: 2000 },
@@ -419,7 +419,7 @@
             // Parte 3: Pitch de Venta
             { sender: "doctor", text: "Con base en tus respuestas, ya sé exactamente qué está impidiendo que tu cuerpo baje de peso... ¡Pero la buena noticia es que hay una solución simple y natural para esto!", wait: 4000 },
             { sender: "doctor", text: "Antes de explicarte cómo funciona tu receta personalizada, mira lo que algunas personas que ya usaron el Café Adelgazante tienen para decir:" },
-            { sender: "video", videoSrc: videoUrl2, wait: 45000 },
+            { sender: "video", videoSrc: videoUrl2, wait: 45000 }, // Video 2 (testemunhos)
             { sender: "doctor", text: "¿Y sabes qué tienen en común todas estas personas?" },
             { sender: "doctor", text: "Descubrieron que no era su culpa no poder bajar de peso… ¡Su cuerpo simplemente estaba bloqueado para quemar grasa!" },
             { sender: "doctor", text: "Pero cuando activaron este mecanismo natural con el Café Adelgazante, ¡el peso finalmente comenzó a desaparecer!", wait: 4000 },
@@ -471,7 +471,7 @@
             playerDiv.classList.add("audio-player");
             const audioElement = document.createElement("audio");
             audioElement.controls = true;
-            audioElement.autoplay = true; // Ativa o autoplay
+            audioElement.autoplay = true; // Autoplay ativado
             audioElement.preload = "auto";
             audioElement.src = audioSrc;
             audioElement.addEventListener("error", () => {
@@ -489,16 +489,13 @@
         function addWistiaVideo(mediaId) {
             const videoDiv = document.createElement("div");
             videoDiv.classList.add("video-message");
-
             const wistiaPlayer = document.createElement("wistia-player");
             wistiaPlayer.setAttribute("media-id", mediaId);
             wistiaPlayer.setAttribute("seo", "false");
             wistiaPlayer.setAttribute("aspect", "0.5625");
-
             videoDiv.appendChild(wistiaPlayer);
             chatBox.appendChild(videoDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
-
             console.log("Vídeo Wistia adicionado:", mediaId);
         }
 
@@ -507,7 +504,6 @@
             reportDiv.classList.add("report-message");
             const report = document.createElement("div");
             report.classList.add("report");
-
             report.innerHTML = `
                 <h3>Tus Datos y Diagnóstico</h3>
                 <p><strong>Nombre:</strong> ${userName || "Usuario"}</p>
@@ -517,7 +513,6 @@
                 <p><strong>Peso Aproximado:</strong> ${userData.peso || "No especificado"}</p>
                 <p><strong>Diagnóstico:</strong> <span class="diagnosis">Grave</span></p>
             `;
-
             reportDiv.appendChild(report);
             chatBox.appendChild(reportDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
@@ -528,11 +523,9 @@
             priceDiv.classList.add("price-message");
             const priceBox = document.createElement("div");
             priceBox.classList.add("price-box");
-
             priceBox.innerHTML = `
                 <span>De <span class="original-price">$197</span> por solo <span class="promo-price">$10</span></span>
             `;
-
             priceDiv.appendChild(priceBox);
             chatBox.appendChild(priceDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
@@ -589,11 +582,7 @@
             const text = userInput.value.trim();
             if (text && waitingForInput) {
                 addMessage("user", text);
-
-                if (index === 5) {
-                    userName = text;
-                }
-
+                if (index === 5) userName = text;
                 userInput.value = "";
                 waitingForInput = false;
                 index++;
