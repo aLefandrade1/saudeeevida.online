@@ -187,7 +187,7 @@
         }
         .report-message .report p {
             margin: 10px 0;
-            font-size: 1rem;
+            font-size: szabado1rem;
             color: #333;
         }
         .report-message .report p strong {
@@ -349,7 +349,7 @@
             </div>
             <span class="online-status"><span class="online-dot"></span>En línea</span>
         </div>
-        <div class="chat-box" id="chat-box"></div>
+        <div class="chat-box" id="chat boxed-box"></div>
         <div class="chat-input-container">
             <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
             <button id="send-btn">➡️</button>
@@ -366,7 +366,9 @@
         // Links das imagens e mídia
         const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua
         const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua
-        const audioUrl1 = "https://audio.jukehost.co.uk/sujMskMxWPbSRMTwXsYxDHibFUzdcd7k"; // Placeholder funcional
+        const audioUrl1 = "https://audio.jukehost.co.uk/sujMskMxWPbSRMTwXsYxDHibFUzdcd7k"; // Áudio 1 (placeholder)
+        const audioUrl2 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"; // Áudio 2 (placeholder)
+        const audioUrl3 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"; // Áudio 3 (placeholder)
         const videoUrl2 = "https://example.com/testimonials.mp4"; // Video 2 (substitua se tiver o link real)
 
         // Aplica as imagens via JavaScript
@@ -377,7 +379,7 @@
             banner.appendChild(bannerImg);
         }
 
-        // Funil completo
+        // Funil completo com áudios restaurados
         const messages = [
             // Parte 1
             { sender: "doctor", text: "¡Hola! ¡Qué bueno verte por aquí! Es un placer tenerte aquí conmigo.", wait: 2000 },
@@ -418,9 +420,11 @@
             ] },
             { sender: "doctor", text: "Basado en lo que me contaste, ya estoy preparando tu receta exclusiva. ¡Mira esto!" },
             { sender: "report", wait: 4000 },
+            { sender: "audio", audioSrc: audioUrl2, wait: 15000 }, // Áudio 2 (após relatório)
             { sender: "doctor", text: "{NOMBRE}, este análisis muestra que tu problema con el metabolismo está limitando tus resultados, pero no te preocupes: ¡el Café Adelgazante Personalizado va a activar tu quema de grasa en pocas semanas!", wait: 3000 },
             { sender: "doctor", text: "Ahora, mira este video de 20 segundos que preparé para ti. Aquí te explico exactamente cómo el Café Adelgazante actuará en tu cuerpo para activar la quema de grasa." },
             { sender: "wistia", mediaId: "z996khhkm5", wait: 21000 }, // Video 1 (Wistia)
+            { sender: "audio", audioSrc: audioUrl3, wait: 15000 }, // Áudio 3 (antes do pitch)
 
             // Parte 3: Pitch de Venta
             { sender: "doctor", text: "Con base en tus respuestas, ya sé exactamente qué está impidiendo que tu cuerpo baje de peso... ¡Pero la buena noticia es que hay una solución simple y natural para esto!", wait: 4000 },
@@ -436,7 +440,7 @@
             { sender: "doctor", text: "Mira todo lo que recibirás ahora:", wait: 2000 },
             { sender: "doctor", text: "✅ Receta Personalizada del Café Adelgazante – ajustada según tus respuestas para activar la quema de grasa.", wait: 2000 },
             { sender: "doctor", text: "✅ Guía Completa de Uso y Preparación – para que lo hagas correctamente y aproveches al máximo los efectos del café.", wait: 3000 },
-            { sender: "doctor", text: "✅ [BONO GRATIS] Lista Secreta de Alimentos Termogénicos – alimentos que potencian aún más los efeitos del café y aceleran el metabolismo.", wait: 3000 },
+            { sender: "doctor", text: "✅ [BONO GRATIS] Lista Secreta de Alimentos Termogénicos – alimentos que potencian aún más los efectos del café y aceleran el metabolismo.", wait: 3000 },
             { sender: "doctor", text: "✅ [BONO GRATIS] Técnica Japonesa para eliminar grasa abdominal – un método simple que puedes aplicar junto con el café para reducir medidas más rápido.", wait: 3000 },
             { sender: "doctor", text: "Ahora, sé que muchas personas han pagado más de $197 por consultas que no resolvieron nada...", wait: 3000 },
             { sender: "doctor", text: "Pero tranquilo, NO vas a pagar eso.", wait: 3000 },
@@ -574,7 +578,7 @@
             else if (index === 9) userData.tiempo = response;
             else if (index === 11) userData.edad = response;
             else if (index === 13) userData.peso = response;
-            else if (index === 45) {
+            else if (index === 46) {
                 window.location.href = "https://example.com/pago"; // Substitua pelo link real
             }
 
