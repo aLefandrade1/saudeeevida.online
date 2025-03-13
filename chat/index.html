@@ -21,11 +21,13 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            position: relative; /* Adicionado para controle de posicionamento */
         }
         .banner {
             width: 100%;
             height: 25vh;
             overflow: hidden;
+            flex-shrink: 0;
         }
         .banner img {
             width: 100%;
@@ -100,11 +102,10 @@
             margin-bottom: 8px;
             align-self: flex-start;
         }
-        /* Estilo do player de áudio personalizado */
         .audio-player {
             display: flex;
             align-items: center;
-            background: #e1f3d8; /* Verde claro do WhatsApp */
+            background: #e1f3d8;
             padding: 8px;
             border-radius: 10px;
             width: 100%;
@@ -114,7 +115,7 @@
         .audio-player .play-pause-btn {
             width: 30px;
             height: 30px;
-            background: #075e54; /* Verde escuro do WhatsApp */
+            background: #075e54;
             border-radius: 50%;
             border: none;
             cursor: pointer;
@@ -136,7 +137,7 @@
         .audio-player .progress-bar {
             height: 100%;
             width: 0;
-            background: #075e54; /* Verde escuro */
+            background: #075e54;
             border-radius: 2px;
             position: relative;
         }
@@ -190,7 +191,7 @@
         .report-message .report {
             background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
             border: 2px solid #2e7d32;
-            border silva-border-radius: 10px;
+            border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
@@ -241,6 +242,10 @@
             padding: 10px;
             background: white;
             flex-shrink: 0;
+            position: sticky; /* Fixa no fundo */
+            bottom: 0; /* Sempre no pé da tela */
+            width: 100%;
+            z-index: 10; /* Garante que fique acima do conteúdo */
         }
         .chat-input-container input {
             flex: 1;
@@ -249,6 +254,7 @@
             border-radius: 5px;
             outline: none;
             font-size: 1rem;
+            background: #f0f0f0; /* Cor de fundo para destacar */
         }
         .chat-input-container input::placeholder {
             color: #888;
@@ -344,8 +350,12 @@
                 font-size: 0.9rem;
                 max-width: 95%;
             }
+            .chat-input-container {
+                padding: 5px; /* Reduz padding no mobile */
+            }
             .chat-input-container input {
                 font-size: 0.9rem;
+                padding: 8px;
             }
             .chat-input-container button {
                 padding: 8px;
@@ -368,7 +378,7 @@
             <span class="online-status"><span class="online-dot"></span>En línea</span>
         </div>
         <div class="chat-box" id="chat-box"></div>
-        <div class="chat-input-container">
+        <div class="chat-input-container" id="chat-input-container">
             <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
             <button id="send-btn">➡️</button>
         </div>
@@ -378,6 +388,7 @@
         const chatBox = document.getElementById("chat-box");
         const userInput = document.getElementById("user-input");
         const sendBtn = document.getElementById("send-btn");
+        const chatInputContainer = document.getElementById("chat-input-container");
         const doctorImage = document.getElementById("doctor-image");
         const banner = document.getElementById("banner");
 
@@ -494,7 +505,7 @@
             const audio = new Audio(audioSrc);
             const playPauseBtn = document.createElement("button");
             playPauseBtn.classList.add("play-pause-btn");
-            playPauseBtn.innerHTML = "▶"; // Ícone de play
+            playPauseBtn.innerHTML = "▶";
             const progressContainer = document.createElement("div");
             progressContainer.classList.add("progress-container");
             const progressBar = document.createElement("div");
@@ -511,7 +522,6 @@
             chatBox.appendChild(audioDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // Controle do áudio
             let isPlaying = false;
 
             audio.addEventListener("loadedmetadata", () => {
@@ -533,7 +543,7 @@
                     playPauseBtn.innerHTML = "▶";
                 } else {
                     audio.play().then(() => {
-                        playPauseBtn.innerHTML = "⏸"; // Ícone de pause
+                        playPauseBtn.innerHTML = "⏸";
                     }).catch(err => console.error("Erro ao tocar áudio:", err));
                 }
                 isPlaying = !isPlaying;
@@ -662,6 +672,7 @@
         function handleManualInput() {
             const text = userInput.value.trim();
             if (text && waitingForInput) {
+                console.log("Usuário digitou:", text); // Debug
                 addMessage("user", text);
                 if (index === 5) userName = text;
                 userInput.value = "";
@@ -678,7 +689,10 @@
             if (msg.sender === "doctor") {
                 addMessage("doctor", msg.text);
                 if (msg.waitForInput) {
+                    console.log("Aguardando entrada do usuário no índice:", index); // Debug
                     waitingForInput = true;
+                    chatInputContainer.style.display = "flex"; // Garante visibilidade
+                    userInput.focus(); // Foca no campo de entrada
                 } else {
                     index++;
                     setTimeout(nextMessage, msg.wait || 2000);
@@ -714,6 +728,7 @@
         });
 
         // Inicia o chat
+        console.log("Iniciando o chat...");
         nextMessage();
     </script>
 </body>
