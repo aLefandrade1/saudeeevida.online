@@ -1,777 +1,213 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Consultorio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #e3f2fd;
-            margin: 0;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .chat-container {
-            width: 100%;
-            height: 100vh;
-            background: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 0;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: relative;
-        }
-        .banner {
-            width: 100%;
-            height: 25vh;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-        .banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .chat-header {
-            background: #2e7d32;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px;
-            flex-shrink: 0;
-        }
-        .doctor-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        .header-left {
-            display: flex;
-            align-items: center;
-        }
-        .chat-header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-        .online-status {
-            display: flex;
-            align-items: center;
-        }
-        .online-dot {
-            width: 10px;
-            height: 10px;
-            background-color: #00ff00;
-            border-radius: 50%;
-            margin-right: 5px;
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        .chat-box {
-            flex: 1;
-            padding: 10px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-        .message {
-            max-width: 80%;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-        .doctor {
-            background: #c8e6c9;
-            align-self: flex-start;
-        }
-        .user {
-            background: #4caf50;
-            color: white;
-            align-self: flex-end;
-        }
-        .typing-indicator {
-            max-width: 80%;
-            padding: 10px;
-            background: #c8e6c9;
-            border-radius: 10px;
-            margin-bottom: 8px;
-            align-self: flex-start;
-            font-size: 1rem;
-            color: #333;
-        }
-        .typing-indicator::after {
-            content: "...";
-            display: inline-block;
-            animation: typing 1s infinite;
-        }
-        @keyframes typing {
-            0% { content: "."; }
-            33% { content: ".."; }
-            66% { content: "..."; }
-        }
-        .audio-message, .video-message {
-            max-width: 80%;
-            margin-bottom: 8px;
-            align-self: flex-start;
-        }
-        .audio-player {
-            display: flex;
-            align-items: center;
-            background: #e1f3d8;
-            padding: 8px;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 300px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .audio-player .play-pause-btn {
-            width: 30px;
-            height: 30px;
-            background: #075e54;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            color: white;
-            font-size: 16px;
-        }
-        .audio-player .progress-container {
-            flex: 1;
-            height: 4px;
-            background: #ccc;
-            border-radius: 2px;
-            position: relative;
-            cursor: pointer;
-        }
-        .audio-player .progress-bar {
-            height: 100%;
-            width: 0;
-            background: #075e54;
-            border-radius: 2px;
-            position: relative;
-        }
-        .audio-player .progress-bar::after {
-            content: '';
-            position: absolute;
-            right: -6px;
-            top: -4px;
-            width: 12px;
-            height: 12px;
-            background: #075e54;
-            border-radius: 50%;
-        }
-        .audio-player .time-display {
-            margin-left: 10px;
-            font-size: 12px;
-            color: #333;
-            min-width: 60px;
-            text-align: right;
-        }
-        .video-message wistia-player {
-            width: 100%;
-            max-width: 300px;
-        }
-        .report-message, .price-message {
-            max-width: 80%;
-            padding: 10px;
-            background: #c8e6c9;
-            border-radius: 10px;
-            margin-bottom: 8px;
-            align-self: flex-start;
-        }
-        .price-message .price-box {
-            border: 3px solid #00cc00;
-            padding: 10px;
-            border-radius: 8px;
-            background: #fff;
-            text-align: center;
-        }
-        .price-message .price-box .original-price {
-            color: #ff0000;
-            font-size: 1.2rem;
-            text-decoration: line-through;
-            margin-right: 5px;
-        }
-        .price-message .price-box .promo-price {
-            color: #00cc00;
-            font-size: 1.4rem;
-            font-weight: bold;
-        }
-        .report-message .report {
-            background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
-            border: 2px solid #2e7d32;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        .report-message .report h3 {
-            color: #2e7d32;
-            font-size: 1.4rem;
-            margin: 0 0 15px;
-            text-align: center;
-            border-bottom: 2px solid #c8e6c9;
-            padding-bottom: 5px;
-        }
-        .report-message .report p {
-            margin: 10px 0;
-            font-size: 1rem;
-            color: #333;
-        }
-        .report-message .report p strong {
-            color: #2e7d32;
-            font-weight: bold;
-        }
-        .report-message .report .diagnosis {
-            background-color: #ff4444;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: inline-block;
-            font-weight: bold;
-        }
-        .highlight-price {
-            background-color: #00cc00;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: bold;
-            display: inline-block;
-        }
-        .report-message .report::before {
-            content: "📋";
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 1.5rem;
-        }
-        .chat-input-container {
-            display: flex;
-            border-top: 1px solid #ccc;
-            padding: 10px;
-            background: white;
-            flex-shrink: 0;
-            position: sticky;
-            bottom: 0;
-            width: 100%;
-            z-index: 10;
-        }
-        .chat-input-container input {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            outline: none;
-            font-size: 1rem;
-            background: #f0f0f0;
-        }
-        .chat-input-container input::placeholder {
-            color: #888;
-        }
-        .chat-input-container button {
-            background: #2e7d32;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            margin-left: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        .chat-input-container button:hover {
-            background: #388e3c;
-        }
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
-            align-self: flex-start;
-        }
-        .options button {
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            text-align: center; /* Centraliza o texto */
-            min-width: 200px; /* Largura mínima para evitar quebra */
-            white-space: nowrap; /* Impede quebra de linha */
-            overflow: hidden; /* Esconde texto excedente */
-            text-overflow: ellipsis; /* Adiciona "..." se o texto for muito longo */
-        }
-        .options button:hover {
-            background-color: #388e3c;
-            transform: translateY(-3px);
-        }
-        .options button:active {
-            transform: translateY(1px);
-        }
-        .options button:focus {
-            outline: none;
-        }
-        @media (max-width: 600px) {
-            .banner {
-                height: 20vh;
-            }
-            .doctor-image {
-                width: 40px;
-                height: 40px;
-            }
-            .chat-header h2 {
-                font-size: 1.2rem;
-            }
-            .online-status {
-                font-size: 0.9rem;
-            }
-            .online-dot {
-                width: 8px;
-                height: 8px;
-            }
-            .message, .audio-message, .video-message, .report-message, .price-message {
-                max-width: 90%;
-                font-size: 0.9rem;
-            }
-            .audio-player {
-                max-width: 250px;
-            }
-            .video-message wistia-player {
-                max-width: 250px;
-            }
-            .report-message .report h3 {
-                font-size: 1.2rem;
-            }
-            .report-message .report p {
-                font-size: 0.9rem;
-            }
-            .price-message .price-box .original-price {
-                font-size: 1rem;
-            }
-            .price-message .price-box .promo-price {
-                font-size: 1.2rem;
-            }
-            .options button {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-                min-width: 180px; /* Ajuste para mobile */
-            }
-            .chat-input-container {
-                padding: 5px;
-            }
-            .chat-input-container input {
-                font-size: 0.9rem;
-                padding: 8px;
-            }
-            .chat-input-container button {
-                padding: 8px;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
-    <!-- Scripts da Wistia -->
-    <script src="https://fast.wistia.com/player.js" async></script>
-    <script src="https://fast.wistia.com/embed/z996khhkm5.js" async type="module"></script>
-</head>
-<body>
-    <div class="chat-container">
-        <div class="banner" id="banner"></div>
-        <div class="chat-header">
-            <div class="header-left">
-                <img id="doctor-image" alt="Dra. Hellena Navarro" class="doctor-image">
-                <h2>Dra. Hellena Navarro</h2>
+import React, { useState, useEffect } from 'react';
+import { Camera, Mic, Send, Phone, Video, MoreVertical, Circle } from 'lucide-react';
+
+interface Message {
+  id: number;
+  text: string;
+  sender: 'user' | 'bot';
+  timestamp: string;
+  options?: string[];
+}
+
+interface FunnelStep {
+  message: string;
+  options?: string[];
+  delay: number;
+}
+
+const FUNNEL_STEPS: FunnelStep[] = [
+  {
+    message: `🔥 Seja bem-vindo! 🔥\nVocê assistiu ao vídeo e sabe que algo não está certo com sua virilidade.\nE eu sei o quanto isso afeta sua autoestima, sua vida sexual e até seu relacionamento.\nPor isso, antes de qualquer coisa, preciso entender mais sobre o que está acontecendo com você.\n📌 Me diz aqui qual dessas situações mais descreve o que você está enfrentando:`,
+    options: [
+      'Tenho ereções fracas e murcham rápido',
+      'Minha vontade de transar diminuiu muito',
+      'Já falhei na cama e isso me abalou muito',
+      'Consigo ficar duro, mas gozo rápido demais'
+    ],
+    delay: 1000
+  },
+  {
+    message: `Entendi… você não está sozinho.\n📌 Mais de 8 em cada 10 homens enfrentam esse problema em algum momento da vida.\nMas sabe qual o maior erro?\n🔴 A maioria acha que é normal, que vai passar sozinho ou que isso só acontece por cansaço e estresse.\n🚨 E é aí que mora o perigo!\nEsse problema não só NÃO vai embora sozinho, como pode PIORAR até chegar num ponto sem volta…\nSe hoje você já percebe sua virilidade caindo, imagine como estará daqui a 3 meses… 6 meses… ou 1 ano…\n📌 Mas calma! Porque agora eu vou te ajudar a REVERTER ISSO!`,
+    delay: 3000
+  },
+  {
+    message: `Agora, preciso ajustar o Truque da Madeira Firme™ para o seu caso.\n📌 Qual sua idade?`,
+    options: [
+      'Menos de 30 anos',
+      'Entre 31 e 45 anos',
+      'Entre 46 e 59 anos',
+      'Mais de 60 anos'
+    ],
+    delay: 2000
+  },
+  {
+    message: `📌 Qual o seu peso aproximado?`,
+    options: [
+      'Até 70 kg',
+      'Entre 71 e 85 kg',
+      'Entre 86 e 100 kg',
+      'Mais de 100 kg'
+    ],
+    delay: 1500
+  },
+  {
+    message: `📌 Há quanto tempo você percebe essa perda de desempenho?`,
+    options: [
+      'Menos de 3 meses',
+      'Entre 3 e 12 meses',
+      'Mais de 1 ano',
+      'Minha vida toda'
+    ],
+    delay: 1500
+  },
+  {
+    message: `Ótimo, agora eu já consigo te dizer exatamente o que está acontecendo com seu corpo!\n🚨 E acredite: VOCÊ NÃO TEM CULPA DE ESTAR PASSANDO POR ISSO!\nO problema não é sua idade, seu estilo de vida ou sua genética…\nO verdadeiro culpado é um bloqueio oculto que está impedindo seu corpo de mandar sangue para o seu pênis.\nE se o sangue não chega lá com força total…\n📌 Sua ereção perde potência\n📌 Você ejacula rápido demais\n📌 Seu desejo sexual desaparece\nMAS A BOA NOTÍCIA É QUE…\n💥 Eu já tenho a solução para o seu caso! 💥\nAgora eu vou preparar sua receita personalizada com o Truque da Madeira Firme™.`,
+    delay: 2000
+  },
+  {
+    message: `📌 Baseado no seu caso, a sua fórmula está pronta!\nAqui está o que você vai receber:\n✅ A Receita Personalizada do TRUQUE DA MADEIRA FIRME – com os ingredientes exatos para o seu caso.\n✅ O Passo a Passo Simples e Rápido – para garantir que você faça do jeito certo e tenha os melhores resultados.\n✅ O Momento Certo Para Tomar – para maximizar a potência e manter sua ereção firme por mais tempo.\n✅ Lista de Alimentos que Turbinam sua Testosterona – e fazem sua virilidade disparar naturalmente.\n\n📌 Veja o que quem já usou está dizendo:\n\n🗣️ Lucas S. – 41 anos\n"Depois de 2 semanas aplicando o truque, minha ereção voltou a ser como na adolescência! Minha esposa achou que eu tinha tomado algo, mas era só o método que realmente funciona!"\n\n🗣️ Ricardo M. – 52 anos\n"Depois de 5 meses falhando com minha mulher, achei que tinha perdido minha virilidade. Fiz o ritual e no primeiro dia já senti a diferença. Agora, estou melhor do que nunca!"`,
+    delay: 2000
+  },
+  {
+    message: `Agora, deixa eu te contar uma coisa…\n⚠️ Essa consulta que eu fiz com você foi 100% GRATUITA.\nInicialmente, eu também ia liberar a receita personalizada sem custo…\nMAS ACONTECEU UM PROBLEMA!\nMuitos homens pegavam a receita e NÃO FAZIAM o método direito, simplesmente porque não davam valor.\nEntão, para garantir que apenas os homens realmente comprometidos recebam essa fórmula poderosa, eu precisei adicionar uma pequena taxa de ativação.\n📌 O valor original dessa receita é R$97…\n🔥 HOJE, estou liberando para você por apenas R$27!\nOu seja, menos que um lanche ou uma cerveja no bar!\n📌 Mas atenção! Isso só vale para quem ativar AGORA!`,
+    delay: 2000
+  },
+  {
+    message: `AGORA, VOCÊ TEM DUAS ESCOLHAS:\n❌ Ignorar essa oportunidade e continuar sofrendo com ereções fracas e falhas…\n✅ Ou garantir sua receita AGORA e recuperar sua potência máxima enquanto ainda há tempo!\n📌 MAS ATENÇÃO!\n🔥 Como esse atendimento é individual, eu só consigo liberar algumas poucas receitas por dia.\nE agora, restam apenas 3 vagas disponíveis!\nSe você sair agora e tentar voltar depois, pode ser que sua vaga já tenha sido preenchida.\n🚀 Clique no botão abaixo AGORA e ative sua Receita Personalizada do Truque da Madeira Firme™!`,
+    options: ['SIM! Quero minha Receita Personalizada AGORA!'],
+    delay: 2000
+  }
+];
+
+function App() {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isTyping, setIsTyping] = useState(false);
+  const [waitingForResponse, setWaitingForResponse] = useState(false);
+
+  const addMessage = (text: string, sender: 'user' | 'bot', options?: string[]) => {
+    setMessages(prev => [...prev, {
+      id: Date.now(),
+      text,
+      sender,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      options
+    }]);
+  };
+
+  const handleNextStep = async () => {
+    if (currentStep < FUNNEL_STEPS.length && !waitingForResponse) {
+      setIsTyping(true);
+      setWaitingForResponse(true);
+      await new Promise(resolve => setTimeout(resolve, FUNNEL_STEPS[currentStep].delay));
+      setIsTyping(false);
+      addMessage(FUNNEL_STEPS[currentStep].message, 'bot', FUNNEL_STEPS[currentStep].options);
+      
+      // Only automatically proceed to next step if there are no options to select
+      if (!FUNNEL_STEPS[currentStep].options) {
+        setWaitingForResponse(false);
+        setCurrentStep(prev => prev + 1);
+        // Add delay before next message if there are no options
+        setTimeout(() => {
+          handleNextStep();
+        }, 2000);
+      }
+    }
+  };
+
+  const handleOptionClick = async (option: string) => {
+    addMessage(option, 'user');
+    setWaitingForResponse(false);
+    setCurrentStep(prev => prev + 1);
+    setTimeout(() => {
+      handleNextStep();
+    }, 1000);
+  };
+
+  useEffect(() => {
+    if (currentStep === 0) {
+      handleNextStep();
+    }
+  }, []);
+
+  return (
+    <div className="h-screen flex flex-col bg-gray-100">
+      {/* Header with banner and profile */}
+      <div className="bg-emerald-600 text-white">
+        <div className="p-4">
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150&h=150&fit=crop"
+                alt="Specialist profile"
+                className="w-12 h-12 rounded-full object-cover"
+              />
+              <div className="absolute bottom-0 right-0 flex items-center">
+                <Circle className="w-3 h-3 fill-green-400 text-green-400 animate-pulse" />
+                <span className="text-xs ml-1">Online</span>
+              </div>
             </div>
-            <span class="online-status"><span class="online-dot"></span>En línea</span>
+            <div>
+              <h1 className="font-semibold text-lg">Especialista em Saúde Masculina</h1>
+              <p className="text-sm opacity-90">Atendimento Personalizado</p>
+            </div>
+          </div>
         </div>
-        <div class="chat-box" id="chat-box"></div>
-        <div class="chat-input-container" id="chat-input-container">
-            <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
-            <button id="send-btn">➡️</button>
+        <div className="h-20 bg-emerald-700 relative overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=200&fit=crop"
+            alt="Health banner"
+            className="w-full h-full object-cover opacity-50"
+          />
         </div>
+      </div>
+
+      {/* Chat messages area */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {messages.map((message) => (
+          <div
+            key={message.id}
+            className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+          >
+            <div
+              className={`max-w-[80%] rounded-lg p-3 ${
+                message.sender === 'user'
+                  ? 'bg-emerald-500 text-white'
+                  : 'bg-white text-gray-800'
+              }`}
+            >
+              <p className="whitespace-pre-line">{message.text}</p>
+              {message.options && (
+                <div className="mt-4 space-y-2">
+                  {message.options.map((option, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleOptionClick(option)}
+                      className="w-full p-2 text-left bg-emerald-100 hover:bg-emerald-200 text-emerald-800 rounded transition-colors"
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <p className="text-xs mt-1 opacity-80">{message.timestamp}</p>
+            </div>
+          </div>
+        ))}
+        {isTyping && (
+          <div className="flex justify-start">
+            <div className="bg-gray-200 rounded-lg px-4 py-2">
+              <div className="flex space-x-2">
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
-    
-    <script>
-        const chatBox = document.getElementById("chat-box");
-        const userInput = document.getElementById("user-input");
-        const sendBtn = document.getElementById("send-btn");
-        const chatInputContainer = document.getElementById("chat-input-container");
-        const doctorImage = document.getElementById("doctor-image");
-        const banner = document.getElementById("banner");
+  );
+}
 
-        // Links das imagens e mídia
-        const doctorImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/16cc7e5b-78eb-49c1-905d-c213a5aec111.jpeg"; // Substitua
-        const bannerImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/3deb5b35-9d13-4bc4-b95c-9ffe9b7c07ac.png"; // Substitua
-        const audioUrl1 = "https://audio.jukehost.co.uk/sujMskMxWPbSRMTwXsYxDHibFUzdcd7k"; // Áudio 1
-        const audioUrl2 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"; // Áudio 2
-        const audioUrl3 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"; // Áudio 3
-        const videoUrl2 = "https://example.com/testimonials.mp4"; // Video 2 (substitua)
-
-        // Aplica as imagens via JavaScript
-        doctorImage.src = doctorImageUrl;
-        if (bannerImageUrl) {
-            const bannerImg = document.createElement("img");
-            bannerImg.src = bannerImageUrl;
-            banner.appendChild(bannerImg);
-        }
-
-        // Funil completo com áudios
-        const messages = [
-            { sender: "doctor", text: "¡Hola! ¡Qué bueno verte por aquí! Es un placer tenerte aquí conmigo." },
-            { sender: "doctor", text: "Mi nombre es Hellena Navarro, soy especialista en metabolismo y pérdida de peso saludable. Hoy te mostraré cómo acelerar la quema de grasa usando solo un café especial por la mañana." },
-            { sender: "doctor", text: "¿Te gustaría recibir la receta del Café Adelgazante Personalizado, que ya ha ayudado a más de 17.000 personas a desbloquear su metabolismo y perder grasa sin dietas extremas?" },
-            { sender: "options", options: ["¡SÍ! Quiero mi receta personalizada."] },
-            { sender: "audio", audioSrc: audioUrl1, wait: 15000 }, // Áudio 1
-            { sender: "doctor", text: "¿Cuál es tu nombre?", waitForInput: true },
-            { sender: "doctor", text: "{NOMBRE}, antes de preparar tu receta personalizada, dime: ¿cuál de estas situaciones describe mejor lo que sientes con respecto a tu peso o metabolismo?" },
-            { sender: "options", options: [
-                "Hago dieta y ejercicio, mas mi peso no baja",
-                "Pierdo peso, pero siempre vuelvo a engordar",
-                "Siento mucha hambre y ansiedad por comida",
-                "Mi metabolismo es lento y subo de peso fácil"
-            ] },
-            { sender: "doctor", text: "¿Cuánto tiempo llevas teniendo dificultades para bajar de peso?" },
-            { sender: "options", options: [
-                "Menos de 3 meses",
-                "Entre 3 y 12 meses",
-                "Más de 1 año",
-                "Toda mi vida"
-            ] },
-            { sender: "doctor", text: "¿Cuántos años tienes?" },
-            { sender: "options", options: [
-                "Menos de 30 años",
-                "Entre 30 y 45 años",
-                "Entre 46 y 59 años",
-                "Más de 60 años"
-            ] },
-            { sender: "doctor", text: "Ahora dime, ¿cuál es tu peso aproximado?" },
-            { sender: "options", options: [
-                "Hasta 60 kg",
-                "Entre 61 kg e 70 kg",
-                "Entre 71 kg e 90 kg",
-                "Más de 90 kg"
-            ] },
-            { sender: "doctor", text: "Basado en lo que me contaste, ya estoy preparando tu receta exclusiva. ¡Mira esto!" },
-            { sender: "report" },
-            { sender: "audio", audioSrc: audioUrl2, wait: 15000 }, // Áudio 2
-            { sender: "doctor", text: "{NOMBRE}, este análisis muestra que tu problema con el metabolismo está limitando tus resultados, pero no te preocupes: ¡el Café Adelgazante Personalizado va a activar tu quema de grasa en pocas semanas!" },
-            { sender: "doctor", text: "Ahora, mira este video de 20 segundos que preparé para ti. Aquí te explico exactamente cómo el Café Adelgazante actuará en tu cuerpo para activar la quema de grasa." },
-            { sender: "wistia", mediaId: "z996khhkm5", wait: 21000 }, // Video 1 (Wistia)
-            { sender: "audio", audioSrc: audioUrl3, wait: 15000 }, // Áudio 3
-            { sender: "doctor", text: "Con base en tus respuestas, ya sé exactamente qué está impidiendo que tu cuerpo baje de peso... ¡Pero la buena noticia es que hay una solución simple y natural para esto!" },
-            { sender: "doctor", text: "Antes de explicarte cómo funciona tu receta personalizada, mira lo que algunas personas que ya usaron el Café Adelgazante tienen para decir:" },
-            { sender: "video", videoSrc: videoUrl2, wait: 45000 }, // Video 2 (testemunhos)
-            { sender: "doctor", text: "¿Y sabes qué tienen en común todas estas personas?" },
-            { sender: "doctor", text: "Descubrieron que no era su culpa no poder bajar de peso… ¡Su cuerpo simplemente estaba bloqueado para quemar grasa!" },
-            { sender: "doctor", text: "Pero cuando activaron este mecanismo natural con el Café Adelgazante, ¡el peso finalmente comenzó a desaparecer!" },
-            { sender: "doctor", text: "Ahora quiero que tengas tu propia experiencia y veas con tus propios ojos cómo el Café Adelgazante puede transformar tu metabolismo." },
-            { sender: "doctor", text: "Estoy liberando solo algunas recetas personalizadas para quienes quieran probar el método ahora mismo." },
-            { sender: "doctor", text: "¿Quieres asegurar la tuya?" },
-            { sender: "options", options: ["¡Sí! Quiero mi receta personalizada ahora."] },
-            { sender: "doctor", text: "Mira todo lo que recibirás ahora:" },
-            { sender: "doctor", text: "✅ Receta Personalizada del Café Adelgazante – ajustada según tus respuestas para activar la quema de grasa." },
-            { sender: "doctor", text: "✅ Guía Completa de Uso y Preparación – para que lo hagas correctamente y aproveches al máximo los efectos del café." },
-            { sender: "doctor", text: "✅ [BONO GRATIS] Lista Secreta de Alimentos Termogénicos – alimentos que potencian aún más los efectos del café y aceleran el metabolismo." },
-            { sender: "doctor", text: "✅ [BONO GRATIS] Técnica Japonesa para eliminar grasa abdominal – un método simple que puedes aplicar junto con el café para reducir medidas más rápido." },
-            { sender: "doctor", text: "Ahora, sé que muchas personas han pagado más de $197 por consultas que no resolvieron nada..." },
-            { sender: "doctor", text: "Pero tranquilo, NO vas a pagar eso." },
-            { sender: "doctor", text: "¡Solo por hoy, para las primeras personas que aseguren su receta personalizada, voy a liberar todo esto por solo <span class='highlight-price'>$10</span>!" },
-            { sender: "doctor", text: "¡Así es! Menos de lo que cuesta un refrigerio." },
-            { sender: "doctor", text: "¡Así es! Por solo <span class='highlight-price'>$10</span>, tendrás acceso inmediato a tu Receta Personalizada del Café Adelgazante + ¡TODOS los bonos exclusivos!" },
-            { sender: "price" },
-            { sender: "doctor", text: "¡Menos de lo que cuesta una hamburguesa… y con esto puedes activar la quema de grasa de forma natural y definitiva!" },
-            { sender: "doctor", text: "¡Pero atención! Como la personalización de la receta requiere una atención individual, solo puedo liberar unas pocas recetas al día." },
-            { sender: "doctor", text: "¡Y ahora, solo quedan 5 cupos disponibles!" },
-            { sender: "doctor", text: "Si sales ahora y tratas de volver después, es posible que tu cupo ya haya sido tomado." },
-            { sender: "doctor", text: "Imagina despertar en los próximos días sintiéndote más liviano(a), con tu ropa volviendo a quedarte bien y esa hinchazón desapareciendo…" },
-            { sender: "doctor", text: "Ahora tienes dos opciones:" },
-            { sender: "doctor", text: "❌ Opción 1: Ignorar esta oportunidad, seguir intentando adelgazar por tu cuenta, sin saber si lo estás haciendo bien, y continuar frustrado(a) con la báscula…<br>✅ Opción 2: Asegurar tu receta personalizada ahora, comenzar a quemar grasa en los próximos días y finalmente ver los resultados que siempre has querido." },
-            { sender: "doctor", text: "¡Haz clic en el botón de abajo ahora y activa tu Receta Personalizada del Café Adelgazante antes de que se acaben los cupos!" },
-            { sender: "options", options: ["¡SÍ! Quiero mi Receta Personalizada y empezar ahora."] }
-        ];
-
-        let index = 0;
-        let waitingForInput = false;
-        let userName = "";
-        let userData = { problema: "", tiempo: "", edad: "", peso: "" };
-
-        function addMessage(sender, text, callback) {
-            if (sender === "doctor") {
-                // Adiciona o indicador de digitação
-                const typingDiv = document.createElement("div");
-                typingDiv.classList.add("typing-indicator");
-                chatBox.appendChild(typingDiv);
-
-                // Simula digitação por 1 segundo antes de mostrar a mensagem
-                setTimeout(() => {
-                    chatBox.removeChild(typingDiv);
-                    const msgDiv = document.createElement("div");
-                    msgDiv.classList.add("message", sender);
-                    msgDiv.innerHTML = text.replace("{NOMBRE}", userName || "amigo/a");
-                    chatBox.appendChild(msgDiv);
-                    if (callback) callback();
-                }, 1000); // 1 segundo de efeito de digitação
-            } else {
-                const msgDiv = document.createElement("div");
-                msgDiv.classList.add("message", sender);
-                msgDiv.innerHTML = text.replace("{NOMBRE}", userName || "amigo/a");
-                chatBox.appendChild(msgDiv);
-                if (callback) callback();
-            }
-        }
-
-        function addAudio(audioSrc, callback) {
-            const audioDiv = document.createElement("div");
-            audioDiv.classList.add("audio-message");
-            const playerDiv = document.createElement("div");
-            playerDiv.classList.add("audio-player");
-
-            const audio = new Audio(audioSrc);
-            const playPauseBtn = document.createElement("button");
-            playPauseBtn.classList.add("play-pause-btn");
-            playPauseBtn.innerHTML = "▶";
-            const progressContainer = document.createElement("div");
-            progressContainer.classList.add("progress-container");
-            const progressBar = document.createElement("div");
-            progressBar.classList.add("progress-bar");
-            const timeDisplay = document.createElement("span");
-            timeDisplay.classList.add("time-display");
-            timeDisplay.textContent = "0:00 / 0:00";
-
-            progressContainer.appendChild(progressBar);
-            playerDiv.appendChild(playPauseBtn);
-            playerDiv.appendChild(progressContainer);
-            playerDiv.appendChild(timeDisplay);
-            audioDiv.appendChild(playerDiv);
-            chatBox.appendChild(audioDiv);
-
-            let isPlaying = false;
-
-            audio.addEventListener("loadedmetadata", () => {
-                const duration = audio.duration;
-                timeDisplay.textContent = formatTime(audio.currentTime) + " / " + formatTime(duration);
-            });
-
-            audio.addEventListener("timeupdate", () => {
-                const currentTime = audio.currentTime;
-                const duration = audio.duration;
-                const progress = (currentTime / duration) * 100;
-                progressBar.style.width = progress + "%";
-                timeDisplay.textContent = formatTime(currentTime) + " / " + formatTime(duration);
-            });
-
-            playPauseBtn.addEventListener("click", () => {
-                if (isPlaying) {
-                    audio.pause();
-                    playPauseBtn.innerHTML = "▶";
-                } else {
-                    audio.play().then(() => {
-                        playPauseBtn.innerHTML = "⏸";
-                    }).catch(err => console.error("Erro ao tocar áudio:", err));
-                }
-                isPlaying = !isPlaying;
-            });
-
-            progressContainer.addEventListener("click", (e) => {
-                const rect = progressContainer.getBoundingClientRect();
-                const clickX = e.clientX - rect.left;
-                const width = rect.width;
-                const seekTime = (clickX / width) * audio.duration;
-                audio.currentTime = seekTime;
-            });
-
-            audio.addEventListener("error", () => {
-                console.error("Erro ao carregar o áudio:", audioSrc);
-                timeDisplay.textContent = "Erro";
-            });
-
-            audio.addEventListener("canplay", () => {
-                console.log("Áudio pronto para tocar:", audioSrc);
-                audio.play().then(() => {
-                    playPauseBtn.innerHTML = "⏸";
-                    isPlaying = true;
-                }).catch(err => console.error("Erro ao iniciar áudio:", err));
-            });
-
-            if (callback) callback();
-        }
-
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
-        }
-
-        function addWistiaVideo(mediaId, callback) {
-            const videoDiv = document.createElement("div");
-            videoDiv.classList.add("video-message");
-            const wistiaPlayer = document.createElement("wistia-player");
-            wistiaPlayer.setAttribute("media-id", mediaId);
-            wistiaPlayer.setAttribute("seo", "false");
-            wistiaPlayer.setAttribute("aspect", "0.5625");
-            videoDiv.appendChild(wistiaPlayer);
-            chatBox.appendChild(videoDiv);
-            if (callback) callback();
-        }
-
-        function addReport(callback) {
-            const reportDiv = document.createElement("div");
-            reportDiv.classList.add("report-message");
-            const report = document.createElement("div");
-            report.classList.add("report");
-            report.innerHTML = `
-                <h3>Tus Datos y Diagnóstico</h3>
-                <p><strong>Nombre:</strong> ${userName || "Usuario"}</p>
-                <p><strong>Problema Principal:</strong> ${userData.problema || "No especificado"}</p>
-                <p><strong>Tiempo con Dificultad:</strong> ${userData.tiempo || "No especificado"}</p>
-                <p><strong>Edad:</strong> ${userData.edad || "No especificado"}</p>
-                <p><strong>Peso Aproximado:</strong> ${userData.peso || "No especificado"}</p>
-                <p><strong>Diagnóstico:</strong> <span class="diagnosis">Grave</span></p>
-            `;
-            reportDiv.appendChild(report);
-            chatBox.appendChild(reportDiv);
-            if (callback) callback();
-        }
-
-        function addPriceImage(callback) {
-            const priceDiv = document.createElement("div");
-            priceDiv.classList.add("price-message");
-            const priceBox = document.createElement("div");
-            priceBox.classList.add("price-box");
-            priceBox.innerHTML = `
-                <span>De <span class="original-price">$197</span> por solo <span class="promo-price">$10</span></span>
-            `;
-            priceDiv.appendChild(priceBox);
-            chatBox.appendChild(priceDiv);
-            if (callback) callback();
-        }
-
-        function addVideo(videoSrc, callback) {
-            const videoDiv = document.createElement("div");
-            videoDiv.classList.add("video-message");
-            const videoElement = document.createElement("video");
-            videoElement.controls = true;
-            videoElement.src = videoSrc;
-            videoDiv.appendChild(videoElement);
-            chatBox.appendChild(videoDiv);
-            if (callback) callback();
-        }
-
-        function addOptions(options) {
-            const optionsDiv = document.createElement("div");
-            optionsDiv.classList.add("options");
-            options.forEach(option => {
-                const btn = document.createElement("button");
-                btn.textContent = option;
-                btn.onclick = () => handleUserResponse(option);
-                optionsDiv.appendChild(btn);
-            });
-            chatBox.appendChild(optionsDiv);
-            waitingForInput = true;
-        }
-
-        function handleUserResponse(response) {
-            if (!waitingForInput) return;
-            const msgDiv = document.createElement("div");
-            msgDiv.classList.add("message", "user");
-            msgDiv.textContent = response;
-            chatBox.appendChild(msgDiv);
-
-            if (index === 7) userData.problema = response;
-            else if (index === 9) userData.tiempo = response;
-            else if (index === 11) userData.edad = response;
-            else if (index === 13) userData.peso = response;
-            else if (index === 46) {
-                window.location.href = "https://example.com/pago"; // Substitua pelo link real
-            }
-
-            document.querySelectorAll(".options").forEach(el => el.remove());
-            waitingForInput = false;
-            index++;
-            setTimeout(nextMessage, 1000); // Pequeno delay após resposta do usuário
-        }
-
-        function handleManualInput() {
-            const text = userInput.value.trim();
-            if (text && waitingForInput) {
-                console.log("Usuário digitou:", text);
-                addMessage("user", text, () => {
-                    if (index === 5) userName = text;
-                    userInput.value = "";
-                    waitingForInput = false;
-                    index++;
-                    setTimeout(nextMessage, 1000);
-                });
-            }
-        }
-
-        function nextMessage() {
-            if (index >= messages.length || waitingForInput) return;
-
-            const msg = messages[index];
-            if (msg.sender === "doctor") {
-                addMessage("doctor", msg.text, () => {
-                    if (msg.waitForInput) {
-                        console.log("Aguardando entrada do usuário no índice:", index);
-                        waitingForInput = true;
-                        chatInputContainer.style.display = "flex";
-                        userInput.focus();
-                    } else {
-                        index++;
-                        setTimeout(nextMessage, 4000); // Intervalo de 4 segundos
-                    }
-                });
-            } else if (msg.sender === "options") {
-                addOptions(msg.options);
-            } else if (msg.sender === "audio") {
-                addAudio(msg.audioSrc, () => {
-                    index++;
-                    setTimeout(nextMessage, msg.wait || 4000);
-                });
-            } else if (msg.sender === "wistia") {
-                addWistiaVideo(msg.mediaId, () => {
-                    index++;
-                    setTimeout(nextMessage, msg.wait || 4000);
-                });
-            } else if (msg.sender === "report") {
-                addReport(() => {
-                    index++;
-                    setTimeout(nextMessage, 4000);
-                });
-            } else if (msg.sender === "video") {
-                addVideo(msg.videoSrc, () => {
-                    index++;
-                    setTimeout(nextMessage, msg.wait || 4000);
-                });
-            } else if (msg.sender === "price") {
-                addPriceImage(() => {
-                    index++;
-                    setTimeout(nextMessage, 4000);
-                });
-            }
-        }
-
-        sendBtn.addEventListener("click", handleManualInput);
-        userInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") handleManualInput();
-        });
-
-        // Inicia o chat
-        console.log("Iniciando o chat...");
-        nextMessage();
-    </script>
-</body>
-</html>
+export default App;
