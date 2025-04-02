@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Consultorio</title>
+    <title>Chat Consultório</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -95,7 +95,7 @@
             align-self: flex-start;
         }
         .user {
-            background: #4caf50;
+            background: #2e7d32;
             color: white;
             align-self: flex-end;
         }
@@ -109,10 +109,17 @@
             font-size: 1rem;
             color: #333;
         }
-        .audio-message, .video-message {
+        .audio-message, .video-message, .image-message {
             max-width: 80%;
             margin-bottom: 8px;
             align-self: flex-start;
+        }
+        .image-message img {
+            width: 100%;
+            max-width: 250px; /* Tamanho intermediário */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .audio-player {
             display: flex;
@@ -127,7 +134,7 @@
         .audio-player .play-pause-btn {
             width: 30px;
             height: 30px;
-            background: #075e54;
+            background: #2e7d32;
             border-radius: 50%;
             border: none;
             cursor: pointer;
@@ -149,7 +156,7 @@
         .audio-player .progress-bar {
             height: 100%;
             width: 0;
-            background: #075e54;
+            background: #2e7d32;
             border-radius: 2px;
             position: relative;
         }
@@ -160,7 +167,7 @@
             top: -4px;
             width: 12px;
             height: 12px;
-            background: #075e54;
+            background: #2e7d32;
             border-radius: 50%;
         }
         .audio-player .time-display {
@@ -170,9 +177,11 @@
             min-width: 60px;
             text-align: right;
         }
-        .video-message wistia-player {
-            width: 100%;
+        .video-message iframe {
+            width: 100PROG%;
             max-width: 300px;
+            height: 169px;
+            border: none;
         }
         .report-message, .price-message {
             max-width: 80%;
@@ -292,7 +301,7 @@
             align-self: flex-start;
         }
         .options button {
-            background-color: #4caf50;
+            background-color: #2e7d32;
             color: white;
             border: none;
             padding: 8px 15px;
@@ -303,7 +312,7 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
             text-align: left;
             white-space: nowrap;
-            overflow: visible; /* Remove truncamento */
+            overflow: visible;
             width: 100%;
             max-width: 300px;
         }
@@ -339,15 +348,19 @@
                 width: 8px;
                 height: 8px;
             }
-            .message, .audio-message, .video-message, .report-message, .price-message {
+            .message, .audio-message, .video-message, .image-message, .report-message, .price-message {
                 max-width: 85%;
                 font-size: 0.9rem;
+            }
+            .image-message img {
+                max-width: 200px; /* Ajuste para mobile */
             }
             .audio-player {
                 max-width: 250px;
             }
-            .video-message wistia-player {
+            .video-message iframe {
                 max-width: 250px;
+                height: 141px;
             }
             .report-message .report h3 {
                 font-size: 1.2rem;
@@ -368,23 +381,20 @@
             }
         }
     </style>
-    <!-- Scripts da Wistia -->
-    <script src="https://fast.wistia.com/player.js" async></script>
-    <script src="https://fast.wistia.com/embed/z996khhkm5.js" async type="module"></script>
 </head>
 <body>
     <div class="chat-container">
         <div class="banner" id="banner"></div>
         <div class="chat-header">
             <div class="header-left">
-                <img id="doctor-image" alt="Dra. Hellena Navarro" class="doctor-image">
-                <h2>Dra. Hellena Navarro</h2>
+                <img id="doctor-image" alt="Dr. Mathias Andrade" class="doctor-image">
+                <h2>Dr. Mathias Andrade</h2>
             </div>
-            <span class="online-status"><span class="online-dot"></span>En línea</span>
+            <span class="online-status"><span class="online-dot"></span>Online</span>
         </div>
         <div class="chat-box" id="chat-box"></div>
         <div class="chat-input-container" id="chat-input-container" style="display: none;">
-            <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
+            <input type="text" id="user-input" placeholder="Digite sua mensagem...">
             <button id="send-btn">➡️</button>
         </div>
     </div>
@@ -397,13 +407,9 @@
         const doctorImage = document.getElementById("doctor-image");
         const banner = document.getElementById("banner");
 
-        // Links das imagens e mídia
+        // Links das imagens
         const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua
         const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua
-        const audioUrl1 = "https://audio.jukehost.co.uk/sujMskMxWPbSRMTwXsYxDHibFUzdcd7k"; // Áudio 1
-        const audioUrl2 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"; // Áudio 2
-        const audioUrl3 = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"; // Áudio 3
-        const videoUrl2 = "https://example.com/testimonials.mp4"; // Video 2 (substitua)
 
         // Aplica as imagens via JavaScript
         doctorImage.src = doctorImageUrl;
@@ -413,85 +419,22 @@
             banner.appendChild(bannerImg);
         }
 
-        // Funil completo com áudios
+        // Novo funil de mensagens
         const messages = [
-            { sender: "doctor", text: "¡Hola! ¡Qué bueno verte por aquí! Es un placer tenerte aquí conmigo.", wait: 2000 },
-            { sender: "doctor", text: "Mi nombre es Hellena Navarro, soy especialista en metabolismo y pérdida de peso saludable. Hoy te mostraré cómo acelerar la quema de grasa usando solo un café especial por la mañana.", wait: 3000 },
-            { sender: "doctor", text: "¿Te gustaría recibir la receta del Café Adelgazante Personalizado, que ya ha ayudado a más de 17.000 personas a desbloquear su metabolismo y perder grasa sin dietas extremas?" },
-            { sender: "options", options: ["¡SÍ! Quiero mi receta personalizada."] },
-            { sender: "audio", audioSrc: audioUrl1, wait: 15000 }, // Áudio 1
-            { sender: "doctor", text: "¿Cuál es tu nombre?", waitForInput: true },
-            { sender: "doctor", text: "{NOMBRE}, antes de preparar tu receta personalizada, dime: ¿cuál de estas situaciones describe mejor lo que sientes con respecto a tu peso o metabolismo?" },
-            { sender: "options", options: [
-                "Hago dieta y ejercicio, pero mi peso no baja",
-                "Pierdo peso, pero siempre vuelvo a engordar",
-                "Siento mucha hambre y ansiedad por la comida",
-                "Mi metabolismo es lento y subo de peso fácilmente"
-            ] },
-            { sender: "doctor", text: "¿Cuánto tiempo llevas teniendo dificultades para bajar de peso?", wait: 2000 },
-            { sender: "options", options: [
-                "Menos de 3 meses",
-                "Entre 3 y 12 meses",
-                "Más de 1 año",
-                "Toda mi vida"
-            ] },
-            { sender: "doctor", text: "¿Cuántos años tienes?", wait: 2000 },
-            { sender: "options", options: [
-                "Menos de 30 años",
-                "Entre 30 y 45 años",
-                "Entre 46 y 59 años",
-                "Más de 60 años"
-            ] },
-            { sender: "doctor", text: "Ahora dime, ¿cuál es tu peso aproximado?", wait: 2000 },
-            { sender: "options", options: [
-                "Hasta 60 kg",
-                "Entre 61 kg e 70 kg",
-                "Entre 71 kg e 90 kg",
-                "Más de 90 kg"
-            ] },
-            { sender: "doctor", text: "Basado en lo que me contaste, ya estoy preparando tu receta exclusiva. ¡Mira esto!" },
-            { sender: "report", wait: 4000 },
-            { sender: "audio", audioSrc: audioUrl2, wait: 15000 }, // Áudio 2
-            { sender: "doctor", text: "{NOMBRE}, este análisis muestra que tu problema con el metabolismo está limitando tus resultados, pero no te preocupes: ¡el Café Adelgazante Personalizado va a activar tu quema de grasa en pocas semanas!", wait: 3000 },
-            { sender: "doctor", text: "Ahora, mira este video de 20 segundos que preparé para ti. Aquí te explico exactamente cómo el Café Adelgazante actuará en tu cuerpo para activar la quema de grasa." },
-            { sender: "wistia", mediaId: "z996khhkm5", wait: 21000 }, // Video 1 (Wistia)
-            { sender: "audio", audioSrc: audioUrl3, wait: 15000 }, // Áudio 3
-            { sender: "doctor", text: "Con base en tus respuestas, ya sé exactamente qué está impidiendo que tu cuerpo baje de peso... ¡Pero la buena noticia es que hay una solución simple y natural para esto!", wait: 4000 },
-            { sender: "doctor", text: "Antes de explicarte cómo funciona tu receta personalizada, mira lo que algunas personas que ya usaron el Café Adelgazante tienen para decir:" },
-            { sender: "video", videoSrc: videoUrl2, wait: 45000 }, // Video 2 (testemunhos)
-            { sender: "doctor", text: "¿Y sabes qué tienen en común todas estas personas?" },
-            { sender: "doctor", text: "Descubrieron que no era su culpa no poder bajar de peso… ¡Su cuerpo simplemente estaba bloqueado para quemar grasa!" },
-            { sender: "doctor", text: "Pero cuando activaron este mecanismo natural con el Café Adelgazante, ¡el peso finalmente comenzó a desaparecer!", wait: 4000 },
-            { sender: "doctor", text: "Ahora quiero que tengas tu propia experiencia y veas con tus propios ojos cómo el Café Adelgazante puede transformar tu metabolismo." },
-            { sender: "doctor", text: "Estoy liberando solo algunas recetas personalizadas para quienes quieran probar el método ahora mismo." },
-            { sender: "doctor", text: "¿Quieres asegurar la tuya?" },
-            { sender: "options", options: ["¡Sí! Quiero mi receta personalizada ahora."], wait: 2000 },
-            { sender: "doctor", text: "Mira todo lo que recibirás ahora:", wait: 2000 },
-            { sender: "doctor", text: "✅ Receta Personalizada del Café Adelgazante – ajustada según tus respuestas para activar la quema de grasa.", wait: 2000 },
-            { sender: "doctor", text: "✅ Guía Completa de Uso y Preparación – para que lo hagas correctamente y aproveches al máximo los efectos del café.", wait: 3000 },
-            { sender: "doctor", text: "✅ [BONO GRATIS] Lista Secreta de Alimentos Termogénicos – alimentos que potencian aún más los efectos del café y aceleran el metabolismo.", wait: 3000 },
-            { sender: "doctor", text: "✅ [BONO GRATIS] Técnica Japonesa para eliminar grasa abdominal – un método simple que puedes aplicar junto con el café para reducir medidas más rápido.", wait: 3000 },
-            { sender: "doctor", text: "Ahora, sé que muchas personas han pagado más de $197 por consultas que no resolvieron nada...", wait: 3000 },
-            { sender: "doctor", text: "Pero tranquilo, NO vas a pagar eso.", wait: 3000 },
-            { sender: "doctor", text: "¡Solo por hoy, para las primeras personas que aseguren su receta personalizada, voy a liberar todo esto por solo <span class='highlight-price'>$10</span>!", wait: 3000 },
-            { sender: "doctor", text: "¡Así es! Menos de lo que cuesta un refrigerio.", wait: 3000 },
-            { sender: "doctor", text: "¡Así es! Por solo <span class='highlight-price'>$10</span>, tendrás acceso inmediato a tu Receta Personalizada del Café Adelgazante + ¡TODOS los bonos exclusivos!", wait: 3000 },
-            { sender: "price" },
-            { sender: "doctor", text: "¡Menos de lo que cuesta una hamburguesa… y con esto puedes activar la quema de grasa de forma natural y definitiva!", wait: 3000 },
-            { sender: "doctor", text: "¡Pero atención! Como la personalización de la receta requiere una atención individual, solo puedo liberar unas pocas recetas al día." },
-            { sender: "doctor", text: "¡Y ahora, solo quedan 5 cupos disponibles!", wait: 3000 },
-            { sender: "doctor", text: "Si sales ahora y tratas de volver después, es posible que tu cupo ya haya sido tomado.", wait: 3000 },
-            { sender: "doctor", text: "Imagina despertar en los próximos días sintiéndote más liviano(a), con tu ropa volviendo a quedarte bien y esa hinchazón desapareciendo…" },
-            { sender: "doctor", text: "Ahora tienes dos opciones:", wait: 3000 },
-            { sender: "doctor", text: "❌ Opción 1: Ignorar esta oportunidad, seguir intentando adelgazar por tu cuenta, sin saber si lo estás haciendo bien, y continuar frustrado(a) con la báscula…<br>✅ Opción 2: Asegurar tu receta personalizada ahora, comenzar a quemar grasa en los próximos días y finalmente ver los resultados que siempre has querido.", wait: 3000 },
-            { sender: "doctor", text: "¡Haz clic en el botón de abajo ahora y activa tu Receta Personalizada del Café Adelgazante antes de que se acaben los cupos!" },
-            { sender: "options", options: ["¡SÍ! Quiero mi Receta Personalizada y empezar ahora."] }
+            { sender: "doctor", text: "[INICIANDO SEU ATENDIMENTO] Essa consulta é GRATUITA!", wait: 2000 },
+            { sender: "doctor", text: "Dr. Mathias entrou na conversa…", wait: 3000 },
+            { sender: "options", options: ["INICIAR ATENDIMENTO"] },
+            { sender: "doctor", text: "Meu nome é Dr. Mathias Andrade... Sou o criador do método Truque do Gengibre", wait: 3000 },
+            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/98b3030e-eb36-4c4b-b327-54e54e859baa.png", wait: 5000 },
+            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/6d2080a3-be04-4c5a-bbb6-e680d95d9974.jpeg", wait: 5000 },
+            { sender: "doctor", text: "Antes de eu te ensinar a preparar de forma EFICAZ o verdadeiro Truque do Gengibre... Escute o áudio!👇", wait: 3000 }
+            // Adicione o áudio aqui quando tiver o link: { sender: "audio", audioSrc: "https://link.com/audio.mp3", wait: 15000 }
         ];
 
         let index = 0;
         let waitingForInput = false;
         let userName = "";
-        let userData = { problema: "", tiempo: "", edad: "", peso: "" };
+        let userData = { problema: "", tempo: "", idade: "", peso: "" };
 
         function calculateTypingTime(text) {
             const textLength = text.replace(/<[^>]+>/g, "").length;
@@ -501,13 +444,13 @@
         function addMessage(sender, text, callback) {
             const msgDiv = document.createElement("div");
             msgDiv.classList.add("message", sender);
-            const cleanText = text.replace("{NOMBRE}", userName || "amigo/a");
+            const cleanText = text.replace("{NOME}", userName || "amigo(a)");
             msgDiv.innerHTML = cleanText;
 
             if (sender === "doctor") {
                 const typingDiv = document.createElement("div");
                 typingDiv.classList.add("typing-indicator");
-                typingDiv.textContent = ""; // Sem "..." explícito
+                typingDiv.textContent = "";
                 chatBox.appendChild(typingDiv);
                 chatBox.scrollTop = chatBox.scrollHeight;
 
@@ -523,6 +466,17 @@
                 chatBox.scrollTop = chatBox.scrollHeight;
                 if (callback) callback();
             }
+        }
+
+        function addImage(imageSrc) {
+            const imageDiv = document.createElement("div");
+            imageDiv.classList.add("image-message");
+            const img = document.createElement("img");
+            img.src = imageSrc;
+            img.alt = "Imagem do Dr. Mathias";
+            imageDiv.appendChild(img);
+            chatBox.appendChild(imageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
 
         function addAudio(audioSrc) {
@@ -606,17 +560,15 @@
             return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
         }
 
-        function addWistiaVideo(mediaId) {
+        function addVideo(videoSrc) {
             const videoDiv = document.createElement("div");
             videoDiv.classList.add("video-message");
-            const wistiaPlayer = document.createElement("wistia-player");
-            wistiaPlayer.setAttribute("media-id", mediaId);
-            wistiaPlayer.setAttribute("seo", "false");
-            wistiaPlayer.setAttribute("aspect", "0.5625");
-            videoDiv.appendChild(wistiaPlayer);
+            const iframe = document.createElement("iframe");
+            iframe.src = videoSrc;
+            iframe.allow = "autoplay; fullscreen";
+            videoDiv.appendChild(iframe);
             chatBox.appendChild(videoDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
-            console.log("Vídeo Wistia adicionado:", mediaId);
         }
 
         function addReport() {
@@ -625,12 +577,12 @@
             const report = document.createElement("div");
             report.classList.add("report");
             report.innerHTML = `
-                <h3>Tus Datos y Diagnóstico</h3>
-                <p><strong>Nombre:</strong> ${userName || "Usuario"}</p>
-                <p><strong>Problema Principal:</strong> ${userData.problema || "No especificado"}</p>
-                <p><strong>Tiempo con Dificultad:</strong> ${userData.tiempo || "No especificado"}</p>
-                <p><strong>Edad:</strong> ${userData.edad || "No especificado"}</p>
-                <p><strong>Peso Aproximado:</strong> ${userData.peso || "No especificado"}</p>
+                <h3>Seus Dados e Diagnóstico</h3>
+                <p><strong>Nome:</strong> ${userName || "Usuário"}</p>
+                <p><strong>Problema Principal:</strong> ${userData.problema || "Não especificado"}</p>
+                <p><strong>Tempo com Dificuldade:</strong> ${userData.tempo || "Não especificado"}</p>
+                <p><strong>Idade:</strong> ${userData.idade || "Não especificado"}</p>
+                <p><strong>Peso Aproximado:</strong> ${userData.peso || "Não especificado"}</p>
                 <p><strong>Diagnóstico:</strong> <span class="diagnosis">Grave</span></p>
             `;
             reportDiv.appendChild(report);
@@ -644,21 +596,10 @@
             const priceBox = document.createElement("div");
             priceBox.classList.add("price-box");
             priceBox.innerHTML = `
-                <span>De <span class="original-price">$197</span> por solo <span class="promo-price">$10</span></span>
+                <span>De <span class="original-price">R$197</span> por apenas <span class="promo-price">R$10</span></span>
             `;
             priceDiv.appendChild(priceBox);
             chatBox.appendChild(priceDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        function addVideo(videoSrc) {
-            const videoDiv = document.createElement("div");
-            videoDiv.classList.add("video-message");
-            const videoElement = document.createElement("video");
-            videoElement.controls = true;
-            videoElement.src = videoSrc;
-            videoDiv.appendChild(videoElement);
-            chatBox.appendChild(videoDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
@@ -670,9 +611,8 @@
                 btn.textContent = option;
                 btn.onclick = () => handleUserResponse(option);
 
-                // Verifica o comprimento do texto para decidir se quebra ou não
                 const textLength = option.length;
-                if (textLength > 25) { // Limite de 25 caracteres para textos longos
+                if (textLength > 25) {
                     btn.classList.add("long-text");
                 }
 
@@ -686,15 +626,6 @@
         function handleUserResponse(response) {
             if (!waitingForInput) return;
             addMessage("user", response, () => {
-                if (index === 7) userData.problema = response;
-                else if (index === 9) userData.tiempo = response;
-                else if (index === 11) userData.edad = response;
-                else if (index === 13) userData.peso = response;
-                else if (index === 46) {
-                    window.location.href = "https://example.com/pago"; // Substitua pelo link real
-                    return;
-                }
-
                 document.querySelectorAll(".options").forEach(el => el.remove());
                 waitingForInput = false;
                 index++;
@@ -707,7 +638,6 @@
             if (text && waitingForInput) {
                 console.log("Usuário digitou:", text);
                 addMessage("user", text, () => {
-                    if (index === 5) userName = text;
                     userInput.value = "";
                     chatInputContainer.style.display = "none";
                     waitingForInput = false;
@@ -740,16 +670,16 @@
                 addAudio(msg.audioSrc);
                 index++;
                 setTimeout(nextMessage, msg.wait || 2000);
-            } else if (msg.sender === "wistia") {
-                addWistiaVideo(msg.mediaId);
+            } else if (msg.sender === "video") {
+                addVideo(msg.videoSrc);
+                index++;
+                setTimeout(nextMessage, msg.wait || 2000);
+            } else if (msg.sender === "image") {
+                addImage(msg.imageSrc);
                 index++;
                 setTimeout(nextMessage, msg.wait || 2000);
             } else if (msg.sender === "report") {
                 addReport();
-                index++;
-                setTimeout(nextMessage, msg.wait || 2000);
-            } else if (msg.sender === "video") {
-                addVideo(msg.videoSrc);
                 index++;
                 setTimeout(nextMessage, msg.wait || 2000);
             } else if (msg.sender === "price") {
