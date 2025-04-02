@@ -116,7 +116,7 @@
         }
         .image-message img {
             width: 100%;
-            max-width: 250px; /* Tamanho intermediário */
+            max-width: 250px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -178,7 +178,7 @@
             text-align: right;
         }
         .video-message iframe {
-            width: 100PROG%;
+            width: 100%;
             max-width: 300px;
             height: 169px;
             border: none;
@@ -353,7 +353,7 @@
                 font-size: 0.9rem;
             }
             .image-message img {
-                max-width: 200px; /* Ajuste para mobile */
+                max-width: 200px;
             }
             .audio-player {
                 max-width: 250px;
@@ -428,18 +428,45 @@
             { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/98b3030e-eb36-4c4b-b327-54e54e859baa.png", wait: 5000 },
             { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/6d2080a3-be04-4c5a-bbb6-e680d95d9974.jpeg", wait: 5000 },
             { sender: "doctor", text: "Antes de eu te ensinar a preparar de forma EFICAZ o verdadeiro Truque do Gengibre... Escute o áudio!👇", wait: 3000 }
-            // Adicione o áudio aqui quando tiver o link: { sender: "audio", audioSrc: "https://link.com/audio.mp3", wait: 15000 }
+            // Adicione o áudio aqui: { sender: "audio", audioSrc: "https://link.com/audio.mp3", wait: 15000 }
         ];
 
         let index = 0;
         let waitingForInput = false;
         let userName = "";
         let userData = { problema: "", tempo: "", idade: "", peso: "" };
+        let autoScroll = true; // Controla o rolamento automático
 
         function calculateTypingTime(text) {
             const textLength = text.replace(/<[^>]+>/g, "").length;
             return Math.min(Math.max(textLength * 50, 1000), 4000); // 50ms por caractere, min 1s, max 4s
         }
+
+        function scrollToBottom() {
+            if (autoScroll) {
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+
+        // Pausa o auto-scroll quando o usuário interage
+        chatBox.addEventListener("scroll", () => {
+            const isAtBottom = chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight - 10; // Margem de 10px
+            if (!isAtBottom) {
+                autoScroll = false; // Desativa o auto-scroll se não estiver no final
+            } else {
+                autoScroll = true; // Reativa se voltar ao final
+            }
+        });
+
+        // Suporte a toque em dispositivos móveis
+        chatBox.addEventListener("touchmove", () => {
+            const isAtBottom = chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight - 10;
+            if (!isAtBottom) {
+                autoScroll = false;
+            } else {
+                autoScroll = true;
+            }
+        });
 
         function addMessage(sender, text, callback) {
             const msgDiv = document.createElement("div");
@@ -452,18 +479,18 @@
                 typingDiv.classList.add("typing-indicator");
                 typingDiv.textContent = "";
                 chatBox.appendChild(typingDiv);
-                chatBox.scrollTop = chatBox.scrollHeight;
+                scrollToBottom();
 
                 const typingTime = calculateTypingTime(cleanText);
                 setTimeout(() => {
                     chatBox.removeChild(typingDiv);
                     chatBox.appendChild(msgDiv);
-                    chatBox.scrollTop = chatBox.scrollHeight;
+                    scrollToBottom();
                     if (callback) callback();
                 }, typingTime);
             } else {
                 chatBox.appendChild(msgDiv);
-                chatBox.scrollTop = chatBox.scrollHeight;
+                scrollToBottom();
                 if (callback) callback();
             }
         }
@@ -476,7 +503,7 @@
             img.alt = "Imagem do Dr. Mathias";
             imageDiv.appendChild(img);
             chatBox.appendChild(imageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
+            scrollToBottom();
         }
 
         function addAudio(audioSrc) {
@@ -503,7 +530,7 @@
             playerDiv.appendChild(timeDisplay);
             audioDiv.appendChild(playerDiv);
             chatBox.appendChild(audioDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
+            scrollToBottom();
 
             let isPlaying = false;
 
@@ -568,7 +595,7 @@
             iframe.allow = "autoplay; fullscreen";
             videoDiv.appendChild(iframe);
             chatBox.appendChild(videoDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
+            scrollToBottom();
         }
 
         function addReport() {
@@ -587,7 +614,7 @@
             `;
             reportDiv.appendChild(report);
             chatBox.appendChild(reportDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
+            scrollToBottom();
         }
 
         function addPriceImage() {
@@ -600,7 +627,7 @@
             `;
             priceDiv.appendChild(priceBox);
             chatBox.appendChild(priceDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
+            scrollToBottom();
         }
 
         function addOptions(options) {
@@ -619,7 +646,7 @@
                 optionsDiv.appendChild(btn);
             });
             chatBox.appendChild(optionsDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
+            scrollToBottom();
             waitingForInput = true;
         }
 
