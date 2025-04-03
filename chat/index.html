@@ -25,7 +25,7 @@
         }
         .banner {
             width: 100%;
-            height: 25vh;
+            height: 30vh; /* Ajuste: de 25vh para 30vh */
             overflow: hidden;
             flex-shrink: 0;
         }
@@ -332,7 +332,7 @@
         }
         @media (max-width: 600px) {
             .banner {
-                height: 20vh;
+                height: 25vh; /* Ajuste: de 20vh para 25vh */
             }
             .doctor-image {
                 width: 40px;
@@ -407,9 +407,9 @@
         const doctorImage = document.getElementById("doctor-image");
         const banner = document.getElementById("banner");
 
-        // Links das imagens
-        const doctorImageUrl = "https://example.com/doctor-image.jpg"; // Substitua
-        const bannerImageUrl = "https://example.com/banner-image.jpg"; // Substitua
+        // Links das imagens atualizados
+        const doctorImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/004ee219-af1a-43eb-b5e2-0d46c7f759eb.jpeg";
+        const bannerImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/4e27d510-0f18-4f72-9c5f-631d4790082a.png";
 
         // Aplica as imagens via JavaScript
         doctorImage.src = doctorImageUrl;
@@ -419,7 +419,7 @@
             banner.appendChild(bannerImg);
         }
 
-        // Novo funil de mensagens
+        // Funil de mensagens completo (parte 1 + parte 2 + parte 3)
         const messages = [
             { sender: "doctor", text: "[INICIANDO SEU ATENDIMENTO] Essa consulta é GRATUITA!", wait: 2000 },
             { sender: "doctor", text: "Dr. Mathias entrou na conversa…", wait: 3000 },
@@ -427,15 +427,29 @@
             { sender: "doctor", text: "Meu nome é Dr. Mathias Andrade... Sou o criador do método Truque do Gengibre", wait: 3000 },
             { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/98b3030e-eb36-4c4b-b327-54e54e859baa.png", wait: 5000 },
             { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/6d2080a3-be04-4c5a-bbb6-e680d95d9974.jpeg", wait: 5000 },
-            { sender: "doctor", text: "Antes de eu te ensinar a preparar de forma EFICAZ o verdadeiro Truque do Gengibre... Escute o áudio!👇", wait: 3000 }
-            // Adicione o áudio aqui: { sender: "audio", audioSrc: "https://link.com/audio.mp3", wait: 15000 }
+            { sender: "doctor", text: "Antes de eu te ensinar a preparar de forma EFICAZ o verdadeiro Truque do Gengibre... Escute o áudio!👇", wait: 3000 },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/c3095966-ca0f-40ff-b971-ba7c28a451ec.mp3", wait: 13000 },
+            { sender: "doctor", text: "Esse EVENTO só acontece 1 vez no ANO! Gostaria de participar do meu programa GRATUITO para recuperar sua potência e desempenho com um método 100% natural? 🍃 Clique no botão abaixo para começar 👇", wait: 8000 },
+            { sender: "options", options: ["COMEÇAR AGORA"] },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/4bcb3b6a-30a3-45ee-879f-da1e43bef1f1.mp3", waitForInput: true }, // Nome
+            { sender: "doctor", text: "Muito prazer {NOME}", wait: 3000 },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/97681bae-2ed3-4014-bb85-ca663db0476d.mp3", wait: 4000 }, // Peso
+            { sender: "options", options: ["🔘 Até 70 kg", "🔘 Entre 71 e 85 kg", "🔘 Entre 86 e 100 kg", "🔘 Mais de 100 kg"] },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/420a9d23-6c30-4721-92a6-3af01a2cf398.mp3", waitForInput: true }, // Idade
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/f07a5932-4e00-44a0-ab1f-5960c4645245.mp3", wait: 4000 }, // Tempo com sintomas
+            { sender: "options", options: ["🔘 Menos de 3 meses", "🔘 Entre 3 e 12 meses", "🔘 Mais de 1 ano", "🔘 Minha vida toda"] },
+            { sender: "doctor", text: "Perfeito {NOME}", wait: 3000 },
+            { sender: "doctor", text: "Apenas confirmando…", wait: 3000 },
+            { sender: "report", wait: 3000 }, // Quadro de confirmação
+            { sender: "doctor", text: "As informações estão corretas?", wait: 1000 },
+            { sender: "options", options: ["SIM, ESTÃO CORRETAS!"] }
         ];
 
         let index = 0;
         let waitingForInput = false;
         let userName = "";
         let userData = { problema: "", tempo: "", idade: "", peso: "" };
-        let autoScroll = true; // Controla o rolamento automático
+        let autoScroll = true;
 
         function calculateTypingTime(text) {
             const textLength = text.replace(/<[^>]+>/g, "").length;
@@ -444,21 +458,21 @@
 
         function scrollToBottom() {
             if (autoScroll) {
-                chatBox.scrollTop = chatBox.scrollHeight;
+                setTimeout(() => {
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }, 100); // Atraso para garantir renderização
             }
         }
 
-        // Pausa o auto-scroll quando o usuário interage
         chatBox.addEventListener("scroll", () => {
-            const isAtBottom = chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight - 10; // Margem de 10px
+            const isAtBottom = chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight - 10;
             if (!isAtBottom) {
-                autoScroll = false; // Desativa o auto-scroll se não estiver no final
+                autoScroll = false;
             } else {
-                autoScroll = true; // Reativa se voltar ao final
+                autoScroll = true;
             }
         });
 
-        // Suporte a toque em dispositivos móveis
         chatBox.addEventListener("touchmove", () => {
             const isAtBottom = chatBox.scrollTop + chatBox.clientHeight >= chatBox.scrollHeight - 10;
             if (!isAtBottom) {
@@ -506,7 +520,7 @@
             scrollToBottom();
         }
 
-        function addAudio(audioSrc) {
+        function addAudio(audioSrc, callback) {
             const audioDiv = document.createElement("div");
             audioDiv.classList.add("audio-message");
             const playerDiv = document.createElement("div");
@@ -579,6 +593,8 @@
                     isPlaying = true;
                 }).catch(err => console.error("Erro ao iniciar áudio:", err));
             });
+
+            if (callback) callback();
         }
 
         function formatTime(seconds) {
@@ -604,13 +620,11 @@
             const report = document.createElement("div");
             report.classList.add("report");
             report.innerHTML = `
-                <h3>Seus Dados e Diagnóstico</h3>
-                <p><strong>Nome:</strong> ${userName || "Usuário"}</p>
-                <p><strong>Problema Principal:</strong> ${userData.problema || "Não especificado"}</p>
-                <p><strong>Tempo com Dificuldade:</strong> ${userData.tempo || "Não especificado"}</p>
-                <p><strong>Idade:</strong> ${userData.idade || "Não especificado"}</p>
-                <p><strong>Peso Aproximado:</strong> ${userData.peso || "Não especificado"}</p>
-                <p><strong>Diagnóstico:</strong> <span class="diagnosis">Grave</span></p>
+                <h3>Confirmação dos Dados</h3>
+                <p><strong>Nome:</strong> ${userName || "Não informado"}</p>
+                <p><strong>Peso Aproximado:</strong> ${userData.peso || "Não informado"}</p>
+                <p><strong>Idade:</strong> ${userData.idade || "Não informado"}</p>
+                <p><strong>Tempo com Sintomas:</strong> ${userData.tempo || "Não informado"}</p>
             `;
             reportDiv.appendChild(report);
             chatBox.appendChild(reportDiv);
@@ -652,6 +666,23 @@
 
         function handleUserResponse(response) {
             if (!waitingForInput) return;
+
+            // Remove o emoji "🔘" das respostas antes de armazenar
+            const cleanResponse = response.replace("🔘 ", "");
+
+            // Armazena os dados com base no índice da mensagem
+            if (index === 2) { // INICIAR ATENDIMENTO
+                // Apenas avança
+            } else if (index === 9) { // COMEÇAR AGORA
+                // Apenas avança
+            } else if (index === 13) { // Peso
+                userData.peso = cleanResponse;
+            } else if (index === 16) { // Tempo com sintomas
+                userData.tempo = cleanResponse;
+            } else if (index === 21) { // SIM, ESTÃO CORRETAS!
+                // Apenas avança
+            }
+
             addMessage("user", response, () => {
                 document.querySelectorAll(".options").forEach(el => el.remove());
                 waitingForInput = false;
@@ -664,6 +695,11 @@
             const text = userInput.value.trim();
             if (text && waitingForInput) {
                 console.log("Usuário digitou:", text);
+                if (index === 10) { // Nome
+                    userName = text;
+                } else if (index === 14) { // Idade
+                    userData.idade = text;
+                }
                 addMessage("user", text, () => {
                     userInput.value = "";
                     chatInputContainer.style.display = "none";
@@ -685,6 +721,7 @@
                         console.log("Aguardando entrada do usuário no índice:", index);
                         waitingForInput = true;
                         chatInputContainer.style.display = "flex";
+                        userInput.placeholder = index === 10 ? "Digite seu nome..." : "Digite sua idade...";
                         userInput.focus();
                     } else {
                         index++;
@@ -694,9 +731,18 @@
             } else if (msg.sender === "options") {
                 addOptions(msg.options);
             } else if (msg.sender === "audio") {
-                addAudio(msg.audioSrc);
-                index++;
-                setTimeout(nextMessage, msg.wait || 2000);
+                addAudio(msg.audioSrc, () => {
+                    if (msg.waitForInput) {
+                        console.log("Aguardando entrada do usuário no índice:", index);
+                        waitingForInput = true;
+                        chatInputContainer.style.display = "flex";
+                        userInput.placeholder = index === 10 ? "Digite seu nome..." : "Digite sua idade...";
+                        userInput.focus();
+                    } else {
+                        index++;
+                        setTimeout(nextMessage, msg.wait || 2000);
+                    }
+                });
             } else if (msg.sender === "video") {
                 addVideo(msg.videoSrc);
                 index++;
