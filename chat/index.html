@@ -80,7 +80,7 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            margin-bottom: 70px; /* Aumentado para garantir espaço no celular */
+            margin-bottom: 70px;
         }
         .message {
             max-width: 80%;
@@ -89,7 +89,7 @@
             margin-bottom: 8px;
             font-size: 1rem;
             display: inline-block;
-            white-space: normal; /* Ajustado para melhor controle */
+            white-space: normal;
         }
         .doctor {
             background: #c8e6c9;
@@ -99,9 +99,10 @@
             background: #2e7d32;
             color: white;
             align-self: flex-end;
-            white-space: nowrap; /* Evita quebra de linha em mensagens curtas */
-            overflow: hidden;
-            text-overflow: ellipsis; /* Adiciona "..." se o texto for longo */
+            white-space: nowrap; /* Padrão: sem quebra para mensagens curtas */
+        }
+        .user.long-text {
+            white-space: normal; /* Quebra linha para textos longos */
         }
         .typing-indicator {
             max-width: 80%;
@@ -359,9 +360,10 @@
                 font-size: 0.9rem;
             }
             .user {
-                white-space: nowrap; /* Garante que mensagens curtas não quebrem */
-                overflow: hidden;
-                text-overflow: ellipsis;
+                white-space: nowrap; /* Padrão: sem quebra para mensagens curtas */
+            }
+            .user.long-text {
+                white-space: normal; /* Quebra linha para textos longos */
             }
             .image-message img {
                 max-width: 200px;
@@ -391,7 +393,7 @@
                 max-width: 95%;
             }
             .chat-box {
-                margin-bottom: 70px; /* Espaço extra no celular */
+                margin-bottom: 70px;
             }
         }
     </style>
@@ -470,10 +472,8 @@
         function scrollToBottom() {
             if (autoScroll) {
                 setTimeout(() => {
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                    // Ajuste adicional para garantir visibilidade no celular
                     chatBox.scrollTop = chatBox.scrollHeight + chatInputContainer.offsetHeight;
-                }, 300); // Aumentado para 300ms para dar tempo ao DOM
+                }, 300);
             }
         }
 
@@ -500,6 +500,11 @@
             msgDiv.classList.add("message", sender);
             const cleanText = text.replace("{NOME}", userName || "amigo(a)");
             msgDiv.innerHTML = cleanText;
+
+            // Adiciona classe .long-text se o texto for longo (mais de 30 caracteres, por exemplo)
+            if (sender === "user" && cleanText.length > 30) {
+                msgDiv.classList.add("long-text");
+            }
 
             if (sender === "doctor") {
                 const typingDiv = document.createElement("div");
