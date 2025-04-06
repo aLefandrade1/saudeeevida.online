@@ -80,7 +80,8 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            margin-bottom: 70px;
+            padding-bottom: 80px; /* Ajustado para garantir espaço acima do campo fixo */
+            box-sizing: border-box;
         }
         .message {
             max-width: 80%;
@@ -99,10 +100,10 @@
             background: #2e7d32;
             color: white;
             align-self: flex-end;
-            white-space: nowrap; /* Padrão: sem quebra para mensagens curtas */
+            white-space: nowrap;
         }
         .user.long-text {
-            white-space: normal; /* Quebra linha para textos longos */
+            white-space: normal;
         }
         .typing-indicator {
             max-width: 80%;
@@ -360,10 +361,10 @@
                 font-size: 0.9rem;
             }
             .user {
-                white-space: nowrap; /* Padrão: sem quebra para mensagens curtas */
+                white-space: nowrap;
             }
             .user.long-text {
-                white-space: normal; /* Quebra linha para textos longos */
+                white-space: normal;
             }
             .image-message img {
                 max-width: 200px;
@@ -393,7 +394,7 @@
                 max-width: 95%;
             }
             .chat-box {
-                margin-bottom: 70px;
+                padding-bottom: 80px; /* Ajustado para celular */
             }
         }
     </style>
@@ -472,7 +473,8 @@
         function scrollToBottom() {
             if (autoScroll) {
                 setTimeout(() => {
-                    chatBox.scrollTop = chatBox.scrollHeight + chatInputContainer.offsetHeight;
+                    const inputHeight = chatInputContainer.offsetHeight;
+                    chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight + inputHeight + 20; // Adiciona margem extra
                 }, 300);
             }
         }
@@ -501,7 +503,6 @@
             const cleanText = text.replace("{NOME}", userName || "amigo(a)");
             msgDiv.innerHTML = cleanText;
 
-            // Adiciona classe .long-text se o texto for longo (mais de 30 caracteres, por exemplo)
             if (sender === "user" && cleanText.length > 30) {
                 msgDiv.classList.add("long-text");
             }
