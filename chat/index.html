@@ -80,7 +80,7 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            margin-bottom: 60px; /* Espaço para o campo de digitação fixo */
+            margin-bottom: 70px; /* Aumentado para garantir espaço no celular */
         }
         .message {
             max-width: 80%;
@@ -88,8 +88,8 @@
             border-radius: 10px;
             margin-bottom: 8px;
             font-size: 1rem;
-            word-wrap: break-word;
             display: inline-block;
+            white-space: normal; /* Ajustado para melhor controle */
         }
         .doctor {
             background: #c8e6c9;
@@ -99,6 +99,9 @@
             background: #2e7d32;
             color: white;
             align-self: flex-end;
+            white-space: nowrap; /* Evita quebra de linha em mensagens curtas */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Adiciona "..." se o texto for longo */
         }
         .typing-indicator {
             max-width: 80%;
@@ -264,7 +267,7 @@
             padding: 10px;
             background: white;
             flex-shrink: 0;
-            position: fixed; /* Fixo na parte inferior */
+            position: fixed;
             bottom: 0;
             width: 100%;
             z-index: 10;
@@ -314,7 +317,8 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
             text-align: left;
             white-space: nowrap;
-            overflow: visible;
+            overflow: hidden;
+            text-overflow: ellipsis;
             width: 100%;
             max-width: 300px;
         }
@@ -354,6 +358,11 @@
                 max-width: 85%;
                 font-size: 0.9rem;
             }
+            .user {
+                white-space: nowrap; /* Garante que mensagens curtas não quebrem */
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
             .image-message img {
                 max-width: 200px;
             }
@@ -380,6 +389,9 @@
                 padding: 6px 12px;
                 font-size: 0.9rem;
                 max-width: 95%;
+            }
+            .chat-box {
+                margin-bottom: 70px; /* Espaço extra no celular */
             }
         }
     </style>
@@ -409,11 +421,9 @@
         const doctorImage = document.getElementById("doctor-image");
         const banner = document.getElementById("banner");
 
-        // Links das imagens atualizados
         const doctorImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/004ee219-af1a-43eb-b5e2-0d46c7f759eb.jpeg";
         const bannerImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/4e27d510-0f18-4f72-9c5f-631d4790082a.png";
 
-        // Aplica as imagens via JavaScript
         doctorImage.src = doctorImageUrl;
         if (bannerImageUrl) {
             const bannerImg = document.createElement("img");
@@ -421,7 +431,6 @@
             banner.appendChild(bannerImg);
         }
 
-        // Funil de mensagens completo (parte 1 + parte 2 + parte 3)
         const messages = [
             { sender: "doctor", text: "[INICIANDO SEU ATENDIMENTO] Essa consulta é GRATUITA!", wait: 2000 },
             { sender: "doctor", text: "Dr. Mathias entrou na conversa…", wait: 3000 },
@@ -455,18 +464,16 @@
 
         function calculateTypingTime(text) {
             const textLength = text.replace(/<[^>]+>/g, "").length;
-            return Math.min(Math.max(textLength * 50, 1000), 4000); // 50ms por caractere, min 1s, max 4s
+            return Math.min(Math.max(textLength * 50, 1000), 4000);
         }
 
         function scrollToBottom() {
             if (autoScroll) {
                 setTimeout(() => {
                     chatBox.scrollTop = chatBox.scrollHeight;
-                    // Força o scroll novamente após um pequeno atraso para garantir renderização completa
-                    setTimeout(() => {
-                        chatBox.scrollTop = chatBox.scrollHeight;
-                    }, 200);
-                }, 100);
+                    // Ajuste adicional para garantir visibilidade no celular
+                    chatBox.scrollTop = chatBox.scrollHeight + chatInputContainer.offsetHeight;
+                }, 300); // Aumentado para 300ms para dar tempo ao DOM
             }
         }
 
@@ -768,7 +775,6 @@
             if (e.key === "Enter") handleManualInput();
         });
 
-        // Inicia o chat
         console.log("Iniciando o chat...");
         nextMessage();
     </script>
