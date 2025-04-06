@@ -25,7 +25,7 @@
         }
         .banner {
             width: 100%;
-            height: 30vh; /* Ajuste: de 25vh para 30vh */
+            height: 30vh;
             overflow: hidden;
             flex-shrink: 0;
         }
@@ -80,6 +80,7 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
+            margin-bottom: 60px; /* Espaço para o campo de digitação fixo */
         }
         .message {
             max-width: 80%;
@@ -263,10 +264,11 @@
             padding: 10px;
             background: white;
             flex-shrink: 0;
-            position: sticky;
+            position: fixed; /* Fixo na parte inferior */
             bottom: 0;
             width: 100%;
             z-index: 10;
+            box-sizing: border-box;
         }
         .chat-input-container input {
             flex: 1;
@@ -332,7 +334,7 @@
         }
         @media (max-width: 600px) {
             .banner {
-                height: 25vh; /* Ajuste: de 20vh para 25vh */
+                height: 25vh;
             }
             .doctor-image {
                 width: 40px;
@@ -393,7 +395,7 @@
             <span class="online-status"><span class="online-dot"></span>Online</span>
         </div>
         <div class="chat-box" id="chat-box"></div>
-        <div class="chat-input-container" id="chat-input-container" style="display: none;">
+        <div class="chat-input-container" id="chat-input-container">
             <input type="text" id="user-input" placeholder="Digite sua mensagem...">
             <button id="send-btn">➡️</button>
         </div>
@@ -460,7 +462,11 @@
             if (autoScroll) {
                 setTimeout(() => {
                     chatBox.scrollTop = chatBox.scrollHeight;
-                }, 100); // Atraso para garantir renderização
+                    // Força o scroll novamente após um pequeno atraso para garantir renderização completa
+                    setTimeout(() => {
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    }, 200);
+                }, 100);
             }
         }
 
@@ -667,10 +673,8 @@
         function handleUserResponse(response) {
             if (!waitingForInput) return;
 
-            // Remove o emoji "🔘" das respostas antes de armazenar
             const cleanResponse = response.replace("🔘 ", "");
 
-            // Armazena os dados com base no índice da mensagem
             if (index === 2) { // INICIAR ATENDIMENTO
                 // Apenas avança
             } else if (index === 9) { // COMEÇAR AGORA
@@ -702,7 +706,6 @@
                 }
                 addMessage("user", text, () => {
                     userInput.value = "";
-                    chatInputContainer.style.display = "none";
                     waitingForInput = false;
                     index++;
                     setTimeout(nextMessage, 1000);
@@ -720,7 +723,6 @@
                     if (msg.waitForInput) {
                         console.log("Aguardando entrada do usuário no índice:", index);
                         waitingForInput = true;
-                        chatInputContainer.style.display = "flex";
                         userInput.placeholder = index === 10 ? "Digite seu nome..." : "Digite sua idade...";
                         userInput.focus();
                     } else {
@@ -735,7 +737,6 @@
                     if (msg.waitForInput) {
                         console.log("Aguardando entrada do usuário no índice:", index);
                         waitingForInput = true;
-                        chatInputContainer.style.display = "flex";
                         userInput.placeholder = index === 10 ? "Digite seu nome..." : "Digite sua idade...";
                         userInput.focus();
                     } else {
