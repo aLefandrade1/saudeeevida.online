@@ -80,7 +80,7 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            padding-bottom: 80px; /* Ajustado para garantir espaço acima do campo fixo */
+            padding-bottom: 80px;
             box-sizing: border-box;
         }
         .message {
@@ -95,6 +95,10 @@
         .doctor {
             background: #c8e6c9;
             align-self: flex-start;
+            white-space: nowrap;
+        }
+        .doctor.long-text {
+            white-space: normal;
         }
         .user {
             background: #2e7d32;
@@ -319,10 +323,9 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
             text-align: left;
             white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
-            max-width: 300px;
+            overflow: visible;
+            width: auto;
+            max-width: none;
         }
         .options button.long-text {
             white-space: normal;
@@ -360,6 +363,12 @@
                 max-width: 85%;
                 font-size: 0.9rem;
             }
+            .doctor {
+                white-space: nowrap;
+            }
+            .doctor.long-text {
+                white-space: normal;
+            }
             .user {
                 white-space: nowrap;
             }
@@ -391,10 +400,13 @@
             .options button {
                 padding: 6px 12px;
                 font-size: 0.9rem;
-                max-width: 95%;
+                white-space: nowrap;
+                overflow: visible;
+                width: auto;
+                max-width: none;
             }
             .chat-box {
-                padding-bottom: 80px; /* Ajustado para celular */
+                padding-bottom: 80px;
             }
         }
     </style>
@@ -404,8 +416,8 @@
         <div class="banner" id="banner"></div>
         <div class="chat-header">
             <div class="header-left">
-                <img id="doctor-image" alt="Dr. Mathias Andrade" class="doctor-image">
-                <h2>Dr. Mathias Andrade</h2>
+                <img id="doctor-image" alt="Dr. Daniel Costa" class="doctor-image">
+                <h2>Dr. Daniel Costa</h2>
             </div>
             <span class="online-status"><span class="online-dot"></span>Online</span>
         </div>
@@ -424,8 +436,8 @@
         const doctorImage = document.getElementById("doctor-image");
         const banner = document.getElementById("banner");
 
-        const doctorImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/004ee219-af1a-43eb-b5e2-0d46c7f759eb.jpeg";
-        const bannerImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/4e27d510-0f18-4f72-9c5f-631d4790082a.png";
+        const doctorImageUrl = "URL_DA_FOTO_DE_PERFIL_AQUI"; // Substitua pela URL real
+        const bannerImageUrl = "URL_DO_BANNER_AQUI"; // Substitua pela URL real
 
         doctorImage.src = doctorImageUrl;
         if (bannerImageUrl) {
@@ -436,33 +448,52 @@
 
         const messages = [
             { sender: "doctor", text: "[INICIANDO SEU ATENDIMENTO] Essa consulta é GRATUITA!", wait: 2000 },
-            { sender: "doctor", text: "Dr. Mathias entrou na conversa…", wait: 3000 },
-            { sender: "options", options: ["INICIAR ATENDIMENTO"] },
-            { sender: "doctor", text: "Meu nome é Dr. Mathias Andrade... Sou o criador do método Truque do Gengibre", wait: 3000 },
-            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/98b3030e-eb36-4c4b-b327-54e54e859baa.png", wait: 5000 },
-            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/6d2080a3-be04-4c5a-bbb6-e680d95d9974.jpeg", wait: 5000 },
-            { sender: "doctor", text: "Antes de eu te ensinar a preparar de forma EFICAZ o verdadeiro Truque do Gengibre... Escute o áudio!👇", wait: 3000 },
-            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/c3095966-ca0f-40ff-b971-ba7c28a451ec.mp3", wait: 13000 },
-            { sender: "doctor", text: "Esse EVENTO só acontece 1 vez no ANO! Gostaria de participar do meu programa GRATUITO para recuperar sua potência e desempenho com um método 100% natural? 🍃 Clique no botão abaixo para começar 👇", wait: 8000 },
-            { sender: "options", options: ["COMEÇAR AGORA"] },
-            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/4bcb3b6a-30a3-45ee-879f-da1e43bef1f1.mp3", waitForInput: true }, // Nome
-            { sender: "doctor", text: "Muito prazer {NOME}", wait: 3000 },
-            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/97681bae-2ed3-4014-bb85-ca663db0476d.mp3", wait: 4000 }, // Peso
-            { sender: "options", options: ["🔘 Até 70 kg", "🔘 Entre 71 e 85 kg", "🔘 Entre 86 e 100 kg", "🔘 Mais de 100 kg"] },
-            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/420a9d23-6c30-4721-92a6-3af01a2cf398.mp3", waitForInput: true }, // Idade
-            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/f07a5932-4e00-44a0-ab1f-5960c4645245.mp3", wait: 4000 }, // Tempo com sintomas
-            { sender: "options", options: ["🔘 Menos de 3 meses", "🔘 Entre 3 e 12 meses", "🔘 Mais de 1 ano", "🔘 Minha vida toda"] },
-            { sender: "doctor", text: "Perfeito {NOME}", wait: 3000 },
-            { sender: "doctor", text: "Apenas confirmando…", wait: 3000 },
-            { sender: "report", wait: 3000 }, // Quadro de confirmação
-            { sender: "doctor", text: "As informações estão corretas?", wait: 1000 },
-            { sender: "options", options: ["SIM, ESTÃO CORRETAS!"] }
+            { sender: "doctor", text: "Dr. Daniel Costa entrou na conversa…", wait: 2000 },
+            { sender: "options", options: ["INICIAR ATENDIMENTO"], waitForInput: true },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/e748b7cf-1824-48de-b3ba-06100f769c21.mp3", wait: 22000 },
+            { sender: "doctor", text: "Antes de começarmos, posso te fazer algumas perguntas rápidas pra entender seu caso?", wait: 3000 },
+            { sender: "options", options: ["Sim"], waitForInput: true },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/67fec0b6-24a3-4dab-8094-4964f6b71300.mp3", wait: 17000 },
+            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/1f822a10-90c4-4805-abd1-1f3d44819026.png", wait: 5000 },
+            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/8e375d16-a903-48ba-988b-f46980499bb5.png", wait: 5000 },
+            { sender: "doctor", text: "Você está no lugar certo. Agora vamos direto ao ponto:", wait: 3000 },
+            { sender: "doctor", text: "Qual é o SEU NOME?", waitForInput: true },
+            { sender: "doctor", text: "Há quanto tempo você começou a perceber falhas na ereção?", wait: 3000 },
+            { sender: "options", options: ["Menos de 6 meses", "De 6 meses a 1 ano", "Mais de 1 ano"], waitForInput: true },
+            { sender: "doctor", text: "Obrigado pela sinceridade.", wait: 3000 },
+            { sender: "doctor", text: "Você consegue ter ereção com pornografia, mas falha na hora real?", wait: 3000 },
+            { sender: "options", options: ["Sim", "Não", "Depende", "Não assisto"], waitForInput: true },
+            { sender: "doctor", text: "Certo…", wait: 3000 },
+            { sender: "doctor", text: "Atualmente você já tentou usar algum produto como Viagra, Cialis, Azulzinho, ou similares?", wait: 3000 },
+            { sender: "options", options: ["Sim", "Não"], waitForInput: true },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/1ecdf791-8bf1-4acb-ada7-6851761c6068.mp3", wait: 32000 },
+            { sender: "doctor", text: "Você está em um relacionamento fixo hoje?", wait: 3000 },
+            { sender: "options", options: ["Sim", "Não", "Sim, mas está abalado por causa disso"], waitForInput: true },
+            { sender: "doctor", text: "Quando foi a última vez que você teve uma ereção firme e completa — que conseguiu manter até o final da relação?", wait: 3000 },
+            { sender: "options", options: ["Menos de 1 mês", "De 1 a 3 meses", "Mais de 3 meses", "Nem lembro mais"], waitForInput: true },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/9c3ba78c-564b-4fad-96cc-5f5a1a5536a7.mp3", wait: 12000 },
+            { sender: "doctor", text: "RELATÓRIO GERADO COM SUCESSO.", wait: 3000 },
+            { sender: "report", wait: 10000 },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/60b99722-5f0f-48f3-ad45-3d1e58f810d0.mp3", wait: 18000 },
+            { sender: "doctor", text: "{NOME} É como se o seu corpo estivesse 'desligando aos poucos' a resposta sexual — por influência silenciosa de hábitos, estresse e estímulos errados que ninguém te contou que eram o problema.", wait: 8000 },
+            { sender: "doctor", text: "A boa notícia? Esse ciclo pode ser quebrado. E vou te mostrar agora como.", wait: 5000 },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/184afc0f-7197-43bb-b6e5-2dc3cebfa8ff.mp3", wait: 25000 },
+            { sender: "doctor", text: "{NOME} E ele atua exatamente onde os medicamentos não chegam:", wait: 3000 },
+            { sender: "doctor", text: "no núcleo nervoso de resposta sexual, reprogramando seu corpo para voltar a gerar ereções fortes e duradouras, naturalmente.", wait: 3000 },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/7d9c8b3f-39fa-45b3-909c-b657766f5cc1.mp3", wait: 32000 },
+            { sender: "doctor", text: "Quer ver o que quem já usou esse protocolo está dizendo?", wait: 3000 }
         ];
 
         let index = 0;
         let waitingForInput = false;
         let userName = "";
-        let userData = { problema: "", tempo: "", idade: "", peso: "" };
+        let userData = { 
+            tempoFalhas: "", 
+            pornografia: "", 
+            usoMedicamentos: "", 
+            relacionamento: "", 
+            ultimaErecao: "" 
+        };
         let autoScroll = true;
 
         function calculateTypingTime(text) {
@@ -474,7 +505,7 @@
             if (autoScroll) {
                 setTimeout(() => {
                     const inputHeight = chatInputContainer.offsetHeight;
-                    chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight + inputHeight + 20; // Adiciona margem extra
+                    chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight + inputHeight + 20;
                 }, 300);
             }
         }
@@ -503,7 +534,7 @@
             const cleanText = text.replace("{NOME}", userName || "amigo(a)");
             msgDiv.innerHTML = cleanText;
 
-            if (sender === "user" && cleanText.length > 30) {
+            if ((sender === "user" || sender === "doctor") && cleanText.length > 30) {
                 msgDiv.classList.add("long-text");
             }
 
@@ -533,7 +564,7 @@
             imageDiv.classList.add("image-message");
             const img = document.createElement("img");
             img.src = imageSrc;
-            img.alt = "Imagem do Dr. Mathias";
+            img.alt = "Imagem do Dr. Daniel Costa";
             imageDiv.appendChild(img);
             chatBox.appendChild(imageDiv);
             scrollToBottom();
@@ -639,11 +670,14 @@
             const report = document.createElement("div");
             report.classList.add("report");
             report.innerHTML = `
-                <h3>Confirmação dos Dados</h3>
+                <h3>Relatório Gerado</h3>
                 <p><strong>Nome:</strong> ${userName || "Não informado"}</p>
-                <p><strong>Peso Aproximado:</strong> ${userData.peso || "Não informado"}</p>
-                <p><strong>Idade:</strong> ${userData.idade || "Não informado"}</p>
-                <p><strong>Tempo com Sintomas:</strong> ${userData.tempo || "Não informado"}</p>
+                <p><strong>Tempo com falhas na ereção:</strong> ${userData.tempoFalhas || "Não informado"}</p>
+                <p><strong>Ereção com pornografia:</strong> ${userData.pornografia || "Não informado"}</p>
+                <p><strong>Uso de medicamentos (Viagra, Cialis, etc.):</strong> ${userData.usoMedicamentos || "Não informado"}</p>
+                <p><strong>Relacionamento:</strong> ${userData.relacionamento || "Não informado"}</p>
+                <p><strong>Última ereção firme:</strong> ${userData.ultimaErecao || "Não informado"}</p>
+                <p><strong>Diagnóstico:</strong> <span class="diagnosis">Ciclo de Fadiga Erétil Oculta (nível 2)</span></p>
             `;
             reportDiv.appendChild(report);
             chatBox.appendChild(reportDiv);
@@ -686,18 +720,22 @@
         function handleUserResponse(response) {
             if (!waitingForInput) return;
 
-            const cleanResponse = response.replace("🔘 ", "");
+            const cleanResponse = response;
 
             if (index === 2) { // INICIAR ATENDIMENTO
                 // Apenas avança
-            } else if (index === 9) { // COMEÇAR AGORA
+            } else if (index === 5) { // Sim
                 // Apenas avança
-            } else if (index === 13) { // Peso
-                userData.peso = cleanResponse;
-            } else if (index === 16) { // Tempo com sintomas
-                userData.tempo = cleanResponse;
-            } else if (index === 21) { // SIM, ESTÃO CORRETAS!
-                // Apenas avança
+            } else if (index === 12) { // Tempo com falhas
+                userData.tempoFalhas = cleanResponse;
+            } else if (index === 15) { // Ereção com pornografia
+                userData.pornografia = cleanResponse;
+            } else if (index === 18) { // Uso de medicamentos
+                userData.usoMedicamentos = cleanResponse;
+            } else if (index === 21) { // Relacionamento
+                userData.relacionamento = cleanResponse;
+            } else if (index === 23) { // Última ereção
+                userData.ultimaErecao = cleanResponse;
             }
 
             addMessage("user", response, () => {
@@ -714,8 +752,6 @@
                 console.log("Usuário digitou:", text);
                 if (index === 10) { // Nome
                     userName = text;
-                } else if (index === 14) { // Idade
-                    userData.idade = text;
                 }
                 addMessage("user", text, () => {
                     userInput.value = "";
@@ -736,7 +772,7 @@
                     if (msg.waitForInput) {
                         console.log("Aguardando entrada do usuário no índice:", index);
                         waitingForInput = true;
-                        userInput.placeholder = index === 10 ? "Digite seu nome..." : "Digite sua idade...";
+                        userInput.placeholder = index === 10 ? "Digite seu nome..." : "Digite sua resposta...";
                         userInput.focus();
                     } else {
                         index++;
@@ -745,12 +781,16 @@
                 });
             } else if (msg.sender === "options") {
                 addOptions(msg.options);
+                if (!msg.waitForInput) {
+                    index++;
+                    setTimeout(nextMessage, msg.wait || 2000);
+                }
             } else if (msg.sender === "audio") {
                 addAudio(msg.audioSrc, () => {
                     if (msg.waitForInput) {
                         console.log("Aguardando entrada do usuário no índice:", index);
                         waitingForInput = true;
-                        userInput.placeholder = index === 10 ? "Digite seu nome..." : "Digite sua idade...";
+                        userInput.placeholder = "Digite sua resposta...";
                         userInput.focus();
                     } else {
                         index++;
