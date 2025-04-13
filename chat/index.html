@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Consultório</title>
+    <!-- Placeholder para Pixel de Rastreamento (ex.: Facebook Pixel) -->
+    <!-- Insira seu código de pixel aqui -->
+
+    <!-- Placeholder para Código de Rastreio UTM ou outros scripts de analytics -->
+    <!-- Insira seu código UTM ou analytics aqui -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -448,6 +453,7 @@
         const doctorImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/d6f2996e-636e-4ae5-ad89-7358fa1f4619.png";
         const bannerImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/65d0b516-1307-4d43-837a-5d0d3e8dce10.png";
         const checkoutUrl = "URL_DO_CHECKOUT_AQUI"; // Substitua pela URL real
+        const backredirectUrl = "URL_DO_BACKREDIRECT_AQUI"; // Substitua pela URL real
 
         doctorImage.src = doctorImageUrl;
         if (bannerImageUrl) {
@@ -455,6 +461,20 @@
             bannerImg.src = bannerImageUrl;
             banner.appendChild(bannerImg);
         }
+
+        // Adicionar histórico para detectar botão de voltar
+        window.history.pushState({ page: 1 }, "", "");
+        window.addEventListener("popstate", (event) => {
+            window.location.href = backredirectUrl;
+        });
+
+        // Capturar tentativa de saída (opcional, dependendo do navegador)
+        window.addEventListener("beforeunload", (event) => {
+            // Alguns navegadores podem ignorar redirecionamentos diretos aqui
+            event.preventDefault();
+            event.returnValue = "";
+            window.location.href = backredirectUrl;
+        });
 
         const messages = [
             { sender: "doctor", text: "Sua avaliação gratuita já foi iniciada.", wait: 3000 },
@@ -492,18 +512,18 @@
             { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/a55cb92b-fcd4-48aa-856a-1244939268a2.png", text: "“Parei de culpar minha genética. Era toxina.” – Marisa, 41 anos", wait: 7000 },
             { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/5d83efaf-f2df-4533-afde-779b0d2ce447.png", text: "“Em 7 dias minha calça jeans entrou. E entrou FOLGADA.” – Bruna, 29 anos", wait: 8000 },
             { sender: "doctor", text: "Quer saber qual é a receita que ativou isso nelas?<br>Ela é 100% natural.<br>Mas não funciona de qualquer jeito.<br>Tem que ser na medida exata pro seu corpo.", wait: 8000 },
-            { sender: "doctor", text: "Quer que a Dra. Camila prepare sua versão personalizada da Água Seca Barriga?", wait: 5000 },
+            { sender: "doctor", text: "Quer que eu prepare sua versão personalizada da Água Seca Barriga?", wait: 5000 },
             { sender: "options", options: ["Sim, quero a minha receita"], waitForInput: true },
             { sender: "doctor", text: "Perfeito.<br>Agora eu vou preparar a sua versão personalizada da receita.<br>Precisa só de uma última confirmação:", wait: 4000 },
             { sender: "doctor", text: "Você está disposta a fazer isso por 7 dias, antes do café da manhã, seguindo o passo a passo certinho?", wait: 4000 },
             { sender: "options", options: ["Sim, eu topo"], waitForInput: true },
             { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/b74f253b-4699-416a-ae89-b82573b6dd49.mp3", wait: 24000 },
-            { sender: "doctor", text: "🌿 Ingredientes da Água Seca Barriga:<br>Gengibre em pó ou ralado<br>Suco de ½ limão fresco<br>Água morna (200ml)", wait: 5000 },
+            { sender: "doctor", text: "🌿 Ingredientes da Água Seca Barriga:<br>Gengibre em pó ou ralado e mais 2 ingredientes que você tem ai guardado dentro do seu armário!", wait: 5000 },
             { sender: "doctor", text: "📍 Misture e tome ainda em jejum, todos os dias por 7 dias.<br>(Para saber as proporções exatas + o modo de ativação, você precisa acessar o protocolo completo. Se você errar a quantidade, o horário ou a combinação, o efeito pode ser ZERO. Por isso eu não libero essa receita solta por aí.)", wait: 12000 },
             { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/157a3f14-bd50-44b1-851f-1cda2a606444.png", text: "“Resultado visível em menos de 1 semana. Efeito real.”", wait: 10000 },
             { sender: "doctor", text: "Essa receita está dentro do meu Protocolo Rápido de 7 Dias, com:<br>✅ Passo a passo completo<br>✅ Ativação correta pra cada tipo de corpo<br>✅ Receitas bônus de apoio<br>✅ Checklist de toxinas escondidas", wait: 10000 },
             { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/d4bb866e-f408-44ae-9f37-edb6d35ed539.mp3", wait: 20000 },
-            { sender: "doctor", text: 'O valor real do protocolo é de <span class="original-price">R$97,00</span>.<br>Hoje, pra você que chegou até aqui, vou liberar por:<br><span class="original-price">R$97</span><br><span class="original-price">R$67</span><br>👉 <span class="promo-price">R$15,90</span> (pagamento único)<br><br>🎁 Bônus: se você garantir agora, ainda recebe um checklist extra com os 10 alimentos que te fazem travar o emagrecimento — mesmo sendo “fit”.', wait: 9000 },
+            { sender: "doctor", text: 'O valor real do protocolo é de <span class="original-price">R$97,00</span>.<br>Hoje, pra você que chegou até aqui, vou liberar por:<br><span class="original-price">R$97</span><br><span class="original-price">R$67</span><br>👉 <span class="promo-price">R$15,90</span> (pagamento único)<br><br>🎁 Bônus: se você garantir agora, ainda recebe um checklist extra com os 10 alimentos que te fazem travar o emagrecimento — mesmo sendo “fit”.<br><br>🎁 BÔNUS 2 – Cardápio Seca Barriga de 3 Dias<br>Um cardápio simples e enxuto que acompanha a Água Seca Barriga, para acelerar os resultados nos 3 primeiros dias do protocolo.<br><br>🎁 BÔNUS 3 – Guia Intestino Desinflamado em 72h<br>Dicas naturais, alimentos e receitas pra desinchar o intestino, acabar com a sensação de “barriga estufada” e ativar a queima real.<br><br>🎁 BÔNUS 4 – 5 Receitas Anti-Inchaço para o Jantar<br>Receitas leves, naturais, com ação desintoxicante que ajudam o corpo a continuar queimando gordura enquanto dorme.', wait: 9000 },
             { sender: "doctor", text: "⚠️ Essa condição vale apenas enquanto essa conversa estiver aberta.<br>Depois disso, o valor volta ao original.", wait: 5000 },
             { sender: "doctor", text: "Então clique no botão abaixo agora mesmo para começar a destravar seu emagrecimento hoje mesmo", wait: 5000 },
             { sender: "options", options: ["Quero meu protocolo por R$15,90"], waitForInput: true }
@@ -705,7 +725,7 @@
                 <p><strong>Idade:</strong> ${userData.idade || "Não informado"}</p>
                 <p><strong>Altura:</strong> ${userData.altura || "Não informado"}</p>
                 <p><strong>Peso:</strong> ${userData.peso || "Não informado"}</p>
-                <p><strong>Principal problema:</strong> ${userData.problema || "Não informado"}</p>
+                <p><strong>Principal problema:</strong> perfil silencioso de resistência</p>
             `;
             reportDiv.appendChild(report);
             chatBox.appendChild(reportDiv);
