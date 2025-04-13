@@ -80,7 +80,7 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            padding-bottom: 100px;
+            padding-bottom: 150px;
             box-sizing: border-box;
         }
         .message {
@@ -415,7 +415,7 @@
                 max-width: none;
             }
             .chat-box {
-                padding-bottom: 100px;
+                padding-bottom: 150px;
             }
         }
     </style>
@@ -446,7 +446,8 @@
         const banner = document.getElementById("banner");
 
         const doctorImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/d6f2996e-636e-4ae5-ad89-7358fa1f4619.png";
-        const bannerImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/ab9c9218-a4ce-4624-b84c-ea25461dbe37.png";
+        const bannerImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/65d0b516-1307-4d43-837a-5d0d3e8dce10.png";
+        const checkoutUrl = "URL_DO_CHECKOUT_AQUI"; // Substitua pela URL real
 
         doctorImage.src = doctorImageUrl;
         if (bannerImageUrl) {
@@ -464,6 +465,9 @@
             { sender: "doctor", text: "Quantos anos você tem?", wait: 3000, waitForInput: true },
             { sender: "doctor", text: "Qual a sua altura? (Ex: 1,63 m)", wait: 3000, waitForInput: true },
             { sender: "doctor", text: "E qual o seu peso atual?", wait: 3000, waitForInput: true },
+            { sender: "report", wait: 3000 },
+            { sender: "doctor", text: "{NOME}, Apenas confirmando?", wait: 3000 },
+            { sender: "options", options: ["Sim, está certo"], waitForInput: true },
             { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/771ed7c4-83c4-4d87-a924-6ac7469e80f5.mp3", wait: 20000 },
             { sender: "doctor", text: "Pra mim te ajudar de verdade, eu preciso saber:<br>Qual dessas opções mais te incomoda hoje?", wait: 3000 },
             { sender: "options", options: [
@@ -748,16 +752,18 @@
 
             if (index === 3) { // Começar agora
                 // Apenas avança
-            } else if (index === 10) { // Problema principal
+            } else if (index === 8) { // Sim, está certo
+                // Apenas avança
+            } else if (index === 13) { // Problema principal
                 userData.problema = cleanResponse;
-            } else if (index === 15) { // Sim, me mostra
+            } else if (index === 18) { // Sim, me mostra
                 // Apenas avança
-            } else if (index === 27) { // Sim, quero a minha receita
+            } else if (index === 30) { // Sim, quero a minha receita
                 // Apenas avança
-            } else if (index === 30) { // Sim, eu topo
+            } else if (index === 33) { // Sim, eu topo
                 // Apenas avança
-            } else if (index === 37) { // Quero meu protocolo por R$15,90
-                // Apenas avança
+            } else if (index === 40) { // Quero meu protocolo por R$15,90
+                window.location.href = checkoutUrl;
             }
 
             addMessage("user", response, () => {
@@ -803,7 +809,8 @@
                         userInput.placeholder = index === 4 ? "Digite seu nome..." : 
                                               index === 5 ? "Digite sua idade..." : 
                                               index === 6 ? "Digite sua altura (ex: 1,63 m)..." : 
-                                              index === 7 ? "Digite seu peso..." : "Digite sua resposta...";
+                                              index === 7 ? "Digite sua mensagem..." : 
+                                              "Digite sua mensagem...";
                         userInput.focus();
                     } else {
                         index++;
@@ -821,7 +828,7 @@
                     if (msg.waitForInput) {
                         console.log("Aguardando entrada do usuário no índice:", index);
                         waitingForInput = true;
-                        userInput.placeholder = "Digite sua resposta...";
+                        userInput.placeholder = "Digite sua mensagem...";
                         userInput.focus();
                     } else {
                         index++;
