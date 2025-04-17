@@ -4,24 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Consultório</title>
-    <!-- Placeholder para Pixel de Rastreamento (ex.: Facebook Pixel) -->
-   <script>
-  window.pixelId = "6801147c8cdfe8d69d1ea8a5";
-  var a = document.createElement("script");
-  a.setAttribute("async", "");
-  a.setAttribute("defer", "");
-  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-  document.head.appendChild(a);
-</script>
-
-    <!-- Placeholder para Código de Rastreio UTM ou outros scripts de analytics -->
+    <!-- Pixel de Rastreamento -->
+    <script>
+      window.pixelId = "6801147c8cdfe8d69d1ea8a5";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      document.head.appendChild(a);
+    </script>
+    <!-- Código de Rastreio de UTMs -->
     <script
-  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-  data-utmify-prevent-xcod-sck
-  data-utmify-prevent-subids
-  async
-  defer
-></script>
+      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+      data-utmify-prevent-xcod-sck
+      data-utmify-prevent-subids
+      async
+      defer
+    ></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -533,7 +532,7 @@
             { sender: "doctor", text: 'O valor real do protocolo é de <span class="original-price">R$97,00</span>.<br>Hoje, pra você que chegou até aqui, vou liberar por:<br><span class="original-price">R$97</span><br><span class="original-price">R$67</span><br>👉 <span class="promo-price">R$15,90</span> (pagamento único)<br><br>🎁 Bônus: se você garantir agora, ainda recebe um checklist extra com os 10 alimentos que te fazem travar o emagrecimento — mesmo sendo “fit”.<br><br>🎁 BÔNUS 2 – Cardápio Seca Barriga de 3 Dias<br>Um cardápio simples e enxuto que acompanha a Água Seca Barriga, para acelerar os resultados nos 3 primeiros dias do protocolo.<br><br>🎁 BÔNUS 3 – Guia Intestino Desinflamado em 72h<br>Dicas naturais, alimentos e receitas pra desinchar o intestino, acabar com a sensação de “barriga estufada” e ativar a queima real.<br><br>🎁 BÔNUS 4 – 5 Receitas Anti-Inchaço para o Jantar<br>Receitas leves, naturais, com ação desintoxicante que ajudam o corpo a continuar queimando gordura enquanto dorme.', wait: 8000 },
             { sender: "doctor", text: "⚠️ Essa condição vale apenas enquanto essa conversa estiver aberta.<br>Depois disso, o valor volta ao original.", wait: 4000 },
             { sender: "doctor", text: "Então clique no botão abaixo agora mesmo para começar a destravar seu emagrecimento hoje mesmo", wait: 4000 },
-            { sender: "options", options: ["Quero meu protocolo por R$15,90"], waitForInput: true }
+            { sender: "options", options: [{ text: "Quero meu protocolo por R$15,90", data: { "data-checkout": "true" }, class: "smartplayer-call-action--link" }], waitForInput: true }
         ];
 
         let index = 0;
@@ -743,10 +742,19 @@
             optionsDiv.classList.add("options");
             options.forEach(option => {
                 const btn = document.createElement("button");
-                btn.textContent = option;
-                btn.onclick = () => handleUserResponse(option);
+                const btnText = typeof option === "string" ? option : option.text;
+                const btnData = typeof option === "object" && option.data ? option.data : {};
+                const btnClass = typeof option === "object" && option.class ? option.class : null;
+                btn.textContent = btnText;
+                for (const [key, value] of Object.entries(btnData)) {
+                    btn.setAttribute(key, value);
+                }
+                if (btnClass) {
+                    btn.classList.add(btnClass);
+                }
+                btn.onclick = () => handleUserResponse(btnText);
 
-                const textLength = option.length;
+                const textLength = btnText.length;
                 if (textLength > 25) {
                     btn.classList.add("long-text");
                 }
