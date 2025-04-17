@@ -126,6 +126,10 @@
         .user.long-text {
             white-space: normal;
         }
+        .italic-underline {
+            font-style: italic;
+            text-decoration: underline;
+        }
         .typing-indicator {
             max-width: 80%;
             padding: 10px;
@@ -464,7 +468,7 @@
 
         const doctorImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/d6f2996e-636e-4ae5-ad89-7358fa1f4619.png";
         const bannerImageUrl = "https://cakto-quiz-br01.b-cdn.net/uploads/65d0b516-1307-4d43-837a-5d0d3e8dce10.png";
-        const checkoutUrl = "URL_DO_CHECKOUT_AQUI"; // Substitua pela URL real
+        const checkoutUrl = "https://pay.kirvano.com/0cded876-9293-4dfc-868d-4223549efb11"; // Substitua pela URL real
         const backredirectUrl = "URL_DO_BACKREDIRECT_AQUI"; // Substitua pela URL real
 
         doctorImage.src = doctorImageUrl;
@@ -485,7 +489,7 @@
         const messages = [
             { sender: "doctor", text: "Sua avaliação gratuita já foi iniciada.", wait: 2000 },
             { sender: "doctor", text: "A Dra. Camila entrou na conversa.", wait: 2000 },
-            { sender: "doctor", text: "Antes de qualquer orientação, preciso entender seu caso.<br>Esse atendimento é personalizado, então responda com sinceridade.<br>Clique abaixo pra começar:", wait: 3000 },
+            { sender: "doctor", text: "Antes de começarmos, preciso saber se o seu corpo vai suportar o processo.<br>O chá com cravo e canela acelera demais a queima — e em algumas pessoas os resultados são muito rápidos.<br>Por isso, preciso que você responda algumas perguntinhas rápidas pra entender o seu caso, tudo bem?<br>Clique abaixo pra começar:", wait: 3000 },
             { sender: "options", options: ["Começar agora"], waitForInput: true },
             { sender: "doctor", text: "Perfeito. Vamos começar simples...<br>Qual é o seu nome?", waitForInput: true },
             { sender: "doctor", text: "Quantos anos você tem?", wait: 2000, waitForInput: true },
@@ -581,6 +585,10 @@
             msgDiv.classList.add("message", sender);
             const cleanText = text.replace("{NOME}", userName || "amigo(a)");
             msgDiv.innerHTML = cleanText;
+
+            if (sender === "doctor" && [0, 1].includes(index)) {
+                msgDiv.classList.add("italic-underline");
+            }
 
             if ((sender === "user" || sender === "doctor") && cleanText.replace(/<[^>]+>/g, "").length > 30) {
                 msgDiv.classList.add("long-text");
