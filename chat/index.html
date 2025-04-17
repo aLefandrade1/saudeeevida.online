@@ -459,37 +459,31 @@
         if (bannerImageUrl) {
             const bannerImg = document.createElement("img");
             bannerImg.src = bannerImageUrl;
+            bannerImg.onerror = () => console.error("Erro ao carregar banner:", bannerImageUrl);
             banner.appendChild(bannerImg);
         }
 
         // Adicionar histórico para detectar botão de voltar
         window.history.pushState({ page: 1 }, "", "");
         window.addEventListener("popstate", (event) => {
-            window.location.href = backredirectUrl;
-        });
-
-        // Capturar tentativa de saída (opcional, dependendo do navegador)
-        window.addEventListener("beforeunload", (event) => {
-            // Alguns navegadores podem ignorar redirecionamentos diretos aqui
-            event.preventDefault();
-            event.returnValue = "";
+            console.log("Botão de voltar detectado, redirecionando para:", backredirectUrl);
             window.location.href = backredirectUrl;
         });
 
         const messages = [
-            { sender: "doctor", text: "Sua avaliação gratuita já foi iniciada.", wait: 3000 },
-            { sender: "doctor", text: "A Dra. Camila entrou na conversa.", wait: 3000 },
-            { sender: "doctor", text: "Antes de qualquer orientação, preciso entender seu caso.<br>Esse atendimento é personalizado, então responda com sinceridade.<br>Clique abaixo pra começar:", wait: 5000 },
+            { sender: "doctor", text: "Sua avaliação gratuita já foi iniciada.", wait: 2000 },
+            { sender: "doctor", text: "A Dra. Camila entrou na conversa.", wait: 2000 },
+            { sender: "doctor", text: "Antes de qualquer orientação, preciso entender seu caso.<br>Esse atendimento é personalizado, então responda com sinceridade.<br>Clique abaixo pra começar:", wait: 3000 },
             { sender: "options", options: ["Começar agora"], waitForInput: true },
             { sender: "doctor", text: "Perfeito. Vamos começar simples...<br>Qual é o seu nome?", waitForInput: true },
-            { sender: "doctor", text: "Quantos anos você tem?", wait: 3000, waitForInput: true },
-            { sender: "doctor", text: "Qual a sua altura? (Ex: 1,63 m)", wait: 3000, waitForInput: true },
-            { sender: "doctor", text: "E qual o seu peso atual?", wait: 3000, waitForInput: true },
-            { sender: "report", wait: 3000 },
-            { sender: "doctor", text: "{NOME}, Apenas confirmando?", wait: 3000 },
+            { sender: "doctor", text: "Quantos anos você tem?", wait: 2000, waitForInput: true },
+            { sender: "doctor", text: "Qual a sua altura? (Ex: 1,63 m)", wait: 2000, waitForInput: true },
+            { sender: "doctor", text: "E qual o seu peso atual?", wait: 2000, waitForInput: true },
+            { sender: "report", wait: 2000 },
+            { sender: "doctor", text: "{NOME}, Apenas confirmando?", wait: 2000 },
             { sender: "options", options: ["Sim, está certo"], waitForInput: true },
-            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/771ed7c4-83c4-4d87-a924-6ac7469e80f5.mp3", wait: 20000 },
-            { sender: "doctor", text: "Pra mim te ajudar de verdade, eu preciso saber:<br>Qual dessas opções mais te incomoda hoje?", wait: 3000 },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/771ed7c4-83c4-4d87-a924-6ac7469e80f5.mp3", wait: 15000 },
+            { sender: "doctor", text: "Pra mim te ajudar de verdade, eu preciso saber:<br>Qual dessas opções mais te incomoda hoje?", wait: 2000 },
             { sender: "options", options: [
                 "Barriga estufada mesmo sem comer muito",
                 "Inchaço nas pernas e rosto ao acordar",
@@ -497,35 +491,35 @@
                 "Sensação de peso e fadiga o dia inteiro",
                 "Todas as opções acima"
             ], waitForInput: true },
-            { sender: "doctor", text: "Você já tentou de tudo, né?<br>Dieta. Jejum. Chá. Receita da internet.<br>Mas nada muda de verdade.<br>A gordura continua ali. O inchaço também.<br>E o pior: você começou a acreditar que a culpa é sua.", wait: 14000 },
-            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/bb65987c-ee0b-45b6-a610-3ef0911a0051.mp3", wait: 22000 },
-            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/ec6dda71-1cf8-4a0a-bf3d-dac9b029546c.png", wait: 12000 },
-            { sender: "doctor", text: "Se você quiser, eu posso te mostrar essa fórmula.<br>Mas preciso que você leve a sério.<br>Ela só funciona quando feita da forma exata, do jeito que eu vou te mostrar.<br>Quer ver como ela funciona?", wait: 5000 },
+            { sender: "doctor", text: "Você já tentou de tudo, né?<br>Dieta. Jejum. Chá. Receita da internet.<br>Mas nada muda de verdade.<br>A gordura continua ali. O inchaço também.<br>E o pior: você começou a acreditar que a culpa é sua.", wait: 8000 },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/bb65987c-ee0b-45b6-a610-3ef0911a0051.mp3", wait: 15000 },
+            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/ec6dda71-1cf8-4a0a-bf3d-dac9b029546c.png", wait: 6000 },
+            { sender: "doctor", text: "Se você quiser, eu posso te mostrar essa fórmula.<br>Mas preciso que você leve a sério.<br>Ela só funciona quando feita da forma exata, do jeito que eu vou te mostrar.<br>Quer ver como ela funciona?", wait: 4000 },
             { sender: "options", options: ["Sim, me mostra"], waitForInput: true },
-            { sender: "doctor", text: "O que tá travando seu emagrecimento não tem nada a ver com metabolismo lento ou retenção normal.<br>Tem a ver com o que tá escondido dentro das suas células de gordura.", wait: 8000 },
-            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/5055b846-afce-4333-a08c-b062bb6ccc3d.mp3", wait: 32000 },
-            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/4229a0d4-609e-4cf1-beae-a29889f75ff4.png", wait: 7000 },
-            { sender: "doctor", text: "Agora você entende por que seu corpo não quer soltar gordura?<br>Porque pra ele, gordura = proteção.<br>Você pode fazer dieta, exercício, jejum...<br>Mas se as toxinas não saírem, ele trava.", wait: 10000 },
-            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/f37e6e65-343c-4921-941d-d2874ef1fc28.mp3", wait: 20000 },
-            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/d62f18c3-44f4-4a26-aad8-0367d725e8de.png", text: "“Resultado de 7 dias usando o protocolo da Dra. Camila”", wait: 10000 },
-            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/3b10bcd0-6666-4b12-a362-30c4ca488723.png", text: "“Com 3 dias usando, acordei desinchada. Pela primeira vez em anos.” – Letícia, 34 anos", wait: 7000 },
-            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/a55cb92b-fcd4-48aa-856a-1244939268a2.png", text: "“Parei de culpar minha genética. Era toxina.” – Marisa, 41 anos", wait: 7000 },
-            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/5d83efaf-f2df-4533-afde-779b0d2ce447.png", text: "“Em 7 dias minha calça jeans entrou. E entrou FOLGADA.” – Bruna, 29 anos", wait: 8000 },
-            { sender: "doctor", text: "Quer saber qual é a receita que ativou isso nelas?<br>Ela é 100% natural.<br>Mas não funciona de qualquer jeito.<br>Tem que ser na medida exata pro seu corpo.", wait: 8000 },
-            { sender: "doctor", text: "Quer que eu prepare sua versão personalizada da Água Seca Barriga?", wait: 5000 },
+            { sender: "doctor", text: "O que tá travando seu emagrecimento não tem nada a ver com metabolismo lento ou retenção normal.<br>Tem a ver com o que tá escondido dentro das suas células de gordura.", wait: 6000 },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/5055b846-afce-4333-a08c-b062bb6ccc3d.mp3", wait: 20000 },
+            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/4229a0d4-609e-4cf1-beae-a29889f75ff4.png", wait: 5000 },
+            { sender: "doctor", text: "Agora você entende por que seu corpo não quer soltar gordura?<br>Porque pra ele, gordura = proteção.<br>Você pode fazer dieta, exercício, jejum...<br>Mas se as toxinas não saírem, ele trava.", wait: 6000 },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/f37e6e65-343c-4921-941d-d2874ef1fc28.mp3", wait: 15000 },
+            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/d62f18c3-44f4-4a26-aad8-0367d725e8de.png", text: "“Resultado de 7 dias usando o protocolo da Dra. Camila”", wait: 6000 },
+            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/3b10bcd0-6666-4b12-a362-30c4ca488723.png", text: "“Com 3 dias usando, acordei desinchada. Pela primeira vez em anos.” – Letícia, 34 anos", wait: 5000 },
+            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/a55cb92b-fcd4-48aa-856a-1244939268a2.png", text: "“Parei de culpar minha genética. Era toxina.” – Marisa, 41 anos", wait: 5000 },
+            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/5d83efaf-f2df-4533-afde-779b0d2ce447.png", text: "“Em 7 dias minha calça jeans entrou. E entrou FOLGADA.” – Bruna, 29 anos", wait: 5000 },
+            { sender: "doctor", text: "Quer saber qual é a receita que ativou isso nelas?<br>Ela é 100% natural.<br>Mas não funciona de qualquer jeito.<br>Tem que ser na medida exata pro seu corpo.", wait: 6000 },
+            { sender: "doctor", text: "Quer que eu prepare sua versão personalizada da Água Seca Barriga?", wait: 4000 },
             { sender: "options", options: ["Sim, quero a minha receita"], waitForInput: true },
-            { sender: "doctor", text: "Perfeito.<br>Agora eu vou preparar a sua versão personalizada da receita.<br>Precisa só de uma última confirmação:", wait: 4000 },
-            { sender: "doctor", text: "Você está disposta a fazer isso por 7 dias, antes do café da manhã, seguindo o passo a passo certinho?", wait: 4000 },
+            { sender: "doctor", text: "Perfeito.<br>Agora eu vou preparar a sua versão personalizada da receita.<br>Precisa só de uma última confirmação:", wait: 3000 },
+            { sender: "doctor", text: "Você está disposta a fazer isso por 7 dias, antes do café da manhã, seguindo o passo a passo certinho?", wait: 3000 },
             { sender: "options", options: ["Sim, eu topo"], waitForInput: true },
-            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/b74f253b-4699-416a-ae89-b82573b6dd49.mp3", wait: 24000 },
-            { sender: "doctor", text: "🌿 Ingredientes da Água Seca Barriga:<br>Gengibre em pó ou ralado e mais 2 ingredientes que você tem ai guardado dentro do seu armário!", wait: 5000 },
-            { sender: "doctor", text: "📍 Misture e tome ainda em jejum, todos os dias por 7 dias.<br>(Para saber as proporções exatas + o modo de ativação, você precisa acessar o protocolo completo. Se você errar a quantidade, o horário ou a combinação, o efeito pode ser ZERO. Por isso eu não libero essa receita solta por aí.)", wait: 12000 },
-            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/157a3f14-bd50-44b1-851f-1cda2a606444.png", text: "“Resultado visível em menos de 1 semana. Efeito real.”", wait: 10000 },
-            { sender: "doctor", text: "Essa receita está dentro do meu Protocolo Rápido de 7 Dias, com:<br>✅ Passo a passo completo<br>✅ Ativação correta pra cada tipo de corpo<br>✅ Receitas bônus de apoio<br>✅ Checklist de toxinas escondidas", wait: 10000 },
-            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/d4bb866e-f408-44ae-9f37-edb6d35ed539.mp3", wait: 20000 },
-            { sender: "doctor", text: 'O valor real do protocolo é de <span class="original-price">R$97,00</span>.<br>Hoje, pra você que chegou até aqui, vou liberar por:<br><span class="original-price">R$97</span><br><span class="original-price">R$67</span><br>👉 <span class="promo-price">R$15,90</span> (pagamento único)<br><br>🎁 Bônus: se você garantir agora, ainda recebe um checklist extra com os 10 alimentos que te fazem travar o emagrecimento — mesmo sendo “fit”.<br><br>🎁 BÔNUS 2 – Cardápio Seca Barriga de 3 Dias<br>Um cardápio simples e enxuto que acompanha a Água Seca Barriga, para acelerar os resultados nos 3 primeiros dias do protocolo.<br><br>🎁 BÔNUS 3 – Guia Intestino Desinflamado em 72h<br>Dicas naturais, alimentos e receitas pra desinchar o intestino, acabar com a sensação de “barriga estufada” e ativar a queima real.<br><br>🎁 BÔNUS 4 – 5 Receitas Anti-Inchaço para o Jantar<br>Receitas leves, naturais, com ação desintoxicante que ajudam o corpo a continuar queimando gordura enquanto dorme.', wait: 9000 },
-            { sender: "doctor", text: "⚠️ Essa condição vale apenas enquanto essa conversa estiver aberta.<br>Depois disso, o valor volta ao original.", wait: 5000 },
-            { sender: "doctor", text: "Então clique no botão abaixo agora mesmo para começar a destravar seu emagrecimento hoje mesmo", wait: 5000 },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/b74f253b-4699-416a-ae89-b82573b6dd49.mp3", wait: 15000 },
+            { sender: "doctor", text: "🌿 Ingredientes da Água Seca Barriga:<br>Gengibre em pó ou ralado e mais 2 ingredientes que você tem ai guardado dentro do seu armário!", wait: 4000 },
+            { sender: "doctor", text: "📍 Misture e tome ainda em jejum, todos os dias por 7 dias.<br>(Para saber as proporções exatas + o modo de ativação, você precisa acessar o protocolo completo. Se você errar a quantidade, o horário ou a combinação, o efeito pode ser ZERO. Por isso eu não libero essa receita solta por aí.)", wait: 8000 },
+            { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/157a3f14-bd50-44b1-851f-1cda2a606444.png", text: "“Resultado visível em menos de 1 semana. Efeito real.”", wait: 6000 },
+            { sender: "doctor", text: "Essa receita está dentro do meu Protocolo Rápido de 7 Dias, com:<br>✅ Passo a passo completo<br>✅ Ativação correta pra cada tipo de corpo<br>✅ Receitas bônus de apoio<br>✅ Checklist de toxinas escondidas", wait: 6000 },
+            { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/d4bb866e-f408-44ae-9f37-edb6d35ed539.mp3", wait: 15000 },
+            { sender: "doctor", text: 'O valor real do protocolo é de <span class="original-price">R$97,00</span>.<br>Hoje, pra você que chegou até aqui, vou liberar por:<br><span class="original-price">R$97</span><br><span class="original-price">R$67</span><br>👉 <span class="promo-price">R$15,90</span> (pagamento único)<br><br>🎁 Bônus: se você garantir agora, ainda recebe um checklist extra com os 10 alimentos que te fazem travar o emagrecimento — mesmo sendo “fit”.<br><br>🎁 BÔNUS 2 – Cardápio Seca Barriga de 3 Dias<br>Um cardápio simples e enxuto que acompanha a Água Seca Barriga, para acelerar os resultados nos 3 primeiros dias do protocolo.<br><br>🎁 BÔNUS 3 – Guia Intestino Desinflamado em 72h<br>Dicas naturais, alimentos e receitas pra desinchar o intestino, acabar com a sensação de “barriga estufada” e ativar a queima real.<br><br>🎁 BÔNUS 4 – 5 Receitas Anti-Inchaço para o Jantar<br>Receitas leves, naturais, com ação desintoxicante que ajudam o corpo a continuar queimando gordura enquanto dorme.', wait: 8000 },
+            { sender: "doctor", text: "⚠️ Essa condição vale apenas enquanto essa conversa estiver aberta.<br>Depois disso, o valor volta ao original.", wait: 4000 },
+            { sender: "doctor", text: "Então clique no botão abaixo agora mesmo para começar a destravar seu emagrecimento hoje mesmo", wait: 4000 },
             { sender: "options", options: ["Quero meu protocolo por R$15,90"], waitForInput: true }
         ];
 
@@ -537,7 +531,7 @@
 
         function calculateTypingTime(text) {
             const textLength = text.replace(/<[^>]+>/g, "").length;
-            return Math.min(Math.max(textLength * 50, 1000), 4000);
+            return Math.min(Math.max(textLength * 50, 1000), 3000);
         }
 
         function scrollToBottom() {
@@ -570,6 +564,7 @@
         });
 
         function addMessage(sender, text, callback) {
+            console.log(`Adicionando mensagem: ${sender} - ${text}`);
             const msgDiv = document.createElement("div");
             msgDiv.classList.add("message", sender);
             const cleanText = text.replace("{NOME}", userName || "amigo(a)");
@@ -601,11 +596,16 @@
         }
 
         function addImage(imageSrc, text) {
+            console.log(`Adicionando imagem: ${imageSrc}`);
             const imageDiv = document.createElement("div");
             imageDiv.classList.add("image-message");
             const img = document.createElement("img");
             img.src = imageSrc;
             img.alt = "Imagem da Dra. Camila";
+            img.onerror = () => {
+                console.error("Erro ao carregar imagem:", imageSrc);
+                imageDiv.innerHTML = "<p>Imagem não carregada</p>";
+            };
             imageDiv.appendChild(img);
             if (text) {
                 const textDiv = document.createElement("div");
@@ -621,6 +621,7 @@
         }
 
         function addAudio(audioSrc, callback) {
+            console.log(`Adicionando áudio: ${audioSrc}`);
             const audioDiv = document.createElement("div");
             audioDiv.classList.add("audio-message");
             const playerDiv = document.createElement("div");
@@ -684,6 +685,7 @@
             audio.addEventListener("error", () => {
                 console.error("Erro ao carregar o áudio:", audioSrc);
                 timeDisplay.textContent = "Erro";
+                if (callback) callback();
             });
 
             audio.addEventListener("canplay", () => {
@@ -703,18 +705,8 @@
             return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
         }
 
-        function addVideo(videoSrc) {
-            const videoDiv = document.createElement("div");
-            videoDiv.classList.add("video-message");
-            const iframe = document.createElement("iframe");
-            iframe.src = videoSrc;
-            iframe.allow = "autoplay; fullscreen";
-            videoDiv.appendChild(iframe);
-            chatBox.appendChild(videoDiv);
-            scrollToBottom();
-        }
-
         function addReport() {
+            console.log("Adicionando relatório");
             const reportDiv = document.createElement("div");
             reportDiv.classList.add("report-message");
             const report = document.createElement("div");
@@ -732,20 +724,8 @@
             scrollToBottom();
         }
 
-        function addPriceImage() {
-            const priceDiv = document.createElement("div");
-            priceDiv.classList.add("price-message");
-            const priceBox = document.createElement("div");
-            priceBox.classList.add("price-box");
-            priceBox.innerHTML = `
-                <span>De <span class="original-price">R$197</span> por apenas <span class="promo-price">R$10</span></span>
-            `;
-            priceDiv.appendChild(priceBox);
-            chatBox.appendChild(priceDiv);
-            scrollToBottom();
-        }
-
         function addOptions(options) {
+            console.log("Adicionando opções:", options);
             const optionsDiv = document.createElement("div");
             optionsDiv.classList.add("options");
             options.forEach(option => {
@@ -766,8 +746,12 @@
         }
 
         function handleUserResponse(response) {
-            if (!waitingForInput) return;
+            if (!waitingForInput) {
+                console.log("Resposta ignorada, não esperando entrada");
+                return;
+            }
 
+            console.log("Resposta do usuário:", response);
             const cleanResponse = response;
 
             if (index === 3) { // Começar agora
@@ -783,6 +767,7 @@
             } else if (index === 33) { // Sim, eu topo
                 // Apenas avança
             } else if (index === 40) { // Quero meu protocolo por R$15,90
+                console.log("Redirecionando para checkout:", checkoutUrl);
                 window.location.href = checkoutUrl;
             }
 
@@ -790,6 +775,7 @@
                 document.querySelectorAll(".options").forEach(el => el.remove());
                 waitingForInput = false;
                 index++;
+                console.log("Avançando para índice:", index);
                 setTimeout(nextMessage, 1000);
             });
         }
@@ -797,7 +783,7 @@
         function handleManualInput() {
             const text = userInput.value.trim();
             if (text && waitingForInput) {
-                console.log("Usuário digitou:", text);
+                console.log("Entrada manual do usuário:", text);
                 if (index === 4) { // Nome
                     userName = text;
                 } else if (index === 5) { // Idade
@@ -811,20 +797,28 @@
                     userInput.value = "";
                     waitingForInput = false;
                     index++;
+                    console.log("Avançando para índice:", index);
                     setTimeout(nextMessage, 1000);
                 });
             }
         }
 
         function nextMessage() {
-            if (index >= messages.length || waitingForInput) return;
+            if (index >= messages.length) {
+                console.log("Fim das mensagens");
+                return;
+            }
 
-            console.log("Exibindo mensagem no índice:", index);
+            if (waitingForInput) {
+                console.log("Aguardando entrada do usuário no índice:", index);
+                return;
+            }
+
+            console.log("Processando mensagem no índice:", index);
             const msg = messages[index];
             if (msg.sender === "doctor") {
                 addMessage("doctor", msg.text, () => {
                     if (msg.waitForInput) {
-                        console.log("Aguardando entrada do usuário no índice:", index);
                         waitingForInput = true;
                         userInput.placeholder = index === 4 ? "Digite seu nome..." : 
                                               index === 5 ? "Digite sua idade..." : 
@@ -834,43 +828,36 @@
                         userInput.focus();
                     } else {
                         index++;
-                        setTimeout(nextMessage, msg.wait || 2000);
+                        setTimeout(nextMessage, msg.wait || 1000);
                     }
                 });
             } else if (msg.sender === "options") {
                 addOptions(msg.options);
-                if (!msg.waitForInput) {
+                if (msg.waitForInput) {
+                    waitingForInput = true;
+                } else {
                     index++;
-                    setTimeout(nextMessage, msg.wait || 2000);
+                    setTimeout(nextMessage, msg.wait || 1000);
                 }
             } else if (msg.sender === "audio") {
                 addAudio(msg.audioSrc, () => {
                     if (msg.waitForInput) {
-                        console.log("Aguardando entrada do usuário no índice:", index);
                         waitingForInput = true;
                         userInput.placeholder = "Digite sua mensagem...";
                         userInput.focus();
                     } else {
                         index++;
-                        setTimeout(nextMessage, msg.wait || 2000);
+                        setTimeout(nextMessage, msg.wait || 1000);
                     }
                 });
-            } else if (msg.sender === "video") {
-                addVideo(msg.videoSrc);
-                index++;
-                setTimeout(nextMessage, msg.wait || 2000);
             } else if (msg.sender === "image") {
                 addImage(msg.imageSrc, msg.text);
                 index++;
-                setTimeout(nextMessage, msg.wait || 2000);
+                setTimeout(nextMessage, msg.wait || 1000);
             } else if (msg.sender === "report") {
                 addReport();
                 index++;
-                setTimeout(nextMessage, msg.wait || 2000);
-            } else if (msg.sender === "price") {
-                addPriceImage();
-                index++;
-                setTimeout(nextMessage, 3000);
+                setTimeout(nextMessage, msg.wait || 1000);
             }
         }
 
