@@ -130,6 +130,10 @@
             font-style: italic;
             text-decoration: underline;
         }
+        .promo-price {
+            color: #00cc00 !important;
+            font-weight: bold !important;
+        }
         .typing-indicator {
             max-width: 80%;
             padding: 10px;
@@ -228,17 +232,6 @@
             border-radius: 8px;
             background: #fff;
             text-align: center;
-        }
-        .price-message .price-box .original-price {
-            color: #ff0000;
-            font-size: 1.2rem;
-            text-decoration: line-through;
-            margin-right: 5px;
-        }
-        .price-message .price-box .promo-price {
-            color: #00cc00;
-            font-size: 1.4rem;
-            font-weight: bold;
         }
         .report-message .report {
             background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
@@ -362,15 +355,6 @@
         .options button:focus {
             outline: none;
         }
-        .price-text .original-price {
-            color: #ff0000;
-            font-weight: bold;
-            text-decoration: line-through;
-        }
-        .price-text .promo-price {
-            color: #00cc00;
-            font-weight: bold;
-        }
         @media (max-width: 600px) {
             .banner {
                 height: 25vh;
@@ -420,12 +404,6 @@
             }
             .report-message .report p {
                 font-size: 0.9rem;
-            }
-            .price-message .price-box .original-price {
-                font-size: 1rem;
-            }
-            .price-message .price-box .promo-price {
-                font-size: 1.2rem;
             }
             .options button {
                 padding: 6px 12px;
@@ -533,7 +511,7 @@
             { sender: "image", imageSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/157a3f14-bd50-44b1-851f-1cda2a606444.png", text: "“Resultado visível em menos de 1 semana. Efeito real.”", wait: 6000 },
             { sender: "doctor", text: "Essa receita está dentro do meu Protocolo Rápido de 7 Dias, com:<br>✅ Passo a passo completo<br>✅ Ativação correta pra cada tipo de corpo<br>✅ Receitas bônus de apoio<br>✅ Checklist de toxinas escondidas", wait: 6000 },
             { sender: "audio", audioSrc: "https://cakto-quiz-br01.b-cdn.net/uploads/d4bb866e-f408-44ae-9f37-edb6d35ed539.mp3", wait: 15000 },
-            { sender: "doctor", text: 'O valor real do protocolo é de <span class="original-price">R$97,00</span>.<br>Hoje, pra você que chegou até aqui, vou liberar por:<br><span class="original-price">R$97</span><br><span class="original-price">R$67</span><br>👉 <span class="promo-price">R$15,90</span> (pagamento único)', wait: 6000 },
+            { sender: "doctor", text: 'O valor real do protocolo é de R$97,00.<br>Hoje, pra você que chegou até aqui, vou liberar por:<br>👉 <span class="promo-price">R$15,90 (pagamento único)</span>', wait: 6000 },
             { sender: "doctor", text: '🎁 Bônus: se você garantir agora, ainda recebe um checklist extra com os 10 alimentos que te fazem travar o emagrecimento — mesmo sendo “fit”.<br><br>🎁 BÔNUS 2 – Cardápio Seca Barriga de 3 Dias<br>Um cardápio simples e enxuto que acompanha a Água Seca Barriga, para acelerar os resultados nos 3 primeiros dias do protocolo.<br><br>🎁 BÔNUS 3 – Guia Intestino Desinflamado em 72h<br>Dicas naturais, alimentos e receitas pra desinchar o intestino, acabar com a sensação de “barriga estufada” e ativar a queima real.<br><br>🎁 BÔNUS 4 – 5 Receitas Anti-Inchaço para o Jantar<br>Receitas leves, naturais, com ação desintoxicante que ajudam o corpo a continuar queimando gordura enquanto dorme.', wait: 12000 },
             { sender: "doctor", text: "⚠️ Essa condição vale apenas enquanto essa conversa estiver aberta.<br>Depois disso, o valor volta ao original.", wait: 4000 },
             { sender: "doctor", text: "Então clique no botão abaixo agora mesmo para começar a destravar seu emagrecimento hoje mesmo", wait: 4000 },
@@ -762,12 +740,16 @@
                     btn.classList.add(btnClass);
                 }
                 btn.onclick = () => handleUserResponse(btnText);
+                if (btnClass === "smartplayer-call-action--link") {
+                    btn.addEventListener("touchstart", () => handleUserResponse(btnText));
+                }
 
                 const textLength = btnText.length;
                 if (textLength > 25) {
                     btn.classList.add("long-text");
                 }
 
+                console.log("Botão renderizado:", btnText, btnClass);
                 optionsDiv.appendChild(btn);
             });
             chatBox.appendChild(optionsDiv);
@@ -797,8 +779,10 @@
             } else if (index === 33) { // Sim, eu topo
                 // Apenas avança
             } else if (index === 41) { // Quero meu protocolo por R$15,90
-                console.log("Redirecionando para checkout:", checkoutUrl);
+                console.log("Botão de checkout clicado:", response);
+                console.log("Redirecionando para:", checkoutUrl);
                 window.location.href = checkoutUrl;
+                return; // Evita avançar no funil
             }
 
             addMessage("user", response, () => {
