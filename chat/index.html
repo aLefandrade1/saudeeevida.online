@@ -558,6 +558,15 @@
             }
         });
 
+        function redirectToCheckout() {
+            console.log("Redirecionando para:", checkoutUrl);
+            window.location.assign(checkoutUrl);
+            setTimeout(() => {
+                console.log("Fallback: abrindo checkout em nova aba");
+                window.open(checkoutUrl, "_blank");
+            }, 500); // Fallback caso o redirecionamento falhe
+        }
+
         function addMessage(sender, text, callback) {
             console.log(`Adicionando mensagem: ${sender} - ${text}`);
             const msgDiv = document.createElement("div");
@@ -739,9 +748,18 @@
                 if (btnClass) {
                     btn.classList.add(btnClass);
                 }
-                btn.onclick = () => handleUserResponse(btnText);
                 if (btnClass === "smartplayer-call-action--link") {
-                    btn.addEventListener("touchstart", () => handleUserResponse(btnText));
+                    btn.addEventListener("click", () => {
+                        console.log("Botão de checkout clicado (click):", btnText);
+                        redirectToCheckout();
+                    });
+                    btn.addEventListener("touchstart", (e) => {
+                        e.preventDefault();
+                        console.log("Botão de checkout clicado (touchstart):", btnText);
+                        redirectToCheckout();
+                    });
+                } else {
+                    btn.onclick = () => handleUserResponse(btnText);
                 }
 
                 const textLength = btnText.length;
@@ -779,10 +797,8 @@
             } else if (index === 33) { // Sim, eu topo
                 // Apenas avança
             } else if (index === 41) { // Quero meu protocolo por R$15,90
-                console.log("Botão de checkout clicado:", response);
-                console.log("Redirecionando para:", checkoutUrl);
-                window.location.href = checkoutUrl;
-                return; // Evita avançar no funil
+                // Redirecionamento tratado em addOptions
+                console.log("Resposta registrada, redirecionamento já tratado");
             }
 
             addMessage("user", response, () => {
