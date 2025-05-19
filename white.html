@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Consultório Online - Dra. Juliana Rocha</title>
   <style>
     body {
@@ -10,6 +10,7 @@
       padding: 0;
       background-color: white;
       font-family: Arial, sans-serif;
+      text-align: center;
     }
 
     /* Estilo do banner responsivo */
@@ -37,17 +38,18 @@
       }
     }
 
-    /* Container do topo com fundo verde */
-    .topo-verde {
+    /* Barra superior com nome e status */
+    .barra-topo {
+      background-color: #15803d; /* Verde escuro */
+      color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #2e7d32; /* verde escuro para diferenciar da bolinha */
       padding: 10px 20px;
-      color: white;
+      flex-wrap: wrap;
     }
 
-    .especialista {
+    .barra-topo .especialista {
       font-size: 1.2rem;
       font-weight: bold;
     }
@@ -55,14 +57,15 @@
     .online-status {
       display: flex;
       align-items: center;
+      gap: 8px;
+      font-size: 1rem;
     }
 
     .bolinha-verde {
       width: 12px;
       height: 12px;
-      background-color: #00ff00; /* verde mais claro */
+      background-color: #00ff00; /* Verde claro */
       border-radius: 50%;
-      margin-right: 6px;
       animation: piscar 1s infinite;
     }
 
@@ -71,38 +74,48 @@
       50% { opacity: 0.3; }
     }
 
-    /* Rodapé */
+    @media (max-width: 767px) {
+      .barra-topo {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .online-status {
+        margin-top: 5px;
+      }
+    }
+
     footer {
       margin-top: 40px;
       font-size: 0.9rem;
       color: #555;
-      text-align: center;
     }
   </style>
-  <script type="module">
-    import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js';
-
-    Typebot.initStandard({ typebot: "my-typebot-elts3hr" });
-  </script>
 </head>
 <body>
 
-  <!-- Banner para celular -->
-  <img class="banner banner-mobile" src="LINK_DO_BANNER_PARA_CELULAR" alt="Banner Mobile">
+  <!-- Banner Mobile -->
+  <img class="banner banner-mobile" src="https://cakto-quiz-br01.b-cdn.net/uploads/bc2da588-f2e1-460c-bbde-0d7ae34dcd09.png" alt="Banner Mobile" />
 
-  <!-- Banner para desktop -->
-  <img class="banner banner-desktop" src="https://cakto-quiz-br01.b-cdn.net/uploads/35a9935a-6191-409d-85c2-41d6ba63db77.png" alt="Banner Desktop">
+  <!-- Banner Desktop -->
+  <img class="banner banner-desktop" src="https://cakto-quiz-br01.b-cdn.net/uploads/7dc42682-5f5a-469e-ae71-5050128d5755.png" alt="Banner Desktop" />
 
-  <!-- Nome da especialista e status online -->
-  <div class="topo-verde">
+  <!-- Barra com nome e online -->
+  <div class="barra-topo">
+    <div class="especialista">Dra. Juliana Rocha, Nutricionista</div>
     <div class="online-status">
       <div class="bolinha-verde"></div>
       <span>Online</span>
     </div>
-    <div class="especialista">Dra. Juliana Rocha, Nutricionista</div>
   </div>
 
   <!-- Código do Typebot -->
+  <script type="module">
+    import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js';
+    Typebot.initStandard({ typebot: "my-typebot-elts3hr" });
+  </script>
+
   <typebot-standard style="width: 100%; height: 600px;"></typebot-standard>
 
   <!-- Rodapé -->
