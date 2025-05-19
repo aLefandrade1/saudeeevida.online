@@ -10,7 +10,6 @@
       padding: 0;
       background-color: white;
       font-family: Arial, sans-serif;
-      text-align: center;
     }
 
     /* Estilo do banner responsivo */
@@ -40,7 +39,7 @@
 
     /* Barra superior com nome e status */
     .barra-topo {
-      background-color: #15803d; /* Verde escuro */
+      background-color: #15803d; /* verde escuro */
       color: white;
       display: flex;
       justify-content: space-between;
@@ -49,7 +48,7 @@
       flex-wrap: wrap;
     }
 
-    .barra-topo .especialista {
+    .especialista {
       font-size: 1.2rem;
       font-weight: bold;
     }
@@ -64,7 +63,7 @@
     .bolinha-verde {
       width: 12px;
       height: 12px;
-      background-color: #00ff00; /* Verde claro */
+      background-color: #00ff00; /* verde claro */
       border-radius: 50%;
       animation: piscar 1s infinite;
     }
@@ -78,7 +77,6 @@
       .barra-topo {
         flex-direction: column;
         align-items: flex-start;
-        text-align: left;
       }
 
       .online-status {
@@ -90,6 +88,7 @@
       margin-top: 40px;
       font-size: 0.9rem;
       color: #555;
+      text-align: center;
     }
   </style>
 </head>
@@ -110,7 +109,7 @@
     </div>
   </div>
 
-  <!-- Código do Typebot -->
+  <!-- Typebot LIMPO -->
   <script type="module">
     import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js';
     Typebot.initStandard({ typebot: "my-typebot-elts3hr" });
