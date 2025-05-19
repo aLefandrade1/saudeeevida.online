@@ -1,217 +1,65 @@
-<!index html>
-<html lang="pt-br">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Los resultados pueden variar de persona a persona.">
-   
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Dosis:wght@200;300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&family=Signika:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/com.css">
-
-    <!-- Título da Página -->
-    <title>Bienestar y Salud</title>
-
-    <style type="text/css">
-    header {
-      color: black;
-      background-image: rgb(8, 0, 45);
-      background-color: rgb(255, 255, 255);
-      background-position: center;
-      background-size: cover;
-      background-attachment: fixed;
-      background-blend-mode: darken;
-    }
-
-.center {
-        text-align: center;
-      }
-
-.banner {
-        font-size: 2vw;
-        background-color: rgb(255, 0, 0);
-        font-family: sans-serif;
-        font-weight: bold;
-        color: #fff;
-      }
-    </style>
-
-<script language=javascript type="text/javascript">
-dayName = new Array ("domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado")
-monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro")
-now = new Date
-</script>
-
-</head>
-
-<body>
-
-<div class="banner py-lg-1 py-sm-1 center white">
-<script language=javascript type="text/javascript">
-now = new Date
-document.write ("<br><h5> Cupom de desconto válido até hoje, <b>" + dayName[now.getDay() ] + ", " + now.getDate () + " de " + monName [now.getMonth() ]   +  " de "  +     now.getFullYear () + "! </b></h5><br>")
-
-</script>
-    </div>
-
-    <header class="py-4">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-
-             <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oferta Final - Gastrite</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h1, h2 {
-            color: #c0392b; /* Vermelho para chamar atenção */
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            margin: 20px 0;
-        }
-
-        p {
-            margin: 10px 0;
-            font-size: 1.1rem;
-        }
-
-        .highlight-green {
-            color: #27ae60; /* Verde para destacar benefícios */
-            font-weight: bold;
-        }
-
-        .highlight-red {
-            color: #e74c3c; /* Vermelho para urgência */
-            font-weight: bold;
-        }
-
-        .button {
-            display: block;
-            background-color: #27ae60; /* Verde para chamada à ação */
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-        }
-
-        .button:hover {
-            background-color: #1e8449;
-        }
-
-        .bonus {
-            background-color: #27ae60;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-
-        .price {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #e67e22; /* Tom laranja para destaque */
-        }
-
-        .urgent {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-top: 20px;
-        }
-
-        .underline {
-            text-decoration: underline;
-        }
-    </style>
-    <script>
-        function redirectToCheckout() {
-            // Substitua o link abaixo pelo seu link de checkout real
-            const checkoutLink = "https://pay.cakto.com.br/7KCZKGR";
-            window.location.href = checkoutLink;
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dra. Juliana Rocha - Atendimento Online</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom animation for the online indicator */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .online-indicator {
+      animation: pulse 1.5s infinite;
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Essa é sua <span class="highlight-red underline">ÚLTIMA CHANCE</span> de acabar com a gastrite por um preço simbólico!</h1>
+<body class="flex flex-col min-h-screen bg-gray-100">
+  <!-- Banner Section -->
+  <header class="w-full">
+    <!-- Mobile Banner (visible on screens smaller than 768px) -->
+    <picture>
+      <source 
+        media="(max-width: 767px)" 
+        srcset="mobile-banner.jpg">
+      <!-- Desktop Banner (visible on screens 768px and larger) -->
+      <source 
+        media="(min-width: 768px)" 
+        srcset="desktop-banner.jpg">
+      <img 
+        src="desktop-banner.jpg" 
+        alt="Banner de Atendimento Online" 
+        class="w-full h-auto object-cover max-h-[400px]"
+        onerror="this.src='https://via.placeholder.com/1200x400?text=Banner+Desktop';">
+    </picture>
+    <!-- Note: Replace 'mobile-banner.jpg' and 'desktop-banner.jpg' with the actual URLs of your uploaded images -->
+  </header>
 
-        <p>Nós entendemos que talvez você ainda esteja em dúvida...</p>
-        <p>Mas a verdade é que continuar convivendo com a dor, o desconforto e a queimação <span class="highlight-red">não precisa ser sua realidade</span>.</p>
-        <p>Você já sabe que o <span class="highlight-green">Chá da Reconstrução da Barreira Ácida</span> é a solução mais simples e natural para acabar com a gastrite em apenas 7 dias.</p>
-        <p><b>Então, por que adiar mais uma vez a decisão de cuidar da sua saúde?</b></p>
-
-        <p>Imagine poder:</p>
-        <ul>
-            <li><b class="highlight-green">Comer sem medo e sem dor.</b></li>
-            <li><b class="highlight-green">Eliminar a queimação e o desconforto no estômago de uma vez por todas.</b></li>
-            <li><b class="highlight-green">Voltar a viver com energia e bem-estar, sem depender de remédios.</b></li>
-        </ul>
-
-        <div class="bonus">
-            <p>- Truque Natural para aliviar dores no estômago.</p>
-            <p>- Bebida ativadora para queima de gordura e redução da barriguinha.</p>
-        </div>
-
-       <p class="price">De <del>R$10</del> por apenas <span class="highlight-red">R$5!</span></p>
-
-        <p class="highlight-red underline">Essa é a ÚLTIMA chance de garantir essa oferta.</p>
-        <p class="highlight-red"><b>Se você fechar esta página, ela desaparecerá para sempre.</b></p>
-
-        <div class="urgent">
-            <p><b>Imagine sua vida sem dores de estômago, sem queimação e comendo o que você gosta...</b></p>
-            <p><b><span class="highlight-red">Não deixe sua saúde para depois!</span></b></p>
-        </div>
-
-        <button class="button" onclick="redirectToCheckout()">Sim, quero minha receita agora por R$5!</button>
+  <!-- Specialist Section -->
+  <main class="flex-grow flex items-center justify-center py-8">
+    <div class="flex items-center space-x-3">
+      <h1 class="text-2xl md:text-3xl font-semibold text-gray-800">
+        Dra. Juliana Rocha - Psicóloga
+      </h1>
+      <span class="relative flex h-3 w-3">
+        <span class="online-indicator absolute inline-flex h-full w-full rounded-full bg-green-400"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+      </span>
     </div>
+  </main>
+
+  <!-- Space for Typebot Widget -->
+  <section id="typebot-widget" class="flex-grow">
+    <!-- Typebot widget can be inserted here via script or iframe -->
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-4">
+    <p class="text-sm">
+      “Este é um ambiente seguro e sigiloso para atendimentos online.”
+    </p>
+  </footer>
 </body>
 </html>
-
-
-
-                    
