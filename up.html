@@ -54,33 +54,15 @@
             max-width: 100%;
             height: auto;
         }
-        .image-caption {
-            font-size: 14px;
-            color: #666;
-        }
-        .button-green {
-            display: inline-block;
-            background-color: #28a745;
-            color: #fff;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 5px;
-            margin: 20px 0;
-            text-align: center;
-        }
-        .button-green:hover {
-            background-color: #218838;
-        }
         .carousel {
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
             gap: 20px;
             padding: 10px;
             margin: 30px 0;
-            justify-content: center;
+            justify-content: flex-start;
         }
         .carousel-item {
             flex: 0 0 auto;
@@ -156,13 +138,16 @@
         <p>Imagine isto:
         <div class="carousel">
             <div class="carousel-item">
-                <img src="INSIRA_O_LINK_DA_IMAGEM_AQUI_3" alt="Imagem ilustrativa da transformação corporal 1">
+                <img src="https://cakto-quiz-br01.b-cdn.net/uploads/3d814e50-d373-4fd9-9b2e-6eb7d4f9ff1c.png" alt="Imagem ilustrativa da transformação corporal 1">
             </div>
             <div class="carousel-item">
-                <img src="INSIRA_O_LINK_DA_IMAGEM_AQUI_4" alt="Imagem ilustrativa da transformação corporal 2">
+                <img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/v1zc4piha5wmmljcw3656uc1/blocks/q4bcvtn9agxlew8wij60mjyg?v=1748021522310" alt="Imagem ilustrativa da transformação corporal 2">
             </div>
             <div class="carousel-item">
-                <img src="INSIRA_O_LINK_DA_IMAGEM_AQUI_5" alt="Imagem ilustrativa da transformação corporal 3">
+                <img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/v1zc4piha5wmmljcw3656uc1/blocks/q4bcvtn9agxlew8wij60mjyg?v=1748021563176" alt="Imagem ilustrativa da transformação corporal 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/v1zc4piha5wmmljcw3656uc1/blocks/q4bcvtn9agxlew8wij60mjyg?v=1748021690918" alt="Imagem ilustrativa da transformação corporal 4">
             </div>
         </div>
         Você usando <strong>MOUNJARO DE RICA</strong>, a gordura derretendo... e, simultaneamente, com o <strong>Elixir Japonês™</strong>, sentindo sua pele ficar mais TÔNICA a cada dia. A barriga secando E ficando FIRME. Os braços afinando E ficando LISINHOS. O rosto emagrecendo E parecendo mais JOVEM!</p>
@@ -182,7 +167,7 @@
         <h2><span class="highlight-green">R$ 97 !! (Pagamento Único)</span></h2>
 
         <!-- Placeholder para o código de upsell de um clique da plataforma de vendas -->
-        <!-- INSIRA O CÓDIGO DE UPSELL DA PLATAFORMA AQUI -->
+        <!-- INSIRA O_CÓDIGO_DE_UPSELL_DA_PLATAFORMA_AQUI -->
 
         <p><span class="bold">Pense nisso:</span> por menos do que custa um único pote de creme anti-flacidez mediano (que nem trata a causa interna!), você garante a solução <span class="bold highlight-green">DEFINITIVA</span> para ter o corpo dos seus sonhos <span class="bold uppercase">POR COMPLETO</span>!</p>
 
@@ -197,7 +182,28 @@
         <p>Clique no botão verde abaixo <span class="bold highlight-green">AGORA MESMO</span> e adicione o <span class="bold">Elixir Japonês™</span> ao seu pedido com 1 único clique, antes que esta oferta exclusiva suma para sempre!</p>
 
         <!-- Placeholder para o código de upsell de um clique da plataforma de vendas -->
-        <!-- INSIRA O CÓDIGO DE UPSELL DA PLATAFORMA AQUI -->
+        <!-- INSIRA O_CÓDIGO_DE_UPSELL_DA_PLATAFORMA_AQUI -->
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.querySelector('.carousel');
+            const itemWidth = 320; // Largura do item (300px + 20px de gap)
+            let scrollPosition = 0;
+
+            const scrollCarousel = () => {
+                scrollPosition += itemWidth;
+                if (scrollPosition >= carousel.scrollWidth - carousel.clientWidth) {
+                    scrollPosition = 0; // Volta ao início
+                }
+                carousel.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+            };
+
+            setInterval(scrollCarousel, 3000); // Rola a cada 3 segundos
+        });
+    </script>
 </body>
 </html>
