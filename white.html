@@ -13,37 +13,38 @@
         }
 
         body {
-            background-color: #F9FAFB;
+            background-color: #FFFFFF;
             color: #1A1A1A;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* Mobile-first styles */
         .container {
             max-width: 100%;
-            padding: 24px;
+            padding: 16px;
             margin: 0 auto;
+            background-color: #FFFFFF;
         }
 
         .headline {
             background-color: #FFFFFF;
             text-align: center;
-            padding: 40px 24px;
-            border-radius: 16px;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            padding: 24px 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
             border: 2px solid #2E7D32;
         }
 
         .headline h1 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #1A1A1A;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .headline p {
-            font-size: 1.125rem;
+            font-size: 0.875rem;
             color: #2E7D32;
             font-weight: 500;
         }
@@ -53,46 +54,52 @@
             font-weight: 700;
         }
 
-        .copy-section {
+        .copy-section, .lead-section {
             background-color: #FFFFFF;
-            padding: 32px 24px;
-            border-radius: 16px;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            padding: 24px 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #2E7D32;
         }
 
-        .copy-section p {
-            font-size: 1rem;
-            margin-bottom: 16px;
+        .copy-section p, .lead-section p {
+            font-size: 0.875rem;
+            margin-bottom: 12px;
             text-align: center;
             color: #4A4A4A;
         }
 
-        .copy-section .highlight {
-            font-size: 1.05rem;
+        .copy-section .highlight, .lead-section .highlight {
+            font-size: 0.9375rem;
+        }
+
+        .lead-section.alternate {
+            background-color: #E8F5E9;
+            border-left: 4px solid #FFC107;
         }
 
         .main-image {
             width: 100%;
-            max-width: 600px;
-            margin: 24px auto;
+            max-width: 500px;
+            margin: 16px auto;
             display: block;
-            border-radius: 16px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
 
         .cta-button {
             background-color: #FFC107;
             color: #1A1A1A;
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 600;
             text-align: center;
-            padding: 16px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 10px;
             text-decoration: none;
             display: block;
-            margin: 24px auto;
-            max-width: 320px;
+            margin: 16px auto;
+            max-width: 280px;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
         }
 
@@ -104,18 +111,18 @@
 
         .sticky-cta {
             position: fixed;
-            bottom: 24px;
+            bottom: 16px;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
-            max-width: 320px;
+            max-width: 280px;
             background-color: #FFC107;
             color: #1A1A1A;
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 600;
             text-align: center;
-            padding: 16px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 10px;
             text-decoration: none;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             z-index: 1000;
@@ -132,9 +139,9 @@
             background-color: #2E7D32;
             color: #FFFFFF;
             text-align: center;
-            padding: 24px;
-            font-size: 0.875rem;
-            margin-top: 32px;
+            padding: 16px;
+            font-size: 0.75rem;
+            margin-top: 24px;
             border-top: 4px solid #FFC107;
         }
 
@@ -142,25 +149,33 @@
         @media (min-width: 768px) {
             .container {
                 max-width: 960px;
-                padding: 48px;
+                padding: 32px;
             }
 
             .headline h1 {
-                font-size: 3rem;
+                font-size: 2.25rem;
             }
 
             .headline p {
-                font-size: 1.5rem;
-            }
-
-            .copy-section p {
                 font-size: 1.125rem;
             }
 
+            .copy-section p, .lead-section p {
+                font-size: 1rem;
+            }
+
+            .copy-section .highlight, .lead-section .highlight {
+                font-size: 1.0625rem;
+            }
+
             .cta-button {
-                font-size: 1.5rem;
-                padding: 20px;
-                max-width: 400px;
+                font-size: 1.25rem;
+                padding: 16px;
+                max-width: 360px;
+            }
+
+            .main-image {
+                max-width: 600px;
             }
 
             .sticky-cta {
@@ -196,6 +211,42 @@
         </section>
 
         <img src="imagem2.jpg" alt="Imagem secundária do Monjaro da Banana" class="main-image">
+
+        <section class="lead-section">
+            <p>Mas e se eu te dissesse que o problema <span class="highlight">nunca foi você</span>?</p>
+            <p>E se existisse uma explicação <span class="highlight">simples e lógica</span> pro seu corpo estar travado…</p>
+            <p>E uma forma natural de <span class="highlight">destravar isso</span> em <span class="highlight">3 minutos por dia</span>, sem dieta, sem academia e sem sofrimento?</p>
+            <p>E se isso não envolvesse <span class="highlight">agulhas</span>, nem <span class="highlight">remédios caros</span>, nem dietas que fazem você se sentir <span class="highlight">culpada</span> o tempo todo?</p>
+            <p>Parece <span class="highlight">bom demais pra ser verdade</span>, eu sei.</p>
+            <p>Mas foi exatamente isso que eu descobri depois que minha tia quase morreu tentando emagrecer com uma dessas <span class="highlight">canetinhas da moda</span>.</p>
+        </section>
+
+        <img src="imagem3.jpg" alt="Imagem terciária do Monjaro da Banana" class="main-image">
+
+        <section class="lead-section alternate">
+            <p>Meu nome é <span class="highlight">Vanessa Bastos</span>, sou nutricionista funcional…</p>
+            <p>E nos próximos minutos, vou te mostrar o <span class="highlight">ritual natural</span> que imita o efeito do <span class="highlight">Mounjaro</span> — a famosa injeção de emagrecimento usada por celebridades como <span class="highlight">Kim Kardashian</span>, <span class="highlight">Elon Musk</span> e <span class="highlight">Oprah Winfrey</span>.</p>
+        </section>
+
+        <img src="imagem4.jpg" alt="Imagem quaternária do Monjaro da Banana" class="main-image">
+
+        <section class="lead-section">
+            <p>Mas ao invés de agulhas e <span class="highlight">efeitos colaterais</span>, você vai usar um <span class="highlight">chá simples</span> com <span class="highlight">banana</span> e <span class="highlight">dois ingredientes secretos</span>, direto da sua casa.</p>
+        </section>
+
+        <section class="lead-section alternate">
+            <p>Tudo começou quando minha tia — <span class="highlight">57 anos</span>, mulher vaidosa, forte, batalhadora — chegou no <span class="highlight">limite</span>.</p>
+            <p>Ela já tinha tentado de tudo: <span class="highlight">shake</span>, <span class="highlight">remédio</span>, <span class="highlight">dieta</span>, personal…</p>
+            <p>E <span class="highlight">nada funcionava</span>.</p>
+            <p>Foi aí que ela resolveu testar a tal <span class="highlight">canetinha</span>.<br><span class="highlight">Mounjaro</span>.<br>Uma injeção cara, que custa quase <span class="highlight">2 mil reais por mês</span>, usada por celebridades dos EUA.</p>
+            <p>Em <span class="highlight">duas semanas</span>, ela <span class="highlight">desmaiou</span> no banheiro.</p>
+            <p><span class="highlight">Pressão despencando</span>, <span class="highlight">enjoo</span>, <span class="highlight">tontura</span>, <span class="highlight">falta de ar</span>.<br>Foi parar no <span class="highlight">hospital</span> ligada no soro, com o <span class="highlight">fígado inflamado</span>.</p>
+            <p>Eu entrei naquele quarto, olhei pra ela ali deitada, e jurei uma coisa pra mim mesma:</p>
+            <p>“<span class="highlight">Nenhuma mulher que eu amo vai precisar sofrer tanto pra tentar emagrecer</span>.”</p>
+            <p>Foi aí que eu comecei a estudar o que diabos essas <span class="highlight">canetinhas faziam no corpo</span>.</p>
+            <p>Estudei <span class="highlight">artigo por artigo</span>. <span class="highlight">Estudo por estudo</span>.</p>
+            <p>E o que eu descobri <span class="highlight">mudou tudo</span>.</p>
+        </section>
 
         <a href="#comprar" class="cta-button">Compre Agora</a>
     </div>
