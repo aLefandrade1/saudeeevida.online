@@ -1,109 +1,177 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consultório Online - Dra. Juliana Rocha</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página VSL - Direct Response</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background-color: white;
       font-family: Arial, sans-serif;
-      text-align: center;
-    }
-
-    /* Estilo do banner responsivo */
-    .banner {
-      width: 100%;
-      max-height: 250px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .banner-desktop {
-      display: none;
-    }
-
-    .banner-mobile {
-      display: block;
-    }
-
-    @media (min-width: 768px) {
-      .banner-desktop {
-        display: block;
-      }
-      .banner-mobile {
-        display: none;
-      }
-    }
-
-    /* Nome da especialista */
-    .especialista {
-      color: #000000; /* preto */
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-
-    /* Status online */
-    .online-status {
-      display: inline-flex;
+      background: #fff;
+      margin: 0;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
       align-items: center;
-      margin-top: 10px;
+      flex-direction: column;
     }
-
-    .bolinha-verde {
-      width: 12px;
-      height: 12px;
-      background-color: #2ecc71;
+    .video-container {
+      position: relative;
+      padding-bottom: 177.78%; /* Proporção 9:16 para Reels (1920/1080) */
+      height: 0;
+      overflow: hidden;
+      max-width: 360px; /* Limita largura para Reels */
+      margin: 0 auto;
+    }
+    .video-container iframe, .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .headline {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 30px 0 5px; /* Aumentado o espaço acima da headline */
+    }
+    .subheadline {
+      font-size: 0.9em;
+      color: #999;
+      margin-bottom: 10px;
+    }
+    .meta {
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .profile img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
       border-radius: 50%;
-      margin-right: 8px;
-      animation: piscar 1s infinite;
+      margin-right: 10px;
     }
-
-    @keyframes piscar {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+    .like-section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
     }
-
-    /* Rodapé */
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #555;
+    .like-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+    }
+    .like-button span {
+      margin-left: 5px;
+    }
+    .comments {
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+    }
+    .comment {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .comment img {
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .comment .name {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    .comment-count {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
     }
   </style>
-  <script type="module">
-    import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js';
-
-    Typebot.initStandard({ typebot: "my-typebot-elts3hr" });
-  </script>
 </head>
 <body>
 
-  <!-- Banner para celular -->
-  <img class="banner banner-mobile" src="LINK_DO_BANNER_PARA_CELULAR" alt="Banner Mobile">
-
-  <!-- Banner para desktop -->
-  <img class="banner banner-desktop" src="https://cakto-quiz-br01.b-cdn.net/uploads/35a9935a-6191-409d-85c2-41d6ba63db77.png" alt="Banner Desktop">
-
-  <!-- Nome da especialista -->
-  <div class="especialista">Dra. Juliana Rocha, Nutricionista</div>
-
-  <!-- Status online -->
-  <div class="online-status">
-    <div class="bolinha-verde"></div>
-    <span>Online</span>
+  <div class="video-container">
+    <!-- Insira aqui o código de embed do Wistia (iframe e script do player) -->
+    <!-- Exemplo: 
+    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+      <iframe src="https://fast.wistia.net/embed/iframe/SEU_CODIGO?web_component=true&seo=true" title="Seu Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%" height="100%"></iframe>
+    </div>
+    <script src="https://fast.wistia.net/player.js" async></script>
+    -->
   </div>
 
-  <!-- Código do Typebot -->
-  <typebot-standard style="width: 100%; height: 600px;"></typebot-standard>
+  <div id="cta-button" style="display:none; text-align:center; margin: 40px 0;">
+    <a href="https://seulink.com" target="_blank" style="background:#28a745; color:#fff; padding:15px 30px; text-decoration:none; border-radius:5px; font-size:1.2em;">
+      QUERO EMAGRECER AGORA!
+    </a>
+  </div>
 
-  <!-- Rodapé -->
-  <footer>
-    Este é um ambiente seguro e sigiloso para atendimentos online.
-  </footer>
+  <div class="headline">5 Formas Brutais de Secar o Mais Rápido</div>
+  <div class="subheadline">Coloque sua sub-headline aqui</div>
+  <div class="meta">506.000 visualizações • há 3 semanas</div>
+
+  <div class="profile">
+    <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/clp8fnu4v002qlg0fq1j7s8h0/blocks/jocpxyakvkylyips7cl8el8e?v=1753288318413" alt="Foto do perfil"></a>
+    <div>João Silva • 2.500 seguidores</div>
+  </div>
+
+  <div class="like-section">
+    <button class="like-button" onclick="like()">👍 <span id="like-count">30.000</span>  Curtidas</button>
+  </div>
+
+  <div class="comments">
+    <span class="comment-count" id="comment-count">Comentários (2)</span>
+    <div class="comment">
+      <a href="#"><img src="maria.jpg" alt="Maria Souza"></a>
+      <div class="name">Maria Souza</div>
+      <div>Esse vídeo mudou tudo pra mim!</div>
+    </div>
+    <div class="comment">
+      <a href="#"><img src="pedro.jpg" alt="Pedro Lima"></a>
+      <div class="name">Pedro Lima</div>
+      <div>Resultados absurdos em pouco tempo.</div>
+    </div>
+    <div class="comment">
+      <a href="#"><img src="pedro.jpg" alt="Pedro Lima"></a>
+      <div class="name">Pedro Lima</div>
+      <div>Resultados absurdos em pouco tempo.</div>
+    </div>
+  </div>
+
+  <script>
+    let likes = 30000;
+    function like() {
+      likes++;
+      document.getElementById('like-count').innerText = likes.toLocaleString('pt-BR');
+    }
+
+    function updateCommentCount() {
+      const comments = document.querySelectorAll('.comment').length;
+      document.getElementById('comment-count').innerText = `Comentários (${comments})`;
+    }
+    updateCommentCount();
+
+    // Exibe o botão com delay (120 segundos)
+    setTimeout(() => {
+      document.getElementById('cta-button').style.display = 'block';
+    }, 120000); // 120000 ms = 2 minutos
+  </script>
 
 </body>
 </html>
