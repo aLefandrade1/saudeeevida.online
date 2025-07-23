@@ -31,6 +31,11 @@
       font-weight: bold;
       margin: 15px 0 5px;
     }
+    .subheadline {
+      font-size: 0.9em;
+      color: #999;
+      margin-bottom: 10px;
+    }
     .meta {
       color: #666;
       font-size: 0.9em;
@@ -44,6 +49,7 @@
     .profile img {
       width: 40px;
       height: 40px;
+      object-fit: cover;
       border-radius: 50%;
       margin-right: 10px;
     }
@@ -68,17 +74,33 @@
       padding-top: 15px;
     }
     .comment {
+      display: flex;
+      align-items: center;
       margin-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .comment img {
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 10px;
     }
     .comment .name {
       font-weight: bold;
+      margin-right: 5px;
+    }
+    .comment-count {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
     }
   </style>
 </head>
 <body>
 
   <div class="video-container">
-    <!-- Hospede seu vídeo ou use embed customizado -->
     <video controls poster="thumb.jpg">
       <source src="video.mp4" type="video/mp4">
       Seu navegador não suporta vídeo.
@@ -86,27 +108,35 @@
   </div>
 
   <div class="headline">5 Formas Brutais de Secar o Mais Rápido</div>
+  <div class="subheadline">Coloque sua sub-headline aqui</div>
   <div class="meta">506.000 visualizações • há 3 semanas</div>
 
   <div class="profile">
-    <img src="profile.jpg" alt="Foto do perfil">
+    <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/clp8fnu4v002qlg0fq1j7s8h0/blocks/jocpxyakvkylyips7cl8el8e?v=1753288318413" alt="Foto do perfil"></a>
     <div>João Silva • 2.500 seguidores</div>
   </div>
 
   <div class="like-section">
-    <button class="like-button" onclick="like()">👍 <span id="like-count">30.000</span></button>
+    <button class="like-button" onclick="like()">👍 <span id="like-count">30.000</span>  Curtidas</button>
   </div>
 
   <div class="comments">
+    <span class="comment-count" id="comment-count">Comentários (2)</span>
     <div class="comment">
+      <a href="#"><img src="maria.jpg" alt="Maria Souza"></a>
       <div class="name">Maria Souza</div>
       <div>Esse vídeo mudou tudo pra mim!</div>
     </div>
     <div class="comment">
+      <a href="#"><img src="pedro.jpg" alt="Pedro Lima"></a>
       <div class="name">Pedro Lima</div>
       <div>Resultados absurdos em pouco tempo.</div>
     </div>
-    <!-- Adicione mais comentários aqui -->
+    <div class="comment">
+      <a href="#"><img src="pedro.jpg" alt="Pedro Lima"></a>
+      <div class="name">Pedro Lima</div>
+      <div>Resultados absurdos em pouco tempo.</div>
+    </div>
   </div>
 
   <script>
@@ -115,6 +145,12 @@
       likes++;
       document.getElementById('like-count').innerText = likes.toLocaleString('pt-BR');
     }
+
+    function updateCommentCount() {
+      const comments = document.querySelectorAll('.comment').length;
+      document.getElementById('comment-count').innerText = `Comentários (${comments})`;
+    }
+    updateCommentCount();
   </script>
 
 </body>
