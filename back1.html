@@ -11,7 +11,14 @@
     <meta name="description" content="Como reducir los síntomas del Lipedema">
     <link rel="shortcut icon" type="image/png" href="https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/tYuCyu1394434.png">
     <title>[Lipedema]</title>
-    <!-- Cole o código do seu pixel de rastreamento aqui (ex: Facebook Pixel, Google Analytics) -->
+   <script>
+  window.pixelId = "689ec21f7b0077f6711cc996";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
     
     <style>
         :root {
@@ -180,9 +187,41 @@
         </div>
         <p class="footer-item">Todas las opiniones y contenidos expresados en este sitio son responsabilidad exclusiva de sus autores y no reflejan la opinión ni las políticas de Facebook, Instagram ou Meta.</p>
     </footer>
-    <!-- Cole o código de rastreamento UTM aqui (ex: script para capturar parâmetros UTM) -->
+   <script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  data-utmify-ignore-iframe
+  data-utmify-is-cartpanda
+  async
+  defer
+></script>
     
-    <!-- Cole o código de backredirect aqui (ex: script para redirecionar após cliques ou ações) -->
+   <script>
+  // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
+  const link = 'https://meubackredirect.com.br';
+
+  function setBackRedirect(url) {
+    let urlBackRedirect = url;
+    urlBackRedirect = urlBackRedirect =
+      urlBackRedirect.trim() +
+      (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+      document.location.search.replace('?', '').toString();
+
+    history.pushState({}, '', location.href);
+    history.pushState({}, '', location.href);
+    history.pushState({}, '', location.href);
+
+    window.addEventListener('popstate', () => {
+      console.log('onpopstate', urlBackRedirect);
+      setTimeout(() => {
+        location.href = urlBackRedirect;
+      }, 1);
+    });
+  }
+
+  setBackRedirect(link);
+</script>
     
 </body>
 </html>
