@@ -54,7 +54,7 @@
             padding: 0 10px; /* Pequeno padding para evitar toque nas bordas */
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start; /* Alinha itens à esquerda */
             justify-content: flex-start;
             flex: 1;
         }
@@ -67,7 +67,7 @@
         }
         .header-image {
             text-align: center;
-            margin-bottom: 20px; /* Aumentado para mais espaço entre imagem e headline */
+            margin-bottom: 20px; /* Espaço entre imagem e headline */
             width: 100%;
         }
         .header-image img {
@@ -88,11 +88,9 @@
             }
         }
         .headline {
-            margin: 0 auto 2px auto; /* Reduzido para menos espaço antes do vídeo */
+            margin: 0 auto 2px auto; /* Espaço reduzido antes do vídeo */
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
             width: 100%;
             padding: 0 10px;
         }
@@ -100,7 +98,7 @@
             font-size: 24px;
             color: var(--primary-color); /* Verde para a headline */
             font-weight: 600;
-            text-align: center;
+            text-align: left; /* Alinhamento à esquerda */
             margin: 0;
             line-height: 1.2;
         }
@@ -114,6 +112,7 @@
             }
             .headline h2 {
                 font-size: 20px;
+                text-align: left; /* Alinhamento à esquerda no mobile */
             }
         }
         .video-section {
@@ -126,8 +125,7 @@
         .video-embed {
             position: relative;
             width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* Proporção 16:9 para o vídeo */
+            height: auto; /* Altura automática para desktop */
             overflow: hidden;
         }
         .video-embed iframe,
@@ -147,8 +145,7 @@
         }
         @media screen and (max-width: 480px) {
             .video-embed {
-                height: 0;
-                padding-bottom: 56.25%; /* Mantém proporção 16:9 no mobile */
+                height: 100vh; /* Restaura altura total no mobile */
             }
         }
         footer {
@@ -181,7 +178,7 @@
 <body>
     <div class="container">
         <div class="header-image">
-            <img loading="eager" fetchpriority="high" decoding="async" width="1080" height="171" src="https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp" alt="Logo promocional para redução de síntomas de Lipedema" srcset="https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp 1080w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=300&amp;height=160 300w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=768&amp;height=409 768w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=1024&amp;height=545 1024w" sizes="(max-width: 1080px) 100vw, 1080px">
+            <img loading="eager" fetchpriority="high" decoding="async" width="1080" height="171" src="https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp" alt="Logo promocional para reducción de síntomas de Lipedema" srcset="https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp 1080w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=300&amp;height=160 300w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=768&amp;height=409 768w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=1024&amp;height=545 1024w" sizes="(max-width: 1080px) 100vw, 1080px">
         </div>
         <div class="headline">
             <h2>Comía sano, hacía ejercicio... pero mis <span>Piernas</span> seguían <span>inflamadas</span> hasta que tomé este <span>cóctel</span>.</h2>
