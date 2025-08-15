@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="[SEU_NOME_DE_MARCA]">
-    <meta property="og:description" content="Como reducir los síntomas del Lipedema">
+    <meta property="og:title" content="BrandName">
+    <meta property="og:description" content="Cómo reducir los síntomas del Lipedema">
     <meta property="og:image" content="https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/EAgybs1328138.jpeg">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Como reducir los síntomas del Lipedema">
+    <meta name="description" content="Cómo reducir los síntomas del Lipedema">
     <link rel="shortcut icon" type="image/png" href="https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/tYuCyu1394434.png">
-    <title>[SEU_NOME_DE_MARCA]</title>
+    <title>BrandName</title>
     <script>
         window.pixelId = "689ec21f7b0077f6711cc996";
         var a = document.createElement("script");
@@ -21,7 +21,8 @@
     </script>
     <style>
         :root {
-            --primary-color: #6495ed;
+            --primary-color: #008000; /* Verde para a headline */
+            --highlight-color: #87CEEB; /* Azul claro para palavras específicas */
             --background-color: #f3f3f3;
             --footer-bg: #373737;
             --footer-text: #f7f6fd;
@@ -50,7 +51,7 @@
         .container {
             max-width: 1140px;
             margin: 0 auto;
-            padding: 0;
+            padding: 0 10px; /* Pequeno padding para evitar toque nas bordas */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -59,14 +60,14 @@
         }
         @media screen and (max-width: 480px) {
             .container {
-                padding: 0;
+                padding: 0 10px;
                 background: #fff;
                 width: 100vw;
             }
         }
         .header-image {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 20px; /* Aumentado para mais espaço entre imagem e headline */
             width: 100%;
         }
         .header-image img {
@@ -82,12 +83,12 @@
                 max-width: 100vw;
                 max-height: 200px;
                 display: block;
-                margin: 0 auto 5px auto;
+                margin: 0 auto 10px auto;
                 object-fit: contain;
             }
         }
         .headline {
-            margin: 0 auto 5px auto; /* espaço mínimo antes do vídeo */
+            margin: 0 auto 2px auto; /* Reduzido para menos espaço antes do vídeo */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -97,16 +98,19 @@
         }
         .headline h2 {
             font-size: 24px;
-            color: #000;
+            color: var(--primary-color); /* Verde para a headline */
             font-weight: 600;
             text-align: center;
             margin: 0;
             line-height: 1.2;
         }
+        .headline h2 span {
+            color: var(--highlight-color); /* Azul claro para palavras específicas */
+        }
         @media screen and (max-width: 480px) {
             .headline {
                 width: 100vw;
-                padding: 0;
+                padding: 0 10px;
             }
             .headline h2 {
                 font-size: 20px;
@@ -122,7 +126,8 @@
         .video-embed {
             position: relative;
             width: 100%;
-            height: 100vh; /* ocupa altura total da tela no mobile */
+            height: 0;
+            padding-bottom: 56.25%; /* Proporção 16:9 para o vídeo */
             overflow: hidden;
         }
         .video-embed iframe,
@@ -136,9 +141,15 @@
             border: none;
         }
         .wistia_responsive_padding {
-            padding-top: 0 !important; /* remove padding extra da Wistia */
+            padding-top: 0 !important;
             margin-top: 0 !important;
             height: 100% !important;
+        }
+        @media screen and (max-width: 480px) {
+            .video-embed {
+                height: 0;
+                padding-bottom: 56.25%; /* Mantém proporção 16:9 no mobile */
+            }
         }
         footer {
             background: var(--footer-bg);
@@ -148,7 +159,7 @@
             font-weight: 300;
             padding: 15px;
             width: 100%;
-            margin-top: 20px; /* espaço controlado com vídeo */
+            margin-top: 20px;
         }
         @media screen and (max-width: 480px) {
             footer {
@@ -170,10 +181,10 @@
 <body>
     <div class="container">
         <div class="header-image">
-            <img loading="eager" fetchpriority="high" decoding="async" width="1080" height="171" src="https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp" alt="Logo promocional para redução de sintomas de Lipedema" srcset="https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp 1080w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=300&amp;height=160 300w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=768&amp;height=409 768w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=1024&amp;height=545 1024w" sizes="(max-width: 1080px) 100vw, 1080px">
+            <img loading="eager" fetchpriority="high" decoding="async" width="1080" height="171" src="https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp" alt="Logo promocional para redução de síntomas de Lipedema" srcset="https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp 1080w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=300&amp;height=160 300w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=768&amp;height=409 768w,https://media.atomicatpages.net/u/jrAxUz9IBUdw7zKHgQALnCAF1zl2/Pictures/LNiAai7387272.webp?width=1024&amp;height=545 1024w" sizes="(max-width: 1080px) 100vw, 1080px">
         </div>
         <div class="headline">
-            <h2>Comía sano, ejeciocio... pero mis piernas segurança inflamadas hasta que Tomé este cóctel.</h2>
+            <h2>Comía sano, hacía ejercicio... pero mis <span>Piernas</span> seguían <span>inflamadas</span> hasta que tomé este <span>cóctel</span>.</h2>
         </div>
         <div class="video-section">
             <div class="video-embed">
@@ -187,7 +198,7 @@
         </div>
     </div>
     <footer>
-        <p class="footer-item">Copyright <span>2025</span> - [SEU_NOME_DE_MARCA] ®</p>
+        <p class="footer-item">Copyright <span>2025</span> - BrandName ®</p>
         <p class="footer-item">Todos los Derechos Reservados</p>
         <div class="footer-item">
             <a href="/terminos">Términos de Uso</a>
