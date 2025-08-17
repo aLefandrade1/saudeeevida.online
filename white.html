@@ -1,282 +1,98 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monjaro da Banana - Oferta Exclusiva</title>
+    <title>¡No Cierres Esta Página! - Oferta Especial</title>
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            text-align: center;
         }
-
-        body {
-            background-color: #FFFFFF;
-            color: #1A1A1A;
-            line-height: 1.6;
-        }
-
-        /* Mobile-first styles */
         .container {
-            max-width: 100%;
-            padding: 16px;
-            margin: 0 auto;
-            background-color: #FFFFFF;
+            max-width: 800px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-
-        .headline {
-            background-color: #FFFFFF;
-            text-align: center;
-            padding: 24px 16px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-            border: 2px solid #2E7D32;
+        .hook {
+            background-color: red;
+            color: yellow;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
-
-        .headline h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1A1A1A;
-            margin-bottom: 12px;
+        .bold {
+            font-weight: bold;
         }
-
-        .headline p {
-            font-size: 0.875rem;
-            color: #2E7D32;
-            font-weight: 500;
+        .red {
+            color: red;
         }
-
-        .highlight {
-            color: #D32F2F;
-            font-weight: 700;
+        .yellow {
+            color: yellow;
         }
-
-        .copy-section, .lead-section {
-            background-color: #FFFFFF;
-            padding: 24px 16px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-            border-left: 4px solid #2E7D32;
+        .green {
+            color: green;
         }
-
-        .copy-section p, .lead-section p {
-            font-size: 0.875rem;
-            margin-bottom: 12px;
-            text-align: center;
-            color: #4A4A4A;
-        }
-
-        .copy-section .highlight, .lead-section .highlight {
-            font-size: 0.9375rem;
-        }
-
-        .lead-section.alternate {
-            background-color: #E8F5E9;
-            border-left: 4px solid #FFC107;
-        }
-
-        .main-image {
-            width: 100%;
-            max-width: 500px;
-            margin: 16px auto;
-            display: block;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-button {
-            background-color: #FFC107;
-            color: #1A1A1A;
-            font-size: 1rem;
-            font-weight: 600;
-            text-align: center;
-            padding: 12px;
-            border-radius: 10px;
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #28a745; /* Botão verde */
+            color: white;
             text-decoration: none;
-            display: block;
-            margin: 16px auto;
-            max-width: 280px;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-
-        .cta-button:hover {
-            background-color: #FFCA28;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        .button:hover {
+            background-color: #218838; /* Tom mais escuro de verde para hover */
         }
-
-        .sticky-cta {
-            position: fixed;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 280px;
-            background-color: #FFC107;
-            color: #1A1A1A;
-            font-size: 1rem;
-            font-weight: 600;
-            text-align: center;
-            padding: 12px;
-            border-radius: 10px;
-            text-decoration: none;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-            display: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .sticky-cta:hover {
-            background-color: #FFCA28;
-            transform: translateX(-50%) translateY(-2px);
-        }
-
-        footer {
-            background-color: #2E7D32;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 16px;
-            font-size: 0.75rem;
-            margin-top: 24px;
-            border-top: 4px solid #FFC107;
-        }
-
-        /* Desktop styles */
-        @media (min-width: 768px) {
+        @media (max-width: 600px) {
             .container {
-                max-width: 960px;
-                padding: 32px;
+                padding: 10px;
             }
-
-            .headline h1 {
-                font-size: 2.25rem;
+            .hook {
+                font-size: 20px;
+                padding: 15px;
             }
-
-            .headline p {
-                font-size: 1.125rem;
-            }
-
-            .copy-section p, .lead-section p {
-                font-size: 1rem;
-            }
-
-            .copy-section .highlight, .lead-section .highlight {
-                font-size: 1.0625rem;
-            }
-
-            .cta-button {
-                font-size: 1.25rem;
-                padding: 16px;
-                max-width: 360px;
-            }
-
-            .main-image {
-                max-width: 600px;
-            }
-
-            .sticky-cta {
-                display: none;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .sticky-cta {
-                display: block;
+            .button {
+                font-size: 16px;
+                padding: 12px 24px;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <section class="headline">
-            <h1>Esse chá de banana está substituindo as injeções de <span class="highlight">R$7.000</span> das celebridades — e fazendo mulheres acima dos 35 perderem até <span class="highlight">1kg por dia</span> sem cortar comida!</h1>
-            <p>Descoberta apoiada por <span class="highlight">Harvard</span> revela como um chá com <span class="highlight">3 ingredientes naturais</span> ativa o mesmo hormônio das canetinhas injetáveis e faz a gordura abdominal <span class="highlight">derreter</span> sem dieta ou academia.</p>
-        </section>
-
-        <img src="imagem1.jpg" alt="Imagem de destaque do Monjaro da Banana" class="main-image">
-
-        <section class="copy-section">
-            <p>Você já tentou <span class="highlight">jejum</span>, <span class="highlight">low carb</span>, cápsula seca-barriga, termogênico, remédio da farmácia, chá de influencer…</p>
-            <p>E mesmo assim, <span class="highlight">nada muda</span> de verdade.</p>
-            <p>Você emagrece 1, engorda 3.<br>Emagrece 2, para tudo.<br>A <span class="highlight">barriga continua ali</span>. A calça não entra. O <span class="highlight">espelho te machuca</span>.</p>
-            <p>E o pior?<br>Você começa a <span class="highlight">se acostumar</span>.<br>Vai comprando <span class="highlight">roupas maiores</span>…<br>Vai aceitando que “<span class="highlight">é da idade mesmo</span>”…<br>E vai fingindo que <span class="highlight">não liga mais</span>.</p>
-            <p>Mas a verdade é que você sente falta de <span class="highlight">gostar do que vê no espelho</span>.</p>
-            <p>Sente falta de se sentir <span class="highlight">desejada</span>.<br>De usar a <span class="highlight">roupa que quiser</span>.<br>De andar na rua com a <span class="highlight">cabeça erguida</span>.</p>
-            <p>Você sente falta de ser <span class="highlight">leve</span>. Por fora e por dentro.</p>
-        </section>
-
-        <img src="imagem2.jpg" alt="Imagem secundária do Monjaro da Banana" class="main-image">
-
-        <section class="lead-section">
-            <p>Mas e se eu te dissesse que o problema <span class="highlight">nunca foi você</span>?</p>
-            <p>E se existisse uma explicação <span class="highlight">simples e lógica</span> pro seu corpo estar travado…</p>
-            <p>E uma forma natural de <span class="highlight">destravar isso</span> em <span class="highlight">3 minutos por dia</span>, sem dieta, sem academia e sem sofrimento?</p>
-            <p>E se isso não envolvesse <span class="highlight">agulhas</span>, nem <span class="highlight">remédios caros</span>, nem dietas que fazem você se sentir <span class="highlight">culpada</span> o tempo todo?</p>
-            <p>Parece <span class="highlight">bom demais pra ser verdade</span>, eu sei.</p>
-            <p>Mas foi exatamente isso que eu descobri depois que minha tia quase morreu tentando emagrecer com uma dessas <span class="highlight">canetinhas da moda</span>.</p>
-        </section>
-
-        <img src="imagem3.jpg" alt="Imagem terciária do Monjaro da Banana" class="main-image">
-
-        <section class="lead-section alternate">
-            <p>Meu nome é <span class="highlight">Vanessa Bastos</span>, sou nutricionista funcional…</p>
-            <p>E nos próximos minutos, vou te mostrar o <span class="highlight">ritual natural</span> que imita o efeito do <span class="highlight">Mounjaro</span> — a famosa injeção de emagrecimento usada por celebridades como <span class="highlight">Kim Kardashian</span>, <span class="highlight">Elon Musk</span> e <span class="highlight">Oprah Winfrey</span>.</p>
-        </section>
-
-        <img src="imagem4.jpg" alt="Imagem quaternária do Monjaro da Banana" class="main-image">
-
-        <section class="lead-section">
-            <p>Mas ao invés de agulhas e <span class="highlight">efeitos colaterais</span>, você vai usar um <span class="highlight">chá simples</span> com <span class="highlight">banana</span> e <span class="highlight">dois ingredientes secretos</span>, direto da sua casa.</p>
-        </section>
-
-        <section class="lead-section alternate">
-            <p>Tudo começou quando minha tia — <span class="highlight">57 anos</span>, mulher vaidosa, forte, batalhadora — chegou no <span class="highlight">limite</span>.</p>
-            <p>Ela já tinha tentado de tudo: <span class="highlight">shake</span>, <span class="highlight">remédio</span>, <span class="highlight">dieta</span>, personal…</p>
-            <p>E <span class="highlight">nada funcionava</span>.</p>
-            <p>Foi aí que ela resolveu testar a tal <span class="highlight">canetinha</span>.<br><span class="highlight">Mounjaro</span>.<br>Uma injeção cara, que custa quase <span class="highlight">2 mil reais por mês</span>, usada por celebridades dos EUA.</p>
-            <p>Em <span class="highlight">duas semanas</span>, ela <span class="highlight">desmaiou</span> no banheiro.</p>
-            <p><span class="highlight">Pressão despencando</span>, <span class="highlight">enjoo</span>, <span class="highlight">tontura</span>, <span class="highlight">falta de ar</span>.<br>Foi parar no <span class="highlight">hospital</span> ligada no soro, com o <span class="highlight">fígado inflamado</span>.</p>
-            <p>Eu entrei naquele quarto, olhei pra ela ali deitada, e jurei uma coisa pra mim mesma:</p>
-            <p>“<span class="highlight">Nenhuma mulher que eu amo vai precisar sofrer tanto pra tentar emagrecer</span>.”</p>
-            <p>Foi aí que eu comecei a estudar o que diabos essas <span class="highlight">canetinhas faziam no corpo</span>.</p>
-            <p>Estudei <span class="highlight">artigo por artigo</span>. <span class="highlight">Estudo por estudo</span>.</p>
-            <p>E o que eu descobri <span class="highlight">mudou tudo</span>.</p>
-        </section>
-
-        <a href="#comprar" class="cta-button">Compre Agora</a>
+        <div class="hook">
+            ¡NO CIERRES NI ACTUALICES ESTA PÁGINA!
+        </div>
+        <h1>¡Casi te vas antes de recibir un <span class="bold yellow">regalo especial</span>!</h1>
+        <p>Entendemos que la vida está llena de <span class="bold">compromisos</span> y que quizás no puedas ver el video <span class="red">ahora mismo</span>.</p>
+        <p>También entendemos lo <span class="bold red">doloroso</span> que es vivir con lipedema y cómo <span class="red">daña tu autoestima</span>.</p>
+        <p>Y no quiero que los compromisos diarios te impidan lograr el <span class="bold yellow">cuerpo de tus sueños</span>.</p>
+        <p>Por eso, de cada <span class="bold">50 personas</span> que visitan nuestra página, <span class="bold red">1 es seleccionada</span> para recibir un <span class="yellow">regalo especial</span>.</p>
+        <p><span class="bold yellow">¡Y parece que esta vez fuiste tú!</span></p>
+        <p>Quiero darte una <span class="bold yellow">oportunidad especial</span> para obtener el <span class="bold">"Nombre del Producto"</span>.</p>
+        <p>Normalmente, algo así sería <span class="bold red">caro</span>.</p>
+        <p>Pero no te preocupes, porque no te costará <span class="green">$100.00</span>, ¡para nada!</p>
+        <p>Ni la mitad, que serían <span class="green">$50.00</span>.</p>
+        <p>Ni siquiera <span class="green">$25.00</span>.</p>
+        <p>Solo tienes que pagar <span class="green">$6</span>.</p>
+        <p>Esta es nuestra forma de demostrarte cuánto <span class="bold">valoramos tu presencia</span> y la <span class="bold yellow">confianza</span> que tenemos en el <span class="bold red">poder de nuestro producto</span>.</p>
+        <p>Sería una <span class="red">pena</span> dejar pasar esta <span class="yellow">oportunidad</span>, ya que podría ser un paso <span class="bold">decisivo</span> en tu búsqueda del <span class="bold yellow">cuerpo que siempre has soñado</span>.</p>
+        <p>Haz clic en el botón de abajo y da el <span class="bold red">primer paso</span>.</p>
+        <a href="https://seu-link-de-checkout.com" class="button">Asegurar mi Oferta Ahora</a>
+        <p><span class="bold red">Atención:</span> Si abandonas esta página, <span class="red">perderás el descuento para siempre</span>.</p>
     </div>
-
-    <a href="#comprar" class="sticky-cta">Oferta Relâmpago - Compre Agora!</a>
-
-    <footer>
-        <p>© 2025 Monjaro da Banana. Todos os direitos reservados. Termos de Uso | Política de Privacidade</p>
-    </footer>
-
-    <script>
-        // Smooth scroll for CTA buttons
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Show/hide sticky CTA based on scroll position
-        window.addEventListener('scroll', () => {
-            const stickyCta = document.querySelector('.sticky-cta');
-            if (window.scrollY > 300 && window.innerWidth < 768) {
-                stickyCta.style.display = 'block';
-            } else {
-                stickyCta.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
