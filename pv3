@@ -1,1 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página VSL - Direct Response</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* Proporção padrão mantida, ajustável pelo embed */
+      height: 0;
+      overflow: hidden;
+    }
+    .video-container iframe, .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .headline {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 30px 0 5px; /* Aumentado o espaço acima da headline */
+    }
+    .subheadline {
+      font-size: 0.9em;
+      color: #999;
+      margin-bottom: 10px;
+    }
+    .meta {
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .profile img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .like-section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .like-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+    }
+    .like-button span {
+      margin-left: 5px;
+    }
+    .comments {
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+    }
+    .comment {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .comment img {
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .comment .name {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    .comment-count {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
 
+  <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/ci9h6j6ol8?web_component=true&seo=true" title="202507251408 (1) Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%" height="100%"></iframe></div></div>
+<script src="https://fast.wistia.net/player.js" async></script>
+
+  <div id="cta-button" style="display:none; text-align:center; margin: 40px 0;">
+    <a href="https://seulink.com" target="_blank" style="background:#28a745; color:#fff; padding:15px 30px; text-decoration:none; border-radius:5px; font-size:1.2em;">
+      COMPRAR AGORA!
+    </a>
+  </div>
+
+  <div class="headline">3 Formas Brutais de Instalar o Vírus Emocional na Mente de Qualquer Homem</div>
+  <div class="subheadline">Descubra os gatilhos psicológicos que transformam frieza em obsessão — mesmo que ele tenha te ignorado, sumido ou esteja com outra.</div>
+  <div class="meta">506.000 visualizações • há 3 semanas</div>
+
+  <div class="profile">
+    <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753489382668" alt="Luana Ferreira"></a>
+    <div>Luana Ferreira • 30.500 seguidores</div>
+  </div>
+
+  <div class="like-section">
+    <button class="like-button" onclick="like()">👍 <span id="like-count">30.000</span>  Curtidas</button>
+  </div>
+
+  <div class="comments">
+    <span class="comment-count" id="comment-count">Comentários (2)</span>
+    <div class="comment">
+      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753495719429" alt="Maria Souza"></a>
+      <div class="name">Maria Souza</div>
+      <div>Eu juro que achei que era mais uma enganação… até o ex que me ignorava há 2 meses aparecer me mandando flores 😳 tô passada com esse tal de vírus emocional!</div>
+    </div>
+    <div class="comment">
+      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753495381897" alt="Mirela Oliver"></a>
+      <div class="name">Mirela Oliver</div>
+      <div>Fiz só uma das técnicas do vídeo ontem e hoje ele me mandou um textão dizendo que não para de pensar em mim. Tô rindo e chocada ao mesmo tempo 😂</div>
+    </div>
+    <div class="comment">
+      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753495787536" alt="Pedro Lima"></a>
+      <div class="name">Ana Maria</div>
+      <div>Meninas, não pensem duas vezes. Só assistam e façam. É surreal como eles reagem quando a gente entende o que mexe com eles.</div>
+    </div>
+    <div class="comment">
+      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753495570449" alt="Pedro Lima"></a>
+      <div class="name">Rafaella lima</div>
+      <div>Já testei vários métodos na internet e nada… esse foi o único que funcionou MESMO.</div>
+    </div>
+    <div class="comment">
+      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753496581234" alt="Pedro Lima"></a>
+      <div class="name">Vanessa Gomes</div>
+      <div>Eu achei que tinha perdido ele pra sempre… mas foi aplicar o gatilho da dopamina e o homem ficou obcecado. Chocada!</div>
+    </div>
+    <div class="comment">
+      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753495660253" alt="Pedro Lima"></a>
+      <div class="name">Ingred Lima</div>
+      <div>Isso aqui não é só pra reconquistar, é pra você ter o controle emocional total do relacionamento. Ele virou outro homem!</div>
+    </div>
+    <div class="comment">
+      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753496789315" alt="Pedro Lima"></a>
+      <div class="name">Marcela Costa</div>
+      <div>Deusa do céu, eu pensei que era impossível ele voltar. Hoje ele me mandou um áudio chorando dizendo que me perdeu e quer recomeçar. Obrigada, Luana!!!</div>
+    </div>
+  </div>
+
+  <script>
+    let likes = 30000;
+    function like() {
+      likes++;
+      document.getElementById('like-count').innerText = likes.toLocaleString('pt-BR');
+    }
+
+    function updateCommentCount() {
+      const comments = document.querySelectorAll('.comment').length;
+      document.getElementById('comment-count').innerText = `Comentários (${comments})`;
+    }
+    updateCommentCount();
+
+    // Exibe o botão com delay (120 segundos)
+    setTimeout(() => {
+      document.getElementById('cta-button').style.display = 'block';
+    }, 120000); // 120000 ms = 2 minutos
+  </script>
+
+</body>
+</html>
