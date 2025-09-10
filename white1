@@ -1,1 +1,98 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡No Cierres Esta Página! - Oferta Especial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .hook {
+            background-color: red;
+            color: yellow;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .red {
+            color: red;
+        }
+        .yellow {
+            color: yellow;
+        }
+        .green {
+            color: green;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #28a745; /* Botão verde */
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #218838; /* Tom mais escuro de verde para hover */
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .hook {
+                font-size: 20px;
+                padding: 15px;
+            }
+            .button {
+                font-size: 16px;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hook">
+            ¡NO CIERRES NI ACTUALICES ESTA PÁGINA!
+        </div>
+        <h1>¡Casi te vas antes de recibir un <span class="bold yellow">regalo especial</span>!</h1>
+        <p>Entendemos que la vida está llena de <span class="bold">compromisos</span> y que quizás no puedas ver el video <span class="red">ahora mismo</span>.</p>
+        <p>También entendemos lo <span class="bold red">doloroso</span> que es vivir con lipedema y cómo <span class="red">daña tu autoestima</span>.</p>
+        <p>Y no quiero que los compromisos diarios te impidan lograr el <span class="bold yellow">cuerpo de tus sueños</span>.</p>
+        <p>Por eso, de cada <span class="bold">50 personas</span> que visitan nuestra página, <span class="bold red">1 es seleccionada</span> para recibir un <span class="yellow">regalo especial</span>.</p>
+        <p><span class="bold yellow">¡Y parece que esta vez fuiste tú!</span></p>
+        <p>Quiero darte una <span class="bold yellow">oportunidad especial</span> para obtener el <span class="bold">"PROTOCOLO CERO LIPEDEMAS"</span>.</p>
+        <p>Normalmente, algo así sería <span class="bold red">caro</span>.</p>
+        <p>Pero no te preocupes, porque no te costará <span class="green">$100.00</span>, ¡para nada!</p>
+        <p>Ni la mitad, que serían <span class="green">$50.00</span>.</p>
+        <p>Ni siquiera <span class="green">$27.00</span>.</p>
+        <p>Solo tienes que pagar <span class="green">$6</span>.</p>
+        <p>Esta es nuestra forma de demostrarte cuánto <span class="bold">valoramos tu presencia</span> y la <span class="bold yellow">confianza</span> que tenemos en el <span class="bold red">poder de nuestro producto</span>.</p>
+        <p>Sería una <span class="red">pena</span> dejar pasar esta <span class="yellow">oportunidad</span>, ya que podría ser un paso <span class="bold">decisivo</span> en tu búsqueda del <span class="bold yellow">cuerpo que siempre has soñado</span>.</p>
+        <p>Haz clic en el botón de abajo y da el <span class="bold red">primer paso</span>.</p>
+        <a href="https://verificada.mycartpanda.com/ckt/mj3EPY" class="button">Asegurar mi Oferta Ahora</a>
+        <p><span class="bold red">Atención:</span> Si abandonas esta página, <span class="red">perderás el descuento para siempre</span>.</p>
+    </div>
+</body>
+</html>
