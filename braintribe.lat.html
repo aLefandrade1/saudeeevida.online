@@ -22,13 +22,8 @@
     .notice b{color:#7fd2ff}
 
     /* FAIXA AZUL - full-width + altura maior */
-    .blue-strip{margin:20px 0; width:100%;}
-    .blue-strip img{
-      width:100%;
-      height:250px; /* aumenta a altura visível */
-      object-fit:cover; /* garante que a imagem preencha sem distorcer */
-      display:block;
-    }
+    .blue-strip{margin:20px 0; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw;}
+    .blue-strip img{width:100%; height:auto; display:block;}
 
     /* BLOCO DO DOUTOR */
     .doctor{display:flex; gap:16px; align-items:center; margin:20px 0}
