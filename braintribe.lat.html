@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Página de Vendas – Fundo Preto</title>
+  <title>Página de Ventas – Fondo Blanco</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -11,66 +11,70 @@
     body{
       margin:0;
       font-family:Inter, system-ui, sans-serif;
-      background:#000;
-      color:#fff;
+      background:#fff;
+      color:#000;
       line-height:1.4;
     }
     .wrap{max-width:900px; margin:0 auto; padding:16px}
 
     /* AVISO SUPERIOR */
     .notice{margin:20px 0; text-align:center; font-weight:800}
-    .notice b{color:#7fd2ff}
+    .notice b{color:#004080}
 
-    /* FAIXA AZUL - full-width + altura maior */
+    /* FAIXA AZUL - responsiva */
     .blue-strip{margin:20px 0; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw;}
     .blue-strip img{width:100%; height:auto; display:block;}
 
-    /* BLOCO DO DOUTOR */
+    /* BLOQUE DEL DOCTOR */
     .doctor{display:flex; gap:16px; align-items:center; margin:20px 0}
     .doctor .avatar{width:64px; height:64px; border-radius:50%; object-fit:cover}
     .doctor .meta .name{font-weight:800}
-    .doctor .meta .role{font-size:.9rem; color:#ccc}
-    .doctor .meta .quote{margin-top:6px; font-style:italic; color:#ddd}
+    .doctor .meta .role{font-size:.9rem; color:#333}
+    .doctor .meta .quote{margin-top:6px; font-style:italic; color:#444}
 
     /* LEGAL */
-    .legal{text-align:center; font-size:.86rem; margin:30px 0; color:#aaa}
-    .legal a{color:#9edcff; text-decoration:none; margin:0 10px;}
-    .disclaimer{margin-top:14px; font-size:.78rem; color:#777; line-height:1.5}
+    .legal{text-align:center; font-size:.86rem; margin:30px 0; color:#444}
+    .legal a{color:#004080; text-decoration:none; margin:0 10px;}
+    .disclaimer{margin-top:14px; font-size:.78rem; color:#555; line-height:1.5}
+
+    @media (max-width:640px){
+      .blue-strip img{max-height:120px;}
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <!-- SLOT DO VÍDEO (COLE O IFRAME ACIMA DESTE BLOCO) -->
+    <!-- SLOT DEL VIDEO (PEGA EL IFRAME ARRIBA DE ESTE BLOQUE) -->
 
     <!-- AVISO -->
     <div class="notice">
       Quédate hasta el final para <b>acceder a las Ondas Cerebrales</b>
     </div>
 
-    <!-- FAIXA AZUL FULL-WIDTH -->
+    <!-- FRANJA AZUL FULL-WIDTH -->
     <div class="blue-strip">
-      <img id="faixaAzul" src="https://cakto-quiz-br01.b-cdn.net/uploads/c39fc4bd-ad99-4375-9e5c-5bd67cdcd57d.png" alt="Faixa azul">
+      <img id="faixaAzul" src="https://cakto-quiz-br01.b-cdn.net/uploads/c39fc4bd-ad99-4375-9e5c-5bd67cdcd57d.png" alt="Franja azul">
     </div>
 
-    <!-- BLOCO DO DOUTOR -->
+    <!-- BLOQUE DEL DOCTOR -->
     <div class="doctor">
-      <img id="fotoDoutor" class="avatar" src="https://cakto-quiz-br01.b-cdn.net/uploads/02cf812c-2ff5-4a8c-8848-3f8bd0aa02b4.jpeg" alt="Foto do especialista">
+      <img id="fotoDoutor" class="avatar" src="https://cakto-quiz-br01.b-cdn.net/uploads/02cf812c-2ff5-4a8c-8848-3f8bd0aa02b4.jpeg" alt="Foto del especialista">
       <div class="meta">
         <div id="nomeDoutor" class="name">DR. JAMES MENDOZA</div>
-        <div id="cargoDoutor" class="role">Neurocientista</div>
-        <div id="fraseDoutor" class="quote">“Não se trata de fazer mais… e sim de pensar melhor.”</div>
+        <div id="cargoDoutor" class="role">Neurocientífico</div>
+        <div id="fraseDoutor" class="quote">“No se trata de hacer más… sino de pensar mejor.”</div>
       </div>
     </div>
 
     <!-- LEGAL -->
     <div class="legal">
-      <div>Copyright 2025 — Memory Pulse® • Todos os Direitos Reservados</div>
+      <div>Copyright 2025 — Memory Pulse® • Todos los Derechos Reservados</div>
       <div style="margin-top:6px">
-        <a id="linkTermos" href="#" rel="nofollow noopener">Termos de Uso</a>
-        <a id="linkPrivacidade" href="#" rel="nofollow noopener">Privacidade</a>
+        <a id="linkTermos" href="#" rel="nofollow noopener">Términos de Uso</a>
+        <a id="linkPrivacidade" href="#" rel="nofollow noopener">Privacidad</a>
       </div>
       <div id="disclaimer" class="disclaimer">
-        Este site não faz parte do Facebook™ ou Meta Platforms, Inc., e NÃO é endossado por eles. As informações apresentadas são apenas para fins educativos e não constituem aconselhamento médico. Resultados variam de pessoa para pessoa.
+        Este sitio no forma parte de Facebook™ o Meta Platforms, Inc., y NO está avalado por ellos. La información presentada es solo para fines educativos y no constituye asesoramiento médico. Los resultados pueden variar de una persona a otra.
       </div>
     </div>
   </main>
