@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://images.converteai.net" crossorigin>
   <link rel="preconnect" href="https://cdn.utmify.com.br" crossorigin>
 
-  <!-- Non‑blocking Google Fonts load -->
+  <!-- Non-blocking Google Fonts load -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"></noscript>
 
@@ -35,9 +35,6 @@
     /* FULL-WIDTH BLUE STRIP */
     .blue-strip{margin:20px 0; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw;}
     .blue-strip img{width:100%; height:auto; display:block}
-
-    /* Reserve space for video to avoid CLS */
-    vturb-smartplayer{display:block; width:100%; max-width:400px; margin:0 auto; aspect-ratio:16/9; background:#000}
 
     /* DOCTOR BLOCK */
     .doctor{display:flex; gap:16px; align-items:center; margin:20px 0}
@@ -109,12 +106,11 @@
 <body>
   <main class="wrap">
     <!-- VIDEO: VTurb Smart Player -->
-    <vturb-smartplayer id="vid-68ca18ca8b434c3ece7b483c"></vturb-smartplayer>
-    <script type="text/javascript" defer>
+    <vturb-smartplayer id="vid-68ca18ca8b434c3ece7b483c" style="display:block;margin:0 auto;width:100%;max-width:400px;"></vturb-smartplayer>
+    <script type="text/javascript">
       var s=document.createElement("script");
       s.src="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/68ca18ca8b434c3ece7b483c/v4/player.js";
-      s.async=true; s.defer=true; document.head.appendChild(s);
-      // Keeping Headline tweak for later (not touching Tube Snipe headline image)
+      s.async=!0; document.head.appendChild(s);
     </script>
 
     <!-- NOTICE -->
