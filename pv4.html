@@ -44,18 +44,27 @@
     /* COMMENTS STYLES */
     .facebook-comment-box {max-width:700px;margin:30px auto;background:#f5f6f7;border-radius:12px;padding:20px 16px;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-family:Helvetica, Arial, sans-serif;font-size:15px;line-height:1.5;box-sizing:border-box;border:1px solid #ddd}
     .facebook-comment-box .comment-header {border-bottom:1px solid #e4e6eb;padding-bottom:10px;margin-bottom:18px;font-weight:600;font-size:15px}
-    .facebook-comment-box .facebook-parent {display:flex;align-items:flex-start;gap:10px;margin-bottom:22px}
+    .facebook-comment-box .facebook-parent {display:flex;align-items:flex-start;gap:10px;margin-bottom:22px;flex-wrap:wrap}
     .facebook-thumb {flex-shrink:0}
-    .facebook-comment-box .facebook-thumb img {width:48px;height:48px;border-radius:50%;object-fit:cover}
-    .facebook-comment-box .facebook-information {flex:1}
-    .facebook-comment-box .facebook-username {color:#385898;font-weight:600;font-size:15px;margin-bottom:4px}
+    .facebook-comment-box .facebook-thumb img {width:48px;height:48px;border-radius:50%;object-fit:cover;display:block}
+    .facebook-comment-box .facebook-information {flex:1;min-width:0}
+    .facebook-comment-box .facebook-username {color:#385898;font-weight:600;font-size:15px;margin-bottom:4px;display:block}
     .facebook-comment-box .facebook-comment {color:#1c1e21;font-size:15px;line-height:1.5;margin-bottom:6px;word-break:break-word}
-    .facebook-comment-box .facebook-misc {display:flex;align-items:center;gap:6px;font-size:13px;color:#4267b2}
+    .facebook-comment-box .facebook-misc {display:flex;align-items:center;gap:6px;font-size:13px;color:#4267b2;flex-wrap:wrap}
     .facebook-comment-box .facebook-misc img {width:14px;height:14px;object-fit:contain;display:inline-block;vertical-align:middle;margin-top:-1px}
     .facebook-comment-box .facebook-children {margin-left:56px;border-left:1px dotted #ccc;padding-left:12px;padding-top:6px;margin-top:4px}
     .facebook-comment-box .facebook-children .facebook-parent {margin-bottom:20px}
-    .facebook-comment-box .comment-footer {border-top:1px solid #e4e6eb;padding-top:12px;font-size:12px;color:#385898;display:flex;align-items:center;gap:8px}
+    .facebook-comment-box .comment-footer {border-top:1px solid #e4e6eb;padding-top:12px;font-size:12px;color:#385898;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     .facebook-comment-box .comment-footer img {width:14px;height:14px}
+
+    /* Responsive fixes */
+    @media (max-width:480px){
+      .facebook-comment-box{padding:14px 10px;font-size:14px}
+      .facebook-comment-box .facebook-parent{flex-direction:row;align-items:flex-start}
+      .facebook-comment-box .facebook-thumb img{width:40px;height:40px}
+      .facebook-comment-box .facebook-username{font-size:14px}
+      .facebook-comment-box .facebook-comment{font-size:14px}
+    }
   </style>
 
   <!-- VTurb player warmup -->
@@ -91,7 +100,6 @@
         <!-- Main comment -->
         <div class="facebook-parent">
           <div class="facebook-thumb">
-            <!-- Replace src with the commenter's profile photo URL -->
             <img src="https://example.com/avatar-emma.jpg" alt="Emma Smith profile photo">
           </div>
           <div class="facebook-information">
