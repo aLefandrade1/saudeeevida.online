@@ -1,184 +1,140 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página VSL - Direct Response</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página VSL — Sección 1, 2, 3 y 4</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      margin: 0;
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
+    :root{
+      --bg:linear-gradient(135deg,#000000,#1a044e,#220076,#0a2342);
+      --text:#fff;
+      --yellow:#facc15;
+      --yellow-dark:#eab308;
     }
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%; /* Proporção padrão mantida, ajustável pelo embed */
-      height: 0;
-      overflow: hidden;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.5;min-height:100vh;background-attachment:fixed;background-size:400% 400%;animation:gradientMove 18s ease infinite;}
+
+    @keyframes gradientMove{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
     }
-    .video-container iframe, .video-container video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .headline {
-      font-size: 1.5em;
-      font-weight: bold;
-      margin: 30px 0 5px; /* Aumentado o espaço acima da headline */
-    }
-    .subheadline {
-      font-size: 0.9em;
-      color: #999;
-      margin-bottom: 10px;
-    }
-    .meta {
-      color: #666;
-      font-size: 0.9em;
-      margin-bottom: 15px;
-    }
-    .profile {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-    .profile img {
-      width: 40px;
-      height: 40px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-    .like-section {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .like-button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1em;
-      display: flex;
-      align-items: center;
-    }
-    .like-button span {
-      margin-left: 5px;
-    }
-    .comments {
-      border-top: 1px solid #ccc;
-      padding-top: 15px;
-    }
-    .comment {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
-    }
-    .comment img {
-      width: 30px;
-      height: 30px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-    .comment .name {
-      font-weight: bold;
-      margin-right: 5px;
-    }
-    .comment-count {
-      font-weight: bold;
-      margin-bottom: 10px;
-      display: block;
-    }
+
+    .wrap{max-width:1120px;margin:0 auto;padding:48px 16px 64px;text-align:center}
+
+    .video-container{width:min(800px,95vw);margin:0 auto 40px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.55)}
+    .video-container iframe{display:block;width:100%;height:450px;border:0}
+
+    .hint{display:flex;align-items:center;gap:10px;justify-content:center;font-size:clamp(14px,2.4vw,18px);color:var(--text);margin-top:18px}
+    .hint b{color:var(--text);font-weight:800}
+    .hint .speaker{width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#0ea5e9;color:#fff;font-weight:900}
+
+    .offer{text-align:center;margin-top:60px}
+    .offer .bundle{display:block;margin:0 auto 24px;max-width:720px;width:96%;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+    .price-normal{color:#f87171;font-size:22px;text-decoration:line-through;margin:6px 0}
+    .price-today{background:#22c55e;color:#fff;font-size:28px;font-weight:800;display:inline-block;padding:6px 16px;border-radius:6px;margin:10px 0;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+    .price-tomorrow{color:var(--text);font-size:20px;margin:4px 0 20px}
+    .note{font-size:14px;color:#e0e7ff;margin-bottom:22px}
+
+    .btn-checkout{display:inline-block;padding:18px 28px;border-radius:50px;background:var(--yellow);color:#000;font-weight:900;text-decoration:none;font-size:20px;box-shadow:0 0 0 0 rgba(250,204,21,.7);animation:pulse 1.5s infinite}
+    .btn-checkout:hover{background:var(--yellow-dark)}
+
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(250,204,21,.7)}70%{box-shadow:0 0 0 20px rgba(250,204,21,0)}100%{box-shadow:0 0 0 0 rgba(250,204,21,0)}}
+
+    .add-cart{display:block;margin-top:14px;color:#93c5fd;font-size:16px;text-decoration:none}
+    .payments{display:block;margin:26px auto 0;max-width:320px;width:90%}
+
+    .next-anchor{height:40px}
+
+    .references{text-align:center;margin-top:80px}
+    .references h2{font-size:22px;font-weight:400;margin-bottom:20px}
+    .references .banner-full{display:block;width:100%;height:auto;margin:0 auto;padding:0;object-fit:cover}
+    .references .doctor-full{display:block;max-width:380px;width:88%;margin:30px auto 0;border:3px solid #fff;border-radius:12px}
+
+    .bonus-section{text-align:center;margin-top:100px;background:#fff;color:#000;padding:40px 20px;border-radius:12px}
+    .bonus-section h2{font-size:26px;font-weight:800;margin-bottom:10px;color:#000}
+    .bonus-section h2 span{background:#3b82f6;color:#fff;padding:2px 6px;border-radius:4px}
+    .bonus-section h3{font-size:22px;font-style:italic;margin-bottom:20px;color:#000}
+    .bonus-section .mockup{display:block;margin:0 auto 26px;max-width:320px;width:85%}
+    .bonus-section ul{list-style:none;padding:0;margin:0 auto;max-width:760px;text-align:center}
+    .bonus-section ul li{font-size:18px;margin:10px 0;color:#000;text-align:center}
+    .bonus-section ul li::before{content:"✔";color:#22c55e;margin-right:10px}
+    .bonus-section .price-old{margin-bottom:20px}
+    .bonus-section .after-list{margin-top:20px;font-size:18px;color:#000;font-weight:700}
+
+    .bonus-item{background:#fff;color:#000;padding:40px 20px;margin-top:40px;border-radius:12px;text-align:center}
+    .bonus-item h2{font-size:24px;font-weight:800;margin-bottom:20px}
+    .bonus-item .bonus-img{display:block;margin:0 auto 20px;max-width:320px;width:85%}
+    .bonus-item ul{list-style:none;padding:0;margin:0 auto;max-width:760px;text-align:center}
+    .bonus-item ul li{font-size:18px;margin:10px 0;color:#000;text-align:center}
+    .bonus-item ul li::before{content:"✔";color:#22c55e;margin-right:10px}
   </style>
 </head>
 <body>
+  <main class="wrap">
 
-  <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/ci9h6j6ol8?web_component=true&seo=true" title="202507251408 (1) Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%" height="100%"></iframe></div></div>
-<script src="https://fast.wistia.net/player.js" async></script>
+    <section class="video-container" aria-label="Video principal">
+      <iframe src="COLE_AQUI_O_CODIGO_DO_VIDEO" allowfullscreen></iframe>
+    </section>
 
-  <div id="cta-button" style="display:none; text-align:center; margin: 40px 0;">
-    <a href="https://seulink.com" target="_blank" style="background:#28a745; color:#fff; padding:15px 30px; text-decoration:none; border-radius:5px; font-size:1.2em;">
-      COMPRAR AGORA!
-    </a>
-  </div>
+    <p class="hint">
+      <span class="speaker">🔊</span>
+      Quédate hasta el final para <b>acceder a las Ondas Cerebrales</b>
+    </p>
 
-  <div class="headline">3 Formas Brutais de Instalar o Vírus Emocional na Mente de Qualquer Homem</div>
-  <div class="subheadline">Descubra os gatilhos psicológicos que transformam frieza em obsessão — mesmo que ele tenha te ignorado, sumido ou esteja com outra.</div>
-  <div class="meta">506.000 visualizações • há 3 semanas</div>
+    <section class="offer">
+      <img src="https://i.postimg.cc/W3pjXGV1/Bb-HNPH2621926.png" alt="Imagen del paquete" class="bundle" />
 
-  <div class="profile">
-    <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753489382668" alt="Luana Ferreira"></a>
-    <div>Luana Ferreira • 30.500 seguidores</div>
-  </div>
+      <p class="price-normal">NORMAL: 169,00 $USD</p>
+      <p class="price-today">HOY: 39,00 $USD</p>
+      <p class="price-tomorrow">Mañana: 49,00 $USD</p>
 
-  <div class="like-section">
-    <button class="like-button" onclick="like()">👍 <span id="like-count">30.000</span>  Curtidas</button>
-  </div>
+      <p class="note">¡Click en el botón👇para ver en su moneda local y facilidades en cuotas!</p>
 
-  <div class="comments">
-    <span class="comment-count" id="comment-count">Comentários (2)</span>
-    <div class="comment">
-      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753495719429" alt="Maria Souza"></a>
-      <div class="name">Maria Souza</div>
-      <div>Eu juro que achei que era mais uma enganação… até o ex que me ignorava há 2 meses aparecer me mandando flores 😳 tô passada com esse tal de vírus emocional!</div>
-    </div>
-    <div class="comment">
-      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753495381897" alt="Mirela Oliver"></a>
-      <div class="name">Mirela Oliver</div>
-      <div>Fiz só uma das técnicas do vídeo ontem e hoje ele me mandou um textão dizendo que não para de pensar em mim. Tô rindo e chocada ao mesmo tempo 😂</div>
-    </div>
-    <div class="comment">
-      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753495787536" alt="Pedro Lima"></a>
-      <div class="name">Ana Maria</div>
-      <div>Meninas, não pensem duas vezes. Só assistam e façam. É surreal como eles reagem quando a gente entende o que mexe com eles.</div>
-    </div>
-    <div class="comment">
-      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753495570449" alt="Pedro Lima"></a>
-      <div class="name">Rafaella lima</div>
-      <div>Já testei vários métodos na internet e nada… esse foi o único que funcionou MESMO.</div>
-    </div>
-    <div class="comment">
-      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753496581234" alt="Pedro Lima"></a>
-      <div class="name">Vanessa Gomes</div>
-      <div>Eu achei que tinha perdido ele pra sempre… mas foi aplicar o gatilho da dopamina e o homem ficou obcecado. Chocada!</div>
-    </div>
-    <div class="comment">
-      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753495660253" alt="Pedro Lima"></a>
-      <div class="name">Ingred Lima</div>
-      <div>Isso aqui não é só pra reconquistar, é pra você ter o controle emocional total do relacionamento. Ele virou outro homem!</div>
-    </div>
-    <div class="comment">
-      <a href="#"><img src="https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/cmasfxsv5000bwngpeelts3hr/blocks/wpr47ljvpo8wwx1bbfrobhbz?v=1753496789315" alt="Pedro Lima"></a>
-      <div class="name">Marcela Costa</div>
-      <div>Deusa do céu, eu pensei que era impossível ele voltar. Hoje ele me mandou um áudio chorando dizendo que me perdeu e quer recomeçar. Obrigada, Luana!!!</div>
-    </div>
-  </div>
+      <a href="#checkout" class="btn-checkout">¡SÍ, QUIERO RECUPERAR MI AGUDEZA MENTAL!</a>
+      <a href="#carrito" class="add-cart">Agregar al Carrito</a>
 
-  <script>
-    let likes = 30000;
-    function like() {
-      likes++;
-      document.getElementById('like-count').innerText = likes.toLocaleString('pt-BR');
-    }
+      <img src="https://i.postimg.cc/ZK5BCNyZ/Rowj-Sa4817870.png" alt="Métodos de pago" class="payments" />
+    </section>
 
-    function updateCommentCount() {
-      const comments = document.querySelectorAll('.comment').length;
-      document.getElementById('comment-count').innerText = `Comentários (${comments})`;
-    }
-    updateCommentCount();
+    <section class="references">
+      <h2>"El camino para la <b>gran riqueza</b> y cumplir tus <b>anhelados sueños</b>"</h2>
 
-    // Exibe o botão com delay (120 segundos)
-    setTimeout(() => {
-      document.getElementById('cta-button').style.display = 'block';
-    }, 120000); // 120000 ms = 2 minutos
-  </script>
+      <img src="https://i.postimg.cc/mDFxd8qR/s-Cm-Bfh0370941.jpg" alt="Referencias científicas" class="banner-full" />
 
+      <img src="https://i.postimg.cc/DyP9YWCW/px-Hrbv9530608-removebg-preview.png" alt="Dr. James Mendoza" class="doctor-full" />
+    </section>
+
+    <section class="bonus-section">
+      <h2>TODO LO QUE <span>RECIBIRÁS</span> HOY:</h2>
+      <h3>MEMORY PULSE + BONOS</h3>
+      <img src="https://i.postimg.cc/SxzvbJd7/WPFgvv3088374.png" alt="Memory Pulse Mockup" class="mockup" />
+      <ul>
+        <li>Escucha, la onda MEMORY PULSE comienza a limpiar tu mente desde el primer uso</li>
+        <li>La activación gamma sincroniza tus pensamientos</li>
+        <li>Mejora tu enfoque y te hace sentir mentalmente renovado</li>
+        <li>Desbloquea habilidades dormidas</li>
+        <li>Recupera tu agudeza mental sin suplementos ni ejercicios</li>
+        <li>MEMORY PULSE no es magia ni meditación: es ciencia neurológica diseñada para activar tu poder mental latente</li>
+        <li>Vas a notar cómo tu mente se aclara, tu energía mejora</li>
+        <li>Siente que recuperas el control total de tu capacidad mental</li>
+      </ul>
+      <p class="after-list" style="text-decoration:line-through; background:yellow; display:inline-block; padding:2px 6px; font-weight:700;">VALOR $249 USD</p>
+    </section>
+
+    <section class="bonus-item">
+      <h2>BONO #1: AHORRADOR DE MEMORIA DE 1 MINUTO</h2>
+      <img src="https://i.postimg.cc/4dhv2SgJ/NYvwf-S2930704.png" alt="Ahorrador de memoria de 1 minuto" class="bonus-img" />
+      <ul>
+        <li>Aprende algo nuevo y guardalo en tu memoria en solo 60 segundos</li>
+        <li>Funciona mientras haces fila, cocinas o tomas café</li>
+        <li>Convierte lo nuevo en memoria de largo plazo</li>
+        <li>Olvidarse ya no es una opción</li>
+      </ul>
+    </section>
+
+    <div class="next-anchor"></div>
+
+  </main>
 </body>
 </html>
