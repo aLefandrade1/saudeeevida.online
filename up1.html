@@ -4,6 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Página VSL — Completa</title>
+  <!-- Script UTMify -->
+  <script
+    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-subids
+    async
+    defer
+  ></script>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3095952720572881');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=3095952720572881&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
   <style>
     :root{
       --bg:linear-gradient(135deg,#000000,#1a044e,#220076,#0a2342);
@@ -28,6 +52,7 @@
     .add-cart{display:block;margin-top:10px;color:#93c5fd;font-size:16px;text-decoration:none}
     .payments{display:block;margin:12px auto 6px;max-width:320px;width:90%}
     .references{text-align:center;margin-top:30px}
+    .references-text{text-align:center;}
     .references h2{font-size:22px;font-weight:400;margin-bottom:8px}
     .references .banner-full{display:block;width:100%;height:auto;margin:0 auto;padding:0;object-fit:cover}
     .references .doctor-full{display:block;max-width:380px;width:88%;margin:14px auto 0;border:3px solid #fff;border-radius:12px}
@@ -73,6 +98,9 @@
       .faq-a{font-size:14px}
     }
     .faq-cta{margin-top:18px;display:inline-block}
+    /* Estilos para delay */
+    .hidden{display:none;opacity:0;}
+    .visible{opacity:1;transition:opacity 0.5s ease;}
   </style>
 </head>
 <body>
@@ -93,7 +121,7 @@
     </p>
 
     <!-- OFERTA INICIAL (PACOTE + PREÇOS + BOTÃO + PAGAMENTOS) -->
-    <section class="offer">
+    <section class="offer hidden">
       <img src="https://i.postimg.cc/W3pjXGV1/Bb-HNPH2621926.png" alt="Imagen del paquete" class="bundle" />
       <p class="price-normal">NORMAL: 169,00 $USD</p>
       <p class="price-today">HOY: 39,00 $USD</p>
@@ -104,15 +132,17 @@
       <img src="https://i.postimg.cc/ZK5BCNyZ/Rowj-Sa4817870.png" alt="Métodos de pago" class="payments" />
     </section>
 
-    <!-- REFERENCIAS (BANNER AZUL FULL + ESPECIALISTA) -->
+    <!-- REFERENCIAS (BANNER AZUL FULL + ESPECIALISTA VISÍVEIS, FRASE COM DELAY) -->
     <section class="references">
-      <h2>"El camino para la <b>gran riqueza</b> y cumplir tus <b>anhelados sueños</b>"</h2>
+      <div class="references-text hidden">
+        <h2>"El camino para la <b>gran riqueza</b> y cumplir tus <b>anhelados sueños</b>"</h2>
+      </div>
       <img src="https://i.postimg.cc/mDFxd8qR/s-Cm-Bfh0370941.jpg" alt="Referencias científicas" class="banner-full" />
       <img src="https://i.postimg.cc/DyP9YWCW/px-Hrbv9530608-removebg-preview.png" alt="Dr. James Mendoza" class="doctor-full" />
     </section>
 
     <!-- BLOCO: MEMORY PULSE + BONOS -->
-    <section class="bonus-section">
+    <section class="bonus-section hidden">
       <h2>TODO LO QUE <span>RECIBIRÁS</span> HOY:</h2>
       <h3>MEMORY PULSE + BONOS</h3>
       <img src="https://i.postimg.cc/SxzvbJd7/WPFgvv3088374.png" alt="Memory Pulse Mockup" class="mockup" />
@@ -130,7 +160,7 @@
     </section>
 
     <!-- BÔNUS 1 -->
-    <section class="bonus-item">
+    <section class="bonus-item hidden">
       <h2>BONO #1: AHORRADOR DE MEMORIA DE 1 MINUTO</h2>
       <img src="https://i.postimg.cc/4dhv2SgJ/NYvwf-S2930704.png" alt="Ahorrador de memoria de 1 minuto" class="bonus-img" />
       <ul>
@@ -144,7 +174,7 @@
     </section>
 
     <!-- BÔNUS 2 -->
-    <section class="bonus-item">
+    <section class="bonus-item hidden">
       <h2>BONO #2: GUÍA DE COMPRAS INTELIGENTE</h2>
       <img src="https://i.postimg.cc/NjgCdg94/tzzhe-Y3291520.png" alt="Guía de compras inteligente" class="bonus-img" />
       <ul>
@@ -158,7 +188,7 @@
     </section>
 
     <!-- BÔNUS 3 -->
-    <section class="bonus-item">
+    <section class="bonus-item hidden">
       <h2>BONO #3: EL BOTÓN DE ENERGIA</h2>
       <img src="https://i.postimg.cc/50TNm7sB/q-Asr-SC3177219.png" alt="El botón de energia" class="bonus-img" />
       <ul>
@@ -172,7 +202,7 @@
     </section>
 
     <!-- CTA FINAL (repete banner + pagamentos) -->
-    <section class="continuacion">
+    <section class="continuacion hidden">
       <h2>ACCEDE A TODO ESTO POR SOLO:</h2>
       <img src="https://i.postimg.cc/W3pjXGV1/Bb-HNPH2621926.png" alt="Banner de la oferta" class="bundle-img" />
       <p class="price-normal">NORMAL: 169,00 $USD</p>
@@ -185,7 +215,7 @@
     </section>
 
     <!-- COMENTÁRIOS -->
-    <section class="comments">
+    <section class="comments hidden">
       <h2>Mostrando 14 comentarios</h2>
       <div class="comment">
         <img src="https://i.postimg.cc/LXGmcmJq/1.webp" alt="Alejandro Fernandez">
@@ -302,49 +332,50 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq-wrap" id="faq">
+    <section class="faq-wrap hidden" id="faq">
       <h2 class="faq-title">CONSULTE LAS PREGUNTAS MÁS <span>FRECUENTES</span></h2>
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-q">¿Qué es MEMORY PULSE?<span class="chev">›</span></button>
           <div class="faq-a">
-            Es un programa de estimulación auditiva y guía práctica para activar ondas gamma y optimizar claridad, enfoque y memoria de forma segura y sencilla.
+            MEMORY PULSE es un programa de activación cerebral en formato audio que utiliza ondas sonoras específicamente moduladas para estimular las ondas gamma del cerebro. Estas ondas gamma están científicamente asociadas con:<br>
+            Mejora de la memoria, mayor claridad mental, incremento de la concentración, procesamiento más rápido de información, y Recuperación de funciones cognitivas.
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-q">¿Cómo realizar el pago?<span class="chev">›</span></button>
           <div class="faq-a">
-            Aceptamos tarjetas (Visa, Mastercard, Amex) y PayPal. El pago es seguro y se procesa con cifrado.
+            Simplemente de click a cualquiera de los botones de pago, llene el formulario con sus datos y realice el pago. El acceso a MEMORY PULSE + Bonos será enviado automáticamente a su correo electrónico.
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-q">¿Cómo accedo al contenido del programa?<span class="chev">›</span></button>
           <div class="faq-a">
-            Al confirmar la compra recibirás acceso inmediato y un correo con tu enlace y credenciales.
+            Al finalizar su compra, recibirá un usuario y contraseña, solo tendrá que iniciar su sesión con esos datos en nuestra área de miembros. Todos los detalles de acceso serán enviados a su correo electrónico.
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-q">¿Ofrecen garantía?<span class="chev">›</span></button>
           <div class="faq-a">
-            Sí. Si no notas mejoras en tu claridad y enfoque, puedes solicitar reembolso dentro del plazo comunicado en la página de checkout.
+            Sí, si lo intenta y si milagrosamente luego de un año no logra notar cómo manifestó bendiciones en su vida, entonces solicite un reembolso del 100% y se lo daremos. Es nuestro compromiso con usted.
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-q">¿En cuánto tiempo tendré resultados?<span class="chev">›</span></button>
           <div class="faq-a">
-            Muchas personas reportan cambios desde el primer uso. Los resultados varían; la práctica diaria acelera y consolida los efectos.
+            Dentro del primer mes logrará notar cambios en su realidad, gracias a nuestro plan de 30 días, sin embargo, su constancia durante los siguientes meses asegurarán para usted una vida de bendiciones y abundancia durante todo el año.
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-q">¿Qué pasa si tengo preguntas?<span class="chev">›</span></button>
           <div class="faq-a">
-            Tendrás soporte por email y área de miembros. Resolvemos dudas técnicas y de uso.
+            Tendrás soporte exclusivo a través de WhatsApp y email, con nuestro equipo de soporte y área de miembros.
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-q">¿Qué es el grupo VIP?<span class="chev">›</span></button>
           <div class="faq-a">
-            Es una comunidad privada con directos y recursos extra para profundizar en hábitos y rendimiento mental.
+            Es un área de miembros privada, donde podrás realizar tus preguntas, e interactuar con tus demás compañeros. Tendrá acceso al finalizar su compra.
           </div>
         </div>
       </div>
@@ -370,13 +401,56 @@
     </p>
   </footer>
 
-  <!-- JS do acordeão (sem dependências) -->
+  <!-- Script de Back Redirect -->
   <script>
-    document.querySelectorAll('.faq-q').forEach(btn=>{
-      btn.addEventListener('click',()=>{
+    // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
+    const link = 'https://meubackredirect.com.br';
+
+    function setBackRedirect(url) {
+      let urlBackRedirect = url;
+      urlBackRedirect = urlBackRedirect =
+        urlBackRedirect.trim() +
+        (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+        document.location.search.replace('?', '').toString();
+
+      history.pushState({}, '', location.href);
+      history.pushState({}, '', location.href);
+      history.pushState({}, '', location.href);
+
+      window.addEventListener('popstate', () => {
+        console.log('onpopstate', urlBackRedirect);
+        setTimeout(() => {
+          location.href = urlBackRedirect;
+        }, 1);
+      });
+    }
+
+    setBackRedirect(link);
+  </script>
+
+  <!-- JS do acordeão, limpeza do parâmetro src e delay -->
+  <script>
+    // Acordeão
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
         btn.parentElement.classList.toggle('open');
       });
     });
+
+    // Limpeza do parâmetro src dos links de checkout
+    document.querySelectorAll('.btn-checkout').forEach(btn => {
+      let url = new URL(btn.href);
+      url.searchParams.delete('src'); // Remove apenas o parâmetro src
+      btn.href = url.toString(); // Mantém checkoutMode=10 e outros parâmetros (como UTMs)
+    });
+
+    // Delay para exibir seções de bônus, FAQ, comentários, preços/CTAs e texto de referências
+    setTimeout(() => {
+      document.querySelectorAll('.offer, .bonus-section, .bonus-item, .continuacion, .comments, .faq-wrap, .references-text').forEach(element => {
+        element.classList.remove('hidden');
+        element.classList.add('visible');
+      });
+    }, 1050000); // 1050 segundos (17 minutos e 30 segundos)
   </script>
 </body>
 </html>
