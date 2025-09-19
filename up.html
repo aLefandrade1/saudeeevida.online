@@ -21,3 +21,159 @@
       background:#ff944d;
       color:#fff;
       text-align:center;
+      font-size:20px;
+      padding:36px 14px;
+      line-height:1.6;
+    }
+    .warning-bar strong{font-weight:700;}
+
+    /* BLOCO PARE */
+    .alert{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      background:#fff;
+      margin:40px auto;
+      max-width:900px;
+    }
+    .alert .icon{display:flex; align-items:center; gap:10px;}
+    .alert .icon img{width:150px; height:auto; display:block;}
+    .alert .icon .pare-text{font-size:48px; font-weight:900; color:#d11b1b;}
+    .alert .main-message{flex:1; font-size:22px; font-weight:800; color:#d11b1b;}
+    .alert .main-message p{margin:0 0 14px; font-size:22px;}
+    .alert .main-message .divider{border-top:4px solid #000; margin:12px 0; width:100%;}
+
+    /* TÍTULOS E TEXTO */
+    h1{
+      font-size:32px;
+      color:#000000;
+      margin:32px 0 16px;
+      font-weight:900;
+      font-family: Impact, Charcoal, sans-serif;
+    }
+    p.lead{font-size:22px; margin:20px 0}
+    p{font-size:18px;}
+    a.link{color:#1a66ff; text-decoration:underline}
+
+    /* ===== Utilitárias ===== */
+    .t-14{font-size:14px;} .t-16{font-size:16px;} .t-18{font-size:18px;}
+    .t-20{font-size:20px;} .t-22{font-size:22px;} .t-24{font-size:24px;}
+    .t-28{font-size:28px;} .t-32{font-size:32px;} .t-36{font-size:36px;}
+    .t-40{font-size:40px;} .t-48{font-size:48px;} .t-56{font-size:56px;}
+
+    .bold{font-weight:700;} .xbold{font-weight:800;} .black{font-weight:900;}
+    .italic{font-style:italic;}
+    .red{color:#d11b1b;} .blue{color:#1a66ff;} .blackc{color:#000;} .white{color:#fff;}
+
+    .left{text-align:left;} .center{text-align:center;} .right{text-align:right;}
+    .mt-8{margin-top:8px;} .mt-16{margin-top:16px;} .mt-24{margin-top:24px;} .mt-32{margin-top:32px;}
+    .mb-8{margin-bottom:8px;} .mb-16{margin-bottom:16px;} .mb-24{margin-bottom:24px;} .mb-32{margin-bottom:32px;}
+
+    /* Estilos existentes */
+    .red-italic { color:#d11b1b; font-style: italic; }
+    .blue-highlight { color:#1a66ff; font-weight:bold; }
+    .red-text { color:#d11b1b; }
+
+    @media (max-width:720px){
+      .alert{flex-direction:column; align-items:flex-start;}
+      .alert .icon img{width:120px;}
+      .alert .icon .pare-text{font-size:32px;}
+      .alert .main-message p{font-size:20px;}
+      h1{font-size:26px}
+      p.lead{font-size:20px}
+      p{font-size:16px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra laranja superior -->
+  <div class="warning-bar">
+    <strong>IMPORTANTE: NÃO feche esta janela nem clique no botão 'Voltar'.</strong><br />
+    Clicar no botão 'Voltar' pode resultar em uma cobrança dupla no seu cartão.
+  </div>
+
+  <main class="wrap">
+
+    <!-- BLOCO PARE -->
+    <section class="alert">
+      <div class="icon">
+        <img src="https://cakto-quiz-br01.b-cdn.net/uploads/0b70cf00-3b54-4603-b66d-7048ac04c720.png" alt="Pare!" />
+        <div class="pare-text">PARE!</div>
+      </div>
+      <div class="main-message">
+        <p class="t-22 bold red">Seu pedido ainda não está completo.</p>
+        <div class="divider"></div>
+        <p class="t-22 bold red">Por favor, veja a mensagem importante abaixo.</p>
+      </div>
+    </section>
+
+    <!-- TÍTULO + LEAD -->
+    <h1 class="t-32 blackc black">Congratulations!</h1>
+    <p class="lead t-22">You've finally found the solution to losing weight.</p>
+
+    <!-- CONTEÚDO -->
+    <p>And I need to congratulate you for that...</p>
+    <p>Because at the beginning of the previous video, you probably didn't</p>
+    <p>know what to do.</p>
+
+    <p><span class="red-italic">You didn’t know how to achieve the body you’ve always dreamed of...</span></p>
+    <p><span class="red-italic">Or how to wear the clothes you’d really like to wear.</span></p>
+
+    <p><span class="blue-highlight">But now you know.</span></p>
+
+    <p>Now you’ve found the way.</p>
+    <p>Besides...</p>
+
+    <p><span class="red-text">You had the courage to invest in yourself.</span></p>
+    <p>And for that, congratulations.</p>
+
+    <p><span class="red-text">Starting today...</span></p>
+    <p><span class="red-text">Your life will change completely.</span></p>
+
+    <p>You will be able to lose weight.</p>
+    <p>You will be happier.</p>
+    <p>And you will enjoy all the benefits I promised you.</p>
+
+    <p>All you need to do is follow the step-by-step instructions within the app.</p>
+    <p>Really follow them, because the Pink Saltburn Protocol has worked for</p>
+    <p>thousands of people and will work for you too.</p>
+
+    <p>However, in my research, I realized something...</p>
+    <p>There's a problem that can prevent you from being 100% satisfied.</p>
+    <p>This problem, unfortunately, destroys the self-esteem of many women.</p>
+
+    <p>Furthermore, it can make you continue to avoid wearing shorter shorts...</p>
+    <p>Or even avoid wearing a bikini at the beach.</p>
+
+    <p><span class="red-text">This problem is sagging.</span></p>
+    <p><span class="red-text">And with sagging comes something even worse...</span></p>
+
+    <p>The saggy skin on your abdomen, which makes you feel insecure about going to the beach...</p>
+
+    <!-- IMAGEM FINAL -->
+    <img src="https://i.postimg.cc/P5HsLTPj/flaxidez-abdominal.webp" alt="Flacidez abdominal" style="max-width:100%; height:auto;">
+
+    <!-- CONTINUAÇÃO (PRINT 1) -->
+    <p>The loose skin on your <strong>arms</strong>, which makes you avoid sleeveless clothing...</p>
+    <p><img src="https://i.postimg.cc/SRpLqTxm/Blog-Dr-Lady-Canan-10-24-001.jpg" alt="Flabby arm image" style="max-width:100%; height:auto;"></p>
+
+    <p>And, in some cases, the saggy skin on your <strong>thighs</strong>, which bothers you so much that you prefer not to wear shorts.</p>
+    <p class="center"><img src="https://i.postimg.cc/L5HqNrsg/Lifting-Coxas-Total-1024x683-1-q6k6lc0yp5r3nkb6z9dovrvuygakwjs2mbkpjmp24o.jpg" alt="Flabby thighs image" style="max-width:100%; height:auto;"></p>
+
+    <p class="red bold">And with this apparent problem...</p>
+
+    <p class="red bold">Many people end up undergoing surgeries, incisions, and methods against sagging skin that don't work.</p>
+    <p><img src="https://i.postimg.cc/43kxWrL4/cirurgiao-plastico-indiciado-florianopolis.avif" alt="Wrong surgery or incision image" style="max-width:100%; height:auto;"></p>
+
+    <p>They buy miracle products that don't address <span class="blue">the root cause of the problem.</span></p>
+
+    <p>And in the end, they are frustrated with the results.</p>
+
+    <p>And look, that's really bad.</p>
+
+    <p><strong>I don't want that for you.</strong></p>
+
+  </main>
+</body>
+</html>
