@@ -1,121 +1,186 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Página de Vendas — Esqueleto</title>
+  <title>Memory Pulse – Recupera Tu Memoria y Claridad Mental Rápidamente</title>
+
+  <!-- Descripción para SEO -->
+  <meta name="description" content="Recupera tu memoria, enfoque y claridad mental en solo 8 minutos al día con el audio digital Memory Pulse. Sin medicamentos caros ni rutinas complicadas. Garantía de 90 días." />
+
+  <!-- Fuente limpia de Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:#222;
-      line-height:1.55;
-      background:#fff;
+    /* ===== ESTILO GENERAL ===== */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #0b0b12, #191937);
+      color: #e9e9ef;
+      line-height: 1.6;
     }
-    .wrap{max-width:900px; margin:0 auto; padding:16px;}
-    .center{text-align:center}
+    .wrap { max-width: 960px; margin: auto; padding: 24px; }
 
-    /* BARRA LARANJA DO TOPO */
-    .warning-bar{
-      background:#ff944d; /* laranja mais claro */
-      color:#fff;
-      text-align:center;
-      font-size:20px; /* texto maior */
-      padding:36px 14px; /* altura aumentada */
-      line-height:1.6;
-    }
-    .warning-bar strong{
-      font-weight:700;
-    }
+    /* ===== TÍTULOS ===== */
+    h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.2; text-align: center; margin-bottom: 16px; }
+    h2 { font-size: 2.2rem; font-weight: 700; margin-top: 48px; margin-bottom: 16px; }
+    h3 { font-size: 1.6rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; }
 
-    /* BLOCO PARE */
-    .alert{
-      display:flex;
-      align-items:center;
-      gap:20px;
-      background:#fff;
-      margin:40px auto;
-      max-width:900px;
+    /* ===== BOTÓN CTA ===== */
+    .cta {
+      display: block;
+      margin: 32px auto;
+      padding: 20px 32px;
+      border-radius: 12px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      background: linear-gradient(90deg, #7c4dff, #28b0ff);
+      box-shadow: 0 8px 24px rgba(124, 77, 255, 0.4);
+      transition: 0.3s;
     }
-    .alert .icon{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    .alert .icon img{
-      width:150px;
-      height:auto;
-      display:block;
-    }
-    .alert .icon .pare-text{
-      font-size:48px;
-      font-weight:900;
-      color:#d11b1b;
-    }
-    .alert .main-message{
-      flex:1;
-      font-size:22px;
-      font-weight:800;
-      color:#d11b1b; /* destaque vermelho */
-    }
-    .alert .main-message p{
-      margin:0 0 14px;
-      font-size:22px; /* mesmo tamanho da .lead */
-    }
-    .alert .main-message .divider{
-      border-top:4px solid #000; /* linha preta */
-      margin:12px 0;
-      width:100%; /* ocupa toda a largura disponível */
+    .cta:hover { transform: scale(1.05); box-shadow: 0 12px 32px rgba(124, 77, 255, 0.5); }
+
+    /* ===== SECCIONES ===== */
+    .section {
+      margin: 32px 0;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
-    h1{font-size:32px; color:#000000; margin:32px 0 16px; font-weight:900} /* alterado para preto */
-    p.lead{font-size:22px; margin:20px 0}
-    p{font-size:18px;}
-    a.link{color:#1a66ff; text-decoration:underline}
+    .price { font-size: 2rem; font-weight: 800; margin: 16px 0; text-align: center; }
+    .strike { text-decoration: line-through; color: #aaa; margin-right: 12px; }
 
-    @media (max-width:720px){
-      .alert{flex-direction:column; align-items:flex-start;}
-      .alert .icon img{width:120px;}
-      .alert .icon .pare-text{font-size:32px;}
-      .alert .main-message p{font-size:20px;}
-      h1{font-size:26px}
-      p.lead{font-size:20px}
-      p{font-size:16px}
+    /* ===== TESTIMONIOS ===== */
+    .testimonial {
+      margin: 24px 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid #7c4dff;
+      border-radius: 8px;
+      font-style: italic;
+    }
+    .testimonial-author { font-weight: 600; text-align: right; margin-top: 12px; }
+
+    /* ===== LISTAS ===== */
+    ul { list-style-type: none; padding-left: 0; }
+    ul li { margin-bottom: 12px; position: relative; padding-left: 28px; }
+    ul li:before { content: '✔'; position: absolute; left: 0; color: #28b0ff; font-weight: bold; }
+
+    /* ===== PIE DE PÁGINA ===== */
+    footer {
+      text-align: center;
+      margin: 48px 0 24px;
+      font-size: 0.9rem;
+      color: #999;
     }
   </style>
 </head>
 <body>
+  <div class="wrap">
+    <!-- ===== TITULAR ===== -->
+    <h1>Descubre Cómo Recuperar Tu Memoria y Claridad Mental en Solo 8 Minutos al Día – ¡Sin Medicamentos Caros ni Rutinas Agotadoras!</h1>
+    <p style="text-align: center; font-size: 1.2rem; font-weight: 600;">Imagina despertar cada día con la mente clara, recordando todo con facilidad y sintiéndote más productivo que nunca. Esto es posible con Memory Pulse – el audio revolucionario que transforma tu cerebro sin esfuerzo.</p>
 
-  <!-- Barra laranja superior -->
-  <div class="warning-bar">
-    <strong>IMPORTANTE: NÃO feche esta janela nem clique no botão 'Voltar'.</strong><br />
-    Clicar no botão 'Voltar' pode resultar em uma cobrança dupla no seu cartão.
-  </div>
+    <!-- ===== BOTÓN CTA INICIAL ===== -->
+    <a class="cta" href="#checkout">🚀 ¡QUIERO TRANSFORMAR MI MEMORIA AHORA – ACCESO INMEDIATO!</a>
 
-  <main class="wrap">
-
-    <section class="alert">
-      <div class="icon">
-        <img src="https://cakto-quiz-br01.b-cdn.net/uploads/0b70cf00-3b54-4603-b66d-7048ac04c720.png" alt="Pare!" />
-        <div class="pare-text">PARE!</div>
-      </div>
-      <div class="main-message">
-        <p>Seu pedido ainda não está completo.</p>
-        <div class="divider"></div>
-        <p>Por favor, veja a mensagem importante abaixo.</p>
-      </div>
-    </section>
-
-    <h1>Meus parabéns!</h1>
-    <p class="lead">Você finalmente encontrou a maneira certa para perder peso depois dos 40.</p>
-
-    <p>E eu só tenho que te parabenizar…</p>
-    <p>Porque <a class="link" href="#video">no começo do vídeo anterior…</a></p>
-
-    <div id="video" class="center" style="margin:28px 0;">
-      <!-- Slot para vídeo ou imagem -->
+    <!-- ===== INTRODUCCIÓN AL PROBLEMA ===== -->
+    <div class="section">
+      <h2>¿Estás Luchando Contra el Olvido y la Niebla Mental? No Estás Solo...</h2>
+      <p>Con el paso de los años, especialmente después de los 50, nuestro cerebro comienza a acumular toxinas, células "zombis" e inflamaciones que bloquean la comunicación entre las neuronas. Esto no es solo un "signo de la edad" – es un problema real que afecta a millones de personas en todo el mundo.</p>
+      <p>¿Alguna vez te has quedado en blanco en medio de una conversación, intentando recordar el nombre de alguien que conoces desde hace años? ¿O has buscado las llaves del coche por enésima vez? Esos momentos frustrantes no son inevitables. Son síntomas de un cerebro sobrecargado, luchando por mantener el ritmo de la vida moderna.</p>
+      <p>Y lo peor: sin intervención, esto puede evolucionar hacia problemas más graves, como pérdida de enfoque en el trabajo, dificultades para aprender cosas nuevas o incluso un mayor riesgo de enfermedades degenerativas como el Alzheimer. Los medicamentos tradicionales son caros, están llenos de efectos secundarios y no siempre son efectivos. Los ejercicios mentales requieren horas que no tienes. Pero, ¿y si existiera una solución simple, respaldada por la ciencia, que encaje en tu rutina ocupada?</p>
     </div>
 
-  </main>
+    <!-- ===== PRESENTACIÓN DE LA SOLUCIÓN ===== -->
+    <div class="section">
+      <h2>Presentamos Memory Pulse: La Revolución en Audio para Tu Cerebro</h2>
+      <p>Memory Pulse es un audio digital innovador, diseñado por expertos en neurociencia, que utiliza ondas gamma para "limpiar" y revitalizar tu cerebro en solo 8 minutos al día. Basado en investigaciones avanzadas sobre ondas cerebrales, este audio activa patrones neuronales que eliminan toxinas acumuladas y fortalecen las conexiones sinápticas.</p>
+      <h3>¿Cómo Funciona?</h3>
+      <p>Al escuchar Memory Pulse con auriculares, las frecuencias gamma estimulan la producción de proteínas que combaten las células dañadas, mejoran la circulación sanguínea en el cerebro y aumentan la plasticidad neuronal. Es como darle un "reinicio" diario a tu mente, sin esfuerzo alguno – solo presiona play mientras desayunas o te relajas por la noche.</p>
+      <p>A diferencia de aplicaciones o juegos mentales que requieren concentración activa, Memory Pulse trabaja en el subconsciente, permitiéndote continuar con tu rutina mientras tu cerebro se regenera. Resultados visibles en semanas: memoria más aguda, enfoque nítido y una sensación de claridad que no has sentido en años.</p>
+    </div>
+
+    <!-- ===== BENEFICIOS DETALLADOS ===== -->
+    <div class="section">
+      <h2>Los Increíbles Beneficios que Experimentarás</h2>
+      <p>Memory Pulse no es solo un audio – es una transformación completa para tu vida cognitiva. Mira lo que nuestros usuarios reportan:</p>
+      <ul>
+        <li><b>Memoria Aguda y Rápida:</b> Recuerda nombres, fechas y detalles con facilidad, eliminando esos momentos incómodos de "quedarte en blanco".</li>
+        <li><b>Claridad Mental y Enfoque Intenso:</b> Di adiós a la niebla mental. Concéntrate mejor en el trabajo, estudios o pasatiempos, aumentando tu productividad hasta en un 50%.</li>
+        <li><b>Protección Contra Enfermedades Degenerativas:</b> Reduce el riesgo de Alzheimer y demencia al mantener tu cerebro activo y saludable a largo plazo.</li>
+        <li><b>Energía Cognitiva Diaria:</b> Siéntete más alerta y creativo durante todo el día, sin depender de cafeína o suplementos artificiales.</li>
+        <li><b>Mejora en el Estado de Ánimo y Bienestar:</b> Con un cerebro equilibrado, reduce el estrés y la ansiedad, disfrutando de una vida más plena y confiada.</li>
+      </ul>
+    </div>
+
+    <!-- ===== TESTIMONIOS ===== -->
+    <div class="section">
+      <h2>Lo Que Nuestros Usuarios Están Diciendo</h2>
+      <div class="testimonial">
+        <p>"Estaba olvidando cosas simples en mi día a día y me sentía frustrado. Después de 2 semanas con Memory Pulse, mi memoria volvió a ser como cuando tenía 40 años. ¡Lo recomiendo a todos!"</p>
+        <p class="testimonial-author">- Juan S., 58 años, Empresario</p>
+      </div>
+      <div class="testimonial">
+        <p>"Como profesora, necesito un enfoque constante. Este audio cambió mi vida – ahora recuerdo todo sin esfuerzo. ¡Es increíble!"</p>
+        <p class="testimonial-author">- María L., 52 años, Profesora</p>
+      </div>
+      <div class="testimonial">
+        <p>"Pensé que era demasiado tarde para mí, pero Memory Pulse demostró lo contrario. ¡Mi claridad mental está mejor que nunca!"</p>
+        <p class="testimonial-author">- Carlos R., 65 años, Jubilado</p>
+      </div>
+    </div>
+
+    <!-- ===== OFERTA ESPECIAL ===== -->
+    <div class="section">
+      <h2>Oferta Especial Limitada: ¡No Pierdas Esta Oportunidad!</h2>
+      <p>Normalmente, un programa como este costaría cientos de dólares en consultas con especialistas. Pero hoy, puedes acceder a Memory Pulse por un valor increíble.</p>
+      <p class="price">
+        <span class="strike">US$ 500</span>
+        <span class="strike">US$ 200</span>
+        👉 <b>HOY SOLO: US$ 39</b>
+      </p>
+      <p>Esto incluye acceso inmediato por correo electrónico, actualizaciones de por vida y 3 bonos exclusivos:</p>
+      <ul>
+        <li><b>Bono 1:</b> Guía de Nutrición Cerebral – Consejos para potenciar los resultados con alimentos simples.</li>
+        <li><b>Bono 2:</b> Meditación Guiada para un Sueño Profundo – Mejora tu recuperación nocturna.</li>
+        <li><b>Bono 3:</b> Acceso a la Comunidad VIP – Comparte experiencias y consejos con otros usuarios.</li>
+      </ul>
+      <p><b>Atención:</b> ¡Esta oferta es por tiempo limitado! Los precios pueden subir en cualquier momento. Asegura el tuyo ahora y transforma tu mente antes de que sea tarde.</p>
+    </div>
+
+    <!-- ===== GARANTÍA ===== -->
+    <div class="section">
+      <h2>Nuestra Garantía de 90 Días: Sin Riesgos para Ti</h2>
+      <p>Estamos tan seguros de los resultados de Memory Pulse que ofrecemos una garantía incondicional de 90 días. Pruébalo sin compromiso – si no sientes una mejora significativa en tu memoria y claridad mental, simplemente solicita un reembolso total. Sin preguntas, sin complicaciones. Tu inversión está 100% protegida.</p>
+    </div>
+
+    <!-- ===== PREGUNTAS FRECUENTES ===== -->
+    <div class="section">
+      <h2>Preguntas Frecuentes</h2>
+      <h3>¿Memory Pulse realmente funciona?</h3>
+      <p>¡Sí! Basado en estudios sobre ondas gamma, miles de usuarios reportan mejoras reales. Los resultados varían, pero la mayoría ve cambios en 1-2 semanas.</p>
+      
+      <h3>¿Necesito equipos especiales?</h3>
+      <p>¡No! Solo necesitas un smartphone o computadora y auriculares comunes.</p>
+      
+      <h3>¿Es seguro para todos?</h3>
+      <p>Sí, pero consulta a un médico si tienes condiciones preexistentes. No sustituye tratamientos médicos.</p>
+    </div>
+
+    <!-- ===== CTA FINAL ===== -->
+    <a class="cta" id="checkout" href="https://tu-checkout-aqui.com">✅ ¡ASEGURAR MI ACCESO AHORA Y RECIBIR LOS BONOS!</a>
+
+    <footer>
+      © 2025 Memory Pulse – Todos los derechos reservados<br/>
+      <small>Este producto no sustituye el seguimiento médico profesional. Los resultados pueden variar de persona a persona.</small>
+    </footer>
+  </div>
 </body>
 </html>
