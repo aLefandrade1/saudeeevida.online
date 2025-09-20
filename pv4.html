@@ -35,7 +35,7 @@
       --yellow:#facc15;
       --yellow-dark:#eab308;
     }
-    body{
+    html, body{
       background:var(--bg);
       color:var(--text);
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
@@ -48,6 +48,7 @@
       margin:0 auto;
       padding:48px 16px 64px;
       box-sizing:border-box;
+      overflow-x:hidden;
     }
     .hint{
       display:flex;
@@ -168,11 +169,13 @@
     }
     .references .banner-full{
       display:block;
-      width:100vw;
+      width:100%;
+      max-width:100%;
       height:auto;
       margin:0;
       padding:0;
       object-fit:cover;
+      box-sizing:border-box;
     }
     .references .doctor-full{
       display:block;
@@ -181,6 +184,7 @@
       margin:14px auto 0;
       border:3px solid #fff;
       border-radius:12px;
+      box-sizing:border-box;
     }
     .bonus-section{
       text-align:center;
@@ -422,6 +426,11 @@
     .visible{
       opacity:1;
       transition:opacity 0.5s ease;
+    }
+    /* Garantir que todos os elementos respeitem a largura da viewport */
+    .wrap, .offer .bundle, .payments, .bonus-section .mockup, .bonus-item .bonus-img, .continuacion .bundle-img, .comments, .faq-list {
+      max-width: 100%;
+      box-sizing: border-box;
     }
   </style>
 </head>
@@ -769,6 +778,8 @@
     });
 
     // Delay para exibir seções de bônus, FAQ, comentários, preços/CTAs e texto de referências
+    // Ajustado para 17 minutos e 30 segundos (1050000ms) conforme o pitch da VSL
+    // Para testes, pode alterar para 10000 (10 segundos) temporariamente
     setTimeout(() => {
       document.querySelectorAll('.offer, .bonus-section, .bonus-item, .continuacion, .comments, .faq-wrap, .references-text').forEach(element => {
         element.classList.remove('hidden');
