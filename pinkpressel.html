@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://i.postimg.cc/WbSV5jW0/imagem-presell-1.png" as="image">
   <style>
     :root {
       --bg: #f4f5f7;
@@ -26,7 +27,7 @@
     .wrap {
       max-width: var(--maxw); 
       margin: 48px auto; 
-      padding: 16px; 
+      padding: 0 16px; 
     }
     .headline {
       margin: 0 0 20px; 
@@ -38,6 +39,8 @@
     .media {
       position: relative; 
       width: 100%; 
+      max-width: 720px;
+      margin: 0 auto 20px;
       border-radius: 12px; 
       overflow: hidden; 
       background: #000;
@@ -110,7 +113,7 @@
     /* Responsividade */
     @media (max-width: 420px) {
       .wrap { 
-        padding: 18px; 
+        padding: 0 8px; 
       }
     }
   </style>
@@ -121,7 +124,7 @@
       <h1 id="headline" class="headline">This little trick made my body go into bariatric mode.</h1>
       <section id="media-block">
         <figure class="media" aria-label="Mídia principal">
-          <img id="hero-image" src="https://i.postimg.cc/WbSV5jW0/imagem-presell-1.png" alt="Imagem da oferta" />
+          <img id="hero-image" src="https://i.postimg.cc/WbSV5jW0/imagem-presell-1.png" alt="Imagem da oferta" loading="eager" fetchpriority="high" />
           <a id="image-link" class="cover-link" href="#" aria-label="Assistir" title="Assistir"></a>
           <div class="play" aria-hidden="true"><div class="btn"></div></div>
         </figure>
