@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página de Venda – Esqueleto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f5f7;
+      --text: #111827;
+      --muted: #4b5563;
+      --accent: #fde047; /* amarelo estilo referência */
+      --accent-press: #facc15;
+      --maxw: 720px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; 
+      background: var(--bg); 
+      color: var(--text); 
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    .wrap {
+      max-width: var(--maxw); 
+      margin: 48px auto; 
+      padding: 16px; 
+    }
+    .headline {
+      margin: 0 0 20px; 
+      text-align: center; 
+      font-weight: 800; 
+      line-height: 1.15; 
+      font-size: clamp(22px, 3.8vw, 28px);
+    }
+    .media {
+      position: relative; 
+      width: 100%; 
+      border-radius: 12px; 
+      overflow: hidden; 
+      background: #000;
+    }
+    .media img { 
+      display: block; 
+      width: 100%; 
+      height: auto; 
+    }
+    /* Botão de play redondo no centro */
+    .play {
+      position: absolute; 
+      inset: 0; 
+      display: grid; 
+      place-items: center; 
+      pointer-events: none;
+    }
+    .play .btn {
+      width: 82px; 
+      height: 58px; 
+      border-radius: 12px; 
+      background: #ef4444; 
+      display: grid; 
+      place-items: center; 
+      box-shadow: 0 10px 30px rgba(239,68,68,.4);
+    }
+    .play .btn::before {
+      content: ""; 
+      display: block; 
+      width: 0; 
+      height: 0; 
+      border-top: 12px solid transparent; 
+      border-bottom: 12px solid transparent; 
+      border-left: 18px solid #fff; 
+      margin-left: 4px;
+    }
+    .cover-link { 
+      position: absolute; 
+      inset: 0; 
+      cursor: pointer; 
+    }
+    .body {
+      font-size: 16px; 
+      line-height: 1.6; 
+      color: var(--muted); 
+      margin: 18px 4px 24px;
+    }
+    .cta {
+      display: block; 
+      width: 100%; 
+      text-align: center; 
+      font-weight: 800; 
+      font-size: 18px; 
+      padding: 16px 18px; 
+      border: 0; 
+      border-radius: 999px; 
+      background: var(--accent); 
+      color: #111; 
+      cursor: pointer; 
+      box-shadow: 0 10px 30px rgba(0,0,0,.1);
+      transition: transform .06s ease, filter .2s ease, background .2s ease;
+    }
+    .cta:hover { 
+      filter: brightness(1.02); 
+    }
+    .cta:active { 
+      transform: translateY(1px); 
+      background: var(--accent-press); 
+    }
+    /* Responsividade */
+    @media (max-width: 420px) {
+      .wrap { 
+        padding: 18px; 
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <article role="article">
+      <h1 id="headline" class="headline">This little trick made my body go into bariatric mode.</h1>
+      <section id="media-block">
+        <figure class="media" aria-label="Mídia principal">
+          <img id="hero-image" src="https://i.postimg.cc/WbSV5jW0/imagem-presell-1.png" alt="Imagem da oferta" />
+          <a id="image-link" class="cover-link" href="#" aria-label="Assistir" title="Assistir"></a>
+          <div class="play" aria-hidden="true"><div class="btn"></div></div>
+        </figure>
+      </section>
+      <section id="video-embed" style="display:none"></section>
+      <div id="body-text" class="body">
+        <p>Today I'll show you how to make this new recipe using pink salt and just three more ingredients that, when combined, create a 93 times more powerful effect than those expensive slimming pens, but with no side effects and 100% natural.</p>
+        <p>My friend Sarah completed two months and has already lost over 22 kilos.</p>
+        <p>She simply followed this pink salt trick that is going viral, with over 17 million views and even being mentioned on television shows.</p>
+        <p>If you want to lose weight, tap the button and watch now before they take it off the air again.</p>
+      </div>
+      <button id="cta" class="cta">CLICK HERE TO WATCH THE VIDEO</button>
+    </article>
+  </main>
+  <script>
+    const CONFIG = {
+      headline: "This little trick made my body go into bariatric mode.",
+      imageSrc: "https://i.postimg.cc/WbSV5jW0/imagem-presell-1.png",
+      imageHref: "#",
+      bodyHTML: `<p>Today I'll show you how to make this new recipe using pink salt and just three more ingredients that, when combined, create a 93 times more powerful effect than those expensive slimming pens, but with no side effects and 100% natural.</p><p>My friend Sarah completed two months and has already lost over 22 kilos.</p><p>She simply followed this pink salt trick that is going viral, with over 17 million views and even being mentioned on television shows.</p><p>If you want to lose weight, tap the button and watch now before they take it off the air again.</p>`,
+      ctaText: "CLICK HERE TO WATCH THE VIDEO",
+      embedHTML: ""
+    };
+    (function apply() {
+      if (CONFIG.headline) document.getElementById('headline').innerHTML = CONFIG.headline;
+      if (CONFIG.bodyHTML) document.getElementById('body-text').innerHTML = CONFIG.bodyHTML;
+      if (CONFIG.ctaText) document.getElementById('cta').textContent = CONFIG.ctaText;
+      if (CONFIG.embedHTML && CONFIG.embedHTML.trim().length > 0) {
+        const v = document.getElementById('video-embed');
+        v.style.display = 'block';
+        v.innerHTML = CONFIG.embedHTML;
+        const media = document.getElementById('media-block');
+        if (media) media.style.display = 'none';
+      } else {
+        const img = document.getElementById('hero-image');
+        if (CONFIG.imageSrc) img.src = CONFIG.imageSrc;
+        const link = document.getElementById('image-link');
+        if (CONFIG.imageHref) link.href = CONFIG.imageHref;
+      }
+    })();
+  </script>
+</body>
+</html>
