@@ -102,6 +102,7 @@
       cursor: pointer; 
       box-shadow: 0 10px 30px rgba(0,0,0,.1);
       transition: transform .06s ease, filter .2s ease, background .2s ease;
+      animation: pulse 2s infinite;
     }
     .cta:hover { 
       filter: brightness(1.02); 
@@ -109,6 +110,11 @@
     .cta:active { 
       transform: translateY(1px); 
       background: var(--accent-press); 
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
     /* Responsividade */
     @media (max-width: 420px) {
@@ -136,7 +142,7 @@
         <p>She simply followed this pink salt trick that is going viral, with over 17 million views and even being mentioned on television shows.</p>
         <p>If you want to lose weight, tap the button and watch now before they take it off the air again.</p>
       </div>
-      <button id="cta" class="cta">CLICK HERE TO WATCH THE VIDEO</button>
+      <button id="cta" class="cta" onclick="window.location.href='https://example.com';">CLICK HERE TO WATCH THE VIDEO</button>
     </article>
   </main>
   <script>
