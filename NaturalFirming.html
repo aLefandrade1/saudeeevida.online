@@ -22,38 +22,46 @@
       color:#fff;
       text-align:center;
       font-size:20px;
-      padding:36px 14px;
+      padding:20px 14px;
       line-height:1.6;
     }
     .warning-bar strong{font-weight:700;}
 
-    /* ALERT BLOCK */
-    .alert{
-      display:flex;
-      align-items:center;
-      gap:20px;
-      background:#fff;
-      margin:40px auto;
-      max-width:900px;
+    /* STOP! CENTRALIZADO NO TOPO */
+    .stop-header {
+      text-align: center;
+      margin: 30px 0 20px;
     }
-    .alert .icon{display:flex; align-items:center; gap:10px;}
-    .alert .icon img{width:150px; height:auto; display:block;}
-    .alert .icon .pare-text{font-size:48px; font-weight:900; color:#d11b1b;}
-    .alert .main-message{flex:1; font-size:22px; font-weight:800; color:#d11b1b;}
-    .alert .main-message p{margin:0 0 14px; font-size:22px;}
-    .alert .main-message .divider{border-top:4px solid #000; margin:12px 0; width:100%;}
+    .stop-header .pare-text {
+      font-size: 48px;
+      font-weight: 900;
+      color: #d11b1b;
+      margin: 0;
+    }
 
-    /* HEADINGS AND TEXT */
-    h1{
-      font-size:32px;
-      color:#000000;
-      margin:32px 0 16px;
-      font-weight:900;
-      font-family: Impact, Charcoal, sans-serif;
+    /* MENSAGENS COM LINHA PRETA ABAIXO */
+    .alert-messages {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    p.lead{font-size:22px; margin:20px 0}
-    p{font-size:18px;}
-    a.link{color:#1a66ff; text-decoration:underline}
+    .alert-messages p {
+      font-size: 22px;
+      font-weight: 800;
+      color: #d11b1b;
+      margin: 0 0 12px;
+    }
+    .alert-messages .divider {
+      border-top: 4px solid #000;
+      margin: 12px auto;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    /* VIDEO */
+    .video-container {
+      margin: 30px 0;
+    }
 
     /* ===== Utilities ===== */
     .t-14{font-size:14px;} .t-16{font-size:16px;} .t-18{font-size:18px;}
@@ -66,24 +74,8 @@
     .red{color:#d11b1b;} .blue{color:#1a66ff;} .blackc{color:#000;} .white{color:#fff;}
     .green{color:#28a745;}
 
-    .left{text-align:left;} .center{text-align:center;} .right{text-align:right;}
     .mt-8{margin-top:8px;} .mt-16{margin-top:16px;} .mt-24{margin-top:24px;} .mt-32{margin-top:32px;}
     .mb-8{margin-bottom:8px;} .mb-16{margin-bottom:16px;} .mb-24{margin-bottom:24px;} .mb-32{margin-bottom:32px;}
-
-    /* Existing styles */
-    .red-italic { color:#d11b1b; font-style: italic; }
-    .blue-highlight { color:#1a66ff; font-weight:bold; }
-    .red-text { color:#d11b1b; }
-
-    @media (max-width:720px){
-      .alert{flex-direction:column; align-items:flex-start;}
-      .alert .icon img{width:120px;}
-      .alert .icon .pare-text{font-size:32px;}
-      .alert .main-message p{font-size:20px;}
-      h1{font-size:26px}
-      p.lead{font-size:20px}
-      p{font-size:16px}
-    }
 
     /* Style for the disclaimer */
     .disclaimer {
@@ -93,6 +85,25 @@
       text-align: center;
       padding: 20px;
       line-height: 1.4;
+    }
+
+    /* Mobile: apenas fontes menores, layout igual ao desktop */
+    @media (max-width:720px){
+      .warning-bar {
+        font-size: 16px;
+      }
+      .stop-header .pare-text {
+        font-size: 28px;
+      }
+      .alert-messages p {
+        font-size: 18px;
+      }
+      .alert-messages .divider {
+        width: 90%;
+      }
+      .disclaimer {
+        font-size: 10px;
+      }
     }
   </style>
 </head>
@@ -106,27 +117,29 @@
 
   <main class="wrap mb-32">
 
-    <!-- ALERT BLOCK -->
-    <section class="alert">
-      <div class="icon">
-        <!-- Image removed -->
-        <div class="pare-text">STOP!</div>
-      </div>
-      <div class="main-message">
-        <p class="t-22 bold red">Your order is not yet complete.</p>
-        <div class="divider"></div>
-        <p class="t-22 bold red">Please see the important message below.</p>
-      </div>
-    </section>
+    <!-- STOP! CENTRALIZADO -->
+    <div class="stop-header">
+      <div class="pare-text">STOP!</div>
+    </div>
 
-    <!-- Video -->
-    <vturb-smartplayer id="vid-68ffdc2b00555d1efd2e40e4" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer>
-    <script type="text/javascript">
-      var s=document.createElement("script");
-      s.src="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/68ffdc2b00555d1efd2e40e4/v4/player.js";
-      s.async=!0;
-      document.head.appendChild(s);
-    </script>
+    <!-- DUAS FRASES COM LINHA PRETA ABAIXO -->
+    <div class="alert-messages">
+      <p>Your order is not yet complete.</p>
+      <div class="divider"></div>
+      <p>Please see the important message below.</p>
+      <div class="divider"></div>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="video-container">
+      <vturb-smartplayer id="vid-68ffdc2b00555d1efd2e40e4" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer>
+      <script type="text/javascript">
+        var s=document.createElement("script");
+        s.src="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/68ffdc2b00555d1efd2e40e4/v4/player.js";
+        s.async=!0;
+        document.head.appendChild(s);
+      </script>
+    </div>
 
   </main>
 
