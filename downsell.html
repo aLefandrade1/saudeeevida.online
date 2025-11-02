@@ -34,6 +34,8 @@
     .cta{display:inline-block; padding:16px 28px; font-weight:800; text-decoration:none; border-radius:999px; border:2px solid var(--green); margin-top:10px; animation:pulse 1.5s infinite; background:var(--green); color:white; text-transform:uppercase;}
     .cta:hover{transform:translateY(-1px)}
     .cta:focus{outline:3px solid var(--accent); outline-offset:3px}
+    .no-discount{display:block; margin-top:6px; font-size:13px; color:#7a7a7a; text-decoration:none;}
+    .no-discount:hover{text-decoration:underline; color:#5b5b5b;}
     .em-red{color:var(--red); font-weight:800}
     .bold{font-weight:800}
     .divider{height:1px; background:#eee; margin:28px auto; width:80%;}
@@ -76,7 +78,13 @@
     <div class="sp-lg"></div>
     <h2>You can access my method for just <span class="bold">$37</span>.</h2>
     <div class="sp-md"></div>
-    <a href="#buy" class="cta" aria-label="Get it now for 37 dollars">GET IT NOW FOR $37</a>
+
+    <!-- Checkout Button -->
+    <a href="YOUR_CHECKOUT_LINK_HERE" class="cta" aria-label="Get it now for 37 dollars">GET IT NOW FOR $37</a>
+
+    <!-- No Discount Link -->
+    <a href="YOUR_NO_DISCOUNT_LINK_HERE" class="no-discount">I don't want my discount</a>
+
     <div class="divider" role="separator"></div>
 
     <p class="lead">I know you might be thinking of leaving this page and trying to buy on another day, but this offer will definitely <span class="em-red">never be available again</span> and open to the public.</p>
