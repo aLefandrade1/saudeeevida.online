@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DomCell — Upsell 2</title>
+  <meta name="description" content="DomCell Upsell 2 page. Red warning header with clean layout and centered text." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --maxw: 880px;
+      --fg: #0b0b0f;
+      --red:#d90429;
+      --green:#00c853;
+      --muted:#5b5b66;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+      background:white;
+      color:var(--fg);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+    }
+
+    .headline-section{
+      width:100%;
+      background:var(--red);
+      text-align:center;
+      padding:26px 0;
+      margin-bottom:40px;
+    }
+
+    .headline-text{
+      max-width:860px;
+      margin:0 auto;
+      padding:0 16px;
+    }
+
+    h1{
+      font-size: clamp(20px, 4.4vw, 34px);
+      line-height:1.15;
+      letter-spacing:-0.02em;
+      color:white;
+      font-weight:800;
+      margin:0 auto 20px auto;
+      white-space:normal;
+    }
+
+    .headline-img{
+      width:100%;
+      max-width:140px;
+      height:auto;
+      margin:0 auto 20px auto;
+      display:block;
+    }
+
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:0 20px 30px 20px;
+      text-align:center;
+    }
+
+    p{
+      font-size: clamp(15px,2.4vw,18px);
+      line-height:1.7;
+      margin:12px 0;
+    }
+
+    h2{
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight:800;
+      margin:30px 0 10px 0;
+    }
+
+    .cta{
+      display:inline-block;
+      padding:16px 28px;
+      font-weight:800;
+      text-decoration:none;
+      border-radius:999px;
+      border:2px solid var(--green);
+      margin-top:20px;
+      animation:pulse 1.5s infinite;
+      background:var(--green);
+      color:white;
+      text-transform:uppercase;
+    }
+
+    .no-discount{
+      display:block;
+      margin-top:12px;
+      margin-bottom:25px;
+      font-size:13px;
+      color:#7a7a7a;
+      text-decoration:none;
+    }
+
+    .no-discount:hover{text-decoration:underline;color:#5b5b5b;}
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0,200,83, 0.6); }
+      70% { box-shadow: 0 0 0 15px rgba(0,200,83, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0,200,83, 0); }
+    }
+
+    @media (max-width:768px){
+      .headline-section{padding:20px 0;}
+      .headline-text{max-width:92%;}
+      h1{font-size: clamp(18px, 4.6vw, 26px);line-height:1.2;}
+      .headline-img{max-width:25%;}
+    }
+  </style>
+</head>
+<body>
+  <div class="headline-section">
+    <div class="headline-text">
+      <h1>Attention, do not close or refresh this page, as it may result in errors in your purchase.</h1>
+      <img src="https://i.postimg.cc/VvzLn3Fm/Design-sem-nome-14.png" alt="Upsell 2 Banner" class="headline-img">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p>Please take a moment to read this page very carefully!</p>
+    <p>First and foremost, I congratulate you once again for gaining access to this valuable guide!</p>
+    <p>I am fully confident that you will make the most of it!</p>
+    <p>However, my patients have reported the appearance of stretch marks after treating skin sagging.</p>
+    <p>Appearing on the belly…</p>
+    <p>On the buttocks...</p>
+    <p>And even on the groin…</p>
+    <p>And always thinking about the well-being of my patients, I have developed the Anti Stretch Marks protocol.</p>
+    <p>A recipe where you mix natural oils and apply it to the stretch marks area.</p>
+    <p>Usually, I charge $300.00 for this program outside of here…</p>
+    <p>But since you have trusted me, I want to gift it to you…</p>
+    <p>That's why I am going to do something that may seem crazy to some people…</p>
+    <p>Today, you won't pay $300.00 to access this program…</p>
+    <p>You won't even need $200.00…</p>
+    <p>Here on this page, you will have the opportunity to add this program to your package for LESS THAN HALF OF THE ORIGINAL VALUE!</p>
+    <h2>From $300.00 to only $67 on your credit card.</h2>
+
+    <a href="#" class="cta">YES, ADD TO PACKAGE!</a>
+    <a href="#" class="no-discount">No, disregard benefits...</a>
+  </div>
+</body>
+</html>
