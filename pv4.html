@@ -3,30 +3,43 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Image Gallery Page</title>
+  <title>recip</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background: #000;
+      background-color: #000000; /* fundo totalmente preto */
       height: 100%;
       width: 100%;
     }
     .img-container {
       width: 100%;
-      min-height: 100vh;
+      text-align: center;
+      background-color: #000000; /* fundo preto também para os containers */
       overflow: hidden;
     }
     .img-container img {
-      width: 100%;
-      height: auto; /* mantém proporção original */
+      max-width: 100%;
+      height: auto;
       display: block;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .img-container img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
     }
   </style>
 </head>
 <body>
   <div class="img-container">
     <img src="https://i.postimg.cc/ryC71cxp/portfolio.png" alt="Gallery Image">
+  </div>
+  <div class="img-container">
+    <img src="https://i.postimg.cc/dtXPWFQ5/portfolio-1.png" alt="Gallery Image 2">
   </div>
 </body>
 </html>
