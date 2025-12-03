@@ -17,19 +17,43 @@
         }
         @media (max-width:768px){.logo-top-left{width:200px;top:10px;left:10px;}}
 
-        /* IMAGENS ABAIXO DO VÍDEO – CANTO ESQUERDO */
+        /* IMAGENS ABAIXO DO VÍDEO – RESPONSIVO */
         .proof-images{
-            text-align:left;
             margin:30px 0 50px 0;
+            display:flex;
+            flex-direction:column;
+            gap:0px;
         }
         .proof-img{
-            width:440px;
-            margin-bottom:25px;
+            width:100%;
             border-radius:12px;
             box-shadow:none;
         }
+        /* DESKTOP: LADO A LADO */
+        @media (min-width:769px){
+            .proof-images{
+                flex-direction:row;
+                justify-content:center;
+                align-items:flex-start;
+                gap:10px;
+            }
+            .proof-img{
+                width:48%;
+                margin:0;
+            }
+        }
+        /* MOBILE: UMA EM CIMA DA OUTRA */
         @media (max-width:768px){
-            .proof-img{width:100%;max-width:400px;margin:15px auto;display:block;}
+            .proof-images{
+                flex-direction:column;
+                gap:0;
+            }
+            .proof-img{
+                width:100%;
+                margin:0 auto;
+                display:block;
+            }
+        }
         }
 
         /* CHAT FALSO */
@@ -60,10 +84,10 @@
 
     <!-- DUAS IMAGENS DE PROVA SOCIAL (uma abaixo da outra, canto esquerdo) -->
     <div class="proof-images">
-        <img style="margin-top:20px;" src="https://i.postimg.cc/DyRvzw1h/Captura-de-tela-3-12-2025-143545-ondadamemoria-com.jpg" 
+        <img style="margin-top:0px;" src="https://i.postimg.cc/DyRvzw1h/Captura-de-tela-3-12-2025-143545-ondadamemoria-com.jpg" 
              alt="Prova 1" class="proof-img">
 
-        <img style="margin-top:40px;" src="https://i.postimg.cc/j2dHCX0T/Captura-de-tela-2025-11-26-173316-(1).png" 
+        <img style="margin-top:10px;" src="https://i.postimg.cc/j2dHCX0T/Captura-de-tela-2025-11-26-173316-(1).png" 
              alt="Prova 2" class="proof-img">
     </div>
 
