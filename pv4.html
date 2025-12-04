@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onda da Memória – Acesso Imediato</title>
+    <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+    <link rel="preload" href="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/6930a3871fe8f267646097ec/v4/player.js" as="script">
+    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+    <link rel="preload" href="https://cdn.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/6930a376f26024a7a67b34af/main.m3u8" as="fetch">
+    <link rel="dns-prefetch" href="https://cdn.converteai.net">
+    <link rel="dns-prefetch" href="https://scripts.converteai.net">
+    <link rel="dns-prefetch" href="https://images.converteai.net">
+    <link rel="dns-prefetch" href="https://api.vturb.com.br">
     <style>
         html{max-width:100%; overflow-x:hidden;}
         *{box-sizing:border-box;}
         body{margin:0;font-family:Manrope,sans-serif;background:#fff;color:#111;line-height:1.5;max-width:100%;overflow-x:hidden;}
+        .esconder{display:none;}
         img{max-width:100%;height:auto;}
         h2{font-size:2.2rem;margin:30px 0 15px;text-align:center;}
         .container{max-width:900px;margin:0 auto;padding:20px;position:relative;min-height:100vh;}
@@ -77,12 +86,38 @@
 
     <!-- PLAYER DA VSL -->
     <div style="text-align:center;margin:90px 0 20px;">
-        <div style="background:#000;height:500px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;">
-            SEU VÍDEO DA VSL AQUI
-        </div>
+        <vturb-smartplayer id="vid-6930a3871fe8f267646097ec" style="display:block; margin:0 auto; width:100%; max-width:400px;"></vturb-smartplayer>
+        <script type="text/javascript">
+        var s=document.createElement("script");
+        s.src="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/6930a3871fe8f267646097ec/v4/player.js";
+        s.async=!0;
+        document.head.appendChild(s);
+        </script>
+    
+<!-- BOTÃO CTA ADICIONADO ENTRE O VÍDEO E AS IMAGENS -->
+<style>
+@keyframes pulseCTA{
+  0%{transform:scale(1);} 
+  50%{transform:scale(1.08);} 
+  100%{transform:scale(1);} 
+}
+.cta-pulse{
+  animation:pulseCTA 1.6s infinite ease-in-out;
+}
+</style>
+<div class="esconder" style="text-align:center; margin:20px 0 25px 0;">
+    <a href="https://pay.kirvano.com/931466d5-7d6e-49b3-97d8-b215d0fa90c1" class="cta-pulse" style="display:inline-block; background:#ffd700; color:#0055ff; border:3px solid #0055ff; padding:10px 28px; font-size:1.6rem; font-weight:800; text-transform:uppercase; border-radius:12px; text-decoration:none; box-shadow:0 0 12px rgba(255,215,0,0.4);">
+        SIM, EU QUERO ATIVAR MINHA MENTE!
+    </a>
+</div>
+
+    <!-- HEADLINE ENTRE BOTÃO (COM DELAY) E PROVAS SOCIAIS (SEM DELAY) -->
+    <div style="max-width:900px; margin:0 auto 10px auto; padding:0 20px; text-align:left; font-size:1.45rem; line-height:1.4; font-weight:700;">
+        MEMÓRIA REATIVADA EM 7 DIAS: Cientista revela frequência de 12 minutos que restaura a memória em 1 semana
     </div>
 
-    <!-- DUAS IMAGENS DE PROVA SOCIAL (uma abaixo da outra, canto esquerdo) -->
+</div>
+<!-- DUAS IMAGENS DE PROVA SOCIAL (uma abaixo da outra, canto esquerdo) -->
     <div class="proof-images">
         <img style="margin-top:0px;" src="https://i.postimg.cc/DyRvzw1h/Captura-de-tela-3-12-2025-143545-ondadamemoria-com.jpg" 
              alt="Prova 1" class="proof-img">
@@ -94,7 +129,7 @@
 </div>
 
 <!-- FAIXA PRETA FULL-WIDTH COM A IMAGEM -->
-<div style="width:100%; background:#000; padding:40px 0 30px 0; text-align:center; margin:0;">
+<div class="esconder" style="width:100%; background:#000; padding:40px 0 30px 0; text-align:center; margin:0;">
     <img src="https://i.postimg.cc/NfBLcM88/ONDA-DIGITAIS.png" alt="Onda Digitais" style="max-width:340px; width:90%; height:auto; display:block; margin:0 auto;">
     <h2 style="color:#ff0000; text-transform:uppercase; font-size:2rem; font-weight:800; text-align:center; margin:25px 0 0 0; text-shadow:0 0 6px #ffd700; letter-spacing:1px;">
         RESTAM 47 VAGAS NO VALOR DA BLACK FRIDAY
@@ -110,14 +145,14 @@
     </h2>
 
     <!-- BOTÃO CTA -->
-    <a href="#" style="display:inline-block; background:#ffd700; color:#0055ff; border:3px solid #0055ff; padding:10px 28px; font-size:1.6rem; font-weight:800; text-transform:uppercase; border-radius:12px; text-decoration:none; margin-top:22px; box-shadow:0 0 12px rgba(255,215,0,0.4);">
+    <a href="https://pay.kirvano.com/931466d5-7d6e-49b3-97d8-b215d0fa90c1" style="display:inline-block; background:#ffd700; color:#0055ff; border:3px solid #0055ff; padding:10px 28px; font-size:1.6rem; font-weight:800; text-transform:uppercase; border-radius:12px; text-decoration:none; margin-top:22px; box-shadow:0 0 12px rgba(255,215,0,0.4);">
         SIM, EU QUERO ATIVAR MINHA MENTE!
     </a>
 
 </div>
 
 <!-- NOVO BLOCO FUNDO BRANCO -->
-<div style="width:100%; background:#ffffff; padding:40px 20px; text-align:center; margin:0 auto;">
+<div class="esconder" style="width:100%; background:#ffffff; padding:40px 20px; text-align:center; margin:0 auto;">
     <h2 style="color:#000; font-size:2.2rem; font-weight:800; text-transform:uppercase; margin-bottom:20px;">
         TUDO QUE VOCÊ VAI <span style="color:#3399ff;">RECEBER</span> HOJE:<br><span style="font-weight:400; font-size:1.6rem;">ONDA DA MEMÓRIA + BÔNUS</span>
     </h2>
@@ -197,7 +232,7 @@
 </div>
 
 <!-- BLOCO PRETO DUPLICADO -->
-<div style="width:100%; background:#000; padding:40px 0 30px 0; text-align:center; margin:0; margin-top:40px;">
+<div class="esconder" style="width:100%; background:#000; padding:40px 0 30px 0; text-align:center; margin:0; margin-top:40px;">
     <h2 style="color:#3399ff; text-transform:uppercase; font-size:1.8rem; font-weight:700; text-align:center; margin:0 0 18px 0; letter-spacing:1px;">
         ACESSE TUDO ISSO POR APENAS:
     </h2>
@@ -214,7 +249,7 @@
     <h2 style="color:#ffd700; font-size:1.4rem; font-weight:600; text-align:center; margin:14px 0 0 0; text-shadow:0 0 4px #000; letter-spacing:0.5px;">
         Clique no botão abaixo 👇 e garanta seus benefícios
     </h2>
-    <a href="#" style="display:inline-block; background:#ffd700; color:#0055ff; border:3px solid #0055ff; padding:10px 28px; font-size:1.6rem; font-weight:800; text-transform:uppercase; border-radius:12px; text-decoration:none; margin-top:22px; box-shadow:0 0 12px rgba(255,215,0,0.4);">
+    <a href="https://pay.kirvano.com/931466d5-7d6e-49b3-97d8-b215d0fa90c1" style="display:inline-block; background:#ffd700; color:#0055ff; border:3px solid #0055ff; padding:10px 28px; font-size:1.6rem; font-weight:800; text-transform:uppercase; border-radius:12px; text-decoration:none; margin-top:22px; box-shadow:0 0 12px rgba(255,215,0,0.4);">
         SIM, EU QUERO ATIVAR MINHA MENTE!
     </a>
 </div>
@@ -350,6 +385,39 @@ function sendUserResponse() {
 document.getElementById('userResponse').addEventListener('keypress', e => {if(e.key==='Enter') sendUserResponse();});
 previewChat();
 </script>
+
+<!-- DELAY VTURB PARA MOSTRAR O RESTO DA PÁGINA -->
+<script>
+(function(){
+  var delaySeconds = 300; // 5 minutos
+
+  function initDelay(){
+    var player = document.querySelector('vturb-smartplayer');
+    if (!player || typeof player.addEventListener !== 'function') return;
+
+    player.addEventListener('player:ready', function(){
+      if (typeof player.displayHiddenElements === 'function') {
+        player.displayHiddenElements(delaySeconds, ['.esconder'], { persist: true });
+      }
+    });
+  }
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive'){
+    initDelay();
+  } else {
+    document.addEventListener('DOMContentLoaded', initDelay);
+  }
+})();
+</script>
+
+<!-- DISCLAIMER NORMAL NO FINAL DA PÁGINA -->
+<div class="esconder" style="width:100%; background:#000; color:#fff; padding:28px 18px; text-align:center; font-size:0.85rem; line-height:1.5; margin-top:50px;">
+    <p style="margin:4px 0; font-weight:600;">Copyright 2025 – Memória em Foco ®</p>
+    <p style="margin:4px 0; text-decoration:underline; cursor:pointer;">Termos de Uso · Políticas de Privacidade</p>
+    <p style="margin:10px auto 0 auto; max-width:900px; opacity:0.9;">
+        Não pretendemos diagnosticar, tratar, curar ou prevenir qualquer doença ou enfermidade. As informações são compartilhadas apenas para fins educacionais. Você deve sempre consultar seu médico antes de agir em qualquer conteúdo deste site, especialmente se estiver grávida, amamentando, tomando medicação ou tiver uma condição médica. O produto apresentado não é um medicamento.
+    </p>
+</div>
 
 </body>
 </html>
