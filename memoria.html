@@ -1,438 +1,208 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es-ES">
 <head>
-    <script>
-      window.pixelId = "6931f639eb8392bc274e8a37";
-      var a = document.createElement("script");
-      a.setAttribute("async", "");
-      a.setAttribute("defer", "");
-      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-      document.head.appendChild(a);
-    </script>
-    <script
-      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-      data-utmify-prevent-xcod-sck
-      data-utmify-prevent-subids
-      async
-      defer
-    ></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onda da Memória – Acesso Imediato</title>
-    <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-    <link rel="preload" href="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/6930a3871fe8f267646097ec/v4/player.js" as="script">
-    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-    <link rel="preload" href="https://cdn.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/6930a376f26024a7a67b34af/main.m3u8" as="fetch">
-    <link rel="dns-prefetch" href="https://cdn.converteai.net">
-    <link rel="dns-prefetch" href="https://scripts.converteai.net">
-    <link rel="dns-prefetch" href="https://images.converteai.net">
-    <link rel="dns-prefetch" href="https://api.vturb.com.br">
-    <style>
-        html{max-width:100%; overflow-x:hidden;}
-        *{box-sizing:border-box;}
-        body{margin:0;font-family:Manrope,sans-serif;background:#fff;color:#111;line-height:1.5;max-width:100%;overflow-x:hidden;}
-        .esconder{display:none;}
-        img{max-width:100%;height:auto;}
-        h2{font-size:2.2rem;margin:30px 0 15px;text-align:center;}
-        .container{max-width:900px;margin:0 auto;padding:20px;position:relative;min-height:100vh;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nueva Página - Shot de Sal Rosa</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+    }
 
-        .logo-top-left{
-            position:absolute;top:15px;left:15px;z-index:10;width:260px;
-        }
-        @media (max-width:768px){.logo-top-left{width:200px;top:10px;left:10px;}}
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-        /* IMAGENS ABAIXO DO VÍDEO – RESPONSIVO */
-        .proof-images{
-            margin:30px 0 50px 0;
-            display:flex;
-            flex-direction:column;
-            gap:0px;
-        }
-        .proof-img{
-            width:100%;
-            border-radius:12px;
-            box-shadow:none;
-        }
-        /* DESKTOP: LADO A LADO */
-        @media (min-width:769px){
-            .proof-images{
-                flex-direction:row;
-                justify-content:center;
-                align-items:flex-start;
-                gap:10px;
-            }
-            .proof-img{
-                width:48%;
-                margin:0;
-            }
-        }
-        /* MOBILE: UMA EM CIMA DA OUTRA */
-        @media (max-width:768px){
-            .proof-images{
-                flex-direction:column;
-                gap:0;
-            }
-            .proof-img{
-                width:100%;
-                margin:0 auto;
-                display:block;
-            }
-        }
-        }
+    .page-wrapper {
+      width: 100%;
+      margin: 0 auto;
+    }
+  .top-header {
+      width: 100%;
+      background: #b10e0e;
+      color: #fff;
+    }
 
-        /* CHAT FALSO */
-        .liveupdates{width:100%;max-width:380px;height:550px;background:#fff;border:1px solid #ddd;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.1);margin:0 auto;position:relative;}
-        .liveupdates .comments{height:calc(100% - 70px);overflow-y:auto;padding:10px;}
-        .comment{display:flex;gap:12px;padding:6px 0;align-items:flex-start;}
-        .comment-face img{width:36px;height:36px;border-radius:50%;object-fit:cover;}
-        .comment-text{font-size:13.8px;line-height:1.4;}
-        .comment-text b{color:#065fd4;font-weight:600;}
-        .response-input{position:absolute;bottom:0;left:0;right:0;padding:12px;background:#fff;border-top:1px solid #eee;display:flex;gap:8px;}
-        .response-input input{flex:1;padding:11px;border:1px solid #ddd;border-radius:8px;outline:none;font-size:14px;}
-        .response-input button{background:#065fd4;color:#fff;border:none;padding:11px 22px;border-radius:8px;cursor:pointer;font-weight:600;}
-    </style>
+    .top-bar {
+      height: 86px; /* menu mais alto */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px; /* mais respiro */
+      font-weight: bold;
+      font-size: 26px; /* título maior */
+    }
+
+    .top-title {
+      text-align: center;
+      flex: 1;
+      font-size: 26px; /* reforço do título central */
+      letter-spacing: 0.5px;
+    }
+
+    .top-icon {
+      width: 40px; /* ícones maiores */
+      text-align: center;
+      opacity: 0.95;
+      font-size: 24px; /* ícones maiores */
+    }
+
+    .ticker-wrapper {
+      width: 100%;
+      overflow: hidden;
+      background: #8e0b0b;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      position: relative;
+    }
+
+    .ticker {
+      display: inline-flex;
+      white-space: nowrap;
+      font-size: 15px; /* letras maiores */
+      letter-spacing: 1.2px;
+      padding: 8px 0;
+      animation: marquee 40s linear infinite; /* mais lento */
+      color: #ffffff; /* LETREIRO BRANCO */
+    }
+
+    .ticker span {
+      padding-right: 40px;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    }
+      
+
+.hamburger {
+      width: 26px;
+      height: 18px;
+      position: relative;
+    }
+
+    .hamburger::before,
+    .hamburger::after,
+    .hamburger div {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #fff; /* três barrinhas brancas */
+      border-radius: 2px;
+    }
+
+    .hamburger::before { top: 0; }
+    .hamburger div { top: 7.5px; }
+    .hamburger::after { bottom: 0; }
+
+.top-icon {
+      width: 40px;
+      text-align: center;
+      opacity: 0.95;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hamburger {
+      width: 26px;
+      height: 18px;
+      position: relative;
+    }
+
+    .hamburger::before,
+    .hamburger::after,
+    .hamburger div {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    .hamburger::before { top: 0; }
+    .hamburger div { top: 7.5px; }
+    .hamburger::after { bottom: 0; }
+
+  .headline-section {
+      width: 100%;
+      padding: 12px 16px 6px 16px; /* menos espaço vertical no mobile */
+      background: #ffffff;
+    }
+
+    .headline {
+      font-size: 30px; /* continua grande */
+      line-height: 1.15; /* mais compacto */
+      font-weight: 700; /* menos pesado que 800 */
+      color: #000000;
+      margin: 0 0 6px 0; /* reduzido embaixo */
+    }
+
+    .headline .urgent {
+      color: #b10e0e;
+      font-weight: 800;
+    }
+
+    .byline {
+      font-size: 14px;
+      color: #333333;
+      line-height: 1.5;
+    }
+
+    .byline .update {
+      color: #666666;
+    }
+
+  </style>
 </head>
 <body>
+  <div class="page-wrapper">
 
-<div class="container">
-
-<!-- LOGO TOPO -->
-    <img src="https://i.postimg.cc/bwqn3gFf/Captura-de-tela-2025-11-26-172009-(1).png" alt="Logo" class="logo-top-left">
-
-    <!-- PLAYER DA VSL -->
-    <div style="text-align:center;margin:90px 0 20px;">
-        <vturb-smartplayer id="vid-6930a3871fe8f267646097ec" style="display:block; margin:0 auto; width:100%; max-width:400px;"></vturb-smartplayer>
-        <script type="text/javascript">
-        var s=document.createElement("script");
-        s.src="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/6930a3871fe8f267646097ec/v4/player.js";
-        s.async=!0;
-        document.head.appendChild(s);
-        </script>
-    
-<!-- BOTÃO CTA ADICIONADO ENTRE O VÍDEO E AS IMAGENS -->
-<style>
-@keyframes pulseCTA{
-  0%{transform:scale(1);} 
-  50%{transform:scale(1.08);} 
-  100%{transform:scale(1);} 
-}
-.cta-pulse{
-  animation:pulseCTA 1.6s infinite ease-in-out;
-}
-</style>
-<div class="esconder" style="text-align:center; margin:20px 0 25px 0;">
-    <a href="https://pay.kirvano.com/931466d5-7d6e-49b3-97d8-b215d0fa90c1" class="cta-pulse" style="display:inline-block; background:#ffd700; color:#0055ff; border:3px solid #0055ff; padding:10px 28px; font-size:1.6rem; font-weight:800; text-transform:uppercase; border-radius:12px; text-decoration:none; box-shadow:0 0 12px rgba(255,215,0,0.4);">
-        SIM, EU QUERO ATIVAR MINHA MENTE!
-    </a>
-</div>
-
-    <!-- HEADLINE ENTRE BOTÃO (COM DELAY) E PROVAS SOCIAIS (SEM DELAY) -->
-    <div style="max-width:900px; margin:0 auto 10px auto; padding:0 20px; text-align:left; font-size:1.45rem; line-height:1.4; font-weight:700;">
-        MEMÓRIA REATIVADA EM 7 DIAS: Cientista revela frequência de 12 minutos que restaura a memória em 1 semana
-    </div>
-
-</div>
-<!-- DUAS IMAGENS DE PROVA SOCIAL (uma abaixo da outra, canto esquerdo) -->
-    <div class="proof-images">
-        <img style="margin-top:0px;" src="https://i.postimg.cc/DyRvzw1h/Captura-de-tela-3-12-2025-143545-ondadamemoria-com.jpg" 
-             alt="Prova 1" class="proof-img">
-
-        <img style="margin-top:10px;" src="https://i.postimg.cc/j2dHCX0T/Captura-de-tela-2025-11-26-173316-(1).png" 
-             alt="Prova 2" class="proof-img">
-    </div>
-
-</div>
-
-<!-- FAIXA PRETA FULL-WIDTH COM A IMAGEM -->
-<div class="esconder" style="width:100%; background:#000; padding:40px 0 30px 0; text-align:center; margin:0;">
-    <img src="https://i.postimg.cc/NfBLcM88/ONDA-DIGITAIS.png" alt="Onda Digitais" style="max-width:340px; width:90%; height:auto; display:block; margin:0 auto;">
-    <h2 style="color:#ff0000; text-transform:uppercase; font-size:2rem; font-weight:800; text-align:center; margin:25px 0 0 0; text-shadow:0 0 6px #ffd700; letter-spacing:1px;">
-        RESTAM 47 VAGAS NO VALOR DA BLACK FRIDAY
-    </h2>
-    <h2 style="color:#00ff00; text-transform:uppercase; font-size:3rem; font-weight:900; text-align:center; margin:22px 0 0 0; text-shadow:0 0 6px #00ff00; letter-spacing:1.5px;">
-        HOJE: R$ 97
-    </h2>
-    <h2 style="color:#ffffff; text-transform:uppercase; font-size:1.8rem; font-weight:700; text-align:center; margin:18px 0 0 0; text-shadow:0 0 4px #ffffff; letter-spacing:1px;">
-        APÓS TERMINAR AS 100 VAGAS: R$ 157
-    </h2>
-    <h2 style="color:#ffd700; font-size:1.4rem; font-weight:600; text-align:center; margin:14px 0 0 0; text-shadow:0 0 4px #000; letter-spacing:0.5px;">
-        Clique no botão abaixo 👇 e garanta seus benefícios
-    </h2>
-
-    <!-- BOTÃO CTA -->
-    <a href="https://pay.kirvano.com/931466d5-7d6e-49b3-97d8-b215d0fa90c1" style="display:inline-block; background:#ffd700; color:#0055ff; border:3px solid #0055ff; padding:10px 28px; font-size:1.6rem; font-weight:800; text-transform:uppercase; border-radius:12px; text-decoration:none; margin-top:22px; box-shadow:0 0 12px rgba(255,215,0,0.4);">
-        SIM, EU QUERO ATIVAR MINHA MENTE!
-    </a>
-
-</div>
-
-<!-- NOVO BLOCO FUNDO BRANCO -->
-<div class="esconder" style="width:100%; background:#ffffff; padding:40px 20px; text-align:center; margin:0 auto;">
-    <h2 style="color:#000; font-size:2.2rem; font-weight:800; text-transform:uppercase; margin-bottom:20px;">
-        TUDO QUE VOCÊ VAI <span style="color:#3399ff;">RECEBER</span> HOJE:<br><span style="font-weight:400; font-size:1.6rem;">ONDA DA MEMÓRIA + BÔNUS</span>
-    </h2>
-
-    <!-- IMAGEM INSERIDA ABAIXO DO TÍTULO -->
-    <img src="https://i.postimg.cc/BQLwcxwc/cropped-ONDA-DA-MEMORIA-LOGO-2.png" alt="Logo Onda da Memória" style="max-width:320px; width:90%; margin:20px auto 0 auto; display:block;">
-
-    <!-- CHECKLIST ABAIXO DA IMAGEM -->
-    <div style="margin-top:25px; text-align:center;">
-        <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Ouça — a onda do PULSO DA MEMÓRIA começa a limpar sua mente desde o primeiro uso</p>
-        <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ A ativação gama sincroniza seus pensamentos</p>
-        <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Aguça seu foco e deixa você se sentindo mentalmente renovado</p>
-        <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Desbloqueia habilidades adormecidas</p>
-        <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Recupere a clareza mental sem suplementos ou exercícios</p>
-        <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ O PULSO DA MEMÓRIA não é magia nem meditação — é neurociência criada para ativar seu poder cerebral oculto</p>
-        <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Você vai perceber sua mente ficando mais clara e sua energia aumentando</p>
-        <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Sinta como se estivesse retomando o controle total da sua capacidade mental</p>
-
-        <p style="font-size:1.7rem; font-weight:800; margin-top:25px;"><span style="color:#ff0000;">AVALIADO EM R$ 397</span></p>
-
-        <!-- BÔNUS 1 -->
-        <h2 style="color:#000; font-size:1.6rem; font-weight:400; text-transform:uppercase; margin-top:30px;">BÔNUS 1: SALVA MEMÓRIA DE 1 MINUTO</h2>
-
-        <!-- IMAGEM DO BÔNUS 1 -->
-        <img src="https://i.postimg.cc/SsLzptRb/salva.png" alt="Bônus 1 - Salva Memória" style="max-width:180px; width:70%; margin:20px auto 0 auto; display:block;">
-
-        <!-- CHECKLIST DO BÔNUS 1 -->
-        <div style="margin-top:20px; text-align:center;">
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Aprenda algo novo e fixe na memória em apenas 60 segundos</p>
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Funciona enquanto você está na fila, cozinhando ou tomando café</p>
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Transforma novas informações em memória de longo prazo</p>
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Esquecer não é mais uma opção</p>
-
-            <p style="font-size:1.7rem; font-weight:800; margin-top:25px;"><span style="color:#ff0000;">AVALIADO EM R$ 197</span></p>
-            <p style="font-size:1.4rem; margin-top:8px; font-weight:700; color:#00aa00;">(GRÁTIS ao entrar no programa)</p>
-
-        
-
-        <!-- BÔNUS 2 -->
-        <h2 style="color:#000; font-size:1.6rem; font-weight:400; text-transform:uppercase; margin-top:40px;">BÔNUS 2: GUIA INTELIGÊNTE DE COMPRA</h2>
-
-        <!-- IMAGEM DO BÔNUS 2 -->
-        <img src="https://i.postimg.cc/4NxwBpLr/GUI-COMPRAS.png" alt="Bônus 2 - Guia Inteligente de Compra" style="max-width:240px; width:80%; margin:20px auto 0 auto; display:block;">
-
-        <!-- CHECKLIST DO BÔNUS 2 -->
-        <div style="margin-top:20px; text-align:center;">
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Aprenda algo novo e fixe na memória em apenas 60 segundos</p>
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Funciona enquanto você está na fila, cozinhando ou tomando café</p>
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Transforma novas informações em memória de longo prazo</p>
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Esquecer não é mais uma opção</p>
-
-            <p style="font-size:1.7rem; font-weight:800; margin-top:25px;"><span style="color:#ff0000;">AVALIADO EM R$ 197</span></p>
-            <p style="font-size:1.4rem; margin-top:8px; font-weight:700; color:#00aa00;">(GRÁTIS ao entrar no programa)</p>
+    <!-- CABEÇALHO ESTILO JORNAL DE SAÚDE -->
+    <header class="top-header">
+      <div class="top-bar">
+        <!-- ESQUERDA: LUPA | DIREITA: MENU (HAMBURGER) -->
+        <div class="top-icon left">
+          <img src="https://i.postimg.cc/d0495bhh/Design-sem-nome-(38).png" alt="Buscar" style="width:32px; height:32px;">
         </div>
-
-        <!-- BÔNUS 3 -->
-        <h2 style="color:#000; font-size:1.6rem; font-weight:400; text-transform:uppercase; margin-top:40px;">BÔNUS 3: O BOTÃO DA ENERGIA</h2>
-
-        <!-- IMAGEM DO BÔNUS 3 -->
-        <img src="https://i.postimg.cc/XJX7sH5j/ENERGIA.png" alt="Bônus 3 - O Botão da Energia" style="max-width:240px; width:80%; margin:20px auto 0 auto; display:block;">
-
-        <!-- CHECKLIST DO BÔNUS 3 -->
-        <div style="margin-top:20px; text-align:center;">
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Sinta como se sua semana tivesse ganhado um dia extra</p>
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Aprenda a aproveitar ao máximo sua energia mental</p>
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Mais energia, mais foco, mais clareza</p>
-            <p style="font-size:1.45rem; line-height:1.55; margin:10px 0;">✓ Não se trata apenas de ter mais tempo — é sobre ter mais mente para usá-lo.</p>
-
-            <p style="font-size:1.7rem; font-weight:800; margin-top:25px;"><span style="color:#ff0000;">AVALIADO EM R$ 149</span></p>
-            <p style="font-size:1.4rem; margin-top:8px; font-weight:700; color:#00aa00;">(GRÁTIS ao entrar no programa)</p>
+        <div class="top-title">Salud</div>
+        <div class="top-icon right">
+          <div class="hamburger"><div></div></div>
         </div>
-
-
-
-</div></div></div></div>
-
-</div>
-
-<!-- BLOCO PRETO DUPLICADO -->
-<div class="esconder" style="width:100%; background:#000; padding:40px 0 30px 0; text-align:center; margin:0; margin-top:40px;">
-    <h2 style="color:#3399ff; text-transform:uppercase; font-size:1.8rem; font-weight:700; text-align:center; margin:0 0 18px 0; letter-spacing:1px;">
-        ACESSE TUDO ISSO POR APENAS:
-    </h2>
-    <img src="https://i.postimg.cc/NfBLcM88/ONDA-DIGITAIS.png" alt="Onda Digitais" style="max-width:340px; width:90%; height:auto; display:block; margin:0 auto;">
-    <h2 style="color:#ff0000; text-transform:uppercase; font-size:2rem; font-weight:800; text-align:center; margin:25px 0 0 0; text-shadow:0 0 6px #ffd700; letter-spacing:1px;">
-        RESTAM 47 VAGAS NO VALOR DA BLACK FRIDAY
-    </h2>
-    <h2 style="color:#00ff00; text-transform:uppercase; font-size:3rem; font-weight:900; text-align:center; margin:22px 0 0 0; text-shadow:0 0 6px #00ff00; letter-spacing:1.5px;">
-        HOJE: R$ 97
-    </h2>
-    <h2 style="color:#ffffff; text-transform:uppercase; font-size:1.8rem; font-weight:700; text-align:center; margin:18px 0 0 0; text-shadow:0 0 4px #ffffff; letter-spacing:1px;">
-        APÓS TERMINAR AS 100 VAGAS: R$ 157
-    </h2>
-    <h2 style="color:#ffd700; font-size:1.4rem; font-weight:600; text-align:center; margin:14px 0 0 0; text-shadow:0 0 4px #000; letter-spacing:0.5px;">
-        Clique no botão abaixo 👇 e garanta seus benefícios
-    </h2>
-    <a href="https://pay.kirvano.com/931466d5-7d6e-49b3-97d8-b215d0fa90c1" style="display:inline-block; background:#ffd700; color:#0055ff; border:3px solid #0055ff; padding:10px 28px; font-size:1.6rem; font-weight:800; text-transform:uppercase; border-radius:12px; text-decoration:none; margin-top:22px; box-shadow:0 0 12px rgba(255,215,0,0.4);">
-        SIM, EU QUERO ATIVAR MINHA MENTE!
-    </a>
-</div>
-
-<div class="container">
-    <!-- CHAT FALSO (funcionando normal) -->
-    <div style="max-width:380px;margin:50px auto;">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-        <style>
-            .liveupdates{width:100%;max-width:380px;height:550px;background:#fff;border:1px solid #ddd;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.1);margin:0 auto;position:relative;}
-            .liveupdates .comments{height:calc(100% - 70px);overflow-y:auto;padding:10px;}
-            .comment{display:flex;gap:12px;padding:6px 0;align-items:flex-start;}
-            .comment-face img{width:36px;height:36px;border-radius:50%;object-fit:cover;}
-            .comment-text{font-size:13.8px;line-height:1.4;}
-            .comment-text b{color:#065fd4;font-weight:600;}
-            .response-input{position:absolute;bottom:0;left:0;right:0;padding:12px;background:#fff;border-top:1px solid #eee;display:flex;gap:8px;}
-            .response-input input{flex:1;padding:11px;border:1px solid #ddd;border-radius:8px;outline:none;font-size:14px;}
-            .response-input button{background:#065fd4;color:#fff;border:none;padding:11px 22px;border-radius:8px;cursor:pointer;font-weight:600;}
-        </style>
-
-        <div class="liveupdates">
-            <div class="comments"><div class="comments-body"></div></div>
-            <div class="response-input">
-                <input type="text" id="userResponse" placeholder="Escrever mensagem...">
-                <button onclick="sendUserResponse()">Enviar</button>
-            </div>
+      </div>
+      <div class="ticker-wrapper">
+        <div class="ticker">
+          <span>NOTICIAS SOBRE BIENESTAR Y SALUD — ACTUALIZACIONES DIARIAS SOBRE BIENESTAR Y SALUD — </span>
+          <span>NOTICIAS SOBRE BIENESTAR Y SALUD — ACTUALIZACIONES DIARIAS SOBRE BIENESTAR Y SALUD — </span>
+          <span>NOTICIAS SOBRE BIENESTAR Y SALUD — ACTUALIZACIONES DIARIAS SOBRE BIENESTAR Y SALUD — </span>
+          <span>NOTICIAS SOBRE BIENESTAR Y SALUD — ACTUALIZACIONES DIARIAS SOBRE BIENESTAR Y SALUD — </span>
         </div>
-    </div>
-</div>
+      </div>
+    </header>
 
-<script>
-// CHAT FALSO
-const chatConfig = {
-  "messages": [
-    "Cheguei agora!",
-    "Estou presente!",
-    "Acompanhando.",
-    "Onde está o Dr. James Rivers?",
-    "Ansioso pra saber.",
-    "Olá a todos!",
-    "Presença confirmada!",
-    "A névoa mental é real.",
-    "Faz sentido demais!",
-    "Explicando muito bem.",
-    "Meu Deus, que descoberta!",
-    "Preciso urgente!",
-    "Quero a cura!",
-    "Impressionante!",
-    "Isso é incrível!",
-    "Já quero testar!",
-    "Finalmente uma solução!",
-    "100% de certeza que preciso.",
-    "Minha mãe precisa!",
-    "12 minutos é muito pouco, perfeito!",
-    "Sem pílulas, que ótimo!",
-    "Isso é revolucionário.",
-    "Já vou garantir o meu.",
-    "Onde clica pra comprar?",
-    "Indo para a página.",
-    "Comprei!",
-    "Garantido!",
-    "Estou dentro!",
-    "Tô muito animado!",
-    "Vai mudar minha vida.",
-    "Obrigado, doutor!",
-    "Estou indo para o checkout!",
-    "O desconto é imperdível.",
-    "Vou clicar agora!",
-    "Minha memória já melhorou só de assistir.",
-    "Nunca vi nada igual.",
-    "Parece que fizeram isso pra mim.",
-    "Minha avó vai amar isso.",
-    "Tava precisando justamente disso.",
-    "Se funcionar metade do que ele falou já vale.",
-    "Vou mostrar pro meu marido.",
-    "Minha esposa precisa ver isso.",
-    "Anotando tudo aqui.",
-    "Fazia tempo que eu não me empolgava assim.",
-    "Cheguei atrasado, mas cheguei.",
-    "Perdi o começo, alguém resume?",
-    "Nunca mais esqueço essa aula.",
-    "Esse método é genial.",
-    "Já mandei para o grupo da família.",
-    "Tenho prova semana que vem, isso vai ajudar demais.",
-    "É hoje que minha mente vira outra.",
-    "Esse desconto tá surreal.",
-    "Parece milagre.",
-    "Anos tomando remédio e ninguém falou disso.",
-    "Se eu soubesse disso antes…",
-    "Tô emocionado aqui.",
-    "Vou assistir de novo depois.",
-    "Não posso perder essa chance.",
-    "Cliquei no botão, aguardando carregar.",
-    "Alguém mais comprou?",
-    "Só tenho a agradecer por esse conteúdo.",
-    "Isso devia passar na TV.",
-    "Impossível assistir e não querer testar."
-  ],
-  "users": [
-    {"name":"Ricardo Souza","img":"https://raw.githubusercontent.com/celioextreme/img-repository-fb/refs/heads/main/man/8.webp"},
-    {"name":"Marcia Oliveira","img":"https://raw.githubusercontent.com/celioextreme/img-repository-fb/refs/heads/main/woman/1.webp"},
-    {"name":"Júlia Costa","img":"https://raw.githubusercontent.com/celioextreme/img-repository-fb/refs/heads/main/woman/2.webp"},
-    {"name":"Carlos Ferreira","img":"https://raw.githubusercontent.com/celioextreme/img-repository-fb/refs/heads/main/man/2.webp"},
-    {"name":"Ana Paula Lima","img":"https://raw.githubusercontent.com/celioextreme/img-repository-fb/refs/heads/main/woman/3.webp"},
-    {"name":"Bruno Santos","img":"https://raw.githubusercontent.com/celioextreme/img-repository-fb/refs/heads/main/man/3.webp"},
-    {"name":"Isabela Pereira","img":"https://raw.githubusercontent.com/celioextreme/img-repository-fb/refs/heads/main/woman/4.webp"},
-    {"name":"Fernando Mendes","img":"https://raw.githubusercontent.com/celioextreme/img-repository-fb/refs/heads/main/man/4.webp"},
-    {"name":"Camila Rocha","img":"https://raw.githubusercontent.com/celioextreme/img-repository-fb/refs/heads/main/woman/5.webp"},
-    {"name":"Lucas Gomes","img":"https://raw.githubusercontent.com/celioextreme/img-repository-fb/refs/heads/main/man/5.webp"}
-  ]
-};
-
-function previewChat() {
-    const preview = document.querySelector('.comments-body');
-    setInterval(() => {
-        const user = chatConfig.users[Math.floor(Math.random() * chatConfig.users.length)];
-        const message = chatConfig.messages[Math.floor(Math.random() * chatConfig.messages.length)];
-        const comment = `<div class="comment"><div class="comment-face"><img src="${user.img}" alt="${user.name}"></div><div class="comment-text"><b>${user.name}</b> ${message}</div></div>`;
-        preview.insertAdjacentHTML('beforeend', comment);
-        preview.scrollTop = preview.scrollHeight;
-    }, 2800);
-}
-
-function sendUserResponse() {
-    const input = document.getElementById('userResponse');
-    const msg = input.value.trim();
-    if (!msg) return;
-    const preview = document.querySelector('.comments-body');
-    preview.insertAdjacentHTML('beforeend', `<div class="comment"><div class="comment-face"><i class="bi bi-person-circle" style="font-size:36px;color:#065fd4;"></i></div><div class="comment-text"><b>Você</b> ${msg}</div></div>`);
-    preview.scrollTop = preview.scrollHeight;
-    input.value = '';
-}
-document.getElementById('userResponse').addEventListener('keypress', e => {if(e.key==='Enter') sendUserResponse();});
-previewChat();
-</script>
-
-<!-- DELAY VTURB PARA MOSTRAR O RESTO DA PÁGINA -->
-<script>
-(function(){
-  var delaySeconds = 1200; // 5 minutos
-
-  function initDelay(){
-    var player = document.querySelector('vturb-smartplayer');
-    if (!player || typeof player.addEventListener !== 'function') return;
-
-    player.addEventListener('player:ready', function(){
-      if (typeof player.displayHiddenElements === 'function') {
-        player.displayHiddenElements(delaySeconds, ['.esconder'], { persist: true });
-      }
-    });
-  }
-
-  if (document.readyState === 'complete' || document.readyState === 'interactive'){
-    initDelay();
-  } else {
-    document.addEventListener('DOMContentLoaded', initDelay);
-  }
-})();
-</script>
-
-<!-- DISCLAIMER NORMAL NO FINAL DA PÁGINA -->
-<div class="esconder" style="width:100%; background:#000; color:#fff; padding:28px 18px; text-align:center; font-size:0.85rem; line-height:1.5; margin-top:50px;">
-    <p style="margin:4px 0; font-weight:600;">Copyright 2025 – Memória em Foco ®</p>
-    <p style="margin:4px 0; text-decoration:underline; cursor:pointer;">Termos de Uso · Políticas de Privacidade</p>
-    <p style="margin:10px auto 0 auto; max-width:900px; opacity:0.9;">
-        Não pretendemos diagnosticar, tratar, curar ou prevenir qualquer doença ou enfermidade. As informações são compartilhadas apenas para fins educacionais. Você deve sempre consultar seu médico antes de agir em qualquer conteúdo deste site, especialmente se estiver grávida, amamentando, tomando medicação ou tiver uma condição médica. O produto apresentado não é um medicamento.
-    </p>
-</div>
-
+    <!-- HEADLINE PRINCIPAL ESTILO PORTAL -->
+    <section class="headline-section">
+      <h1 class="headline">
+        <span class="urgent">URGENTE:</span> Nunca mezcles sal rosa con estos 3 ingredientes si no quieres perder más de 20 libras en los próximos días...
+      </h1>
+      <div class="byline">
+        Por <strong>David Miller</strong><br>
+        <span class="update">08/12/2025 - Actualizado hace 2 horas</span>
+      </div>
+    </section>
+    <!-- Vamos montar esta página bloco a bloco com base no prompt que você vai enviar. -->
+  </div>
 </body>
 </html>
