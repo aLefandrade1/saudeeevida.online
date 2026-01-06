@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sal Rosada</title>
+
+  <!-- PRELOAD VTURB VELOCIDADE -->
+  <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+  <link rel="preload" href="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/693737448561d5e93fdce597/v4/player.js" as="script">
+  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+  <link rel="preload" href="https://cdn.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/693736a58561d5e93fdce4e4/main.m3u8" as="fetch">
+  <link rel="dns-prefetch" href="https://cdn.converteai.net">
+  <link rel="dns-prefetch" href="https://scripts.converteai.net">
+  <link rel="dns-prefetch" href="https://images.converteai.net">
+  <link rel="dns-prefetch" href="https://api.vturb.com.br">
+
+  <script
+    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-xcod-sck
+    data-utmify-prevent-subids
+    async
+    defer
+  ></script>
+
+  <script>
+    window.pixelId = "68cac216526f0dc841486576";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
+
+  <script>
+    window.pixelId = "6931f639eb8392bc274e8a37";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
+
+  <script>
+    // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
+    const link = 'https://quizzer.digital/salrosadored-mfvmBX';
+
+    function setBackRedirect(url) {
+      let urlBackRedirect = url;
+      urlBackRedirect = urlBackRedirect =
+        urlBackRedirect.trim() +
+        (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+        document.location.search.replace('?', '').toString();
+
+      history.pushState({}, '', location.href);
+      history.pushState({}, '', location.href);
+      history.pushState({}, '', location.href);
+
+      window.addEventListener('popstate', () => {
+        console.log('onpopstate', urlBackRedirect);
+        setTimeout(() => {
+          location.href = urlBackRedirect;
+        }, 1);
+      });
+    }
+
+    setBackRedirect(link);
+  </script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    .page-wrapper {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .top-header {
+      width: 100%;
+      background: #b10e0e;
+      color: #fff;
+    }
+
+    .top-bar {
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      font-weight: bold;
+      font-size: 26px;
+    }
+
+    .top-title {
+      text-align: center;
+      flex: 1;
+      font-size: 26px;
+      letter-spacing: 0.5px;
+    }
+
+    .top-icon {
+      width: 40px;
+      text-align: center;
+      opacity: 0.95;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ticker-wrapper {
+      width: 100%;
+      overflow: hidden;
+      background: #8e0b0b;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      position: relative;
+    }
+
+    .ticker {
+      display: inline-flex;
+      white-space: nowrap;
+      font-size: 15px;
+      letter-spacing: 1.2px;
+      padding: 8px 0;
+      animation: marquee 40s linear infinite;
+      color: #ffffff;
+    }
+
+    .ticker span {
+      padding-right: 40px;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .hamburger {
+      width: 26px;
+      height: 18px;
+      position: relative;
+    }
+
+    .hamburger::before,
+    .hamburger::after,
+    .hamburger div {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    .hamburger::before { top: 0; }
+    .hamburger div { top: 7.5px; }
+    .hamburger::after { bottom: 0; }
+
+    .headline-section {
+      width: 100%;
+      padding: 10px 10px 6px 10px;
+      background: #ffffff;
+    }
+
+    .headline {
+      font-size: 26px;
+      line-height: 1.2;
+      font-weight: 700;
+      color: #000000;
+      margin: 0 0 6px 0;
+    }
+
+    .headline .urgent {
+      color: #b10e0e;
+      font-weight: 800;
+    }
+
+    .byline {
+      font-size: 14px;
+      color: #333333;
+      line-height: 1.5;
+    }
+
+    .byline .update {
+      color: #666666;
+    }
+
+    .comments-section {
+      margin-top: 32px;
+      padding: 18px 10px 44px 10px;
+      background: #ffffff;
+      border-top: 1px solid #1c1c1c;
+    }
+
+    .comments-title {
+      font-weight: 700;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .comment {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      color: #222222;
+      padding: 12px;
+      background: #f7f8fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      border: 1px solid #e4e6eb;
+    }
+
+    .comment-name {
+      font-weight: 700;
+      margin-bottom: 2px;
+      color: #050505;
+    }
+
+    .comment-text {
+      line-height: 1.4;
+      margin-bottom: 6px;
+      color: #050505;
+    }
+
+    .comment-meta {
+      font-size: 12px;
+      color: #65676b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .comments-closed {
+      margin-top: 14px;
+      padding: 10px 12px;
+      text-align: center;
+      font-size: 13px;
+      color: #65676b;
+      background: #f7f8fa;
+      border: 1px dashed #cfd2d6;
+      border-radius: 8px;
+    }
+
+    .like-icon {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 4px;
+      vertical-align: middle;
+      background-image: url('https://i.postimg.cc/wTCDvX90/R.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #d8d8d8;
+      flex-shrink: 0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .avatar-1 { background-image: url('https://i.postimg.cc/L6TsBSN7/15.png'); }
+    .avatar-2 { background-image: url('https://i.postimg.cc/Nfgs0VBF/14.png'); }
+    .avatar-3 { background-image: url('https://i.postimg.cc/yx7Hkg4z/13.png'); }
+    .avatar-4 { background-image: url('https://i.postimg.cc/7Z5yGrcG/12.png'); }
+    .avatar-5 { background-image: url('https://i.postimg.cc/g03Q8zHQ/11.png'); }
+    .avatar-6 { background-image: url('https://i.postimg.cc/VkCVPfpF/10.png'); }
+    .avatar-7 { background-image: url('https://i.postimg.cc/bJJ08LrT/09.png'); }
+    .avatar-8 { background-image: url('https://i.postimg.cc/2jgtcL9K/08.png'); }
+    .avatar-9 { background-image: url('https://i.postimg.cc/qRzmQpsr/07.png'); }
+    .avatar-10 { background-image: url('https://i.postimg.cc/c4QFF9nv/06.png'); }
+    .avatar-11 { background-image: url('https://i.postimg.cc/TPH0KBzW/05.png'); }
+    .avatar-12 { background-image: url('https://i.postimg.cc/vT5tSTcg/04.png'); }
+    .avatar-13 { background-image: url('https://i.postimg.cc/9QLtkvFf/03.png'); }
+    .avatar-14 { background-image: url('https://i.postimg.cc/XJCfpqKh/02.png'); }
+    .avatar-15 { background-image: url('https://i.postimg.cc/8PDRz17Z/01.png'); }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- CABEÇALHO ESTILO JORNAL DE SAÚDE -->
+    <header class="top-header">
+      <div class="top-bar">
+        <div class="top-icon left">
+          <img src="https://i.postimg.cc/d0495bhh/Design-sem-nome-(38).png" alt="Buscar" style="width:32px; height:32px;">
+        </div>
+        <div class="top-title">Salud</div>
+        <div class="top-icon right">
+          <div class="hamburger"><div></div></div>
+        </div>
+      </div>
+      <div class="ticker-wrapper">
+        <div class="ticker">
+          <span>NOTICIAS SOBRE BIENESTAR Y SALUD — ACTUALIZACIONES DIARIAS SOBRE BIENESTAR Y SALUD — </span>
+          <span>NOTICIAS SOBRE BIENESTAR Y SALUD — ACTUALIZACIONES DIARIAS SOBRE BIENESTAR Y SALUD — </span>
+          <span>NOTICIAS SOBRE BIENESTAR Y SALUD — ACTUALIZACIONES DIARIAS SOBRE BIENESTAR Y SALUD — </span>
+          <span>NOTICIAS SOBRE BIENESTAR Y SALUD — ACTUALIZACIONES DIARIAS SOBRE BIENESTAR Y SALUD — </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- HEADLINE PRINCIPAL ESTILO PORTAL -->
+    <section class="headline-section">
+      <h1 class="headline">
+        <span class="urgent">URGENTE:</span> Nunca uses este truco de la gelatina… a menos que quieras perder peso muchísimo más rápido de lo normal.
+      </h1>
+      <div class="byline">
+        Por <strong>David Miller</strong><br>
+        <span class="update">08/12/2025 - Actualizado hace 2 horas</span>
+      </div>
+    </section>
+
+    <!-- VSL (EXEMPLO COM CÓDIGO VTURB) -->
+    <section class="vsl-section" style="padding:12px 10px 0 10px;">
+      <div class="video-container" style="width:100%; max-width:720px; margin:0 auto;">
+        <vturb-smartplayer id="ab-6953f649acd48189f694f2bd" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer>
+        <script type="text/javascript">
+          var s=document.createElement("script");
+          s.src="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/ab-test/6953f649acd48189f694f2bd/player.js";
+          s.async=!0;
+          document.head.appendChild(s);
+        </script>
+      </div>
+    </section>
+
+    <!-- REFERÊNCIAS -->
+    <section class="references-section" style="margin-top:24px; padding: 0; text-align:center; width:100%;">
+      <div style="border-top:1px solid #1c1c1c; margin-bottom:12px;"></div>
+      <div style="font-weight:700; font-size:15px; margin-bottom:10px;">Referencias</div>
+      <img src="https://i.postimg.cc/4HRQXSNJ/4HRQXSNJ.png" alt="Referencias" style="width:100%; max-width:100%; border-radius:0; background:#f7f8fa;">
+    </section>
+
+    <!-- COMENTÁRIOS -->
+    <section class="comments-section">
+      <div class="comments-title">Comentarios</div>
+
+      <div class="comment">
+        <div class="avatar avatar-1"></div>
+        <div>
+          <div class="comment-name">Elena Morales</div>
+          <div class="comment-text">Lo que explica sobre la resistencia a la insulina es exactamente lo que me pasa… ahora todo tiene sentido.</div>
+          <div class="comment-meta"><span class="like-icon"></span>182 · Me gusta · Responder · 1 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-2"></div>
+        <div>
+          <div class="comment-name">Clara Domínguez</div>
+          <div class="comment-text">Pensé que era falta de fuerza de voluntad, pero esto explica por qué siempre recuperaba el peso.</div>
+          <div class="comment-meta"><span class="like-icon"></span>139 · Me gusta · Responder · 2 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-3"></div>
+        <div>
+          <div class="comment-name">Sofía Herrera</div>
+          <div class="comment-text">Barriga inflamada todos los días, cansancio, ansiedad… es como si estuviera describiendo mi vida.</div>
+          <div class="comment-meta"><span class="like-icon"></span>164 · Me gusta · Responder · 3 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-4"></div>
+        <div>
+          <div class="comment-name">Camila Rojas</div>
+          <div class="comment-text">Intenté dietas, ayunos, pastillas… nada duraba. Esto es la primera explicación que parece lógica.</div>
+          <div class="comment-meta"><span class="like-icon"></span>121 · Me gusta · Responder · 4 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-5"></div>
+        <div>
+          <div class="comment-name">Amalia García</div>
+          <div class="comment-text">Seguí viendo hasta el final y empecé a aplicar lo que explicó… en pocos días ya sentía menos hinchazón y más energía.</div>
+          <div class="comment-meta"><span class="like-icon"></span>97 · Me gusta · Responder · 5 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-6"></div>
+        <div>
+          <div class="comment-name">Julieta Blanco</div>
+          <div class="comment-text">Trabajo en un laboratorio y lo que mostró sobre las hormonas no es ninguna tontería, es real.</div>
+          <div class="comment-meta"><span class="like-icon"></span>203 · Me gusta · Responder · 6 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-7"></div>
+        <div>
+          <div class="comment-name">Chloe Fuentes</div>
+          <div class="comment-text">Esa parte de las inyecciones me dejó en shock… ahora entiendo por qué tanta gente vuelve a engordar.</div>
+          <div class="comment-meta"><span class="like-icon"></span>158 · Me gusta · Responder · 7 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-8"></div>
+        <div>
+          <div class="comment-name">Ana Lucía León</div>
+          <div class="comment-text">En la farmacia se habla de esto todo el tiempo, pero casi nadie explica el porqué como aquí.</div>
+          <div class="comment-meta"><span class="like-icon"></span>144 · Me gusta · Responder · 8 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-9"></div>
+        <div>
+          <div class="comment-name">Matilde Carrión</div>
+          <div class="comment-text">Le envié el vídeo a mi hermana porque estamos pasando por exactamente lo mismo.</div>
+          <div class="comment-meta"><span class="like-icon"></span>112 · Me gusta · Responder · 9 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-10"></div>
+        <div>
+          <div class="comment-name">Beatriz Marchán</div>
+          <div class="comment-text">Me quedé hasta el final, lo puse en práctica y por primera vez la balanza empezó a bajar sin pasar hambre.</div>
+          <div class="comment-meta"><span class="like-icon"></span>176 · Me gusta · Responder · 10 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-11"></div>
+        <div>
+          <div class="comment-name">Helena Reynoso</div>
+          <div class="comment-text">Aplicando lo que enseñó al final del vídeo, mis antojos nocturnos bajaron muchísimo… nunca me había pasado.</div>
+          <div class="comment-meta"><span class="like-icon"></span>191 · Me gusta · Responder · 11 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-12"></div>
+        <div>
+          <div class="comment-name">Noemí Peletier</div>
+          <div class="comment-text">Lo probé tal como explicó al final del vídeo y al tercer día mi vientre ya no amanecía tan inflamado.</div>
+          <div class="comment-meta"><span class="like-icon"></span>136 · Me gusta · Responder · 12 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-13"></div>
+        <div>
+          <div class="comment-name">Virginia Lamas</div>
+          <div class="comment-text">Siempre creí que mi problema era el metabolismo lento, pero esto de la insulina lo cambia todo.</div>
+          <div class="comment-meta"><span class="like-icon"></span>169 · Me gusta · Responder · 13 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-14"></div>
+        <div>
+          <div class="comment-name">Lucía Bernal</div>
+          <div class="comment-text">Cuando habló de la ropa guardada en el armario, me puse a llorar… me sentí totalmente reflejada.</div>
+          <div class="comment-meta"><span class="like-icon"></span>104 · Me gusta · Responder · 14 h</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="avatar avatar-15"></div>
+        <div>
+          <div class="comment-name">Mariana Lefevre</div>
+          <div class="comment-text">Me quedé hasta el último segundo, lo apliqué y esta semana mi ropa ya empezó a quedar más suelta.</div>
+          <div class="comment-meta"><span class="like-icon"></span>188 · Me gusta · Responder · 15 h</div>
+        </div>
+      </div>
+
+      <div class="comments-closed">No es posible publicar nuevos comentarios en esta publicación.</div>
+    </section>
+
+    <!-- DISCLAIMER / DERECHOS RESERVADOS -->
+    <footer class="disclaimer" style="width:100%; background:#000000; color:#ffffff; padding:22px 16px; font-size:12px; line-height:1.5; text-align:center;">
+      <div style="max-width:720px; margin:0 auto;">
+        <strong>Copyright 2025 — Shot de Sal Rosada®</strong> • Todos los derechos reservados<br><br>
+        <a href="#" style="color:#ffffff; text-decoration:underline; margin-right:8px;">Términos de Uso</a>
+        <a href="#" style="color:#ffffff; text-decoration:underline;">Política de Privacidad</a><br><br>
+        Este sitio no forma parte de Facebook™ ni de Meta Platforms, Inc., y NO está respaldado por ellos.
+        La información presentada tiene fines educativos y no constituye asesoramiento médico.
+        Los resultados pueden variar de una persona a otra.
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
