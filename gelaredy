@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Descuento VIP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background-color: #0f0f0f !important;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+    }
+    body {
+      text-align: center;
+      padding-top: 40px; /* espaço superior seguro */
+      overflow-x: hidden; /* evita vazamento lateral */
+    }
+    .box {
+      width: 100%;
+      max-width: 520px;
+      padding: 20px;
+      background: #0f0f0f; /* fundo preto garantido na área do botão */
+      margin: 0 auto; /* CENTRALIZA A PÁGINA */
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      color: #ffd700;
+      line-height: 1.25;
+    }
+
+    .sub {
+      font-size: 18px;
+      margin-bottom: 18px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    /* Ajuste fino para mobile */
+    @media (max-width: 480px) {
+      body { padding-top: 20px; }
+      h1 { font-size: 22px; }
+    }
+    p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+    .loader {
+      margin: 25px auto 0;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #333;
+      border-top: 4px solid #ffd700;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .btn{
+      display:inline-block;
+      margin-top:25px;
+      padding:14px 28px;
+      background:#ffd700;
+      color:#000;
+      text-decoration:none;
+      font-weight:bold;
+      border-radius:6px;
+    }
+    .btn:hover{opacity:.85;}
+    .price{color:#ff0000;font-weight:bold;}
+
+    .slider{margin:14px 0 6px;overflow:hidden;background:transparent;}
+    .track{background:transparent;}
+    /* esconder barra de scroll */
+    .slider::-webkit-scrollbar{display:none;}
+    .slider{-ms-overflow-style:none;scrollbar-width:none;}
+    .track{display:flex;gap:12px;padding:6px 2px;width:max-content;animation:marquee 18s linear infinite;}
+    @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);} }
+    .slide{flex:0 0 auto;border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.35);background:transparent;}
+    .slide img{display:block;width:260px;height:auto;}
+    @media (max-width:480px){.slide img{width:220px;}}
+
+    .why{font-size:18px;font-weight:bold;margin:14px 0 6px;}
+    .benefits{background:#ffffff;color:#000;border-radius:10px;padding:12px 4px;margin:10px auto 18px;max-width:80%;}
+    .benefit{font-size:16px;font-weight:bold;margin:6px 0;}
+
+    .testimonials{margin:12px auto 18px;max-width:80%;padding:0;}
+    .tcard{background:#ffffff;color:#111;border-radius:12px;padding:14px 14px;margin:10px auto;max-width:100%;text-align:left;box-shadow:0 8px 20px rgba(0,0,0,.35);} 
+    .trow{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+    .avatar{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;background:#e9e9e9;color:#111;flex:0 0 46px;}
+    .avatar-img{width:46px;height:46px;border-radius:50%;object-fit:cover;flex:0 0 46px;}
+    .tmeta{display:flex;flex-direction:column;gap:3px;}
+    .tname{font-weight:800;font-size:16px;line-height:1.1;}
+    .tstars{font-size:16px;letter-spacing:1px;color:#f5c400;}
+    .ttext{font-size:15px;line-height:1.35;}
+
+    .below-comments{margin:14px auto 18px;max-width:80%;}
+    .below-img{width:100%;height:auto;border-radius:10px;display:block;}
+
+    .checklist{background:#ffffff;color:#000;border-radius:10px;padding:14px 12px;margin:10px auto 18px;max-width:80%;text-align:left;}
+    .check-item{font-size:15px;font-weight:bold;margin:6px 0;}
+
+    .pack-image{margin:14px auto 18px;max-width:80%;}
+    .pack-img{width:100%;height:auto;border-radius:10px;display:block;}
+    .pack-image{display:none;} /* desativa imagem antiga do pack */
+
+    /* === PACK COMPLETO (DESIGN HTML) === */
+    .pack-card{margin:14px auto 18px;max-width:80%;}
+    .pack-inner{background:#e8ffe8;border:2px dashed #3bb54a;border-radius:14px;padding:18px 14px;box-shadow:0 8px 22px rgba(0,0,0,.35);} 
+    .pack-title{font-size:18px;font-weight:900;letter-spacing:.3px;color:#111;margin-bottom:10px;}
+    .pack-price{display:flex;align-items:baseline;justify-content:center;gap:8px;margin:10px 0 14px;}
+    .pack-price .old{font-size:16px;color:#777;text-decoration:line-through;}
+    .pack-price .new{font-size:34px;font-weight:900;color:#1a9f49;}
+    .pack-price .usd{font-size:14px;font-weight:700;color:#1a9f49;}
+    .pack-cta{
+      display:block;
+      margin:0 auto;
+      background:#ffd700;
+      color:#000;
+      text-decoration:none;
+      font-weight:900;
+      border-radius:999px;
+      padding:14px 16px;
+      max-width:92%;
+      animation:pulseSoft 3.5s ease-in-out infinite; /* pulso lento */
+      transform-origin:center;
+    }
+    .pack-cta:hover{opacity:.9;}
+
+    @keyframes pulseSoft{
+      0%{transform:scale(1);} 
+      50%{transform:scale(1.03);} /* cresce só 3% para não sair do quadro */
+      100%{transform:scale(1);} 
+    }
+    .pack-cta:hover{opacity:.9;}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>🎉 ¡FELICIDADES! HAS SIDO SELECCIONADA PARA UN DESCUENTO VIP 🎉</h1>
+    <h2 class="sub">¡ESPERA! NO TE VAYAS CON LAS MANOS VACÍAS</h2>
+    <p>Sabemos que el precio puede ser un obstáculo. Por eso, el Dr. Juan Rivera autorizó una oferta única de <span class="price">$17</span> para ti.</p>
+    <p><strong>Resultados que hablan por sí solos:</strong></p>
+
+    <!-- Slider Antes e Depois -->
+    <div class="slider" aria-label="Antes y Después">
+      <div class="track">
+        <!-- Set 1 -->
+        <a href="https://i.postimg.cc/T2mkbDp1/etapa-4-(4).png" class="slide"><img src="https://i.postimg.cc/T2mkbDp1/etapa-4-(4).png" alt="Antes y Después 1"></a>
+        <a href="https://i.postimg.cc/RZ8fGgDj/etapa-4-(5).png" class="slide"><img src="https://i.postimg.cc/RZ8fGgDj/etapa-4-(5).png" alt="Antes y Después 2"></a>
+        <a href="https://i.postimg.cc/fyBSdCdg/etapa-4-(6).png" class="slide"><img src="https://i.postimg.cc/fyBSdCdg/etapa-4-(6).png" alt="Antes y Después 3"></a>
+        <a href="https://i.postimg.cc/wjSyD7tD/etapa-4-(7).png" class="slide"><img src="https://i.postimg.cc/wjSyD7tD/etapa-4-(7).png" alt="Antes y Después 4"></a>
+        <a href="https://i.postimg.cc/fy2kyLnM/etapa-4-(8).png" class="slide"><img src="https://i.postimg.cc/fy2kyLnM/etapa-4-(8).png" alt="Antes y Después 5"></a>
+
+        <!-- Set 2 (clone para loop infinito) -->
+        <a href="https://i.postimg.cc/T2mkbDp1/etapa-4-(4).png" class="slide" aria-hidden="true" tabindex="-1"><img src="https://i.postimg.cc/T2mkbDp1/etapa-4-(4).png" alt=""></a>
+        <a href="https://i.postimg.cc/RZ8fGgDj/etapa-4-(5).png" class="slide" aria-hidden="true" tabindex="-1"><img src="https://i.postimg.cc/RZ8fGgDj/etapa-4-(5).png" alt=""></a>
+        <a href="https://i.postimg.cc/fyBSdCdg/etapa-4-(6).png" class="slide" aria-hidden="true" tabindex="-1"><img src="https://i.postimg.cc/fyBSdCdg/etapa-4-(6).png" alt=""></a>
+        <a href="https://i.postimg.cc/wjSyD7tD/etapa-4-(7).png" class="slide" aria-hidden="true" tabindex="-1"><img src="https://i.postimg.cc/wjSyD7tD/etapa-4-(7).png" alt=""></a>
+        <a href="https://i.postimg.cc/fy2kyLnM/etapa-4-(8).png" class="slide" aria-hidden="true" tabindex="-1"><img src="https://i.postimg.cc/fy2kyLnM/etapa-4-(8).png" alt=""></a>
+      </div>
+    </div>
+
+    <p class="why">¿Por qué funciona?</p>
+
+    <div class="benefits">
+      <div class="benefit">🔥 Activa Hormonas</div>
+      <div class="benefit">🚫 Apaga el hambre</div>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit">🔥 Derrite Grasa</div>
+      <div class="benefit">🌙 Mientras duermes</div>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit">✅ Sin Rebote</div>
+      <div class="benefit">⚡ Metabolismo mucho acelerado</div>
+    </div>
+
+    <p><strong>Lo que dicen nuestras nuevas alumnas:</strong></p>
+
+    <div class="testimonials">
+      <div class="tcard">
+        <div class="trow">
+          <img src="https://i.postimg.cc/KYffZ6vx/etapa-4-(9).png" alt="Patricia" class="avatar-img">
+          <div class="tmeta">
+            <div class="tname">Patricia, 55 años</div>
+            <div class="tstars" aria-label="5 estrellas">★★★★★</div>
+          </div>
+        </div>
+        <div class="ttext">“El mejor regalo que me he dado. Fácil y rápido.”</div>
+      </div>
+
+      <div class="tcard">
+        <div class="trow">
+          <img src="https://i.postimg.cc/SxyVwQkL/etapa-4-(10).png" alt="Lucía" class="avatar-img">
+          <div class="tmeta">
+            <div class="tname">Lucía, 42 años</div>
+            <div class="tstars" aria-label="5 estrellas">★★★★★</div>
+          </div>
+        </div>
+        <div class="ttext">“Me ayudó a controlar el hambre por la noche. Me siento más ligera.”</div>
+      </div>
+
+      <div class="tcard">
+        <div class="trow">
+          <img src="https://i.postimg.cc/SRkDkmc2/etapa-4-(11).png" alt="Mariana" class="avatar-img">
+          <div class="tmeta">
+            <div class="tname">Mariana, 38 años</div>
+            <div class="tstars" aria-label="5 estrellas">★★★★★</div>
+          </div>
+        </div>
+        <div class="ttext">“Lo hice tal cual y fue súper práctico. Ya lo recomiendo a mis amigas.”</div>
+      </div>
+    </div>
+
+    <div class="below-comments">
+      <img src="https://i.postimg.cc/nVByxzb6/A1W7C27.png" alt="Imagen adicional" class="below-img">
+    </div>
+
+    <div class="checklist">
+      <div class="check-item">✔️ <strong>Guía Principal:</strong> El Truco de la Gelatina</div>
+      <div class="check-item">✔️ <strong>BONUS 1:</strong> Vientre Plano en 24h</div>
+      <div class="check-item">✔️ <strong>BONUS 2:</strong> Truco de Glúteos Firmes</div>
+      <div class="check-item">✔️ <strong>BONUS 3:</strong> Adiós Celulitis</div>
+      <div class="check-item">✔️ <strong>BONUS 4:</strong> Secretos de la Menopausia</div>
+      <div class="check-item">✔️ <strong>BONUS 5:</strong> Secreto de las Coreanas</div>
+    </div>
+
+    <p>Tu acceso especial está listo.</p>
+    <p>Haz clic abajo para continuar y activar tu beneficio.</p>
+
+    <div class="pack-card">
+      <div class="pack-inner">
+        <div class="pack-title">LLEVATELO TODO<br>(PACK COMPLETO)</div>
+        <div class="pack-price">
+          <span class="old">$97</span>
+          <span class="new">$17</span> <span class="usd">USD</span>
+        </div>
+        <a href="https://pay.kiwify.com/jHpFxJG" class="pack-cta">SÍ, QUIERO MI ACCESO POR SOLO $17</a>
+      </div>
+    </div>
+
+    <img src="https://i.postimg.cc/JhfCMHTJ/Captura-de-tela-7-1-2026-35038-gelatinabariatrica-vivasalud-site.jpg" alt="Información adicional" style="display:block; width:100%; max-width:80%; margin:18px auto 0; border-radius:10px;">
+  </div>
+
+  <!-- FOOTER LEGAL -->
+  <footer style="width:100%; background:#000000; color:#ffffff; padding:18px 12px; font-size:12px; line-height:1.6; text-align:center;">
+    <div style="max-width:520px; margin:0 auto;">
+      Copyright © 2026 - Truco de la Gelatina. Todos los derechos reservados.<br><br>
+      <a href="#" style="color:#ffffff; text-decoration:underline;">Privacidad</a>
+      &nbsp;|&nbsp;
+      <a href="#" style="color:#ffffff; text-decoration:underline;">Términos</a>
+    </div>
+  </footer>
+</body>
+</html>
