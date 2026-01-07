@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       margin: 0;
       padding: 0;
@@ -26,6 +28,7 @@
       padding: 20px;
       background: #0f0f0f; /* fundo preto garantido na área do botão */
       margin: 0 auto; /* CENTRALIZA A PÁGINA */
+      overflow-x: hidden; /* evita qualquer "puxada" lateral dentro do container */
     }
     h1 {
       font-size: 24px;
@@ -44,6 +47,9 @@
     /* Ajuste fino para mobile */
     @media (max-width: 480px) {
       body { padding-top: 20px; }
+      h1 { font-size: 22px; }
+      .box { padding: 16px; }
+    }
       h1 { font-size: 22px; }
     }
     p {
