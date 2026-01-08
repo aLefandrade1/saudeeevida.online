@@ -59,9 +59,13 @@
     .sub{
       margin:0 0 14px;
       font-size:16px;
-      line-height:1.45;
+      line-height:1.5; /* mais altura para não embolar */
       color:#7a3b3b;
       font-style:italic;
+      max-width:100%;
+      padding:0 6px; /* respiro lateral no mobile */
+      word-break:normal;
+      hyphens:auto;
     }
 
     .card{
@@ -194,10 +198,18 @@
 
     @media (max-width:480px){
       h1{ 
-        font-size:26px; /* menor no celular */
+        font-size:26px; 
         line-height:1.2; 
         letter-spacing:.1px;
       }
+      .sub{
+        font-size:14px; /* menor no celular */
+        line-height:1.6; /* mais organizado */
+        padding:0 8px;
+      }
+      .pricebox .price{ font-size:40px; }
+      .card{ padding:16px 14px; }
+    }
       .pricebox .price{ font-size:40px; }
       .card{ padding:16px 14px; }
     }
