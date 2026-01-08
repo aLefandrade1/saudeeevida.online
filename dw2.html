@@ -1,98 +1,252 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pink Salt – Transformation Story</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- Script de Tracking da UTMify (UTMs) -->
-  <script
-    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-    data-utmify-prevent-xcod-sck
-    data-utmify-prevent-subids
-    data-utmify-ignore-iframe
-    data-utmify-is-cartpanda
-    async
-    defer
-  ></script>
-
-  <!-- Pixel UTMify -->
-  <script>
-    window.pixelId = "68cac216526f0dc841486576";
-    var a = document.createElement("script");
-    a.setAttribute("async", "");
-    a.setAttribute("defer", "");
-    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-    document.head.appendChild(a);
-  </script>
+  <title>Downsell 2 — Última Ayuda</title>
 
   <style>
-    :root {
-      --bg: #f4f5f7;
-      --text: #111827;
-      --muted: #4b5563;
-      --accent: #fde047;
-      --accent-press: #facc15;
-      --maxw: 720px;
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
+
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#f6ecec;
+      color:#2b2b2b;
     }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans"; }
-    .wrap { max-width: var(--maxw); margin: 48px auto; padding: 0 16px; }
-    .gallery { display: grid; gap: 18px; margin: 0 0 24px; }
-    .card { background: #fff; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.06); overflow: hidden; }
-    .card img { display: block; width: 100%; height: auto; }
-    .card .copy { padding: 16px; font-size: 16px; line-height: 1.6; color: var(--muted); }
-    .cta { display: block; width: 100%; text-align: center; font-weight: 800; font-size: 18px; padding: 16px 18px; border: 0; border-radius: 999px; background: var(--accent); color: #111; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,.1); transition: transform .06s ease, filter .2s ease, background .2s ease; animation: pulse 2s infinite; text-decoration: none; }
-    .cta:hover { filter: brightness(1.02); }
-    .cta:active { transform: translateY(1px); background: var(--accent-press); }
-    @keyframes pulse { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
-    .footer { text-align: center; font-size: 12px; color: var(--muted); padding: 20px 16px; margin-top: 40px; }
-    .footer a { color: var(--muted); text-decoration: none; }
-    .footer a:hover { text-decoration: underline; }
+
+    .page{
+      width:100%;
+      padding:18px 14px 28px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:560px;
+      text-align:center;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:12px;
+      background:#f3dfcf;
+      border:1px solid rgba(190,120,80,.35);
+      color:#7b4a2f;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:16px;
+    }
+
+    h1{
+      margin:6px 0 10px;
+      font-size:38px;
+      line-height:1.05;
+      font-weight:900;
+      text-transform:uppercase;
+      color:#c62828;
+      letter-spacing:.3px;
+    }
+
+    .sub{
+      margin:0 0 14px;
+      font-size:16px;
+      line-height:1.45;
+      color:#7a3b3b;
+      font-style:italic;
+    }
+
+    .card{
+      margin:14px auto 16px;
+      background:#ffffff;
+      border-radius:18px;
+      border:1px solid rgba(210,90,90,.25);
+      box-shadow:0 12px 28px rgba(0,0,0,.08);
+      padding:18px 16px 16px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      height:4px;
+      background:#c62828;
+    }
+
+    .card p{
+      margin:0 0 10px;
+      font-size:14px;
+      line-height:1.55;
+      color:#5a4a4a;
+    }
+
+    .em-red{ color:#c62828; font-weight:900; }
+    .em-strong{ font-weight:900; color:#3f2f2f; }
+
+    .info{
+      margin:12px auto 14px;
+      background:#e9f4ff;
+      border:1px solid rgba(70,140,200,.35);
+      border-radius:14px;
+      padding:10px 12px;
+      color:#2b5a7a;
+      font-size:12.5px;
+      line-height:1.35;
+      position:relative;
+    }
+    .info::before{
+      content:"";
+      position:absolute;
+      left:-1px;
+      top:10px;
+      width:4px;
+      height:calc(100% - 20px);
+      border-radius:10px;
+      background:#4aa3df;
+    }
+
+    .pricebox{
+      margin:10px auto 10px;
+      background:#f6dada;
+      border:2px solid rgba(198,40,40,.35);
+      border-radius:16px;
+      padding:14px 12px 12px;
+      max-width:520px;
+    }
+
+    .pricebox .label{
+      font-size:13px;
+      color:#7b4a4a;
+      margin-bottom:6px;
+      font-weight:700;
+    }
+
+    .pricebox .price{
+      font-size:44px;
+      font-weight:900;
+      color:#c62828;
+      margin:0 0 6px;
+    }
+
+    .pricebox .micro{
+      font-size:12px;
+      color:#8a6a6a;
+      margin-bottom:12px;
+      font-style:italic;
+    }
+
+    .cta{
+      display:block;
+      width:100%;
+      max-width:430px;
+      margin:0 auto;
+      background:#c62828;
+      color:#fff;
+      border:none;
+      border-radius:12px;
+      padding:14px 14px;
+      font-size:16px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 10px 22px rgba(198,40,40,.25);
+      animation:pulseSoft 4.2s ease-in-out infinite;
+      transform-origin:center;
+    }
+    @keyframes pulseSoft{
+      0%{transform:scale(1);} 50%{transform:scale(1.02);} 100%{transform:scale(1);} }
+
+    .decline{
+      display:block;
+      margin-top:10px;
+      font-size:12.5px;
+      color:#8b7b7b;
+      text-decoration:underline;
+      cursor:pointer;
+    }
+
+    .bottom-alert{
+      margin:14px auto 0;
+      background:#f3dfcf;
+      border:1px solid rgba(190,120,80,.35);
+      color:#7b4a2f;
+      border-radius:12px;
+      padding:10px 12px;
+      font-size:12.5px;
+      font-weight:800;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    @media (max-width:480px){
+      h1{ font-size:30px; }
+      .pricebox .price{ font-size:40px; }
+      .card{ padding:16px 14px; }
+    }
   </style>
 </head>
+
 <body>
-  <main class="wrap">
-    <article role="article">
-      <section id="gallery" class="gallery">
-        <article class="card">
-          <div class="copy">
-            <p>Look... That's me on Thanksgiving last year.</p>
-          </div>
-          <img src="https://i.postimg.cc/Wb8FJycw/Captura-de-tela-28-10-2025-2822.jpg" alt="Before transformation">
-          <div class="copy">
-            <p>You can tell that I needed to get my life together. And I decided to change it! If you've been through something similar, you know what I'm talking about. My body was crying for help. And guess what I did? I looked for a gym, a diet, a trainer. The result? I gained 2kg just from anxiety! I don't like working out. Let alone dieting. I love to eat everything. My goal was to lose at least 25 pounds before Christmas and New Year's. And if I tell you, you probably won't believe it.</p>
-          </div>
-        </article>
+  <div class="page">
+    <div class="container">
 
-        <article class="card">
-          <div class="copy">
-            <p>That's me on December 23, 2024.</p>
-          </div>
-          <img src="https://i.postimg.cc/PxbrnLtD/Captura-de-tela-28-10-2025-2843.jpg" alt="After transformation">
-          <div class="copy">
-            <p>I lost weight to the point of being mistaken for my daughters' sister.</p>
-            <p>I achieved this result without giving up my delicious foods, without gyms, let alone boring diets. All thanks to a 4-ingredient pink recipe that, when combined, creates a 93 times more powerful effect than those expensive slimming pens, but with no side effects and 100% natural. Many ask me for the video where I learned the recipe, and I know you want to learn this recipe too. My friend Sarah completed 3 weeks using the recipe and has already lost over 44 pounds.</p>
-          </div>
-        </article>
+      <div class="pill">❤️ Te cuido como a mis propias alumnas esta es mi última ayuda</div>
 
-        <article class="card">
-          <img src="https://i.postimg.cc/k5d03TBC/Captura-de-tela-28-10-2025-294.jpg" alt="Sarah’s progress">
-          <div class="copy">
-            <p>If you want to lose 25 pounds by Thanksgiving, if you want your family members not to recognize you (like in my case), if you want to wear a stunning dress for Christmas and New Year's. Tap the button and watch the video now that teaches how to make the 4-ingredient pink recipe before it's taken down.</p>
+      <h1>¡UNA ÚLTIMA AYUDA LO<br>DEJO PRÁCTICAMENTE<br>GRATIS POR MIS ALUMNAS!</h1>
+
+      <p class="sub">
+        Porque te cuido — precio mínimo de la plataforma para<br>
+        que no te quedes con la piel floja.
+      </p>
+
+      <div class="card">
+        <p>
+          Sé lo que sientes: muchas mujeres bajan rápido con el
+          <span class="em-red">Truco de la Gelatina</span> y luego me escriben preocupadas por la flacidez.
+        </p>
+
+        <p>
+          <span class="em-red">Yo no quiero que eso te pase.</span>
+          Por eso dejo el <span class="em-strong">Método Contra la Flacidez</span> a solo
+          <span class="em-red">$9 USD</span> — es el precio mínimo para mantener acceso y asegurarte resultados.
+        </p>
+
+        <p class="em-red" style="margin-top:2px;">Esto no es publicidad: es cuidado real.</p>
+
+        <div class="info">
+          Más de <strong>2.847</strong> mujeres ya protegieron su piel con este método<br>
+          mientras adelgazan.
+        </div>
+
+        <div class="pricebox">
+          <div class="label">Precio final de cuidado:</div>
+          <div class="price">$9 USD</div>
+          <div class="micro">(El costo mínimo de la plataforma)</div>
+
+          <!-- ÁREA DE CTA REMOVIDA PARA INSERÇÃO MANUAL -->
+          <div style="text-align:center" id="kiwify-upsell-BvdlKXp" data-upsell-url="https://healthlifeee.online/up02" data-downsell-url="https://healthlifeee.online/up02">
+            <button id="kiwify-upsell-trigger-BvdlKXp" class="cta" style="background-color:#27AF60;border:1px solid #27AF60;border-radius:4px;font-size:20px;font-weight:600;padding:12px 16px;cursor:pointer;color:#FFFFFF;">Sí, quiero aprovechar la última oportunidad</button>
+            <div id="kiwify-upsell-cancel-trigger-BvdlKXp" class="decline" style="font-size:16px;font-family:sans-serif;margin-top:1rem;cursor:pointer;text-decoration:underline;">No, dejaré que mi piel siga debilitándose</div>
           </div>
-        </article>
-      </section>
-      <a id="cta" class="cta" href="https://saudeeevida.online/pinksalt">CLICK HERE TO WATCH THE VIDEO</a>
-    </article>
-  </main>
-  <footer class="footer">
-    Copyright 2025 — Pink Salt® • All Rights Reserved<br>
-    <a href="#">Terms of Use</a> <a href="#">Privacy Policy</a><br>
-    This site is not a part of Facebook™ or Meta Platforms, Inc., and is NOT endorsed by them. The information presented is for educational purposes only and does not constitute medical advice. Results may vary from person to person.
-  </footer>
+          <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
+        </div>
+
+        <div class="bottom-alert">⚠️ Oferta final si sales de esta página, la oportunidad desaparece</div>
+      </div>
+
+    </div>
+  </div>
 </body>
 </html>
