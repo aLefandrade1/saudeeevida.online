@@ -1,166 +1,239 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DomCell — Last Chance Offer</title>
-  <meta name="description" content="DomCell last-chance downsell page. Clean, flat background, no blocks. All text centered with comfortable spacing between sentences." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <script src="https://assets.mycartpanda.com/cartx-ecomm-ui-assets/js/libs/ocu-external.js"></script>
-  <script>
-    new OcuExternal();
-  </script>
+  <title>Downsell 1 — Flacidez</title>
+
   <style>
-    :root{
-      --maxw: 880px;
-      --fg: #0b0b0f;
-      --muted:#5b5b66;
-      --accent:#0f62fe;
-      --red:#d90429;
-      --green:#00c853;
-      --yellow:#ffea00;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
 
-    html,body{
+    body{
       margin:0;
-      padding:0;
-      background:white;
-      color:var(--fg);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#f3f5f7;
+      color:#222;
     }
 
-    .headline-section{
+    .page{
       width:100%;
-      background:var(--yellow);
+      padding:18px 14px 26px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .card{
+      width:100%;
+      max-width:650px;
+      background:#ffffff;
+      border-radius:16px;
+      border:1px solid #e6e8eb;
+      box-shadow:0 10px 28px rgba(0,0,0,.08);
+      padding:18px 16px 18px;
       text-align:center;
-      padding:32px 0;
-      margin-bottom:40px;
     }
-    .headline-text{
-      max-width:820px;
-      margin:0 auto;
-      padding:0 12px;
+
+    .top-alert{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#f6d7d7;
+      color:#b11f1f;
+      font-weight:700;
+      font-size:14px;
+      margin-bottom:14px;
+      border:1px solid #f0bcbc;
     }
+
     h1{
-      font-size: clamp(24px, 5vw, 38px);
-      line-height:1.1;
-      letter-spacing:-0.02em;
-      margin:0 auto;
-      font-weight:800;
-    }
-
-    .wrap{
-      max-width:var(--maxw);
-      margin:0 auto;
-      padding:0 20px;
-      text-align:center;
-    }
-
-    h2{
-      font-size: clamp(22px, 4vw, 32px);
-      line-height:1.15;
-      margin: 40px 0 8px 0;
-      font-weight: 800;
-    }
-
-    p{
-      font-size: clamp(16px,2.6vw,19px);
-      line-height:1.75;
-      margin: 14px 0;
-      color:var(--fg);
-    }
-
-    .lead{
-      font-size: clamp(18px,3vw,22px);
-      line-height:1.7;
-      margin:18px 0;
-    }
-
-    .muted{color:var(--muted);}
-    .sp-lg{height:24px}
-    .sp-md{height:16px}
-
-    .cta{
-      display:inline-block;
-      padding:16px 28px;
-      font-weight:800;
-      text-decoration:none;
-      border-radius:999px;
-      border:2px solid var(--green);
-      margin-top:10px;
-      animation:pulse 1.5s infinite;
-      background:var(--green);
-      color:white;
+      margin:8px 0 10px;
+      font-size:34px;
+      line-height:1.05;
+      font-weight:900;
+      letter-spacing:.3px;
+      color:#0aa06a;
       text-transform:uppercase;
     }
-    .cta:hover{transform:translateY(-1px)}
 
-    .no-discount{
+    .sub{
+      margin:0 0 14px;
+      font-size:18px;
+      line-height:1.35;
+      color:#444;
+    }
+
+    .sub strong{ font-weight:800; }
+
+    .offer-wrap{
+      margin:14px auto 14px;
+      background:#ffffff; /* agora branco */
+      border:1px solid #e6e8eb; /* borda neutra */
+      border-radius:14px;
+      padding:16px 14px;
+      text-align:center;
+    }
+
+    .offer-wrap p{
+      margin:0;
+      font-size:15px;
+      line-height:1.4;
+      color:#4a4a4a;
+    }
+
+    .offer-wrap b.green{ color:#0aa06a; }
+    .offer-wrap b.dark{ color:#0f6d56; }
+    .offer-wrap .price-inline{ color:#0aa06a; font-weight:900; }
+
+    .price-box{
+      margin:14px auto 10px;
+      background:#d9f1e7;
+      border:2px solid #8fd6be;
+      border-radius:14px;
+      padding:14px 12px 12px;
+      max-width:520px;
+    }
+
+    .old{
+      font-size:14px;
+      color:#6f7b76;
+      text-decoration:line-through;
+      margin-bottom:6px;
+      opacity:.9;
+    }
+
+    .today{
+      font-size:40px;
+      font-weight:900;
+      color:#0aa06a;
+      margin:0 0 12px;
+    }
+
+    .cta{
       display:block;
-      margin-top:6px;
-      font-size:13px;
-      color:#7a7a7a;
+      width:100%;
+      max-width:420px;
+      margin:0 auto;
+      background:#0aa06a;
+      color:#fff;
       text-decoration:none;
+      border:none;
+      border-radius:10px;
+      padding:14px 14px;
+      font-size:16px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 8px 18px rgba(10,160,106,.25);
+      animation:pulseSoft 3.6s ease-in-out infinite;
+      transform-origin:center;
+    }
+    @keyframes pulseSoft{
+      0%{transform:scale(1);} 
+      50%{transform:scale(1.02);} 
+      100%{transform:scale(1);} 
     }
 
-    .no-discount:hover{text-decoration:underline;color:#5b5b5b;}
-    .em-red{color:var(--red);font-weight:800}
-    .bold{font-weight:800}
-
-    @media (max-width:768px){
-      .headline-section{padding:20px 0;}
-      .headline-text{max-width:90%;}
-      h1{
-        font-size: clamp(22px, 6vw, 28px);
-        line-height:1.15;
-        white-space:normal;
-      }
+    .decline{
+      display:block;
+      margin-top:10px;
+      font-size:13px;
+      color:#6b6b6b;
+      text-decoration:underline;
+      cursor:pointer;
     }
 
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0,200,83, 0.6); }
-      70% { box-shadow: 0 0 0 15px rgba(0,200,83, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0,200,83, 0); }
+    .benefits{
+      margin:14px auto 10px;
+      text-align:left;
+      max-width:520px;
+      padding:0 6px;
+    }
+    .benefit{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:8px 0;
+      font-size:15px;
+      color:#3e3e3e;
+    }
+    .check{
+      color:#0aa06a;
+      font-weight:900;
+      line-height:1;
+      margin-top:2px;
+    }
+
+    .bottom-alert{
+      margin:14px auto 0;
+      max-width:520px;
+      background:#f3d6b8;
+      border:1px solid #e7c095;
+      color:#6a4b24;
+      border-radius:10px;
+      padding:10px 12px;
+      font-size:13px;
+      font-weight:800;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      text-align:center;
+    }
+
+    @media (max-width:480px){
+      h1{ font-size:28px; }
+      .today{ font-size:36px; }
+      .card{ padding:16px 14px; }
+      .sub{ font-size:16px; }
     }
   </style>
 </head>
+
 <body>
-  <div class="headline-section">
-    <div class="headline-text">
-      <h1>Most people who turned down the offer regretted it later. <span class="em-red">Here's why:</span></h1>
+  <div class="page">
+    <div class="card">
+
+      <div class="top-alert">⚠️ ¡Atención! Liberamos un descuento <b>AÚN MAYOR</b> para ti</div>
+
+      <h1>¡DESCUENTO ÚNICO PARA<br>EVITAR LA FLACIDEZ!</h1>
+
+      <p class="sub">
+        Antes de cerrar esta página: accede ahora al <strong>Método Contra la Flacidez</strong> con un descuento especial.
+      </p>
+
+      <div class="offer-wrap">
+        <p>
+          Muchas alumnas adelgazan rápido con el <b class="green">Truco de la Gelatina</b> pero terminan con la piel floja.
+          Para que eso <b class="dark">NO te pase</b>, hoy tienes el método completo por solo
+          <span class="price-inline">$17 USD</span>.
+        </p>
+
+        <div class="price-box">
+          <div class="old">Antes: $150 USD</div>
+          <div class="today">Hoy: $17 USD</div>
+
+          <div style="text-align:center" id="kiwify-upsell-l0BV8Yh" data-upsell-url="https://healthlifeee.online/up02" data-downsell-url="https://healthlifeee.online/dw2">
+            <button id="kiwify-upsell-trigger-l0BV8Yh" style="background-color:#27AF60;padding:12px 16px;cursor:pointer;color:#FFFFFF;font-weight:600;border-radius:4px;border:1px solid #27AF60;font-size:20px;">Sí, quiero aprovechar esta oferta por solo $17 ahora</button>
+            <div id="kiwify-upsell-cancel-trigger-l0BV8Yh" style="margin-top:1rem;cursor:pointer;font-size:16px;text-decoration:underline;font-family:sans-serif;">No, no me importa quedarme con flacidez</div>
+          </div>
+          <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
+
+        </div>
+      </div>
+
+      <div class="benefits">
+        <div class="benefit"><div class="check">✓</div><div>Protocolo de 7 minutos al día</div></div>
+        <div class="benefit"><div class="check">✓</div><div>Mantiene tu piel firme mientras bajas de peso</div></div>
+        <div class="benefit"><div class="check">✓</div><div>No necesitas equipos ni gimnasio</div></div>
+        <div class="benefit"><div class="check">✓</div><div>Resultados visibles en pocos días</div></div>
+      </div>
+
+      <div class="bottom-alert">⚠️ Oferta ÚNICA — Si sales de esta página, desaparece para siempre.</div>
+
     </div>
-  </div>
-
-  <div class="wrap">
-    <p class="lead">You just turned down the offer that was right there. It's okay, I don't blame you. Many people end up making the decision not to join my method right now.</p>
-
-    <p>I don't want to sound pushy, but I have to give you some bad news. <span class="em-red">This offer will never be available again. Even if it seems you don't need it now, you will in the future.</span></p>
-
-    <p>Because you showed genuine trust in me by giving me your initial yes, I want to benefit you. I want to give you the chance to <span class="em-red">reconsider</span> by offering you a discount.</p>
-
-    <p>What I'm going to do is <span class="em-red">remove a bonus</span> from the offer for you — and we'll never talk about it again. But don't worry, you still get the main product, which is the <span class="em-red">Natural Firming</span>.</p>
-
-    <p>The bonus I'm taking away is “lifted butt”, which includes tips on how to have a perky butt. It's all good. You still have the main product.</p>
-
-    <p>You still have the cake and the cherry. Just missing a little whipped cream. Don't sweat it.</p>
-
-    <p>And I'll lower the price for you because of the whipped cream I'm taking away.</p>
-
-    <div class="sp-lg"></div>
-    <h2>You can access my method for just <span class="bold">$37</span>.</h2>
-    <div class="sp-md"></div>
-
-    <a href="https://verificada.mycartpanda.com/ex-ocu/next-offer/G4jyXMQYOE-y2mBRG1xVm-p?accepted=yes" class="cta" aria-label="Get it now for 37 dollars">GET IT NOW FOR $37</a>
-
-    <a href="https://verificada.mycartpanda.com/ex-ocu/next-offer/G4jyXMQYOE-y2mBRG1xVm-p?accepted=no" class="no-discount">I don't want my discount</a>
-
-    <p class="lead">I know you might be thinking of leaving this page and trying to buy on another day, but this offer will definitely <span class="em-red">never be available again</span> and open to the public.</p>
-
-    <p>I'm only prioritizing the people who genuinely gave me the initial yes. So, it's <span class="bold">take it or leave it.</span></p>
-
-    <p class="bold">Goodbye.</p>
   </div>
 </body>
 </html>
