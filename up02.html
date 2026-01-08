@@ -1,140 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pink Salt Trick</title>
-
-  <!-- UTMIFY -->
-  <script
-    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-    async
-    defer
-  ></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Downsell 2 — Última Ayuda</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      margin: 0;
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
+
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#f6ecec;
+      color:#2b2b2b;
     }
-    .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-    .video-container iframe, .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-    .subheadline { font-size: 0.95em; color: #666; margin-bottom: 10px; line-height: 1.45; }
-    .meta { color: #666; font-size: 0.9em; margin-bottom: 15px; }
+    .page{
+      width:100%;
+      padding:18px 14px 28px;
+      display:flex;
+      justify-content:center;
+    }
 
-    .comments { border-top: 1px solid #ccc; padding-top: 15px; margin-bottom: 20px; }
-    .comment { display: flex; align-items: flex-start; margin-bottom: 15px; padding-bottom: 10px; }
-    .comment img { width: 32px; height: 32px; object-fit: cover; border-radius: 50%; margin-right: 12px; margin-top: 2px; }
-    .comment .name { font-weight: bold; font-size: 0.9em; color: #333; margin-right: 5px; }
-    .comment .text { font-size: 0.9em; color: #333; line-height: 1.4; }
-    .comment-count { font-weight: bold; font-size: 0.95em; margin-bottom: 15px; display: block; color: #333; }
-    .comment hr { border: 0; border-top: 1px solid #eee; margin: 10px 0; }
-    .copyright { font-size: 0.85em; color: #666; margin-top: 20px; text-align: center; }
+    .container{
+      width:100%;
+      max-width:560px;
+      text-align:center;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:12px;
+      background:#f3dfcf;
+      border:1px solid rgba(190,120,80,.35);
+      color:#7b4a2f;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:16px;
+    }
+
+    h1{
+      margin:6px 0 10px;
+      font-size:38px;
+      line-height:1.15; /* mais respiro no mobile */
+      font-weight:900;
+      text-transform:uppercase;
+      color:#c62828;
+      letter-spacing:.2px; /* reduz espaçamento que estourava */
+      word-break:normal;
+      hyphens:auto;
+    }
+
+    .sub{
+      margin:0 0 14px;
+      font-size:16px;
+      line-height:1.5; /* mais altura para não embolar */
+      color:#7a3b3b;
+      font-style:italic;
+      max-width:100%;
+      padding:0 6px; /* respiro lateral no mobile */
+      word-break:normal;
+      hyphens:auto;
+    }
+
+    .card{
+      margin:14px auto 16px;
+      background:#ffffff;
+      border-radius:18px;
+      border:1px solid rgba(210,90,90,.25);
+      box-shadow:0 12px 28px rgba(0,0,0,.08);
+      padding:18px 16px 16px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      height:4px;
+      background:#c62828;
+    }
+
+    .card p{
+      margin:0 0 10px;
+      font-size:14px;
+      line-height:1.55;
+      color:#5a4a4a;
+    }
+
+    .em-red{ color:#c62828; font-weight:900; }
+    .em-strong{ font-weight:900; color:#3f2f2f; }
+
+    .info{
+      margin:12px auto 14px;
+      background:#e9f4ff;
+      border:1px solid rgba(70,140,200,.35);
+      border-radius:14px;
+      padding:10px 12px;
+      color:#2b5a7a;
+      font-size:12.5px;
+      line-height:1.35;
+      position:relative;
+    }
+    .info::before{
+      content:"";
+      position:absolute;
+      left:-1px;
+      top:10px;
+      width:4px;
+      height:calc(100% - 20px);
+      border-radius:10px;
+      background:#4aa3df;
+    }
+
+    .pricebox{
+      margin:10px auto 10px;
+      background:#e8f7ee; /* fundo verde claro */
+      border:2px solid rgba(39,175,96,.45); /* borda verde */
+      border-radius:16px;
+      padding:14px 12px 12px;
+      max-width:520px;
+    }
+
+    .pricebox .label{
+      font-size:13px;
+      color:#1f7a4d; /* texto verde escuro */
+      margin-bottom:6px;
+      font-weight:700;
+    }
+
+    .pricebox .price{
+      font-size:44px;
+      font-weight:900;
+      color:#27AF60; /* preço em verde */
+      margin:0 0 6px;
+    }
+
+    .pricebox .micro{
+      font-size:12px;
+      color:#3f8f63; /* texto auxiliar verde */
+      margin-bottom:12px;
+      font-style:italic;
+    }
+
+    .cta{
+      display:block;
+      width:100%;
+      max-width:430px;
+      margin:0 auto;
+      background:#c62828;
+      color:#fff;
+      border:none;
+      border-radius:12px;
+      padding:14px 14px;
+      font-size:16px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 10px 22px rgba(198,40,40,.25);
+      animation:pulseSoft 4.2s ease-in-out infinite;
+      transform-origin:center;
+    }
+    @keyframes pulseSoft{
+      0%{transform:scale(1);} 50%{transform:scale(1.02);} 100%{transform:scale(1);} }
+
+    .decline{
+      display:block;
+      margin-top:10px;
+      font-size:12.5px;
+      color:#8b7b7b;
+      text-decoration:underline;
+      cursor:pointer;
+    }
+
+    .bottom-alert{
+      margin:14px auto 0;
+      background:#f3dfcf;
+      border:1px solid rgba(190,120,80,.35);
+      color:#7b4a2f;
+      border-radius:12px;
+      padding:10px 12px;
+      font-size:12.5px;
+      font-weight:800;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    @media (max-width:480px){
+      h1{ 
+        font-size:26px; 
+        line-height:1.2; 
+        letter-spacing:.1px;
+      }
+      .sub{
+        font-size:14px; /* menor no celular */
+        line-height:1.6; /* mais organizado */
+        padding:0 8px;
+      }
+      .pricebox .price{ font-size:40px; }
+      .card{ padding:16px 14px; }
+    }
+      .pricebox .price{ font-size:40px; }
+      .card{ padding:16px 14px; }
+    }
+      .pricebox .price{ font-size:40px; }
+      .card{ padding:16px 14px; }
+    }
   </style>
 </head>
+
 <body>
+  <div class="page">
+    <div class="container">
 
-  <!-- VTURB -->
-  <vturb-smartplayer id="vid-68cb2f6decf375f84cb13982" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer>
-  <script type="text/javascript">
-    var s=document.createElement("script");
-    s.src="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/68cb2f6decf375f84cb13982/v4/player.js",
-    s.async=!0,document.head.appendChild(s);
-  </script>
+      <div class="pill">❤️ Te cuido como a mis propias alumnas esta es mi última ayuda</div>
 
-  <!-- COPY -->
-  <div class="subheadline">
-    Discover how a simple pink salt method has helped women lose weight fast — naturally, practically and affordably.
-  </div>
-  <div class="meta">506,000 views • 3 weeks ago</div>
+      <h1>¡UNA ÚLTIMA AYUDA LO<br>DEJO PRÁCTICAMENTE<br>GRATIS POR MIS ALUMNAS!</h1>
 
-  <!-- Comments -->
-  <div class="comments">
-    <span class="comment-count" id="comment-count">Comments (7)</span>
+      <p class="sub">
+        Porque te cuido — precio mínimo de la plataforma para<br>
+        que no te quedes con la piel floja.
+      </p>
 
-    <div class="comment">
-      <a href="#"><img src="https://i.postimg.cc/m2j7BQS1/520467219-747695428196837-2634104976014456754-n.jpg" alt="Emily Johnson"></a>
-      <div>
-        <div class="name">Emily Johnson</div>
-        <div class="text">My friend told me about this pink salt trick for weight loss and I watched the whole video. I'm following the instructions exactly and already feel lighter. Such a blessing to find something like this to share!</div>
+      <div class="card">
+        <p>
+          Sé lo que sientes: muchas mujeres bajan rápido con el
+          <span class="em-red">Truco de la Gelatina</span> y luego me escriben preocupadas por la flacidez.
+        </p>
+
+        <p>
+          <span class="em-red">Yo no quiero que eso te pase.</span>
+          Por eso dejo el <span class="em-strong">Método Contra la Flacidez</span> a solo
+          <span class="em-red">$9 USD</span> — es el precio mínimo para mantener acceso y asegurarte resultados.
+        </p>
+
+        <p class="em-red" style="margin-top:2px;">Esto no es publicidad: es cuidado real.</p>
+
+        <div class="info">
+          Más de <strong>2.847</strong> mujeres ya protegieron su piel con este método<br>
+          mientras adelgazan.
+        </div>
+
+        <div class="pricebox">
+          <div class="label">Precio final de cuidado:</div>
+          <div class="price">$9 USD</div>
+          <div class="micro">(El costo mínimo de la plataforma)</div>
+
+          <!-- ÁREA DE CTA REMOVIDA PARA INSERÇÃO MANUAL -->
+          <div style="text-align:center" id="kiwify-upsell-BvdlKXp" data-upsell-url="https://healthlifeee.online/up02" data-downsell-url="https://healthlifeee.online/up02">
+            <button id="kiwify-upsell-trigger-BvdlKXp" class="cta" style="background-color:#27AF60;border:1px solid #27AF60;border-radius:4px;font-size:20px;font-weight:600;padding:12px 16px;cursor:pointer;color:#FFFFFF;">Sí, quiero aprovechar la última oportunidad</button>
+            <div id="kiwify-upsell-cancel-trigger-BvdlKXp" class="decline" style="font-size:16px;font-family:sans-serif;margin-top:1rem;cursor:pointer;text-decoration:underline;">No, dejaré que mi piel siga debilitándose</div>
+          </div>
+          <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
+        </div>
+
+        <div class="bottom-alert">⚠️ Oferta final si sales de esta página, la oportunidad desaparece</div>
       </div>
-    </div>
-    <hr>
 
-    <div class="comment">
-      <a href="#"><img src="https://cakto-quiz-br01.b-cdn.net/uploads/8bf98d91-6387-4278-8c53-2add23d6beb0.jpeg" alt="Sarah Miller"></a>
-      <div>
-        <div class="name">Sarah Miller</div>
-        <div class="text">I was pretty skeptical about these things, but my cousin insisted I watch it. I loved it because it's natural and easy to do at home. I'm already losing weight and even my clothes are fitting looser.</div>
-      </div>
-    </div>
-    <hr>
-
-    <div class="comment">
-      <a href="#"><img src="https://cakto-quiz-br01.b-cdn.net/uploads/d0e0d31f-7e83-4b34-9502-e18a9084587e.jpeg" alt="Jessica Davis"></a>
-      <div>
-        <div class="name">Jessica Davis</div>
-        <div class="text">I thought it was another empty talk, but I decided to try it anyway. To my surprise, it's really working. Now I can wear clothes that used to be tight and I feel slimmer every day.</div>
-      </div>
-    </div>
-    <hr>
-
-    <div class="comment">
-      <a href="#"><img src="https://cakto-quiz-br01.b-cdn.net/uploads/8b09a6d0-0f2e-47c1-838a-73114bc9a646.jpeg" alt="Amanda Wilson"></a>
-      <div>
-        <div class="name">Amanda Wilson</div>
-        <div class="text">At first I was worried, but I got motivated when I saw it's all based on natural methods. I'm losing weight more easily and without much effort. Even my doctor asked me what I was doing differently!</div>
-      </div>
-    </div>
-    <hr>
-
-    <div class="comment">
-      <a href="#"><img src="https://i.postimg.cc/kXHXQGJh/271748737-939789133628188-5826000566894107531-n.jpg" alt="Ashley Brown"></a>
-      <div>
-        <div class="name">Ashley Brown</div>
-        <div class="text">I included this pink salt trick in my morning routine. It's pleasant and really helping me lose weight. Much better than conventional methods that never worked for me.</div>
-      </div>
-    </div>
-    <hr>
-
-    <div class="comment">
-      <a href="#"><img src="https://cakto-quiz-br01.b-cdn.net/uploads/f3a56935-cf3a-450f-8df0-af8be4b2e93b.jpeg" alt="Lauren Thompson"></a>
-      <div>
-        <div class="name">Lauren Thompson</div>
-        <div class="text">I started applying this trick about two weeks ago and I already notice changes in my body. I've lost inches and feel more energetic every day. It's amazing how something so simple can make such a difference.</div>
-      </div>
-    </div>
-    <hr>
-
-    <div class="comment">
-      <a href="#"><img src="https://i.postimg.cc/W4GNc7MQ/515104291-4171177819780674-4806186921004065944-n.jpg" alt="Megan Anderson"></a>
-      <div>
-        <div class="name">Megan Anderson</div>
-        <div class="text">I watched the video, followed the tips and already shared it with my friends. We're all trying it together. It's amazing how this pink salt trick is helping us slim down naturally, without complications or high costs.</div>
-      </div>
     </div>
   </div>
-
-  <div class="copyright">
-    <p>© 2025 All rights reserved.</p>
-  </div>
-
-  <script>
-    function updateCommentCount() {
-      const comments = document.querySelectorAll('.comment').length;
-      document.getElementById('comment-count').innerText = `Comments (${comments})`;
-    }
-    updateCommentCount();
-
-    setTimeout(() => {
-      document.getElementById('cta-button').style.display = 'block';
-    }, 2367000); 
-  </script>
-
 </body>
 </html>
