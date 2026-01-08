@@ -47,11 +47,13 @@
     h1{
       margin:6px 0 10px;
       font-size:38px;
-      line-height:1.05;
+      line-height:1.15; /* mais respiro no mobile */
       font-weight:900;
       text-transform:uppercase;
       color:#c62828;
-      letter-spacing:.3px;
+      letter-spacing:.2px; /* reduz espaçamento que estourava */
+      word-break:normal;
+      hyphens:auto;
     }
 
     .sub{
@@ -117,8 +119,8 @@
 
     .pricebox{
       margin:10px auto 10px;
-      background:#f6dada;
-      border:2px solid rgba(198,40,40,.35);
+      background:#e8f7ee; /* fundo verde claro */
+      border:2px solid rgba(39,175,96,.45); /* borda verde */
       border-radius:16px;
       padding:14px 12px 12px;
       max-width:520px;
@@ -126,7 +128,7 @@
 
     .pricebox .label{
       font-size:13px;
-      color:#7b4a4a;
+      color:#1f7a4d; /* texto verde escuro */
       margin-bottom:6px;
       font-weight:700;
     }
@@ -134,13 +136,13 @@
     .pricebox .price{
       font-size:44px;
       font-weight:900;
-      color:#c62828;
+      color:#27AF60; /* preço em verde */
       margin:0 0 6px;
     }
 
     .pricebox .micro{
       font-size:12px;
-      color:#8a6a6a;
+      color:#3f8f63; /* texto auxiliar verde */
       margin-bottom:12px;
       font-style:italic;
     }
@@ -191,7 +193,14 @@
     }
 
     @media (max-width:480px){
-      h1{ font-size:30px; }
+      h1{ 
+        font-size:26px; /* menor no celular */
+        line-height:1.2; 
+        letter-spacing:.1px;
+      }
+      .pricebox .price{ font-size:40px; }
+      .card{ padding:16px 14px; }
+    }
       .pricebox .price{ font-size:40px; }
       .card{ padding:16px 14px; }
     }
