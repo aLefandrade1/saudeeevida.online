@@ -3,269 +3,247 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Downsell 2 — Última Ayuda</title>
+  <title>Upsell 2 — Soporte VIP WhatsApp</title>
 
   <style>
+    /* Anti lateral shift (iOS/Safari) */
     *, *::before, *::after { box-sizing: border-box; }
     html, body { overflow-x: hidden; }
 
     body{
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
-      background:#f6ecec;
-      color:#2b2b2b;
+      background:#eef3f6;
+      color:#1f1f1f;
     }
 
     .page{
       width:100%;
-      padding:18px 14px 28px;
+      padding:22px 14px 26px;
       display:flex;
       justify-content:center;
     }
 
-    .container{
+    .wrap{
       width:100%;
-      max-width:560px;
+      max-width:760px;
       text-align:center;
     }
 
-    .pill{
+    .top-alert{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      padding:10px 14px;
+      gap:10px;
+      padding:12px 18px;
       border-radius:12px;
-      background:#f3dfcf;
-      border:1px solid rgba(190,120,80,.35);
-      color:#7b4a2f;
+      background:linear-gradient(90deg,#e33b3b,#cf1f1f);
+      color:#fff;
+      font-weight:800;
       font-size:14px;
-      font-weight:700;
-      margin-bottom:16px;
+      box-shadow:0 10px 20px rgba(207,31,31,.18);
+      margin-bottom:18px;
+      max-width:100%;
     }
 
     h1{
-      margin:6px 0 10px;
-      font-size:38px;
-      line-height:1.15; /* mais respiro no mobile */
+      margin:8px 0 18px;
+      font-size:34px;
+      line-height:1.15;
       font-weight:900;
-      text-transform:uppercase;
-      color:#c62828;
-      letter-spacing:.2px; /* reduz espaçamento que estourava */
-      word-break:normal;
-      hyphens:auto;
+      color:#2ecc71;
+      letter-spacing:.2px;
     }
 
-    .sub{
-      margin:0 0 14px;
-      font-size:16px;
-      line-height:1.5; /* mais altura para não embolar */
-      color:#7a3b3b;
-      font-style:italic;
-      max-width:100%;
-      padding:0 6px; /* respiro lateral no mobile */
-      word-break:normal;
-      hyphens:auto;
-    }
-
-    .card{
-      margin:14px auto 16px;
-      background:#ffffff;
-      border-radius:18px;
-      border:1px solid rgba(210,90,90,.25);
-      box-shadow:0 12px 28px rgba(0,0,0,.08);
-      padding:18px 16px 16px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .card::before{
-      content:"";
-      position:absolute;
-      left:0;
-      top:0;
+    /* Video card */
+    .video-card{
       width:100%;
-      height:4px;
-      background:#c62828;
-    }
-
-    .card p{
-      margin:0 0 10px;
-      font-size:14px;
-      line-height:1.55;
-      color:#5a4a4a;
-    }
-
-    .em-red{ color:#c62828; font-weight:900; }
-    .em-strong{ font-weight:900; color:#3f2f2f; }
-
-    .info{
-      margin:12px auto 14px;
-      background:#e9f4ff;
-      border:1px solid rgba(70,140,200,.35);
-      border-radius:14px;
-      padding:10px 12px;
-      color:#2b5a7a;
-      font-size:12.5px;
-      line-height:1.35;
+      max-width:640px;
+      margin:0 auto 16px;
+      border-radius:12px;
+      overflow:hidden;
+      background:transparent; /* removido vermelho */
+      box-shadow:none; /* sem sombra */
       position:relative;
     }
-    .info::before{
-      content:"";
+
+    .video-aspect{
+      width:100%;
+      padding-top:56.25%;
+      position:relative;
+      background:transparent;
+    }
+
+    /* Faz o player ocupar o container responsivo */
+    .video-aspect vturb-smartplayer{
       position:absolute;
-      left:-1px;
-      top:10px;
-      width:4px;
-      height:calc(100% - 20px);
-      border-radius:10px;
-      background:#4aa3df;
+      inset:0;
+      width:100% !important;
+      height:100% !important;
+      display:block;
     }
 
-    .pricebox{
-      margin:10px auto 10px;
-      background:#e8f7ee; /* fundo verde claro */
-      border:2px solid rgba(39,175,96,.45); /* borda verde */
-      border-radius:16px;
-      padding:14px 12px 12px;
-      max-width:520px;
+    /* PLACEHOLDER (troque pelo seu player VTurb/SmartPlayer) */
+    .video-placeholder{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:18px;
+      color:#fff;
+      text-align:center;
+      background:rgba(214,43,43,.86);
     }
 
-    .pricebox .label{
-      font-size:13px;
-      color:#1f7a4d; /* texto verde escuro */
-      margin-bottom:6px;
+    .video-placeholder .big{
+      font-size:26px;
+      font-weight:900;
+      line-height:1.1;
+    }
+
+    .video-placeholder .row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:26px;
+      flex-wrap:wrap;
+      opacity:.95;
+      font-size:14px;
       font-weight:700;
     }
 
-    .pricebox .price{
-      font-size:44px;
-      font-weight:900;
-      color:#27AF60; /* preço em verde */
-      margin:0 0 6px;
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.25);
     }
 
-    .pricebox .micro{
-      font-size:12px;
-      color:#3f8f63; /* texto auxiliar verde */
-      margin-bottom:12px;
-      font-style:italic;
+    .icon{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.25);
+      font-weight:900;
     }
+
+    /* CTA */
+    .cta-wrap{ margin:14px auto 6px; }
 
     .cta{
       display:block;
       width:100%;
-      max-width:430px;
+      max-width:640px;
       margin:0 auto;
-      background:#c62828;
+      background:#2ecc71;
       color:#fff;
+      text-decoration:none;
       border:none;
-      border-radius:12px;
-      padding:14px 14px;
+      border-radius:10px;
+      padding:14px 16px;
       font-size:16px;
       font-weight:900;
       cursor:pointer;
-      box-shadow:0 10px 22px rgba(198,40,40,.25);
-      animation:pulseSoft 4.2s ease-in-out infinite;
+      box-shadow:0 12px 22px rgba(46,204,113,.18);
+      animation:pulseSoft 4.5s ease-in-out infinite;
       transform-origin:center;
     }
+
     @keyframes pulseSoft{
-      0%{transform:scale(1);} 50%{transform:scale(1.02);} 100%{transform:scale(1);} }
+      0%{transform:scale(1);} 50%{transform:scale(1.018);} 100%{transform:scale(1);} }
 
     .decline{
-      display:block;
-      margin-top:10px;
+      display:inline-block;
+      margin-top:8px;
       font-size:12.5px;
-      color:#8b7b7b;
+      color:#6f7a85;
       text-decoration:underline;
       cursor:pointer;
     }
 
-    .bottom-alert{
-      margin:14px auto 0;
-      background:#f3dfcf;
-      border:1px solid rgba(190,120,80,.35);
-      color:#7b4a2f;
-      border-radius:12px;
-      padding:10px 12px;
-      font-size:12.5px;
+    .desc{
+      margin:12px auto 16px;
+      max-width:640px;
+      font-size:14px;
+      line-height:1.55;
+      color:#47525c;
+      padding:0 6px;
+    }
+
+    .desc b.green{ color:#2ecc71; }
+
+    .guarantee{
+      margin:0 auto;
+      max-width:640px;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1.8px solid rgba(46,204,113,.55);
+      background:#eefaf3;
+      color:#2b6b48;
       font-weight:800;
+      font-size:13px;
       display:flex;
-      gap:8px;
       align-items:center;
       justify-content:center;
-      text-align:center;
+      gap:8px;
     }
 
     @media (max-width:480px){
-      h1{ 
-        font-size:26px; 
-        line-height:1.2; 
-        letter-spacing:.1px;
-      }
-      .sub{
-        font-size:14px; /* menor no celular */
-        line-height:1.6; /* mais organizado */
-        padding:0 8px;
-      }
-      .pricebox .price{ font-size:40px; }
-      .card{ padding:16px 14px; }
-    }
-      .pricebox .price{ font-size:40px; }
-      .card{ padding:16px 14px; }
-    }
-      .pricebox .price{ font-size:40px; }
-      .card{ padding:16px 14px; }
+      .page{ padding:18px 12px 22px; }
+      h1{ font-size:26px; line-height:1.2; }
+      .video-placeholder .big{ font-size:20px; }
+      .cta{ font-size:14px; }
     }
   </style>
 </head>
 
 <body>
   <div class="page">
-    <div class="container">
+    <div class="wrap">
 
-      <div class="pill">❤️ Te cuido como a mis propias alumnas esta es mi última ayuda</div>
+      <div class="top-alert">⚠️ Atención: tenemos algo aún más especial para ti.</div>
 
-      <h1>¡UNA ÚLTIMA AYUDA LO<br>DEJO PRÁCTICAMENTE<br>GRATIS POR MIS ALUMNAS!</h1>
+      <h1>Soporte VIP directo del Doctor en<br>WhatsApp, 24/7</h1>
 
-      <p class="sub">
-        Porque te cuido — precio mínimo de la plataforma para<br>
-        que no te quedes con la piel floja.
-      </p>
-
-      <div class="card">
-        <p>
-          Sé lo que sientes: muchas mujeres bajan rápido con el
-          <span class="em-red">Truco de la Gelatina</span> y luego me escriben preocupadas por la flacidez.
-        </p>
-
-        <p>
-          <span class="em-red">Yo no quiero que eso te pase.</span>
-          Por eso dejo el <span class="em-strong">Método Contra la Flacidez</span> a solo
-          <span class="em-red">$9 USD</span> — es el precio mínimo para mantener acceso y asegurarte resultados.
-        </p>
-
-        <p class="em-red" style="margin-top:2px;">Esto no es publicidad: es cuidado real.</p>
-
-        <div class="info">
-          Más de <strong>2.847</strong> mujeres ya protegieron su piel con este método<br>
-          mientras adelgazan.
+      <div class="video-card">
+        <div class="video-aspect" id="video-slot">
+          <vturb-smartplayer id="vid-696003ccda723d6f86850984"></vturb-smartplayer>
+          <script type="text/javascript">
+            (function(){
+              var s = document.createElement("script");
+              s.src = "https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/696003ccda723d6f86850984/v4/player.js";
+              s.async = true;
+              document.head.appendChild(s);
+            })();
+          </script>
         </div>
-
-        <div class="pricebox">
-          <div class="label">Precio final de cuidado:</div>
-          <div class="price">$9 USD</div>
-          <div class="micro">(El costo mínimo de la plataforma)</div>
-
-          <!-- ÁREA DE CTA REMOVIDA PARA INSERÇÃO MANUAL -->
-          <div style="text-align:center" id="kiwify-upsell-BvdlKXp" data-upsell-url="https://healthlifeee.online/up02" data-downsell-url="https://healthlifeee.online/up02">
-            <button id="kiwify-upsell-trigger-BvdlKXp" class="cta" style="background-color:#27AF60;border:1px solid #27AF60;border-radius:4px;font-size:20px;font-weight:600;padding:12px 16px;cursor:pointer;color:#FFFFFF;">Sí, quiero aprovechar la última oportunidad</button>
-            <div id="kiwify-upsell-cancel-trigger-BvdlKXp" class="decline" style="font-size:16px;font-family:sans-serif;margin-top:1rem;cursor:pointer;text-decoration:underline;">No, dejaré que mi piel siga debilitándose</div>
-          </div>
-          <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
-        </div>
-
-        <div class="bottom-alert">⚠️ Oferta final si sales de esta página, la oportunidad desaparece</div>
       </div>
+
+      <div style="opacity:.55; font-weight:800; font-size:14px; margin-top:6px;">tendrás acceso al grupo secreto</div>
+
+      <!-- BLOCO DE BOTÃO REMOVIDO PARA INSERÇÃO MANUAL -->
+      <div id="cta-slot" style="margin:14px auto 6px; text-align:center;">
+        <div style="text-align:center" id="kiwify-upsell-tfxMFkr" data-upsell-url="" data-downsell-url="https://healthlifeee.online/dw3"> 
+          <button id="kiwify-upsell-trigger-tfxMFkr" class="cta" style="background-color:#27AF60;padding:12px 16px;cursor:pointer;color:#FFFFFF;font-weight:600;border-radius:4px;border:1px solid #27AF60;font-size:20px;">Quiero soporte directo del Doctor en Whatsapp y el grupo</button>
+          <div id="kiwify-upsell-cancel-trigger-tfxMFkr" class="decline" style="margin-top:1rem;cursor:pointer;font-size:16px;text-decoration:underline;font-family:sans-serif;">No, Prefiero continuar sola</div>
+        </div><script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
+      </div>
+
+      <div class="desc">
+        Durante todo el día, todos los días, usted podrá hablar directamente con el Doctor por <b class="green">WhatsApp</b>.
+      </div>
+
+      <div class="guarantee">🛡️ Garantía de 30 días - Sin riesgos</div>
 
     </div>
   </div>
