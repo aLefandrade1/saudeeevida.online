@@ -1,461 +1,343 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Página VSL — Completa</title>
-  <!-- Script UTMify -->
-  <script
-    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-    data-utmify-prevent-subids
-    async
-    defer
-  ></script>
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '3095952720572881');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=3095952720572881&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+  <title>Gracias | Truco de la Gelatina</title>
+  <meta name="description" content="Gracias por tu compra. Accede a tu material del Truco de la Gelatina y sigue los próximos pasos." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:linear-gradient(135deg,#000000,#1a044e,#220076,#0a2342);
-      --text:#fff;
-      --yellow:#facc15;
-      --yellow-dark:#eab308;
+      --bg:#0b0f19;
+      --card:#10192d;
+      --line:rgba(255,255,255,.12);
+      --text:#eef2ff;
+      --muted:#aab4c8;
+      --accent:#ff3b6b;
+      --accent2:#ff9a3b;
+      --good:#27af60;
+      --warn:#ffc94a;
+      --shadow: 0 22px 70px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 980px;
+      --font:'Dosis', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
-    body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;text-align:center;}
-    .wrap{max-width:1120px;margin:0 auto;padding:48px 16px 64px;}
-    .hint{display:flex;align-items:center;gap:10px;justify-content:center;font-size:clamp(14px,2.4vw,18px);color:var(--text);margin-top:18px;white-space:nowrap}
-    .hint b{color:var(--text);font-weight:800;white-space:nowrap}
-    .hint .speaker{width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#0ea5e9;color:#fff;font-weight:900;flex-shrink:0}
-    .offer{text-align:center;margin-top:40px}
-    .offer .bundle{display:block;margin:0 auto 18px;max-width:720px;width:96%;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.5)}
-    .price-normal{color:#f87171;font-size:22px;text-decoration:line-through;margin:6px 0}
-    .price-today{background:#22c55e;color:#fff;font-size:28px;font-weight:800;display:inline-block;padding:6px 16px;border-radius:6px;margin:10px 0;box-shadow:0 4px 12px rgba(0,0,0,.4)}
-    .price-tomorrow{color:var(--text);font-size:20px;margin:4px 0 16px}
-    .note{font-size:14px;color:#e0e7ff;margin-bottom:16px}
-    .btn-checkout{display:inline-block;padding:18px 28px;border-radius:50px;background:var(--yellow);color:#000;font-weight:900;text-decoration:none;font-size:20px;box-shadow:0 0 0 0 rgba(250,204,21,.7);animation:pulse 1.5s infinite;margin:16px 0}
-    .btn-checkout:hover{background:var(--yellow-dark)}
-    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(250,204,21,.7)}70%{box-shadow:0 0 0 20px rgba(250,204,21,0)}100%{box-shadow:0 0 0 0 rgba(250,204,21,0)}}
-    .add-cart{display:block;margin-top:10px;color:#93c5fd;font-size:16px;text-decoration:none}
-    .payments{display:block;margin:12px auto 6px;max-width:320px;width:90%}
-    .references{text-align:center;margin-top:30px}
-    .references-text{text-align:center;}
-    .references h2{font-size:22px;font-weight:400;margin-bottom:8px}
-    .references .banner-full{display:block;width:100%;height:auto;margin:0 auto;padding:0;object-fit:cover}
-    .references .doctor-full{display:block;max-width:380px;width:88%;margin:14px auto 0;border:3px solid #fff;border-radius:12px}
-    .bonus-section{text-align:center;margin-top:60px;background:#fff;color:#000;padding:40px 20px;border-radius:12px}
-    .bonus-section h2{font-size:26px;font-weight:800;margin-bottom:10px;color:#000}
-    .bonus-section h2 span{background:#3b82f6;color:#fff;padding:2px 6px;border-radius:4px}
-    .bonus-section h3{font-size:22px;font-style:italic;margin-bottom:20px;color:#000}
-    .bonus-section .mockup{display:block;margin:0 auto 22px;max-width:320px;width:85%}
-    .bonus-section ul{list-style:none;padding:0;margin:0 auto;max-width:760px;text-align:center}
-    .bonus-section ul li{font-size:18px;margin:10px 0;color:#000;text-align:center}
-    .bonus-section ul li::before{content:"✔";color:#22c55e;margin-right:10px}
-    .bonus-item{background:#fff;color:#000;padding:40px 20px;margin-top:28px;border-radius:12px;text-align:center}
-    .bonus-item h2{font-size:24px;font-weight:800;margin-bottom:18px}
-    .bonus-item .bonus-img{display:block;margin:0 auto 16px;max-width:220px;width:70%}
-    .bonus-item ul{list-style:none;padding:0;margin:0 auto;max-width:760px;text-align:center}
-    .bonus-item ul li{font-size:18px;margin:10px 0;color:#000;text-align:center}
-    .bonus-item ul li::before{content:"✔";color:#22c55e;margin-right:10px}
-    .continuacion{margin-top:40px;text-align:center}
-    .continuacion h2{font-size:26px;font-weight:800;margin-bottom:16px;color:#fff}
-    .continuacion .bundle-img{display:block;margin:14px auto;max-width:720px;width:96%;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.5)}
-    .comments{margin-top:40px;background:#fff;color:#000;padding:30px 20px;border-radius:12px;text-align:left;max-width:800px;margin-left:auto;margin-right:auto}
-    .comments h2{font-size:22px;font-weight:700;margin-bottom:20px;text-align:center}
-    .comment{display:flex;align-items:flex-start;margin-bottom:18px}
-    .comment img{width:48px;height:48px;border-radius:50%;margin-right:12px}
-    .comment-body{flex:1}
-    .comment-body p{margin:0 0 6px;font-size:15px;line-height:1.4}
-    .comment-body .meta{font-size:13px;color:#555}
-    .likes{display:flex;align-items:center;gap:6px;font-size:13px;color:#555}
-    .likes img{width:16px;height:16px}
-    .faq-wrap{margin-top:40px;padding:20px 10px}
-    .faq-title{font-size:28px;font-weight:900;letter-spacing:.5px;margin-bottom:18px}
-    .faq-title span{background:#3b82f6;color:#fff;padding:4px 8px;border-radius:4px}
-    .faq-list{max-width:1080px;margin:0 auto}
-    .faq-item{background:#4aa0d8;border-radius:10px;margin:10px auto;overflow:hidden;text-align:left}
-    .faq-q{width:100%;background:transparent;color:#fff;border:none;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;font-size:18px;font-weight:800;cursor:pointer}
-    .faq-q:focus{outline:none}
-    .chev{font-size:26px;transform:rotate(0deg);transition:transform .2s ease}
-    .faq-a{max-height:0;overflow:hidden;background:#e6f3ff;color:#0b0d17;padding:0 22px;transition:max-height .25s ease,padding .25s ease}
-    .faq-item.open .chev{transform:rotate(90deg)}
-    .faq-item.open .faq-a{max-height:320px;padding:16px 22px}
-    @media (max-width:640px){
-      .faq-q{font-size:16px;padding:16px}
-      .faq-a{font-size:14px}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1100px 700px at 12% 0%, rgba(255,59,107,.22), transparent 60%),
+        radial-gradient(900px 600px at 90% 18%, rgba(255,154,59,.16), transparent 55%),
+        radial-gradient(900px 700px at 50% 100%, rgba(39,175,96,.10), transparent 55%),
+        var(--bg);
+      line-height:1.35;
     }
-    .faq-cta{margin-top:18px;display:inline-block}
-    /* Estilos para delay */
-    .hidden{display:none;opacity:0;}
-    .visible{opacity:1;transition:opacity 0.5s ease;}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .top{
+      position:sticky; top:0; z-index:10;
+      background:rgba(11,15,25,.72);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .top-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display:grid; place-items:center;
+      color:#0b0f19;
+      font-weight:1000;
+      box-shadow: 0 16px 45px rgba(255,59,107,.18);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      padding:8px 12px; border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    main{padding:34px 0 26px}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:start;
+    }
+    @media (max-width: 920px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card-head{
+      padding:18px 18px 12px;
+      border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    }
+    h1{
+      margin:0 0 8px;
+      font-size:34px;
+      letter-spacing:-.4px;
+      line-height:1.05;
+    }
+    .sub{margin:0; color:var(--muted); font-size:15px}
+    .card-body{padding:18px}
+    .steps{display:grid; gap:12px}
+    .step{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+    }
+    .num{
+      width:30px; height:30px; border-radius:12px;
+      background: rgba(39,175,96,.16);
+      border:1px solid rgba(39,175,96,.35);
+      display:grid; place-items:center;
+      color: var(--good);
+      font-weight:1000;
+      flex:0 0 30px;
+      margin-top:1px;
+    }
+    .step b{color:var(--text)}
+    .step p{margin:2px 0 0; color:var(--muted); font-size:14px}
+
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:14px 16px;
+      border-radius:14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#0b0f19;
+      font-weight:1000;
+      border:none;
+      cursor:pointer;
+      width:100%;
+      box-shadow: 0 20px 60px rgba(255,59,107,.22);
+      transition: transform .12s ease, filter .12s ease;
+      font-size:16px;
+    }
+    .cta:hover{transform: translateY(-1px); filter:saturate(1.08)}
+    .cta.secondary{
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      color:var(--text);
+      box-shadow:none;
+      font-weight:900;
+    }
+    .mini{
+      display:grid; gap:10px;
+    }
+    .box{
+      padding:16px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .box h3{margin:0 0 8px; font-size:18px}
+    .box p{margin:0; color:var(--muted); font-size:14px}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:14px}
+    .list li{margin:8px 0}
+    .alert{
+      border-radius:16px;
+      border:1px solid rgba(255,201,74,.35);
+      background: rgba(255,201,74,.10);
+      padding:14px;
+      color:rgba(238,242,255,.92);
+    }
+    .alert b{color:var(--text)}
+    .divider{height:1px; background:var(--line); margin:14px 0}
+
+    footer{
+      padding:22px 0 32px;
+      border-top:1px solid var(--line);
+      color:rgba(238,242,255,.70);
+      font-size:12.5px;
+    }
+    .foot{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 860px){ .foot{grid-template-columns:1fr} }
+    .muted{color:var(--muted)}
+    .link{
+      color:rgba(238,242,255,.85);
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+    .floating{
+      position:fixed; left:16px; right:16px; bottom:14px;
+      display:none;
+      z-index:15;
+    }
+    @media (max-width: 920px){ .floating{display:block} }
   </style>
 </head>
+
 <body>
-  <main class="wrap">
-    <!-- VSL NO FUNDO AZUL DA PÁGINA, SEM CAMADA -->
-    <vturb-smartplayer id="vid-68c76f558d74d8c4f609cdba" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
-    <script type="text/javascript">
-      var s=document.createElement("script");
-      s.src="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/68c76f558d74d8c4f609cdba/v4/player.js";
-      s.async=!0;
-      document.head.appendChild(s);
-    </script>
-
-    <!-- FRASE FIXA EM UMA LINHA COM IMAGEM SUBSTITUINDO O EMOJI -->
-    <p class="hint">
-      <span class="speaker"><img src="https://i.postimg.cc/T1TDWjcq/Design-sem-nome-21.png" alt="Speaker Icon" style="width: 22px; height: 22px;"></span>
-      <span class="hint-text">Quédate hasta el final para <b>acceder a las Ondas Cerebrales</b></span>
-    </p>
-
-    <!-- OFERTA INICIAL (PACOTE + PREÇOS + BOTÃO + PAGAMENTOS) -->
-    <section class="offer hidden">
-      <img src="https://i.postimg.cc/W3pjXGV1/Bb-HNPH2621926.png" alt="Imagen del paquete" class="bundle" />
-      <p class="price-normal">NORMAL: 169,00 $USD</p>
-      <p class="price-today">HOY: 39,00 $USD</p>
-      <p class="price-tomorrow">Mañana: 49,00 $USD</p>
-      <p class="note">¡Click en el botón👇para ver en su moneda local y facilidades en cuotas!</p>
-      <a href="https://pay.hotmart.com/S101976502G?checkoutMode=10" class="btn-checkout">¡SÍ, QUIERO RECUPERAR MI AGUDEZA MENTAL!</a>
-      <a href="#carrito" class="add-cart">Agregar al Carrito</a>
-      <img src="https://i.postimg.cc/ZK5BCNyZ/Rowj-Sa4817870.png" alt="Métodos de pago" class="payments" />
-    </section>
-
-    <div style="text-align:center" id="kiwify-upsell-eTCETHN" data-upsell-url="" data-downsell-url="">
-          <button id="kiwify-upsell-trigger-eTCETHN" style="background-color:#27AF60;padding:12px 16px;cursor:pointer;color:#FFFFFF;font-weight:600;border-radius:4px;border:1px solid #27AF60;font-size:20px;">Sim, eu aceito essa oferta especial!</button>
-          <div id="kiwify-upsell-cancel-trigger-eTCETHN" style="margin-top:1rem;cursor:pointer;font-size:16px;text-decoration:underline;font-family:sans-serif;">Não, eu gostaria de recusar essa oferta</div>
-        </div><script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
-
-    <!-- REFERENCIAS (BANNER AZUL FULL + ESPECIALISTA VISÍVEIS, FRASE COM DELAY) -->
-    <section class="references">
-      <div class="references-text hidden">
-        <h2>"El camino para la <b>gran riqueza</b> y cumplir tus <b>anhelados sueños</b>"</h2>
-      </div>
-      <img src="https://i.postimg.cc/mDFxd8qR/s-Cm-Bfh0370941.jpg" alt="Referencias científicas" class="banner-full" />
-      <img src="https://i.postimg.cc/DyP9YWCW/px-Hrbv9530608-removebg-preview.png" alt="Dr. James Mendoza" class="doctor-full" />
-    </section>
-
-    <!-- BLOCO: MEMORY PULSE + BONOS -->
-    <section class="bonus-section hidden">
-      <h2>TODO LO QUE <span>RECIBIRÁS</span> HOY:</h2>
-      <h3>MEMORY PULSE + BONOS</h3>
-      <img src="https://i.postimg.cc/SxzvbJd7/WPFgvv3088374.png" alt="Memory Pulse Mockup" class="mockup" />
-      <ul>
-        <li>Escucha, la onda MEMORY PULSE comienza a limpiar tu mente desde el primer uso</li>
-        <li>La activación gamma sincroniza tus pensamientos</li>
-        <li>Mejora tu enfoque y te hace sentir mentalmente renovado</li>
-        <li>Desbloquea habilidades dormidas</li>
-        <li>Recupera tu agudeza mental sin suplementos ni ejercicios</li>
-        <li>MEMORY PULSE no es magia ni meditación: es ciencia neurológica diseñada para activar tu poder mental latente</li>
-        <li>Vas a notar cómo tu mente se aclara, tu energía mejora</li>
-        <li>Siente que recuperas el control total de tu capacidad mental</li>
-      </ul>
-      <p style="text-decoration:line-through; background:yellow; display:inline-block; padding:2px 6px; font-weight:700;">VALOR $249 USD</p>
-    </section>
-
-    <!-- BÔNUS 1 -->
-    <section class="bonus-item hidden">
-      <h2>BONO #1: AHORRADOR DE MEMORIA DE 1 MINUTO</h2>
-      <img src="https://i.postimg.cc/4dhv2SgJ/NYvwf-S2930704.png" alt="Ahorrador de memoria de 1 minuto" class="bonus-img" />
-      <ul>
-        <li>Aprende algo nuevo y guardalo en tu memoria en solo 60 segundos</li>
-        <li>Funciona mientras haces fila, cocinas o tomas café</li>
-        <li>Convierte lo nuevo en memoria de largo plazo</li>
-        <li>Olvidarse ya no es una opción</li>
-      </ul>
-      <p style="text-decoration:line-through; background:yellow; display:inline-block; padding:2px 6px; font-weight:700;">VALOR $97 USD</p>
-      <p>(GRÁTIS Uniéndote al Programa)</p>
-    </section>
-
-    <!-- BÔNUS 2 -->
-    <section class="bonus-item hidden">
-      <h2>BONO #2: GUÍA DE COMPRAS INTELIGENTE</h2>
-      <img src="https://i.postimg.cc/NjgCdg94/tzzhe-Y3291520.png" alt="Guía de compras inteligente" class="bonus-img" />
-      <ul>
-        <li>Descubre qué alimentos comunes están saboteando tu memoria y siguen en tu carrito de compras.</li>
-        <li>Con solo aplicar uno de los trucos, vas a ahorrar dinero y alimentar mejor a tu cerebro.</li>
-        <li>Come más inteligente, piensa más claro y gasta menos.</li>
-        <li>No importa dónde compres, estos errores son universales y este plan los soluciona.</li>
-      </ul>
-      <p style="text-decoration:line-through; background:yellow; display:inline-block; padding:2px 6px; font-weight:700;">VALOR $147 USD</p>
-      <p>(GRÁTIS Uniéndote al Programa)</p>
-    </section>
-
-    <!-- BÔNUS 3 -->
-    <section class="bonus-item hidden">
-      <h2>BONO #3: EL BOTÓN DE ENERGIA</h2>
-      <img src="https://i.postimg.cc/50TNm7sB/q-Asr-SC3177219.png" alt="El botón de energia" class="bonus-img" />
-      <ul>
-        <li>Siente como si tu semana tuviera un día extra</li>
-        <li>Aprende cómo aprovechar al máximo tu energía mental</li>
-        <li>Más energía, más foco, más claridad</li>
-        <li>No es solo tener más tiempo, es tener más mente para usarlo.</li>
-      </ul>
-      <p style="text-decoration:line-through; background:yellow; display:inline-block; padding:2px 6px; font-weight:700;">VALOR $147 USD</p>
-      <p>(GRÁTIS Uniéndote al Programa)</p>
-    </section>
-
-    <!-- CTA FINAL (repete banner + pagamentos) -->
-    <section class="continuacion hidden">
-      <h2>ACCEDE A TODO ESTO POR SOLO:</h2>
-      <img src="https://i.postimg.cc/W3pjXGV1/Bb-HNPH2621926.png" alt="Banner de la oferta" class="bundle-img" />
-      <p class="price-normal">NORMAL: 169,00 $USD</p>
-      <p class="price-today">HOY: 39,00 $USD</p>
-      <p class="price-tomorrow">Mañana: 49,00 $USD</p>
-      <p class="note">Conoce el precio en tu moneda local, dándole click al botón de abajo:</p>
-      <a href="https://pay.hotmart.com/S101976502G?checkoutMode=10" class="btn-checkout">TOQUE AQUÍ Y ACCEDA CON EL 70% DE DESCUENTO</a>
-      <p class="note">Agregar al Carrito</p>
-      <img src="https://i.postimg.cc/ZK5BCNyZ/Rowj-Sa4817870.png" alt="Métodos de pago" class="payments" />
-    </section>
-
-    <!-- COMENTÁRIOS -->
-    <section class="comments hidden">
-      <h2>Mostrando 14 comentarios</h2>
-      <div class="comment">
-        <img src="https://i.postimg.cc/LXGmcmJq/1.webp" alt="Alejandro Fernandez">
-        <div class="comment-body">
-          <p><b>Alejandro Fernandez</b> — Memory Pulse es una guía excepcional para aprender cómo alinear tus pensamientos, emociones y acciones para lograr mejorar la agudeza mental. La activación gamma sincroniza tus pensamientos, mejora tu enfoque y te hace sentir mentalmente renovado.</p>
-          <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">59</div>
-          <p class="meta">Me gusta · Responder · hace un momento</p>
+  <div class="top">
+    <div class="wrap">
+      <div class="top-inner">
+        <div class="brand">
+          <div class="logo">TG</div>
+          <div>
+            <div style="font-size:14px; opacity:.95;">Truco de la Gelatina</div>
+            <div class="muted" style="font-size:13px;">Página de confirmación</div>
+          </div>
         </div>
+
+        <div class="pill">Compra confirmada • próximos pasos</div>
       </div>
-      <div class="comment">
-        <img src="https://i.postimg.cc/hP1qrL1Q/3.webp" alt="Ana Villa">
-        <div class="comment-body">
-          <p><b>Ana Villa</b> — Aprendés más rápido que antes, incluso superando a personas mucho más jóvenes....Wuuu!!!</p>
-          <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">39</div>
-          <p class="meta">Me gusta · Responder · 3 min</p>
-        </div>
-      </div>
-      <div class="comment">
-        <img src="https://i.postimg.cc/Dyjxnm2Y/22.webp" alt="Sofia Robles">
-        <div class="comment-body">
-          <p><b>Sofia Robles</b> — Mi marido no creía que esto fuera posible, así que sin avisarle decidí arriesgarme y confiar. Estoy sin palabras, ahora él quiere que le enseñe cómo es lo que hice y un giro 360°…</p>
-          <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">112</div>
-          <p class="meta">Me gusta · Responder · 5 min</p>
-        </div>
-      </div>
-      <div class="comment">
-        <img src="https://i.postimg.cc/W3qv6x5s/2.webp" alt="Juan Calderón">
-        <div class="comment-body">
-          <p><b>Juan Calderón</b> — Memory Pulse no es solo un curso, es una experiencia; vas a notar cómo tu mente se aclara, tu energía mejora y sentís que recuperás el control total de tu capacidad mental.</p>
-          <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">92</div>
-          <p class="meta">Me gusta · Responder · 12 min</p>
-        </div>
-      </div>
-      <div class="comment">
-        <img src="https://i.postimg.cc/wT6r9SD3/10.webp" alt="Gabriela Herrera">
-        <div class="comment-body">
-          <p><b>Gabriela Herrera</b> — AMIGOS... ¡Esto es fantástico! Lo usé una vez y sentí como si mi mente se despejara por completo. ¡No recordaba pensar con tanta claridad desde hace años!</p>
-          <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">45</div>
-          <p class="meta">Me gusta · Responder · 15 min</p>
-        </div>
-      </div>
-      <div class="comment">
-        <img src="https://i.postimg.cc/cJqMLnPT/25.webp" alt="Carolina Sanchez">
-        <div class="comment-body">
-          <p><b>Carolina Sanchez</b> — No sé cómo es que esto está tan barato! Deberías subirle el precio. ¡Literal me cambiaste la vida!</p>
-          <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">95</div>
-          <p class="meta">Me gusta · Responder · 19 min</p>
-        </div>
-      </div>
-      <div class="comment">
-        <img src="https://i.postimg.cc/DzbjCF3p/16.webp" alt="Alejandro Felipe">
-        <div class="comment-body">
-          <p><b>Alejandro Felipe</b> — He pasado por muchos cursos, pero con Memory Pulse mi productividad se duplicó. Siento como si tuviera una hora extra cada día, y mi cabeza no se agota.</p>
-          <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">119</div>
-          <p class="meta">Me gusta · Responder · 21 min</p>
-        </div>
-      </div>
-      <div class="comment">
-        <img src="https://i.postimg.cc/52ykCL7V/15.webp" alt="María D'Castillo">
-        <div class="comment-body">
-          <p><b>María D'Castillo</b> — ¿En verdad este método funciona?</p>
-          <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">67</div>
-          <p class="meta">Me gusta · Responder · 31 min</p>
-          <div class="comment" style="margin-top:12px;margin-left:58px;">
-            <img src="https://i.postimg.cc/kG5WpFtM/b-Wi-Qwi3935436.jpg" alt="María Larco">
-            <div class="comment-body">
-              <p><b>María Larco</b> — María D'Castillo Me encontraba igual que tú, muy incrédula, pero perdía más no intentándolo... ahora vivo súper feliz al lado de mi familia. Antes dependía de suplementos para concentrarme. Con esto, es como si mi cerebro se activara solo.</p>
-              <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">45</div>
-              <p class="meta">Me gusta · Responder · 35 min</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="wrap">
+      <div class="grid">
+
+        <!-- COLUNA PRINCIPAL -->
+        <section class="card">
+          <div class="card-head">
+            <h1>Gracias. Tu acceso está en camino.</h1>
+            <p class="sub">
+              A continuación tienes lo que debes hacer para recibir y empezar a usar el <b>Truco de la Gelatina</b> sin perder tiempo.
+            </p>
+          </div>
+
+          <div class="card-body">
+            <div class="steps">
+              <div class="step">
+                <div class="num">1</div>
+                <div>
+                  <b>Revisa tu email ahora</b>
+                  <p>
+                    Te enviamos el acceso al material. Revisa también <b>Spam</b> o <b>Promociones</b> si no lo ves.
+                  </p>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="num">2</div>
+                <div>
+                  <b>Guarda el email en favoritos</b>
+                  <p>
+                    Así no pierdes el acceso. Si lo prefieres, reenvíate el email a tu cuenta principal.
+                  </p>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="num">3</div>
+                <div>
+                  <b>Empieza con el “Día 1”</b>
+                  <p>
+                    No intentes “hacerlo perfecto”. Ejecuta el plan por 7 días y luego ajustas.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="comment" style="margin-top:12px;margin-left:58px;">
-            <img src="https://i.postimg.cc/GpYKFQvZ/23.webp" alt="Elen Xiui">
-            <div class="comment-body">
-              <p><b>Elen Xiui</b> — María D'Castillo me ha enseñado a creer en mí misma y en mis capacidades para lograr cualquier cosa que me proponga... este programa es una bendición en mi vida.</p>
-              <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">63</div>
-              <p class="meta">Me gusta · Responder · 41 min</p>
-            </div>
-          </div>
-          <div class="comment" style="margin-top:12px;margin-left:58px;">
-            <img src="https://i.postimg.cc/52ykCL7V/15.webp" alt="María D'Castillo">
-            <div class="comment-body">
-              <p><b>María D'Castillo</b> — Muchas Gracias, sus comentarios me dan ánimo, lo intentaré 😊</p>
-              <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">85</div>
-              <p class="meta">Me gusta · Responder · 42 min</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="comment">
-        <img src="https://i.postimg.cc/Y9KXZVpr/17.webp" alt="Luis Miguel Lora">
-        <div class="comment-body">
-          <p><b>Luis Miguel Lora</b> — Si buscas un curso que te ayude a transformar tu vida en todos los sentidos, Memory Pulse es definitivamente la respuesta.</p>
-          <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">57</div>
-          <p class="meta">Me gusta · Responder · 51 min</p>
-        </div>
-      </div>
-      <div class="comment">
-        <img src="https://i.postimg.cc/85SHt6Hs/24.webp" alt="Vielka Villacorta">
-        <div class="comment-body">
-          <p><b>Vielka Villacorta</b> — Pagaría hasta 500 dólares por este programa, en verdad me cambió la vida y de mi familia.</p>
-          <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">39</div>
-          <p class="meta">Me gusta · Responder · 1 h</p>
-        </div>
-      </div>
-      <div class="comment">
-        <img src="https://i.postimg.cc/13Fw2z4F/vx-Phi-J2507668.jpg" alt="Mónica Sanchez">
-        <div class="comment-body">
-          <p><b>Mónica Sanchez</b> — Gracias a Memory Pulse, estoy leyendo y reteniendo información como nunca antes. Lo recomiendo a todos mis alumnos.</p>
-          <div class="likes"><img src="https://i.postimg.cc/WzSJmDWR/l.webp" alt="like"><img src="https://i.postimg.cc/fyV81h6r/h.webp" alt="love">26</div>
-          <p class="meta">Me gusta · Responder · 2 h</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- FAQ -->
-    <section class="faq-wrap hidden" id="faq">
-      <h2 class="faq-title">CONSULTE LAS PREGUNTAS MÁS <span>FRECUENTES</span></h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-q">¿Qué es MEMORY PULSE?<span class="chev">›</span></button>
-          <div class="faq-a">
-            MEMORY PULSE es un programa de activación cerebral en formato audio que utiliza ondas sonoras específicamente moduladas para estimular las ondas gamma del cerebro. Estas ondas gamma están científicamente asociadas con:<br>
-            Mejora de la memoria, mayor claridad mental, incremento de la concentración, procesamiento más rápido de información, y Recuperación de funciones cognitivas.
+            <div class="divider"></div>
+
+            <!-- CTA PRINCIPAL: troque o link -->
+            <a class="cta" href="https://healthlifeee.online/gel" target="_blank" rel="noopener">
+              Ir a la página oficial del Truco de la Gelatina
+            </a>
+
+            <div style="margin-top:10px;">
+              <!-- CTA SECUNDÁRIO: troque o link do acesso/material -->
+              <a class="cta secondary" href="https://TU-LINK-DE-ACCESO-AQUI.com" target="_blank" rel="noopener">
+                Abrir mi acceso ahora
+              </a>
+            </div>
+
+            <div style="margin-top:12px;" class="alert">
+              <b>Si no recibes el email en 10 minutos:</b>
+              revisa spam/promociones y luego contacta soporte con el email usado en la compra.
+            </div>
+
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">¿Cómo realizar el pago?<span class="chev">›</span></button>
-          <div class="faq-a">
-            Simplemente de click a cualquiera de los botones de pago, llene el formulario con sus datos y realice el pago. El acceso a MEMORY PULSE + Bonos será enviado automáticamente a su correo electrónico.
+        </section>
+
+        <!-- SIDEBAR -->
+        <aside class="mini">
+          <div class="box">
+            <h3>Soporte</h3>
+            <p>
+              ¿Necesitas ayuda? Escríbenos y resolvemos rápido.
+            </p>
+            <ul class="list">
+              <li>Email: <a class="link" href="mailto:soporte@healthlifeee.online">soporte@healthlifeee.online</a></li>
+              <li>Horario: Lun–Vie</li>
+            </ul>
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">¿Cómo accedo al contenido del programa?<span class="chev">›</span></button>
-          <div class="faq-a">
-            Al finalizar su compra, recibirá un usuario y contraseña, solo tendrá que iniciar su sesión con esos datos en nuestra área de miembros. Todos los detalles de acceso serán enviados a su correo electrónico.
+
+          <div class="box">
+            <h3>Tu enfoque (7 días)</h3>
+            <p>Si quieres resultados, esto es lo que importa:</p>
+            <ul class="list">
+              <li>Consistencia > perfección</li>
+              <li>Checklist diario</li>
+              <li>Evitar improvisación</li>
+            </ul>
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">¿Ofrecen garantía?<span class="chev">›</span></button>
-          <div class="faq-a">
-            Sí, si lo intenta y si milagrosamente luego de un año no logra notar cómo manifestó bendiciones en su vida, entonces solicite un reembolso del 100% y se lo daremos. Es nuestro compromiso con usted.
+
+          <div class="box">
+            <h3>Enlaces rápidos</h3>
+            <ul class="list">
+              <li><a class="link" href="https://healthlifeee.online/gel" target="_blank" rel="noopener">Página oficial</a></li>
+              <li><a class="link" href="https://healthlifeee.online/privacidad" target="_blank" rel="noopener">Política de privacidad</a></li>
+              <li><a class="link" href="https://healthlifeee.online/terminos" target="_blank" rel="noopener">Términos</a></li>
+            </ul>
+            <p class="muted" style="margin-top:10px; font-size:12.5px;">
+              Ajusta estos links según tus páginas reales.
+            </p>
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">¿En cuánto tiempo tendré resultados?<span class="chev">›</span></button>
-          <div class="faq-a">
-            Dentro del primer mes logrará notar cambios en su realidad, gracias a nuestro plan de 30 días, sin embargo, su constancia durante los siguientes meses asegurarán para usted una vida de bendiciones y abundancia durante todo el año.
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">¿Qué pasa si tengo preguntas?<span class="chev">›</span></button>
-          <div class="faq-a">
-            Tendrás soporte exclusivo a través de WhatsApp y email, con nuestro equipo de soporte y área de miembros.
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">¿Qué es el grupo VIP?<span class="chev">›</span></button>
-          <div class="faq-a">
-            Es un área de miembros privada, donde podrás realizar tus preguntas, e interactuar con tus demás compañeros. Tendrá acceso al finalizar su compra.
-          </div>
-        </div>
+        </aside>
+
       </div>
-      <a href="https://pay.hotmart.com/S101976502G?checkoutMode=10" class="btn-checkout faq-cta">SÍ, QUIERO ACCEDER Y DESBLOQUEAR MI CLARIDAD MENTAL</a>
-      <img src="https://i.postimg.cc/ZK5BCNyZ/Rowj-Sa4817870.png" alt="Métodos de pago" class="payments" />
-    </section>
+    </div>
   </main>
 
-  <!-- RODAPÉ -->
-  <footer style="background:#000; color:#9ca3af; padding:30px 16px; text-align:center; font-size:13px; line-height:1.6;">
-    <p>Copyright 2025 – Memory Pulse ®<br>Todos los Derechos Reservados</p>
-    <p>
-      <a href="#" style="color:#9ca3af; text-decoration:none; margin:0 6px;">Términos de Uso</a> ·
-      <a href="#" style="color:#9ca3af; text-decoration:none; margin:0 6px;">Privacidad</a>
-    </p>
-    <p style="max-width:900px; margin:6px auto;">
-      Este sitio no forma parte del sitio web de Facebook o de Meta Platforms, Inc. y NO está respaldado por Facebook de ninguna manera.
-      Facebook es una marca comercial de Meta Platforms, Inc. Queda estrictamente prohibida la reproducción, distribución o modificación total o parcial de este sitio web y de los materiales relacionados.
-      Este sitio web y todos sus contenidos están protegidos por las leyes de derechos de autor y propiedad intelectual de todos los países.
-      El autor se reserva el derecho a reclamar daños y perjuicios si no se respetan estas condiciones.
-      Se ha hecho todo lo posible para representar con exactitud este programa.
-      No hay ninguna garantía de que vayas a conseguir la abundancia deseada.
-    </p>
+  <div class="floating">
+    <a class="cta" href="https://TU-LINK-DE-ACCESO-AQUI.com" target="_blank" rel="noopener">Abrir mi acceso</a>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <div style="font-weight:900; margin-bottom:6px;">Truco de la Gelatina</div>
+          <div class="muted">
+            Producto digital de carácter educativo. Los resultados pueden variar según hábitos y constancia.
+          </div>
+        </div>
+        <div class="muted">
+          <div><b>Contacto:</b> soporte@healthlifeee.online</div>
+          <div><b>Nota:</b> revisa spam/promociones si no ves el email.</div>
+        </div>
+      </div>
+    </div>
   </footer>
 
-  <!-- Script de Back Redirect -->
-  <script>
-    // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
-    const link = 'https://meubackredirect.com.br';
-
-    function setBackRedirect(url) {
-      let urlBackRedirect = url;
-      urlBackRedirect = urlBackRedirect =
-        urlBackRedirect.trim() +
-        (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
-        document.location.search.replace('?', '').toString();
-
-      history.pushState({}, '', location.href);
-      history.pushState({}, '', location.href);
-      history.pushState({}, '', location.href);
-
-      window.addEventListener('popstate', () => {
-        console.log('onpopstate', urlBackRedirect);
-        setTimeout(() => {
-          location.href = urlBackRedirect;
-        }, 1);
-      });
-    }
-
-    setBackRedirect(link);
-  </script>
-
-  <!-- JS do acordeão, limpeza do parâmetro src e delay -->
-  <script>
-    // Acordeão
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.parentElement.classList.toggle('open');
-      });
-    });
-
-    // Limpeza do parâmetro src dos links de checkout
-    document.querySelectorAll('.btn-checkout').forEach(btn => {
-      let url = new URL(btn.href);
-      url.searchParams.delete('src'); // Remove apenas o parâmetro src
-      btn.href = url.toString(); // Mantém checkoutMode=10 e outros parâmetros (como UTMs)
-    });
-
-    // Delay para exibir seções de bônus, FAQ, comentários, preços/CTAs e texto de referências
-    setTimeout(() => {
-      document.querySelectorAll('.offer, .bonus-section, .bonus-item, .continuacion, .comments, .faq-wrap, .references-text').forEach(element => {
-        element.classList.remove('hidden');
-        element.classList.add('visible');
-      });
-    }, 1050000); // 1050 segundos (17 minutos e 30 segundos)
-  </script>
 </body>
 </html>
