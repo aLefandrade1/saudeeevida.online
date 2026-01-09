@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Truco de la Gelatina — Método Simple para Empezar a Bajar de Peso</title>
+  <meta name="description" content="Truco de la Gelatina: guía paso a paso con receta y protocolo simple para apoyar tu pérdida de peso con hábitos fáciles." />
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --card:#11182a;
+      --card2:#0f1626;
+      --text:#e9edf7;
+      --muted:#aab4c8;
+      --line:rgba(255,255,255,.10);
+      --accent:#ff3b6b;   /* rosa */
+      --accent2:#ff9a3b;  /* naranja */
+      --good:#27af60;
+      --warn:#ffc94a;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background:
+        radial-gradient(1200px 700px at 10% 0%, rgba(255,59,107,.25), transparent 60%),
+        radial-gradient(900px 600px at 90% 20%, rgba(255,154,59,.18), transparent 55%),
+        radial-gradient(900px 700px at 50% 100%, rgba(39,175,96,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background:rgba(11,15,25,.72);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 30px rgba(255,59,107,.18);
+      display:grid; place-items:center;
+      font-weight:900;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      padding:8px 12px; border-radius:999px;
+      color:var(--muted); font-size:13px;
+    }
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius:14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#0b0f19;
+      font-weight:900;
+      border:none;
+      cursor:pointer;
+      box-shadow: 0 18px 45px rgba(255,59,107,.22);
+      transition: transform .12s ease, filter .12s ease;
+      white-space:nowrap;
+    }
+    .cta:hover{transform: translateY(-1px); filter:saturate(1.1)}
+    .cta:active{transform: translateY(0px)}
+    .cta.secondary{
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      color:var(--text);
+      box-shadow:none;
+      font-weight:800;
+    }
+
+    /* HERO */
+    header.hero{padding:44px 0 22px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr; }
+      .topbar-inner{flex-wrap:wrap}
+    }
+    .hero-left{
+      padding:26px;
+      border-radius:var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-left:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 260px at 20% 0%, rgba(255,59,107,.35), transparent 65%);
+      pointer-events:none;
+      opacity:.8;
+    }
+    .hero-left > *{position:relative}
+    .kicker{
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+      margin-bottom:14px;
+    }
+    h1{
+      margin:8px 0 12px;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    @media (max-width: 520px){ h1{font-size:34px} }
+    .sub{
+      color:var(--muted);
+      font-size:16px;
+      max-width: 54ch;
+    }
+    .hero-actions{
+      display:flex; flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+      align-items:center;
+    }
+    .fineprint{
+      margin-top:14px;
+      font-size:12.5px;
+      color:rgba(233,237,247,.70);
+    }
+    .fineprint span{color:rgba(233,237,247,.88)}
+    .hero-right{
+      border-radius:var(--radius);
+      background: linear-gradient(180deg, rgba(17,24,42,.92), rgba(15,22,38,.92));
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .mock{
+      border-radius:16px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+    }
+    .mock-top{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 14px;
+      border-bottom:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .mock-body{
+      padding:16px;
+      display:grid;
+      gap:12px;
+    }
+    .banner{
+      border-radius:14px;
+      padding:14px;
+      background: radial-gradient(800px 200px at 15% 0%, rgba(255,59,107,.24), transparent 65%),
+                  radial-gradient(800px 250px at 85% 0%, rgba(255,154,59,.16), transparent 60%),
+                  rgba(255,255,255,.03);
+      border:1px solid var(--line);
+    }
+    .banner h3{margin:0 0 6px; font-size:16px}
+    .banner p{margin:0; color:var(--muted); font-size:13.5px}
+    .grid2{
+      display:grid; grid-template-columns:1fr 1fr; gap:10px;
+    }
+    .stat{
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:12px;
+    }
+    .stat .t{font-size:12.5px; color:var(--muted)}
+    .stat .v{font-size:18px; font-weight:900; margin-top:6px}
+    .check{
+      display:flex; gap:10px; align-items:flex-start;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:12px;
+      color:rgba(233,237,247,.92);
+      font-size:13.5px;
+    }
+    .dot{
+      width:18px; height:18px; border-radius:6px;
+      background: rgba(39,175,96,.18);
+      border:1px solid rgba(39,175,96,.35);
+      display:grid; place-items:center;
+      margin-top:1px;
+      flex: 0 0 18px;
+    }
+    .dot svg{width:12px; height:12px; fill: var(--good)}
+    .section{padding:26px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; margin-bottom:12px;
+    }
+    h2{
+      margin:0;
+      font-size:28px;
+      letter-spacing:-.3px;
+    }
+    .hint{color:var(--muted); font-size:14px; max-width:56ch}
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+    .card{
+      grid-column: span 4;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:16px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.22);
+    }
+    @media (max-width: 980px){
+      .card{grid-column: span 6}
+    }
+    @media (max-width: 560px){
+      .card{grid-column: span 12}
+    }
+    .card h4{margin:6px 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .icon{
+      width:40px; height:40px; border-radius:14px;
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      display:grid; place-items:center;
+    }
+    .icon svg{width:18px; height:18px; fill: rgba(233,237,247,.92)}
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width: 900px){ .split{grid-template-columns:1fr} }
+    .panel{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:18px;
+    }
+    .panel h3{margin:0 0 10px; font-size:18px}
+    .list{margin:0; padding-left:18px; color:var(--muted); font-size:14px}
+    .list li{margin:8px 0}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      border-radius:999px; padding:7px 10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: rgba(233,237,247,.88);
+      font-size:12.5px;
+      margin-right:8px;
+      margin-bottom:8px;
+    }
+
+    /* PROOF */
+    .proof{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:14px;
+      margin-top:14px;
+      align-items:start;
+    }
+    @media (max-width: 980px){ .proof{grid-template-columns:1fr} }
+    .quote{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      padding:18px;
+    }
+    .quote p{margin:0; color:rgba(233,237,247,.92); font-size:15px}
+    .quote .by{margin-top:12px; color:var(--muted); font-size:13px}
+    .mini{
+      display:grid; gap:10px;
+    }
+
+    /* PRICING */
+    .pricing-wrap{
+      border-radius: 24px;
+      border:1px solid var(--line);
+      background: radial-gradient(900px 250px at 25% 0%, rgba(255,59,107,.24), transparent 60%),
+                  radial-gradient(900px 250px at 75% 0%, rgba(255,154,59,.16), transparent 60%),
+                  rgba(255,255,255,.03);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .pricing{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .pricing{grid-template-columns:1fr} }
+    .price-box{
+      border-radius: 20px;
+      border:1px solid var(--line);
+      background: rgba(11,15,25,.52);
+      padding:18px;
+    }
+    .price-top{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .price-top h3{margin:0; font-size:20px}
+    .strike{color:rgba(233,237,247,.55); text-decoration:line-through; font-weight:700}
+    .price{
+      font-size:44px; font-weight:1000; letter-spacing:-1px;
+      margin:8px 0 6px;
+    }
+    .price small{font-size:14px; color:var(--muted); font-weight:700}
+    .bullets{
+      display:grid; gap:10px; margin-top:10px;
+    }
+    .bullet{
+      display:flex; gap:10px; align-items:flex-start;
+      color:rgba(233,237,247,.92);
+      font-size:14px;
+    }
+    .bullet b{color:var(--text)}
+    .right-box{
+      border-radius: 20px;
+      border:1px solid var(--line);
+      background: rgba(11,15,25,.32);
+      padding:18px;
+      display:flex; flex-direction:column; justify-content:space-between;
+      gap:12px;
+    }
+    .guarantee{
+      border-radius:16px;
+      border:1px solid rgba(255,201,74,.35);
+      background: rgba(255,201,74,.10);
+      padding:14px;
+    }
+    .guarantee h4{margin:0 0 6px}
+    .guarantee p{margin:0; color:rgba(233,237,247,.88); font-size:13.5px}
+    .secure{
+      display:flex; gap:10px; align-items:center;
+      color:var(--muted); font-size:13px;
+      border-top:1px solid var(--line);
+      padding-top:12px;
+    }
+
+    /* FAQ */
+    details{
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:14px 14px;
+      margin:10px 0;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:900;
+      list-style:none;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+    }
+    summary::-webkit-details-marker{display:none}
+    .faq p{margin:10px 0 0; color:var(--muted); font-size:14px}
+    .arrow{
+      width:28px; height:28px; border-radius:10px;
+      display:grid; place-items:center;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      flex:0 0 28px;
+      transition: transform .15s ease;
+    }
+    details[open] .arrow{transform: rotate(180deg)}
+    footer{
+      padding:26px 0 34px;
+      color:rgba(233,237,247,.70);
+      font-size:12.5px;
+      border-top:1px solid var(--line);
+      margin-top:24px;
+    }
+    .footer-grid{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 860px){ .footer-grid{grid-template-columns:1fr} }
+    .muted{color:var(--muted)}
+    .center{display:flex; justify-content:center}
+    .floating{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:60;
+      display:none;
+    }
+    @media (max-width: 980px){
+      .floating{display:block}
+    }
+    .floating .cta{border-radius:999px; padding:14px 16px}
+    .divider{height:1px; background:var(--line); margin:16px 0}
+    .tagline{
+      font-size:13px;
+      color:rgba(233,237,247,.78);
+    }
+    .imgph{
+      border-radius: 16px;
+      border:1px dashed rgba(255,255,255,.22);
+      background: rgba(255,255,255,.02);
+      padding:16px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .imgph b{color:rgba(233,237,247,.92)}
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="logo">TG</div>
+          <div>
+            <div style="font-size:14px; opacity:.95;">Truco de la Gelatina</div>
+            <div class="tagline">Página oficial • acceso digital inmediato</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <div class="pill">✔ Método simple • paso a paso</div>
+          <a class="cta" href="#comprar">Quiero mi acceso</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="kicker">
+            <span class="pill">Enfoque “white” • lenguaje claro</span>
+            <span class="pill">Sin equipos • sin gimnasio</span>
+            <span class="pill">Compatible con tu rutina</span>
+          </div>
+
+          <h1>El <span style="background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent;">Truco de la Gelatina</span> para empezar a bajar de peso con un protocolo simple.</h1>
+
+          <p class="sub">
+            Una guía práctica (y fácil de seguir) con receta + timing + plan de 7 días para ayudarte a reducir antojos, organizar tus comidas y
+            volver a sentir control sin complicarte la vida.
+          </p>
+
+          <div class="hero-actions">
+            <a class="cta" href="#comprar">Acceder ahora</a>
+            <a class="cta secondary" href="#como-funciona">Ver cómo funciona</a>
+          </div>
+
+          <div class="fineprint">
+            <span>Importante:</span> Este producto es educativo. Los resultados varían según hábitos, constancia y contexto individual.
+            Si estás embarazada, en lactancia o bajo tratamiento médico, consulta a un profesional.
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="mock">
+            <div class="mock-top">
+              <div>Contenido del acceso</div>
+              <div class="muted">Actualizado • Digital</div>
+            </div>
+            <div class="mock-body">
+              <div class="banner">
+                <h3>Incluye: Receta + Protocolo + Plan de 7 días</h3>
+                <p>Diseñado para ser ejecutable. Nada de teoría infinita: instrucciones, checklist y ejemplos.</p>
+              </div>
+
+              <div class="grid2">
+                <div class="stat">
+                  <div class="t">Formato</div>
+                  <div class="v">PDF + Bonus</div>
+                </div>
+                <div class="stat">
+                  <div class="t">Acceso</div>
+                  <div class="v">Inmediato</div>
+                </div>
+              </div>
+
+              <div class="check">
+                <div class="dot">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.4-1.4z"/></svg>
+                </div>
+                <div><b>Checklist diario</b> para evitar improvisación y sostener consistencia.</div>
+              </div>
+
+              <div class="check">
+                <div class="dot">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.4-1.4z"/></svg>
+                </div>
+                <div><b>Timing y porciones</b> (sin extremismos) para facilitar adherencia.</div>
+              </div>
+
+              <!-- IMAGEN (opcional): substitua o src pela sua imagem -->
+              <div class="imgph">
+                <b>Imagen sugerida:</b> agrega aquí una foto del producto/receta.
+                <div class="divider"></div>
+                <div style="opacity:.9">Tip: usa una imagen 1200×800 (JPG/WEBP) para máxima nitidez.</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="como-funciona">
+    <div class="container">
+      <div class="section-title">
+        <h2>Cómo funciona</h2>
+        <div class="hint">Estructura orientada a ejecución: menos “motivación”, más proceso.</div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 11h4v-2h-3V7h-2v6z"/></svg>
+          </div>
+          <h4>Timing inteligente</h4>
+          <p>Te mostramos un marco simple de horarios para reducir picoteos y mantenerte consistente.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h6v2H7v-2z"/></svg>
+          </div>
+          <h4>Receta + variaciones</h4>
+          <p>Base clara con alternativas para no depender de un solo sabor o rutina.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l4 8H8l4-8zm0 20a2 2 0 110-4 2 2 0 010 4zm8-6H4v-2h16v2z"/></svg>
+          </div>
+          <h4>Checklist de adherencia</h4>
+          <p>Una lista diaria para sostener el plan sin depender de fuerza de voluntad.</p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <h3>Para quién es</h3>
+          <div style="margin-bottom:8px;">
+            <span class="badge">✔ Quiere rutina simple</span>
+            <span class="badge">✔ Necesita controlar antojos</span>
+            <span class="badge">✔ Prefiere pasos claros</span>
+          </div>
+          <ul class="list">
+            <li>Personas que quieren un protocolo ejecutable sin tecnicismos.</li>
+            <li>Quien ya intentó “dietas perfectas” y se cansó de empezar y parar.</li>
+            <li>Quien busca un método de apoyo para organizar su alimentación.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Para quién no es</h3>
+          <div style="margin-bottom:8px;">
+            <span class="badge">✖ Promesas milagrosas</span>
+            <span class="badge">✖ Resultados sin constancia</span>
+          </div>
+          <ul class="list">
+            <li>Quien busca “soluciones mágicas” sin ajustar hábitos.</li>
+            <li>Quien necesita tratamiento clínico y espera que un PDF lo sustituya.</li>
+            <li>Quien no está dispuesta a seguir un plan por al menos 7 días.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="beneficios">
+    <div class="container">
+      <div class="section-title">
+        <h2>Qué vas a conseguir con el Truco</h2>
+        <div class="hint">Beneficios presentados sin humo: orientados a hábitos y consistencia.</div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-7-10a4 4 0 017-2 4 4 0 017 2c0 5.65-7 10-7 10z"/></svg>
+          </div>
+          <h4>Menos ansiedad por comida</h4>
+          <p>Protocolo de rutina para disminuir decisiones impulsivas durante el día.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm4 0h14v-2H7v2zM3 19h2v-2H3v2zm4 0h14v-2H7v2zM3 7h2V5H3v2zm4 0h14V5H7v2z"/></svg>
+          </div>
+          <h4>Estructura diaria</h4>
+          <p>Un “sistema” simple para que tu semana no dependa de motivación.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 14l-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7z"/></svg>
+          </div>
+          <h4>Protocolo claro</h4>
+          <p>Receta + porciones + timing, en un formato listo para aplicar hoy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prueba">
+    <div class="container">
+      <div class="section-title">
+        <h2>Prueba social y credibilidad</h2>
+        <div class="hint">Recomendación: reemplaza los textos por testimonios reales (cumplimiento y consistencia).</div>
+      </div>
+
+      <div class="proof">
+        <div class="quote">
+          <p>
+            “Lo que me gustó es que no promete milagros. Me dio estructura: qué hacer, cuándo hacerlo y cómo sostenerlo.
+            En una semana me sentí más ligera y dejé de improvisar.”
+          </p>
+          <div class="by">— Testimonio (ejemplo), 34 años • México</div>
+
+          <div class="divider"></div>
+
+          <p>
+            “No tenía tiempo para cocinar ‘perfecto’. Con el checklist, volví a una rutina simple y eso me ayudó a mantenerme constante.”
+          </p>
+          <div class="by">— Testimonio (ejemplo), 41 años • Colombia</div>
+        </div>
+
+        <div class="mini">
+          <div class="panel">
+            <h3>Entrega y acceso</h3>
+            <ul class="list">
+              <li>Acceso digital inmediato después del pago.</li>
+              <li>Material en formato PDF + bonus (si aplica).</li>
+              <li>Compatible con celular y computadora.</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Transparencia</h3>
+            <ul class="list">
+              <li>No es una consulta médica.</li>
+              <li>Resultados dependen de hábitos y constancia.</li>
+              <li>Si tienes una condición de salud, consulta a un profesional.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="comprar">
+    <div class="container">
+      <div class="pricing-wrap">
+        <div class="section-title" style="margin-bottom:8px;">
+          <h2>Acceso al Truco de la Gelatina</h2>
+          <div class="hint">Optimiza para conversión: claridad de valor + garantía + CTA fuerte.</div>
+        </div>
+
+        <div class="pricing">
+          <div class="price-box">
+            <div class="price-top">
+              <h3>Paquete Digital (PDF + Protocolo)</h3>
+              <div class="pill">Entrega inmediata</div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <div class="strike">Antes: US$ 39</div>
+              <div class="price">US$ 33 <small>/ pago único</small></div>
+              <div class="muted" style="font-size:13.5px;">Precio sugerido. Edita valores según tu checkout.</div>
+            </div>
+
+            <div class="bullets">
+              <div class="bullet">
+                <div class="dot">
+                  <svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.4-1.4z"/></svg>
+                </div>
+                <div><b>Receta base</b> + variaciones para no aburrirte.</div>
+              </div>
+              <div class="bullet">
+                <div class="dot">
+                  <svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.4-1.4z"/></svg>
+                </div>
+                <div><b>Timing y porciones</b> con instrucciones claras.</div>
+              </div>
+              <div class="bullet">
+                <div class="dot">
+                  <svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.4-1.4z"/></svg>
+                </div>
+                <div><b>Checklist diario</b> para sostener constancia en 7 días.</div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- BOTÃO PRINCIPAL: troque o link pelo seu checkout -->
+            <a class="cta" href="https://TU-CHECKOUT-AQUI.com" style="width:100%; font-size:16px;">
+              Sí, quiero mi acceso ahora
+            </a>
+
+            <div class="fineprint" style="margin-top:10px;">
+              Al finalizar, recibirás acceso digital. Revisa tu email (y carpeta spam/promociones).
+            </div>
+          </div>
+
+          <div class="right-box">
+            <div class="guarantee">
+              <h4>Garantía de 7 días</h4>
+              <p>
+                Si en 7 días sientes que el material no es para ti, solicita reembolso según las reglas de la plataforma donde compraste.
+              </p>
+            </div>
+
+            <div class="panel" style="padding:14px;">
+              <h3 style="margin:0 0 10px;">Bonus (opcional)</h3>
+              <ul class="list">
+                <li>Lista de compras sugerida (7 días).</li>
+                <li>Ejemplos de menú simple para no improvisar.</li>
+                <li>Mini guía: “errores comunes” y cómo evitarlos.</li>
+              </ul>
+              <div class="muted" style="font-size:12.5px; margin-top:10px;">
+                Si no ofreces bonus, elimina este bloque para mantener congruencia.
+              </div>
+            </div>
+
+            <div class="secure">
+              <span class="pill" style="padding:6px 10px;">Pago seguro</span>
+              <span>•</span>
+              <span>Acceso inmediato</span>
+              <span>•</span>
+              <span>Soporte por email</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="section" style="padding-bottom:0;">
+        <div class="section-title">
+          <h2>Preguntas frecuentes</h2>
+          <div class="hint">Bloque crítico para reduzir objeções sem “forçar a barra”.</div>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>¿En cuánto tiempo veré resultados? <span class="arrow">▾</span></summary>
+            <p>Depende de tus hábitos, tu constancia y tu contexto. El objetivo del material es darte estructura para ejecutar 7 días con consistencia.</p>
+          </details>
+
+          <details>
+            <summary>¿Esto sustituye una consulta médica? <span class="arrow">▾</span></summary>
+            <p>No. Es material educativo. Si tienes una condición, medicación o dudas clínicas, consulta a un profesional.</p>
+          </details>
+
+          <details>
+            <summary>¿Necesito gimnasio o suplementos? <span class="arrow">▾</span></summary>
+            <p>No. El enfoque está en receta, timing y rutina simple. Puedes combinar con actividad física si ya la practicas.</p>
+          </details>
+
+          <details>
+            <summary>¿Cómo recibo el acceso? <span class="arrow">▾</span></summary>
+            <p>Tras el pago, recibirás acceso digital. Revisa tu correo (incluyendo spam/promociones).</p>
+          </details>
+        </div>
+
+        <div class="center" style="margin-top:14px;">
+          <a class="cta" href="https://TU-CHECKOUT-AQUI.com">Quiero empezar hoy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="font-weight:900; margin-bottom:6px;">Truco de la Gelatina</div>
+          <div class="muted">
+            Este sitio y producto no están afiliados a Facebook/Meta/Google. Resultados individuales varían.
+            Contenido con fines educativos.
+          </div>
+        </div>
+        <div class="muted">
+          <div><b>Contacto:</b> soporte@tudominio.com</div>
+          <div><b>Política:</b> Reembolso según plataforma de pago.</div>
+          <div><b>Copyright:</b> © <span id="year"></span> • Todos los derechos reservados.</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating">
+    <a class="cta" href="#comprar">Acceder</a>
+  </div>
+
+  <script>
+    // Ano automático
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Smooth scroll simples
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click", (e)=>{
+        const id = a.getAttribute("href");
+        if(!id || id === "#") return;
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
+</body>
+</html>
