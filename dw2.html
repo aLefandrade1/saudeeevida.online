@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Downsell 2 — Última Ayuda</title>
 
+  <!-- CartPanda OCU (no HEAD) -->
+  <script src="https://assets.mycartpanda.com/cartx-ecomm-ui-assets/js/libs/ocu-external.js"></script>
+  <script> new OcuExternal(); </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html, body { overflow-x: hidden; }
@@ -47,11 +51,11 @@
     h1{
       margin:6px 0 10px;
       font-size:38px;
-      line-height:1.15; /* mais respiro no mobile */
+      line-height:1.15;
       font-weight:900;
       text-transform:uppercase;
       color:#c62828;
-      letter-spacing:.2px; /* reduz espaçamento que estourava */
+      letter-spacing:.2px;
       word-break:normal;
       hyphens:auto;
     }
@@ -59,11 +63,11 @@
     .sub{
       margin:0 0 14px;
       font-size:16px;
-      line-height:1.5; /* mais altura para não embolar */
+      line-height:1.5;
       color:#7a3b3b;
       font-style:italic;
       max-width:100%;
-      padding:0 6px; /* respiro lateral no mobile */
+      padding:0 6px;
       word-break:normal;
       hyphens:auto;
     }
@@ -123,8 +127,8 @@
 
     .pricebox{
       margin:10px auto 10px;
-      background:#e8f7ee; /* fundo verde claro */
-      border:2px solid rgba(39,175,96,.45); /* borda verde */
+      background:#e8f7ee;
+      border:2px solid rgba(39,175,96,.45);
       border-radius:16px;
       padding:14px 12px 12px;
       max-width:520px;
@@ -132,7 +136,7 @@
 
     .pricebox .label{
       font-size:13px;
-      color:#1f7a4d; /* texto verde escuro */
+      color:#1f7a4d;
       margin-bottom:6px;
       font-weight:700;
     }
@@ -140,13 +144,13 @@
     .pricebox .price{
       font-size:44px;
       font-weight:900;
-      color:#27AF60; /* preço em verde */
+      color:#27AF60;
       margin:0 0 6px;
     }
 
     .pricebox .micro{
       font-size:12px;
-      color:#3f8f63; /* texto auxiliar verde */
+      color:#3f8f63;
       margin-bottom:12px;
       font-style:italic;
     }
@@ -167,6 +171,7 @@
       box-shadow:0 10px 22px rgba(198,40,40,.25);
       animation:pulseSoft 4.2s ease-in-out infinite;
       transform-origin:center;
+      text-decoration:none;
     }
     @keyframes pulseSoft{
       0%{transform:scale(1);} 50%{transform:scale(1.02);} 100%{transform:scale(1);} }
@@ -197,22 +202,8 @@
     }
 
     @media (max-width:480px){
-      h1{ 
-        font-size:26px; 
-        line-height:1.2; 
-        letter-spacing:.1px;
-      }
-      .sub{
-        font-size:14px; /* menor no celular */
-        line-height:1.6; /* mais organizado */
-        padding:0 8px;
-      }
-      .pricebox .price{ font-size:40px; }
-      .card{ padding:16px 14px; }
-    }
-      .pricebox .price{ font-size:40px; }
-      .card{ padding:16px 14px; }
-    }
+      h1{ font-size:26px; line-height:1.2; letter-spacing:.1px; }
+      .sub{ font-size:14px; line-height:1.6; padding:0 8px; }
       .pricebox .price{ font-size:40px; }
       .card{ padding:16px 14px; }
     }
@@ -256,12 +247,14 @@
           <div class="price">$9 USD</div>
           <div class="micro">(El costo mínimo de la plataforma)</div>
 
-          <!-- ÁREA DE CTA REMOVIDA PARA INSERÇÃO MANUAL -->
-          <div style="text-align:center" id="kiwify-upsell-BvdlKXp" data-upsell-url="https://healthlifeee.online/up02" data-downsell-url="https://healthlifeee.online/up02">
-            <button id="kiwify-upsell-trigger-BvdlKXp" class="cta" style="background-color:#27AF60;border:1px solid #27AF60;border-radius:4px;font-size:20px;font-weight:600;padding:12px 16px;cursor:pointer;color:#FFFFFF;">Sí, quiero aprovechar la última oportunidad</button>
-            <div id="kiwify-upsell-cancel-trigger-BvdlKXp" class="decline" style="font-size:16px;font-family:sans-serif;margin-top:1rem;cursor:pointer;text-decoration:underline;">No, dejaré que mi piel siga debilitándose</div>
-          </div>
-          <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
+          <!-- BOTÕES (KIWIFY REMOVIDO) -->
+          <a class="cta" id="accept-offer-btn" href="https://healthlifee.mycartpanda.com/ex-ocu/next-offer/3e2ZLEKYgb?accepted=yes">
+            Sí, quiero aprovechar la última oportunidad
+          </a>
+
+          <a class="decline" id="decline-offer-btn" href="https://healthlifee.mycartpanda.com/ex-ocu/next-offer/3e2ZLEKYgb?accepted=no">
+            No, dejaré que mi piel siga debilitándose
+          </a>
         </div>
 
         <div class="bottom-alert">⚠️ Oferta final si sales de esta página, la oportunidad desaparece</div>
