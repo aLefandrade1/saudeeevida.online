@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Upsell 2 — Soporte VIP WhatsApp</title>
 
+  <!-- CartPanda OCU (mantido no HEAD) -->
+  <script src="https://assets.mycartpanda.com/cartx-ecomm-ui-assets/js/libs/ocu-external.js"></script>
+  <script> new OcuExternal(); </script>
+
   <style>
     /* Anti lateral shift (iOS/Safari) */
     *, *::before, *::after { box-sizing: border-box; }
@@ -62,8 +66,8 @@
       margin:0 auto 16px;
       border-radius:12px;
       overflow:hidden;
-      background:transparent; /* removido vermelho */
-      box-shadow:none; /* sem sombra */
+      background:transparent;
+      box-shadow:none;
       position:relative;
     }
 
@@ -81,60 +85,6 @@
       width:100% !important;
       height:100% !important;
       display:block;
-    }
-
-    /* PLACEHOLDER (troque pelo seu player VTurb/SmartPlayer) */
-    .video-placeholder{
-      position:absolute;
-      inset:0;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:18px;
-      color:#fff;
-      text-align:center;
-      background:rgba(214,43,43,.86);
-    }
-
-    .video-placeholder .big{
-      font-size:26px;
-      font-weight:900;
-      line-height:1.1;
-    }
-
-    .video-placeholder .row{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:26px;
-      flex-wrap:wrap;
-      opacity:.95;
-      font-size:14px;
-      font-weight:700;
-    }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.25);
-    }
-
-    .icon{
-      width:34px;
-      height:34px;
-      border-radius:50%;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(255,255,255,.18);
-      border:1px solid rgba(255,255,255,.25);
-      font-weight:900;
     }
 
     /* CTA */
@@ -201,7 +151,6 @@
     @media (max-width:480px){
       .page{ padding:18px 12px 22px; }
       h1{ font-size:26px; line-height:1.2; }
-      .video-placeholder .big{ font-size:20px; }
       .cta{ font-size:14px; }
     }
   </style>
@@ -231,12 +180,15 @@
 
       <div style="opacity:.55; font-weight:800; font-size:14px; margin-top:6px;">tendrás acceso al grupo secreto</div>
 
-      <!-- BLOCO DE BOTÃO REMOVIDO PARA INSERÇÃO MANUAL -->
+      <!-- BOTÕES (KIWIFY REMOVIDO) — coloque seus links abaixo -->
       <div id="cta-slot" style="margin:14px auto 6px; text-align:center;">
-        <div style="text-align:center" id="kiwify-upsell-tfxMFkr" data-upsell-url="" data-downsell-url="https://healthlifeee.online/dw3"> 
-          <button id="kiwify-upsell-trigger-tfxMFkr" class="cta" style="background-color:#27AF60;padding:12px 16px;cursor:pointer;color:#FFFFFF;font-weight:600;border-radius:4px;border:1px solid #27AF60;font-size:20px;">Quiero soporte directo del Doctor en Whatsapp y el grupo</button>
-          <div id="kiwify-upsell-cancel-trigger-tfxMFkr" class="decline" style="margin-top:1rem;cursor:pointer;font-size:16px;text-decoration:underline;font-family:sans-serif;">No, Prefiero continuar sola</div>
-        </div><script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
+        <a class="cta" id="accept-offer-btn" href="https://healthlifee.mycartpanda.com/ex-ocu/next-offer/3e2ZLEKYgb?accepted=yes">
+          Quiero soporte directo del Doctor en Whatsapp y el grupo
+        </a>
+
+        <a class="decline" id="decline-offer-btn" href="https://healthlifee.mycartpanda.com/ex-ocu/next-offer/3e2ZLEKYgb?accepted=no">
+          No, Prefiero continuar sola
+        </a>
       </div>
 
       <div class="desc">
