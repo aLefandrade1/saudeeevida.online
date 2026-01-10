@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Downsell 1 — Flacidez</title>
 
+  <!-- CartPanda OCU (no HEAD) -->
+  <script src="https://assets.mycartpanda.com/cartx-ecomm-ui-assets/js/libs/ocu-external.js"></script>
+  <script> new OcuExternal(); </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html, body { overflow-x: hidden; }
@@ -70,8 +74,8 @@
 
     .offer-wrap{
       margin:14px auto 14px;
-      background:#ffffff; /* agora branco */
-      border:1px solid #e6e8eb; /* borda neutra */
+      background:#ffffff;
+      border:1px solid #e6e8eb;
       border-radius:14px;
       padding:16px 14px;
       text-align:center;
@@ -215,11 +219,14 @@
           <div class="old">Antes: $150 USD</div>
           <div class="today">Hoy: $17 USD</div>
 
-          <div style="text-align:center" id="kiwify-upsell-l0BV8Yh" data-upsell-url="https://healthlifeee.online/up02" data-downsell-url="https://healthlifeee.online/dw2">
-            <button id="kiwify-upsell-trigger-l0BV8Yh" style="background-color:#27AF60;padding:12px 16px;cursor:pointer;color:#FFFFFF;font-weight:600;border-radius:4px;border:1px solid #27AF60;font-size:20px;">Sí, quiero aprovechar esta oferta por solo $17 ahora</button>
-            <div id="kiwify-upsell-cancel-trigger-l0BV8Yh" style="margin-top:1rem;cursor:pointer;font-size:16px;text-decoration:underline;font-family:sans-serif;">No, no me importa quedarme con flacidez</div>
-          </div>
-          <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
+          <!-- BOTÕES (KIWIFY REMOVIDO) -->
+          <a class="cta" id="accept-offer-btn" href="https://healthlifee.mycartpanda.com/ex-ocu/next-offer/3e2ZLEKYgb?accepted=yes">
+            Sí, quiero aprovechar esta oferta por solo $17 ahora
+          </a>
+
+          <a class="decline" id="decline-offer-btn" href="https://healthlifee.mycartpanda.com/ex-ocu/next-offer/3e2ZLEKYgb?accepted=no">
+            No, no me importa quedarme con flacidez
+          </a>
 
         </div>
       </div>
