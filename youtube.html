@@ -14,15 +14,7 @@
 <link rel="dns-prefetch" href="https://images.converteai.net">
 <link rel="dns-prefetch" href="https://api.vturb.com.br">
 
-  <script
-    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-    data-utmify-prevent-xcod-sck
-    data-utmify-prevent-subids
-    data-utmify-ignore-iframe
-    data-utmify-is-cartpanda
-    async
-    defer
-  ></script>
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids data-utmify-ignore-iframe data-utmify-is-cartpanda async defer></script>
 
   <script>
     window.pixelId = "68cac216526f0dc841486576";
@@ -33,95 +25,36 @@
     document.head.appendChild(a);
   </script>
 
-   <script>
-    // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
+  <script>
     const link = 'https://healthlifeee.online/gelaredy';
-
     function setBackRedirect(url) {
-      let urlBackRedirect = url;
-      urlBackRedirect = urlBackRedirect =
-        urlBackRedirect.trim() +
-        (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
-        document.location.search.replace('?', '').toString();
-
+      let urlBackRedirect = url.trim() + (url.indexOf('?') > 0 ? '&' : '?') + document.location.search.replace('?', '').toString();
       history.pushState({}, '', location.href);
       history.pushState({}, '', location.href);
       history.pushState({}, '', location.href);
-
-      window.addEventListener('popstate', () => {
-        console.log('onpopstate', urlBackRedirect);
-        setTimeout(() => {
-          location.href = urlBackRedirect;
-        }, 1);
-      });
+      window.addEventListener('popstate', () => { setTimeout(() => { location.href = urlBackRedirect; }, 1); });
     }
-
     setBackRedirect(link);
   </script>
   
   <style>
-    :root{
-      --bg:#0f0f0f;
-      --panel:#181818;
-      --panel2:#202020;
-      --text:#f1f1f1;
-      --muted:#aaaaaa;
-      --btn:#f1f1f1;
-      --btnText:#111;
-      --blue:#3ea6ff;
-    }
+    :root{--bg:#0f0f0f;--panel:#181818;--panel2:#202020;--text:#f1f1f1;--muted:#aaaaaa;--btn:#f1f1f1;--btnText:#111;--blue:#3ea6ff;}
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:var(--bg);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      display:block;
-      padding:0;
-      min-height:100vh;
-    }
-    .phone{
-      width:100%;
-      max-width:none;
-      min-height:100vh;
-      background:var(--bg);
-      color:var(--text);
-      overflow:visible;
-      box-shadow:none;
-    }
-
-    /* DESKTOP: mantém igual ao mobile, só ajusta proporção do vídeo */
-    @media (min-width: 980px){
-      .video{aspect-ratio:16/9}
-    }
-
-    .topbar{
-      height:54px;
-      padding:0 12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      background:var(--panel);
-      border-bottom:1px solid #141414;
-    }
+    body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;display:block;padding:0;min-height:100vh;}
+    .phone{width:100%;max-width:none;min-height:100vh;background:var(--bg);color:var(--text);overflow:visible;box-shadow:none;}
+    @media(min-width:980px){.video{aspect-ratio:16/9}}
+    .topbar{height:54px;padding:0 12px;display:flex;align-items:center;justify-content:space-between;background:var(--panel);border-bottom:1px solid #141414;}
     .yt-logo{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:700}
     .yt-badge{width:26px;height:18px;border-radius:4px;background:#ff0000;position:relative}
     .yt-badge:before{content:"";position:absolute;left:10px;top:5px;border-left:7px solid #fff;border-top:4px solid transparent;border-bottom:4px solid transparent}
     .top-actions{display:flex;align-items:center;gap:14px}
     .icon-btn{width:28px;height:28px;display:grid;place-items:center;border-radius:999px;cursor:pointer}
     .icon-btn:hover{background:#2a2a2a}
-
-    /* VIDEO */
     .video{position:relative;width:100%;aspect-ratio:16/10;background:#000;overflow:visible}
-    /* não usar z-index alto aqui para não cobrir o layout */
-
-    /* INFO */
     .info{background:var(--panel);padding:12px}
     .title-row{display:flex;align-items:flex-start;gap:10px}
     .title{font-size:18px;line-height:1.25;font-weight:650;margin:0;flex:1}
-    
     .meta{margin-top:6px;color:var(--muted);font-size:12px;display:flex;gap:6px;align-items:center}
-
-    /* CHANNEL */
     .channel{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:10px}
     .channel-left{display:flex;align-items:center;gap:10px;min-width:0}
     .avatar{width:36px;height:36px;border-radius:999px;background:#222;overflow:hidden;display:block}
@@ -129,52 +62,29 @@
     .ch-text{min-width:0;display:flex;align-items:center;gap:8px}
     .ch-name{font-size:13px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .ch-subs{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .subscribe{
-      border:0;
-      background:var(--btn);
-      color:var(--btnText);
-      padding:8px 14px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:14px;
-      line-height:1;
-      height:34px;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-
-    /* ACTIONS */
+    .subscribe{border:0;background:var(--btn);color:var(--btnText);padding:8px 14px;border-radius:999px;font-weight:700;font-size:14px;line-height:1;height:34px;cursor:pointer;white-space:nowrap;}
     .actions{margin-top:10px;display:flex;gap:10px}
-    .chip{
-      white-space:nowrap;flex:1;background:var(--panel2);border:1px solid #262626;border-radius:16px;padding:10px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;color:var(--muted);font-weight:650;font-size:13px}
+    .chip{white-space:nowrap;flex:1;background:var(--panel2);border:1px solid #262626;border-radius:16px;padding:10px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;color:var(--muted);font-weight:650;font-size:13px}
     .chip.active{color:var(--text);background:#262626}
     .chip:hover{background:#262626}
     .chip .count{font-weight:700}
     .chip.secondary{flex:1.1}
-
     svg{width:18px;height:18px;fill:currentColor}
     .mini svg{width:20px;height:20px}
-  
-
-    /* COMMENTS (YouTube real) */
     .comments{margin-top:14px;padding-top:12px;border-top:1px solid #262626;margin-bottom:24px}
     .comments-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
     .comments-left{display:flex;align-items:baseline;gap:8px}
     .comments-left .label{font-size:16px;font-weight:750}
     .comments-left .count{font-size:13px;color:var(--muted);font-weight:650}
-
     .c-item{display:flex;gap:10px;padding:14px 0}
-    .c-item + .c-item{border-top:1px solid #242424}
+    .c-item+.c-item{border-top:1px solid #242424}
     .c-ava{width:36px;height:36px;border-radius:999px;flex:0 0 auto;overflow:hidden;background:#222}
     .c-ava img{width:100%;height:100%;object-fit:cover;display:block}
-    .c-ava.gray{background:#90a4ae}
-
     .c-body{flex:1;min-width:0}
     .c-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
     .c-user{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .c-time{font-size:12px;color:var(--muted);white-space:nowrap}
     .c-text{margin-top:6px;font-size:13px;line-height:1.35;color:var(--text)}
-
     .c-actions{margin-top:10px;display:flex;align-items:center;justify-content:space-between;color:var(--muted)}
     .c-actions-left{display:flex;align-items:center;gap:18px}
     .c-act{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;color:var(--muted)}
@@ -182,91 +92,44 @@
     .c-act.active{color:var(--text)}
     .c-act svg{width:18px;height:18px;fill:currentColor}
     .c-like-count{font-size:12px;font-weight:650}
-
     .c-more{width:30px;height:30px;border-radius:999px;display:grid;place-items:center;cursor:pointer}
     .c-more:hover{background:#2a2a2a}
     .c-more svg{width:18px;height:18px;fill:currentColor}
-
-  .footer-divider{
-      width:100%;
-      height:1px;
-      background:#262626;
-      margin:24px 0 16px 0;
-    }
-    .yt-footer{
-      background:var(--bg);
-      padding:20px 16px 28px;
-      text-align:center;
-    }
-    .yt-footer-inner{
-      max-width:720px;
-      margin:0 auto;
-    }
-    .yt-footer-links{
-      font-size:12px;
-      margin-bottom:10px;
-    }
-    .yt-footer-links a{
-      color:#3ea6ff;
-      text-decoration:none;
-    }
+    .footer-divider{width:100%;height:1px;background:#262626;margin:24px 0 16px 0;}
+    .yt-footer{background:var(--bg);padding:20px 16px 28px;text-align:center;}
+    .yt-footer-inner{max-width:720px;margin:0 auto;}
+    .yt-footer-links{font-size:12px;margin-bottom:10px;}
+    .yt-footer-links a{color:#3ea6ff;text-decoration:none;}
     .yt-footer-links a:hover{text-decoration:underline}
-    .yt-footer-copy{
-      font-size:12px;
-      color:#aaa;
-      margin-bottom:10px;
-    }
-    .yt-footer-disclaimer{
-      font-size:11px;
-      line-height:1.45;
-      color:#888;
-    }
-
+    .yt-footer-copy{font-size:12px;color:#aaa;margin-bottom:10px;}
+    .yt-footer-disclaimer{font-size:11px;line-height:1.45;color:#888;}
   </style>
 </head>
 <body>
   <div class="phone">
-
-    <!-- TOP BAR -->
     <div class="topbar">
-      <div class="yt-logo">
-        <span class="yt-badge" aria-hidden="true"></span>
-        <span>YouTube</span>
-      </div>
+      <div class="yt-logo"><span class="yt-badge" aria-hidden="true"></span><span>YouTube</span></div>
       <div class="top-actions">
-        <div class="icon-btn mini" title="Buscar" aria-label="Buscar">
-          <svg viewBox="0 0 24 24"><path d="M10 4a6 6 0 104.47 10.03l4.25 4.25 1.41-1.41-4.25-4.25A6 6 0 0010 4zm0 2a4 4 0 110 8 4 4 0 010-8z"/></svg>
-        </div>
-        <div class="icon-btn mini" title="Más opciones" aria-label="Más opciones">
-          <svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg>
-        </div>
+        <div class="icon-btn mini"><svg viewBox="0 0 24 24"><path d="M10 4a6 6 0 104.47 10.03l4.25 4.25 1.41-1.41-4.25-4.25A6 6 0 0010 4zm0 2a4 4 0 110 8 4 4 0 010-8z"/></svg></div>
+        <div class="icon-btn mini"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div>
       </div>
     </div>
 
-    <!-- VIDEO -->
     <div class="video">
-      <vturb-smartplayer id="vid-69eadd433ddf72965956ba42" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/69eadd433ddf72965956ba42/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+      <vturb-smartplayer id="vid-69eadd433ddf72965956ba42" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
+      <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/69eadd433ddf72965956ba42/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
     </div>
 
-    <!-- INFO -->
     <div class="info">
       <div class="title-row">
         <h1 class="title">Nunca uses este truco de la gelatina… a menos que quieras perder peso mucho más rápido de lo normal.</h1>
-        
       </div>
-
-      <div class="meta">
-        <span>100 mil visualizaciones</span>
-        <span>•</span>
-        <span>hace 1 mes</span>
-        <span>…más</span>
-      </div>
-
+      <div class="meta"><span>100 mil visualizaciones</span><span>•</span><span>hace 1 mes</span><span>…más</span></div>
       <div class="channel">
         <div class="channel-left">
-          <div class="avatar"><img src="https://i.postimg.cc/kGdqxJdq/unnamed-(1).jpg" alt="Dr. Juan Rivera"></div>
+          <div class="avatar"><img src="https://i.postimg.cc/fbQkp2TP/channels4-profile.jpg" alt="Dra. Jen Ashton"></div>
           <div class="ch-text">
-            <div class="ch-name">Dr. Juan Rivera</div>
+            <div class="ch-name">Dra. Jen Ashton</div>
             <div class="ch-subs">438 mil</div>
           </div>
         </div>
@@ -274,198 +137,71 @@
       </div>
 
       <div class="actions">
-        <div class="chip" id="btnLike" data-toggle="like" title="Me gusta">
-          <svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
-          <span class="count">3 mil</span>
-        </div>
-
-        <div class="chip" id="btnDislike" data-toggle="dislike" title="No me gusta">
-          <svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg>
-        </div>
-
-        <div class="chip secondary" id="btnShare" data-toggle="share" title="Compartir">
-          <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.02-4.11A2.99 2.99 0 0018 7.91a3 3 0 10-3-3c0 .24.04.47.09.7L8.07 9.72A3 3 0 006 9a3 3 0 100 6c.86 0 1.64-.36 2.2-.93l6.83 3.99c-.05.2-.08.41-.08.63a3 3 0 103-3z"/></svg>
-          <span>Compartir</span>
-        </div>
-
-        <div class="chip secondary" id="btnSave" data-toggle="save" title="Guardar">
-          <svg viewBox="0 0 24 24"><path d="M17 3H7a2 2 0 00-2 2v16l7-3 7 3V5a2 2 0 00-2-2z"/></svg>
-          <span>Guardar</span>
-        </div>
+        <div class="chip" id="btnLike" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="count">3 mil</span></div>
+        <div class="chip" id="btnDislike" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div>
+        <div class="chip secondary" id="btnShare" title="Compartir"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.02-4.11A2.99 2.99 0 0018 7.91a3 3 0 10-3-3c0 .24.04.47.09.7L8.07 9.72A3 3 0 006 9a3 3 0 100 6c.86 0 1.64-.36 2.2-.93l6.83 3.99c-.05.2-.08.41-.08.63a3 3 0 103-3z"/></svg><span>Compartir</span></div>
+        <div class="chip secondary" id="btnSave" title="Guardar"><svg viewBox="0 0 24 24"><path d="M17 3H7a2 2 0 00-2 2v16l7-3 7 3V5a2 2 0 00-2-2z"/></svg><span>Guardar</span></div>
       </div>
 
-      <!-- COMMENTS -->
       <div class="comments">
-        <div class="comments-bar">
-          <div class="comments-left">
-            <span class="label">Comentarios</span>
-            <span class="count">96</span>
-          </div>
-        </div>
+        <div class="comments-bar"><div class="comments-left"><span class="label">Comentarios</span><span class="count">96</span></div></div>
 
-        <div class="c-item">
-          <div class="c-ava"><img src="https://i.postimg.cc/L6TsBSN7/15.png" alt="Elena Morales"></div>
-          <div class="c-body">
-            <div class="c-head">
-              <div class="c-user">Elena Morales</div>
-              <div class="c-time">1 h</div>
-            </div>
-            <div class="c-text">Cuando explicó lo de las hormonas GLP-1 y GIP sentí que por fin alguien decía la verdad. Ahora entiendo por qué nada me funcionaba antes.</div>
-            <div class="c-actions">
-              <div class="c-actions-left">
-                <div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">241</span></div>
-                <div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div>
-                <div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div>
-              </div>
-              <div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div>
-            </div>
-          </div>
-        </div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/L6TsBSN7/15.png" alt="Elena Morales"></div><div class="c-body"><div class="c-head"><div class="c-user">Elena Morales</div><div class="c-time">1 h</div></div><div class="c-text">Cuando la Dra. Ashton explicó lo del GLP-1 y el GIP sentí que por fin alguien decía la verdad. Ahora entiendo por qué nada me funcionaba antes.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">241</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item">
-          <div class="c-ava"><img src="https://i.postimg.cc/Nfgs0VBF/14.png" alt="Clara Domínguez"></div>
-          <div class="c-body">
-            <div class="c-head"><div class="c-user">Clara Domínguez</div><div class="c-time">2 h</div></div>
-            <div class="c-text">Yo usé Ozempic y recuperé todo el peso después. Esto de activar las hormonas de forma natural con la gelatina tiene muchísimo más sentido.</div>
-            <div class="c-actions"><div class="c-actions-left">
-              <div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">198</span></div>
-              <div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div>
-              <div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div>
-            </div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div>
-          </div>
-        </div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/Nfgs0VBF/14.png" alt="Clara Domínguez"></div><div class="c-body"><div class="c-head"><div class="c-user">Clara Domínguez</div><div class="c-time">2 h</div></div><div class="c-text">Yo usé Mounjaro y recuperé todo el peso cuando lo dejé. Lo que dijo la Dra. Ashton sobre el efecto rebote de las inyecciones es exactamente lo que me pasó. La gelatina bariátrica es diferente.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">198</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/yx7Hkg4z/13.png" alt="Sofía Herrera"></div><div class="c-body"><div class="c-head"><div class="c-user">Sofía Herrera</div><div class="c-time">3 h</div></div><div class="c-text">Lo que contó sobre Adamari me hizo llorar. Yo también me sentía derrotada por mi cuerpo… ahora tengo esperanza otra vez.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">227</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/yx7Hkg4z/13.png" alt="Sofía Herrera"></div><div class="c-body"><div class="c-head"><div class="c-user">Sofía Herrera</div><div class="c-time">3 h</div></div><div class="c-text">La historia de Rosa López me hizo llorar. Yo también lo intenté todo — ayuno, keto, inyecciones — y nada duró. Ahora con la gelatina bariátrica tengo esperanza de verdad.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">227</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/7Z5yGrcG/12.png" alt="Camila Rojas"></div><div class="c-body"><div class="c-head"><div class="c-user">Camila Rojas</div><div class="c-time">4 h</div></div><div class="c-text">Siempre pensé que mi problema era la falta de fuerza de voluntad. Hoy entendí que era hormonal, no psicológico.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">184</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/7Z5yGrcG/12.png" alt="Camila Rojas"></div><div class="c-body"><div class="c-head"><div class="c-user">Camila Rojas</div><div class="c-time">4 h</div></div><div class="c-text">Siempre pensé que era falta de fuerza de voluntad. Hoy entendí que era hormonal — mis niveles de GLP-1 y GIP estaban bajos. No es culpa mía.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">184</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/g03Q8zHQ/11.png" alt="Amalia García"></div><div class="c-body"><div class="c-head"><div class="c-user">Amalia García</div><div class="c-time">5 h</div></div><div class="c-text">Empecé el truco de la gelatina hace 9 días y ya noto menos hinchazón y cero ansiedad por dulce.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">263</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/g03Q8zHQ/11.png" alt="Amalia García"></div><div class="c-body"><div class="c-head"><div class="c-user">Amalia García</div><div class="c-time">5 h</div></div><div class="c-text">Empecé el truco de la gelatina bariátrica hace 9 días. Ya perdí 6 kilos, la hinchazón desapareció y cero ansiedad por el dulce. No puedo creer que algo tan simple funcione así.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">263</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/VkCVPfpF/10.png" alt="Julieta Blanco"></div><div class="c-body"><div class="c-head"><div class="c-user">Julieta Blanco</div><div class="c-time">6 h</div></div><div class="c-text">Trabajo en clínica y lo que dijo sobre el rebote del Mounjaro es real. Lo veo todos los días.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">301</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/VkCVPfpF/10.png" alt="Julieta Blanco"></div><div class="c-body"><div class="c-head"><div class="c-user">Julieta Blanco</div><div class="c-time">6 h</div></div><div class="c-text">Trabajo en clínica y lo que dijo la Dra. Ashton sobre el rebote del Mounjaro es real. Lo veo todos los días con mis pacientes. La gelatina bariátrica activa las hormonas, no las reemplaza. Esa es la diferencia.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">301</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/bJJ08LrT/09.png" alt="Chloe Fuentes"></div><div class="c-body"><div class="c-head"><div class="c-user">Chloe Fuentes</div><div class="c-time">7 h</div></div><div class="c-text">La parte de las hormonas dormidas fue una bomba para mí. Ahora todo encaja.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">215</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/bJJ08LrT/09.png" alt="Chloe Fuentes"></div><div class="c-body"><div class="c-head"><div class="c-user">Chloe Fuentes</div><div class="c-time">7 h</div></div><div class="c-text">La parte de la cúrcuma y la flor de jamaica fue una bomba para mí. Siempre me sentía hinchada aunque no comiera mucho. Ahora entiendo por qué.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">215</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/2jgtcL9K/08.png" alt="Ana Lucía León"></div><div class="c-body"><div class="c-head"><div class="c-user">Ana Lucía León</div><div class="c-time">8 h</div></div><div class="c-text">Después de los 40 nada me funcionaba… esto explica exactamente por qué.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">192</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/2jgtcL9K/08.png" alt="Ana Lucía León"></div><div class="c-body"><div class="c-head"><div class="c-user">Ana Lucía León</div><div class="c-time">8 h</div></div><div class="c-text">Tengo 52 años y ya había desistido. Después de ver a Terelu Campos y Adele hablar de la Dra. Ashton decidí intentarlo. En 3 semanas perdí 9 kilos. Mi cuerpo finalmente respondió.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">192</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/qRzmQpsr/07.png" alt="Matilde Carrión"></div><div class="c-body"><div class="c-head"><div class="c-user">Matilde Carrión</div><div class="c-time">9 h</div></div><div class="c-text">Le mandé este video a mi hermana. Las dos estamos empezando hoy mismo.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">178</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03 .32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/qRzmQpsr/07.png" alt="Matilde Carrión"></div><div class="c-body"><div class="c-head"><div class="c-user">Matilde Carrión</div><div class="c-time">9 h</div></div><div class="c-text">Le mandé este video a mi hermana. Las dos lo empezamos hoy mismo. Solo 4 ingredientes del supermercado y ya. ¿Por qué nadie nos habló de esto antes?</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">178</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/c4QFF9nv/06.png" alt="Beatriz Marchán"></div><div class="c-body"><div class="c-head"><div class="c-user">Beatriz Marchán</div><div class="c-time">10 h</div></div><div class="c-text">Por primera vez siento que no tengo que sufrir para adelgazar. Esto cambia todo.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">256</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03 .32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/c4QFF9nv/06.png" alt="Beatriz Marchán"></div><div class="c-body"><div class="c-head"><div class="c-user">Beatriz Marchán</div><div class="c-time">10 h</div></div><div class="c-text">Por primera vez siento que no tengo que sufrir para adelgazar. Sigo comiendo lo que me gusta y la gelatina bariátrica hace el trabajo sola. Esto cambia todo.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">256</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/TPH0KBzW/05.png" alt="Helena Reynoso"></div><div class="c-body"><div class="c-head"><div class="c-user">Helena Reynoso</div><div class="c-time">11 h</div></div><div class="c-text">La explicación sobre por qué la grasa vuelve después de las inyecciones fue brutalmente honesta.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">289</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03 .32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/TPH0KBzW/05.png" alt="Helena Reynoso"></div><div class="c-body"><div class="c-head"><div class="c-user">Helena Reynoso</div><div class="c-time">11 h</div></div><div class="c-text">La explicación de por qué la grasa vuelve cuando dejas las inyecciones fue brutalmente honesta. La Dra. Ashton dice lo que los médicos no quieren que sepas.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">289</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/vT5tSTcg/04.png" alt="Noemí Peletier"></div><div class="c-body"><div class="c-head"><div class="c-user">Noemí Peletier</div><div class="c-time">12 h</div></div><div class="c-text">Nunca había entendido la ciencia detrás de adelgazar. Ahora sí.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">201</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03 .32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/vT5tSTcg/04.png" alt="Noemí Peletier"></div><div class="c-body"><div class="c-head"><div class="c-user">Noemí Peletier</div><div class="c-time">12 h</div></div><div class="c-text">Nunca había entendido la ciencia detrás de adelgazar. La comparación del camión de reparto con la insulina me hizo entender todo de golpe. La Dra. Ashton explica como nadie.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">201</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/9QLtkvFf/03.png" alt="Virginia Lamas"></div><div class="c-body"><div class="c-head"><div class="c-user">Virginia Lamas</div><div class="c-time">13 h</div></div><div class="c-text">Esto no es otro truco más… se nota que hay investigación real detrás.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">233</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03 .32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/9QLtkvFf/03.png" alt="Virginia Lamas"></div><div class="c-body"><div class="c-head"><div class="c-user">Virginia Lamas</div><div class="c-time">13 h</div></div><div class="c-text">Esto no es otro truco más. Cuando vi que Harvard y Johns Hopkins confirmaron la ciencia detrás de la glicina y la alanina, supe que era real. Hay investigación de verdad detrás.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">233</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/XJCfpqKh/02.png" alt="Lucía Bernal"></div><div class="c-body"><div class="c-head"><div class="c-user">Lucía Bernal</div><div class="c-time">14 h</div></div><div class="c-text">La historia del vestido que no cerraba me rompió por dentro. Es exactamente mi vida.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">174</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03 .32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/XJCfpqKh/02.png" alt="Lucía Bernal"></div><div class="c-body"><div class="c-head"><div class="c-user">Lucía Bernal</div><div class="c-time">14 h</div></div><div class="c-text">La historia del pantalón que no cerraba me rompió por dentro. Es exactamente mi vida. Si funcionó para Rosa López, puede funcionar para mí también.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">174</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/8PDRz17Z/01.png" alt="Mariana Lefevre"></div><div class="c-body"><div class="c-head"><div class="c-user">Mariana Lefevre</div><div class="c-time">15 h</div></div><div class="c-text">Si esto funciona como explica, es el fin de las dietas y las inyecciones.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">0</span></div>
-              <div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14 .47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03 .32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div>
-              <div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div>
-            </div><div class="c-more" title="Más"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
-      </div>
+        <div class="c-item"><div class="c-ava"><img src="https://i.postimg.cc/8PDRz17Z/01.png" alt="Mariana Lefevre"></div><div class="c-body"><div class="c-head"><div class="c-user">Mariana Lefevre</div><div class="c-time">15 h</div></div><div class="c-text">Si esto ayudó a Rosa López a perder 27 kilos en 3 meses sin dieta ni gimnasio, es el fin de las inyecciones caras. La gelatina bariátrica es la revolución que necesitábamos.</div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">318</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div><div class="c-actions"><div class="c-actions-left"><div class="c-act" title="Me gusta"><svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13 1 6.59 7.41C6.22 7.78 6 8.3 6 8.83V19c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg><span class="c-like-count">241</span></div><div class="c-act" title="No me gusta"><svg viewBox="0 0 24 24"><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22L1.14 11.27c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L11 23l6.41-6.41c.37-.37.59-.89.59-1.42V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg></div><div class="c-act" title="Responder"><svg viewBox="0 0 24 24"><path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v3l4-3h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2z"/></svg></div></div><div class="c-more"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg></div></div></div></div>
 
-    <!-- DIVIDER FOOTER -->
     <div class="footer-divider"></div>
-
-    <!-- FOOTER LEGAL -->
     <footer class="yt-footer">
       <div class="yt-footer-inner">
-        <div class="yt-footer-links">
-          <a href="#" rel="nofollow">Términos de Uso</a>
-          <span>·</span>
-          <a href="#" rel="nofollow">Política de Privacidad</a>
-        </div>
+        <div class="yt-footer-links"><a href="#" rel="nofollow">Términos de Uso</a><span>·</span><a href="#" rel="nofollow">Política de Privacidad</a></div>
         <div class="yt-footer-copy">Copyright 2025 — TRUCO DE LA GELATINA® · Todos los derechos reservados</div>
-        <div class="yt-footer-disclaimer">
-          Este sitio no forma parte de Facebook™ ni de Meta Platforms, Inc., y no está respaldado por ellos. La información presentada tiene fines educativos y no constituye asesoramiento médico. Los resultados pueden variar de una persona a otra.
-        </div>
+        <div class="yt-footer-disclaimer">Este sitio no forma parte de Facebook™ ni de Meta Platforms, Inc., y no está respaldado por ellos. La información presentada tiene fines educativos y no constituye asesoramiento médico. Los resultados pueden variar de una persona a otra.</div>
       </div>
     </footer>
-
   </div>
 
   <script>
-    // FIX CTA do player: quando o player aumentar de altura (ex.: botão/CTA com delay),
-    // a headline desce naturalmente porque adicionamos padding-bottom no container do vídeo.
-    (function(){
-      const video = document.querySelector('.video');
-      const player = document.getElementById('vid-6965e5f32e6d8eb8b772c6e1');
-      if(!video || !player) return;
-
-      const applyGap = () => {
-        const videoH = video.getBoundingClientRect().height;
-        const playerH = player.getBoundingClientRect().height;
-        const extra = Math.max(0, Math.round(playerH - videoH));
-        const capped = Math.min(extra, 220);
-        video.style.paddingBottom = capped ? (capped + 'px') : '0px';
-      };
-
-      try{
-        const ro = new ResizeObserver(() => requestAnimationFrame(applyGap));
-        ro.observe(player);
-      }catch(e){
-        setInterval(applyGap, 700);
-      }
-
-      window.addEventListener('load', () => setTimeout(applyGap, 600));
-      setTimeout(applyGap, 1500);
-      setTimeout(applyGap, 3500);
-    })();
-
-    // SUBSCRIBE
     const btn = document.getElementById('btnSubscribe');
     btn.addEventListener('click', () => {
-      if(btn.classList.contains('subscribed')){
-        btn.classList.remove('subscribed');
-        btn.textContent = 'Suscribirse';
-        btn.style.background = '#f1f1f1';
-        btn.style.color = '#111';
-      } else {
-        btn.classList.add('subscribed');
-        btn.textContent = 'Suscrito';
-        btn.style.background = '#2b2b2b';
-        btn.style.color = '#f1f1f1';
-      }
+      if(btn.classList.contains('subscribed')){ btn.classList.remove('subscribed'); btn.textContent='Suscribirse'; btn.style.background='#f1f1f1'; btn.style.color='#111'; }
+      else { btn.classList.add('subscribed'); btn.textContent='Suscrito'; btn.style.background='#2b2b2b'; btn.style.color='#f1f1f1'; }
     });
-
-    // TOP ACTIONS (Like/Dislike/Share/Save)
-    const topLike = document.getElementById('btnLike');
-    const topDislike = document.getElementById('btnDislike');
-    const topShare = document.getElementById('btnShare');
-    const topSave = document.getElementById('btnSave');
-
-    const setExclusive = (onEl, offEl) => {
-      onEl.classList.toggle('active');
-      if(onEl.classList.contains('active')) offEl.classList.remove('active');
-    };
-
-    if(topLike && topDislike){
-      topLike.addEventListener('click', () => setExclusive(topLike, topDislike));
-      topDislike.addEventListener('click', () => setExclusive(topDislike, topLike));
-    }
-    if(topShare){
-      topShare.addEventListener('click', () => topShare.classList.toggle('active'));
-    }
-    if(topSave){
-      topSave.addEventListener('click', () => topSave.classList.toggle('active'));
-    }
-
-    // COMMENTS Like/Dislike (por comentário)
-    document.querySelectorAll('.c-item').forEach(item => {
-      const likeBtn = item.querySelector('.c-act[title="Me gusta"]');
-      const dislikeBtn = item.querySelector('.c-act[title="No me gusta"]');
-      if(!likeBtn || !dislikeBtn) return;
-
-      likeBtn.addEventListener('click', () => {
-        likeBtn.classList.toggle('active');
-        if(likeBtn.classList.contains('active')) dislikeBtn.classList.remove('active');
-      });
-
-      dislikeBtn.addEventListener('click', () => {
-        dislikeBtn.classList.toggle('active');
-        if(dislikeBtn.classList.contains('active')) likeBtn.classList.remove('active');
-      });
+    const topLike=document.getElementById('btnLike'),topDislike=document.getElementById('btnDislike'),topShare=document.getElementById('btnShare'),topSave=document.getElementById('btnSave');
+    const setExclusive=(onEl,offEl)=>{onEl.classList.toggle('active');if(onEl.classList.contains('active'))offEl.classList.remove('active');};
+    if(topLike&&topDislike){topLike.addEventListener('click',()=>setExclusive(topLike,topDislike));topDislike.addEventListener('click',()=>setExclusive(topDislike,topLike));}
+    if(topShare)topShare.addEventListener('click',()=>topShare.classList.toggle('active'));
+    if(topSave)topSave.addEventListener('click',()=>topSave.classList.toggle('active'));
+    document.querySelectorAll('.c-item').forEach(item=>{
+      const likeBtn=item.querySelector('.c-act[title="Me gusta"]'),dislikeBtn=item.querySelector('.c-act[title="No me gusta"]');
+      if(!likeBtn||!dislikeBtn)return;
+      likeBtn.addEventListener('click',()=>{likeBtn.classList.toggle('active');if(likeBtn.classList.contains('active'))dislikeBtn.classList.remove('active');});
+      dislikeBtn.addEventListener('click',()=>{dislikeBtn.classList.toggle('active');if(dislikeBtn.classList.contains('active'))likeBtn.classList.remove('active');});
     });
   </script>
 </body>
