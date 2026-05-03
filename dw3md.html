@@ -3,233 +3,220 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Downsell — Manual Cero Estrías</title>
+  <title>Última Oportunidad — Manual Cero Estrías</title>
 
   <script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { overflow-x: hidden; }
 
-    body{
-      margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:#eef3f6;
-      color:#1f1f1f;
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #faf8f5;
+      color: #2c2c2c;
+      min-height: 100vh;
     }
 
-    .page{
-      width:100%;
-      padding:22px 14px 26px;
-      display:flex;
-      justify-content:center;
+    /* TOP BAR — urgência suave */
+    .topbar {
+      background: #2c2c2c;
+      color: #e8d8c8;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 9px 20px;
     }
 
-    .wrap{
-      width:100%;
-      max-width:760px;
-      text-align:center;
-    }
-
-    .top-alert{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 18px;
-      border-radius:14px;
-      background:#f3d4d4;
-      color:#8a1c1c;
-      font-weight:900;
-      font-size:14px;
-      box-shadow:0 10px 20px rgba(0,0,0,.06);
-      margin-bottom:16px;
-      max-width:100%;
-      border:1px solid rgba(207,31,31,.18);
-    }
-
-    h1{
-      margin:8px 0 10px;
-      font-size:38px;
-      line-height:1.05;
-      font-weight:1000;
-      color:#12b76a;
-      letter-spacing:.2px;
-      text-transform: uppercase;
-    }
-
-    .sub{
-      margin: 0 auto 16px;
-      max-width: 700px;
-      font-size: 15px;
-      line-height: 1.45;
-      color:#3b4650;
-      font-weight:700;
-    }
-
-    .card{
-      max-width: 720px;
-      margin: 0 auto;
-      background:#ffffff;
-      border:1px solid rgba(0,0,0,.06);
-      border-radius:16px;
-      box-shadow: 0 18px 38px rgba(0,0,0,.08);
-      padding: 16px 14px 18px;
-      text-align:center;
-    }
-
-    .intro{
-      margin: 0 auto 14px;
-      max-width: 660px;
-      font-size: 14px;
-      line-height: 1.55;
-      color:#47525c;
-    }
-
-    .intro b{ color:#12b76a; }
-
-    .price-box{
-      margin: 14px auto 12px;
+    /* PAGE */
+    .page {
       max-width: 520px;
-      background: rgba(46, 204, 113, 0.14);
-      border: 1px solid rgba(46, 204, 113, 0.28);
-      border-radius: 16px;
-      padding: 14px 14px 16px;
+      margin: 0 auto;
+      padding: 36px 20px 60px;
     }
 
-    .old{
-      font-size: 14px;
-      opacity:.55;
-      font-weight:800;
+    /* BADGE */
+    .badge {
+      display: inline-block;
+      background: #f5ede4;
+      border: 1px solid #d4b896;
+      color: #8a5a30;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    /* HEADLINE — diferente do DW1, foca no custo mínimo */
+    h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(22px, 5.5vw, 32px);
+      font-weight: 600;
+      line-height: 1.25;
+      color: #1e1e1e;
       margin-bottom: 8px;
     }
 
-    .today{
-      font-size: 44px;
-      line-height: 1;
-      font-weight:1000;
-      color:#12b76a;
-      margin: 6px 0 12px;
+    h1 em {
+      font-style: italic;
+      color: #b08060;
     }
 
-    .bullets{
-      margin: 16px auto 6px;
-      max-width: 660px;
-      text-align:left;
-      display:grid;
-      gap:10px;
+    .sub {
       font-size: 14px;
-      color:#2f3a43;
+      line-height: 1.65;
+      color: #666;
+      margin-bottom: 24px;
     }
 
-    .bullets div{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      line-height: 1.35;
+    /* DIVIDER */
+    .line {
+      width: 40px;
+      height: 2px;
+      background: #d4b896;
+      border-radius: 2px;
+      margin: 0 0 24px 0;
     }
 
-    .check{
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: rgba(18,183,106,0.16);
-      border: 1px solid rgba(18,183,106,0.32);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex: 0 0 18px;
-      margin-top: 2px;
-      font-weight: 1000;
-      color:#12b76a;
+    /* COPY — mais curto que DW1, já viu o pitch */
+    .copy {
+      background: #fff;
+      border: 1px solid #ede8e0;
+      border-radius: 14px;
+      padding: 20px 18px;
+      margin-bottom: 20px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #3a3a3a;
+    }
+
+    .copy p { margin-bottom: 12px; }
+    .copy p:last-child { margin-bottom: 0; }
+
+    /* PRICE BOX */
+    .pricebox {
+      background: #fff;
+      border: 1px solid #ede8e0;
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .price-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #b08060;
+      margin-bottom: 6px;
+    }
+
+    .price-value {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 56px;
+      font-weight: 600;
+      color: #1e1e1e;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .price-note {
       font-size: 12px;
+      color: #9a8a7a;
+      font-style: italic;
+      margin-bottom: 22px;
     }
 
-    .guarantee{
-      margin: 14px auto 0;
-      max-width: 520px;
-      padding:12px 14px;
-      border-radius:12px;
-      border:1px solid rgba(18,183,106,.25);
-      background: rgba(18,183,106,.08);
-      color:#1f5d3b;
-      font-weight:900;
-      font-size:13px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-    }
-
-    .warning{
-      margin: 18px auto 0;
-      max-width: 720px;
-      background:#f3d7b8;
-      border: 1px solid rgba(0,0,0,.06);
-      border-radius: 12px;
-      padding: 12px 14px;
-      font-weight: 900;
-      color:#6b3a0f;
+    /* GUARANTEE */
+    .guarantee {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       font-size: 13px;
+      color: #7a8a7a;
+      margin-top: 16px;
     }
 
-    @media (max-width:480px){
-      .page{ padding:18px 12px 22px; }
-      h1{ font-size:30px; }
-      .today{ font-size: 38px; }
+    /* URGENCY FINAL */
+    .urgency {
+      background: #fff8ee;
+      border: 1px solid #e8c880;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #7a5a00;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    footer {
+      background: #fff;
+      border-top: 1px solid #ede8e0;
+      padding: 20px;
+      text-align: center;
+      font-size: 11px;
+      color: #aaa;
+      line-height: 1.7;
+      margin-top: 40px;
     }
   </style>
 </head>
-
 <body>
+
+  <div class="topbar">⚠️ Esta es tu última oportunidad — oferta no disponible en ningún otro lugar</div>
+
   <div class="page">
-    <div class="wrap">
 
-      <div class="top-alert">⚠️ ¡Atención! Última oportunidad: descuento exclusivo disponible ahora</div>
+    <div class="badge">Última oportunidad</div>
 
-      <h1>ÚLTIMA OPORTUNIDAD:<br>evita estrías justo cuando adelgazas</h1>
+    <h1>Solo <em>$12</em> — el precio<br>mínimo que puedo ofrecer</h1>
 
-      <div class="sub">
-        Antes de cerrar esta página: accede ahora al <b>Manual Cero Estrías</b>
-        con un descuento especial.
-      </div>
+    <p class="sub">
+      Ya viste la versión completa. Ya viste la esencial.<br>
+      Esta es la última vez que puedo liberar el acceso a este precio.
+    </p>
 
-      <div class="card">
+    <div class="line"></div>
 
-        <div class="intro">
-          <div style="font-weight:1000; color:#2f3a43; margin-bottom:10px; font-size:15px;">
-            Lo peor no es bajar de peso…<br>
-            <span style="color:#12b76a;">es bajar y descubrir estrías que antes no veías.</span>
-          </div>
-
-          Muchas mujeres adelgazan con el <b>Truco de la Gelatina</b>…
-          pero cuando la piel ya fue estirada, las estrías aparecen.
-          <b>Para que eso NO te pase</b>, hoy puedes agregar el manual completo por solo <b>$37 USD</b>.
-        </div>
-
-        <div class="price-box">
-          <div class="old">Antes: <s>$300 USD</s></div>
-          
-
-          <div data-mndpay-render="019ca87e-fa28-7278-855e-bbee7a5da1b7"></div>
-
-        </div>
-
-        <div class="bullets">
-          <div><span class="check">✓</span> Rutina rápida (3–5 min al día) después de la ducha</div>
-          <div><span class="check">✓</span> Paso a paso por zona (abdomen, glúteos e ingles)</div>
-          <div><span class="check">✓</span> Mezcla de aceites naturales (aplicación directa)</div>
-          <div><span class="check">✓</span> Guía simple, sin tratamientos caros</div>
-        </div>
-
-        <div class="guarantee">🛡️ Garantía de 30 días — Sin riesgos</div>
-
-      </div>
-
-      <div class="warning">⚠️ Oferta ÚNICA — Este descuento es solo ahora porque acabas de entrar. Si sales de esta página, desaparece para siempre.</div>
-
+    <div class="copy">
+      <p>No quiero que salgas de aquí sin llevar <strong style="color:#b08060;">la mezcla de aceites naturales</strong> que puede cambiar la apariencia de las estrías.</p>
+      <p>Por eso reduje el precio al mínimo posible: <strong style="color:#1e1e1e;">$12 dólares.</strong></p>
+      <p><span style="color:#9a8a7a;">No hay descuento mayor después de esto.<br>No habrá otra oportunidad en esta página.</span></p>
+      <p>Si quieres aprender <strong style="color:#1a6b3c;">la mezcla de aceites, cómo prepararla y cómo aplicarla por zona</strong> — este es el momento.</p>
     </div>
+
+    <div class="pricebox">
+      <div class="price-eyebrow">Precio mínimo final</div>
+      <div class="price-value">$12</div>
+      <div class="price-note">Acceso inmediato · Un solo pago</div>
+
+      <div data-mndpay-render="019ca87e-fa28-7278-855e-bbee7a5da1b7"></div>
+
+      <div class="guarantee">🛡️ Garantía de 30 días — Sin riesgos</div>
+    </div>
+
+    <div class="urgency">
+      ⚠️ Si cierras esta página, el acceso a este precio desaparece para siempre.
+    </div>
+
   </div>
+
+  <footer>
+    Copyright 2025 — Manual Cero Estrías • Todos los derechos reservados<br>
+    Este sitio no forma parte de Facebook™ ni de Meta Platforms, Inc., y NO está respaldado por ellos.<br>
+    La información presentada es solo con fines educativos. Los resultados pueden variar.
+  </footer>
+
 </body>
 </html>
-
