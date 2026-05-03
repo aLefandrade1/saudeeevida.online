@@ -3,237 +3,202 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Downsell 2 — Última Ayuda</title>
+  <title>Última Ayuda — Método Contra la Flacidez</title>
 
   <script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { overflow-x: hidden; }
 
-    body{
-      margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:#f6ecec;
-      color:#2b2b2b;
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      min-height: 100vh;
     }
 
-    .page{
-      width:100%;
-      padding:18px 14px 28px;
-      display:flex;
-      justify-content:center;
+    /* TOP BAR — tom de cuidado, não de venda */
+    .top-bar {
+      background: #fff3f3;
+      border-bottom: 1px solid #ffd5d5;
+      color: #b11f1f;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 16px;
+      letter-spacing: 0.2px;
     }
 
-    .container{
-      width:100%;
-      max-width:560px;
-      text-align:center;
+    /* PAGE */
+    .page {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+      text-align: center;
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:12px;
-      background:#f3dfcf;
-      border:1px solid rgba(190,120,80,.35);
-      color:#7b4a2f;
-      font-size:14px;
-      font-weight:700;
-      margin-bottom:16px;
+    /* PILL EMOCIONAL */
+    .care-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff0f0;
+      border: 1px solid #ffc5c5;
+      color: #c0392b;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
     }
 
-    h1{
-      margin:6px 0 10px;
-      font-size:38px;
-      line-height:1.15;
-      font-weight:900;
-      text-transform:uppercase;
-      color:#c62828;
-      letter-spacing:.2px;
-      word-break:normal;
-      hyphens:auto;
+    /* HEADLINE — emocional, não comercial */
+    h1 {
+      font-size: clamp(22px, 5.5vw, 30px);
+      font-weight: 900;
+      line-height: 1.2;
+      color: #111;
+      margin-bottom: 10px;
+      text-transform: uppercase;
     }
 
-    .sub{
-      margin:0 0 14px;
-      font-size:16px;
-      line-height:1.5;
-      color:#7a3b3b;
-      font-style:italic;
-      max-width:100%;
-      padding:0 6px;
-      word-break:normal;
-      hyphens:auto;
+    .subhead {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      font-style: italic;
     }
 
-    .card{
-      margin:14px auto 16px;
-      background:#ffffff;
-      border-radius:18px;
-      border:1px solid rgba(210,90,90,.25);
-      box-shadow:0 12px 28px rgba(0,0,0,.08);
-      padding:18px 16px 16px;
-      position:relative;
-      overflow:hidden;
+    /* BLOCO DE CUIDADO — tom pessoal */
+    .care-block {
+      background: #fff8f8;
+      border-left: 4px solid #e88;
+      border-radius: 0 12px 12px 0;
+      padding: 16px 18px;
+      text-align: left;
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #333;
     }
 
-    .card::before{
-      content:"";
-      position:absolute;
-      left:0;
-      top:0;
-      width:100%;
-      height:4px;
-      background:#c62828;
+    .care-block strong { color: #c0392b; }
+
+    /* PROVA SOCIAL */
+    .social-proof {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #f0f7f0;
+      border: 1px solid #c8e6c8;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a4a1a;
+      margin-bottom: 24px;
     }
 
-    .card p{
-      margin:0 0 10px;
-      font-size:14px;
-      line-height:1.55;
-      color:#5a4a4a;
+    /* OFFER BOX */
+    .offer-box {
+      border: 2px solid #e0e0e0;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
+      background: #fafafa;
     }
 
-    .em-red{ color:#c62828; font-weight:900; }
-    .em-strong{ font-weight:900; color:#3f2f2f; }
-
-    .info{
-      margin:12px auto 14px;
-      background:#e9f4ff;
-      border:1px solid rgba(70,140,200,.35);
-      border-radius:14px;
-      padding:10px 12px;
-      color:#2b5a7a;
-      font-size:12.5px;
-      line-height:1.35;
-      position:relative;
-    }
-    .info::before{
-      content:"";
-      position:absolute;
-      left:-1px;
-      top:10px;
-      width:4px;
-      height:calc(100% - 20px);
-      border-radius:10px;
-      background:#4aa3df;
+    .offer-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 8px;
     }
 
-    .pricebox{
-      margin:10px auto 10px;
-      background:#e8f7ee;
-      border:2px solid rgba(39,175,96,.45);
-      border-radius:16px;
-      padding:14px 12px 12px;
-      max-width:520px;
+    .price-main {
+      font-size: 60px;
+      font-weight: 900;
+      color: #111;
+      line-height: 1;
+      margin-bottom: 4px;
     }
 
-    .pricebox .label{
-      font-size:13px;
-      color:#1f7a4d;
-      margin-bottom:6px;
-      font-weight:700;
+    .price-note {
+      font-size: 12px;
+      color: #aaa;
+      font-style: italic;
+      margin-bottom: 20px;
     }
 
-    .pricebox .price{
-      font-size:44px;
-      font-weight:900;
-      color:#27AF60;
-      margin:0 0 6px;
+    /* MUNDPAY */
+    .cta-wrap {
+      margin-bottom: 0;
     }
 
-    .pricebox .micro{
-      font-size:12px;
-      color:#3f8f63;
-      margin-bottom:12px;
-      font-style:italic;
+    /* URGÊNCIA FINAL */
+    .urgency {
+      background: #fffbea;
+      border: 1px solid #f0d060;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #7a5a00;
+      text-align: center;
     }
 
-    @keyframes pulseCTA {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(39,175,96,0.60); }
-      70% { transform: scale(1.06); box-shadow: 0 0 0 18px rgba(39,175,96,0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(39,175,96,0); }
-    }
-
-    .pulse{
-      animation: pulseCTA 1.8s infinite;
-      transform-origin:center;
-    }
-
-    .bottom-alert{
-      margin:14px auto 0;
-      background:#f3dfcf;
-      border:1px solid rgba(190,120,80,.35);
-      color:#7b4a2f;
-      border-radius:12px;
-      padding:10px 12px;
-      font-size:12.5px;
-      font-weight:800;
-      display:flex;
-      gap:8px;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-    }
-
-    @media (max-width:480px){
-      h1{ font-size:26px; line-height:1.2; letter-spacing:.1px; }
-      .sub{ font-size:14px; line-height:1.6; padding:0 8px; }
-      .pricebox .price{ font-size:40px; }
-      .card{ padding:16px 14px; }
+    @media (max-width: 480px) {
+      h1 { font-size: 20px; }
+      .price-main { font-size: 48px; }
     }
   </style>
 </head>
-
 <body>
+
+  <div class="top-bar">❤️ Te cuido como a mis propias alumnas — esta es mi última ayuda</div>
+
   <div class="page">
-    <div class="container">
 
-      <div class="pill">❤️ Te cuido como a mis propias alumnas esta es mi última ayuda</div>
+    <div class="care-pill">❤️ Última ayuda</div>
 
-      <h1>¡UNA ÚLTIMA AYUDA LO<br>DEJO PRÁCTICAMENTE<br>GRATIS POR MIS ALUMNAS!</h1>
+    <h1>Lo dejo prácticamente<br>gratis por mis alumnas</h1>
 
-      <p class="sub">
-        Porque te cuido — precio mínimo de la plataforma para<br>
-        que no te quedes con la piel floja.
-      </p>
+    <p class="subhead">Porque te cuido — precio mínimo de la plataforma<br>para que no te quedes con la piel floja.</p>
 
-      <div class="card">
-        <p>
-          Sé lo que sientes: muchas mujeres bajan rápido con el
-          <span class="em-red">Truco de la Gelatina</span> y luego me escriben preocupadas por la flacidez.
-        </p>
-
-        <p>
-          <span class="em-red">Yo no quiero que eso te pase.</span>
-          Por eso dejo el <span class="em-strong">Método Contra la Flacidez</span> a solo
-          <span class="em-red">$17 USD</span> — es el precio mínimo para mantener acceso y asegurarte resultados.
-        </p>
-
-        <p class="em-red" style="margin-top:2px;">Esto no es publicidad: es cuidado real.</p>
-
-        <div class="info">
-          Más de <strong>2.847</strong> mujeres ya protegieron su piel con este método<br>
-          mientras adelgazan.
-        </div>
-
-        <div class="pricebox">
-          <div class="label">Precio final de cuidado:</div>
-          <div class="price">$17 USD</div>
-          <div class="micro">(El costo mínimo de la plataforma)</div>
-
-          <div data-mndpay-render="019c550e-08a3-70ee-a66a-8e1d70501206"></div>
-
-        <div class="bottom-alert">⚠️ Oferta final si sales de esta página, la oportunidad desaparece</div>
-      </div>
-
+    <div class="care-block">
+      Sé lo que sientes: muchas mujeres bajan rápido con el <strong>Truco de la Gelatina</strong> y luego me escriben preocupadas por la flacidez.<br><br>
+      <strong>Yo no quiero que eso te pase.</strong> Por eso dejo el Método Contra la Flacidez a solo <strong>$10 USD</strong> — es el precio mínimo para mantener acceso y asegurarte resultados.<br><br>
+      Esto no es publicidad: es cuidado real.
     </div>
+
+    <div class="social-proof">
+      👥 Más de <strong>&nbsp;2.847 mujeres&nbsp;</strong> ya protegieron su piel con este método
+    </div>
+
+    <div class="offer-box">
+      <div class="offer-label">Precio final de cuidado</div>
+      <div class="price-main">$10</div>
+      <div class="price-note">El costo mínimo de la plataforma</div>
+
+      <div class="cta-wrap">
+        <div data-mndpay-render="019c550e-08a3-70ee-a66a-8e1d70501206"></div>
+      </div>
+    </div>
+
+    <div class="urgency">
+      ⚠️ Oferta final — Si sales de esta página, la oportunidad desaparece.
+    </div>
+
   </div>
 
-  
 </body>
 </html>
