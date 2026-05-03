@@ -3,215 +3,203 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Downsell 1 — Flacidez</title>
+  <title>Espera — Última Oportunidad</title>
 
   <script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { overflow-x: hidden; }
 
-    body{
-      margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:#f3f5f7;
-      color:#222;
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      min-height: 100vh;
     }
 
-    .page{
-      width:100%;
-      padding:18px 14px 26px;
-      display:flex;
-      justify-content:center;
+    /* TOP BAR */
+    .top-bar {
+      background: #c0392b;
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 16px;
+      letter-spacing: 0.2px;
     }
 
-    .card{
-      width:100%;
-      max-width:650px;
-      background:#ffffff;
-      border-radius:16px;
-      border:1px solid #e6e8eb;
-      box-shadow:0 10px 28px rgba(0,0,0,.08);
-      padding:18px 16px 18px;
-      text-align:center;
+    /* PAGE */
+    .page {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+      text-align: center;
     }
 
-    .top-alert{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:10px 12px;
-      border-radius:10px;
-      background:#f6d7d7;
-      color:#b11f1f;
-      font-weight:700;
-      font-size:14px;
-      margin-bottom:14px;
-      border:1px solid #f0bcbc;
+    /* EYEBROW */
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c0392b;
+      margin-bottom: 10px;
     }
 
-    h1{
-      margin:8px 0 10px;
-      font-size:34px;
-      line-height:1.05;
-      font-weight:900;
-      letter-spacing:.3px;
-      color:#0aa06a;
-      text-transform:uppercase;
+    /* HEADLINE */
+    h1 {
+      font-size: clamp(24px, 6vw, 34px);
+      font-weight: 900;
+      line-height: 1.15;
+      color: #111;
+      margin-bottom: 12px;
     }
 
-    .sub{
-      margin:0 0 14px;
-      font-size:18px;
-      line-height:1.35;
-      color:#444;
+    h1 em {
+      font-style: normal;
+      color: #0aa06a;
     }
 
-    .sub strong{ font-weight:800; }
-
-    .offer-wrap{
-      margin:14px auto 14px;
-      background:#ffffff;
-      border:1px solid #e6e8eb;
-      border-radius:14px;
-      padding:16px 14px;
-      text-align:center;
+    /* ONE-LINER */
+    .one-liner {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 28px;
     }
 
-    .offer-wrap p{
-      margin:0;
-      font-size:15px;
-      line-height:1.4;
-      color:#4a4a4a;
+    /* OFFER BOX */
+    .offer-box {
+      border: 2px solid #0aa06a;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
     }
 
-    .offer-wrap b.green{ color:#0aa06a; }
-    .offer-wrap b.dark{ color:#0f6d56; }
-    .offer-wrap .price-inline{ color:#0aa06a; font-weight:900; }
-
-    .price-box{
-      margin:14px auto 10px;
-      background:#d9f1e7;
-      border:2px solid #8fd6be;
-      border-radius:14px;
-      padding:14px 12px 12px;
-      max-width:520px;
+    .price-old {
+      font-size: 13px;
+      color: #bbb;
+      text-decoration: line-through;
+      font-weight: 600;
+      margin-bottom: 4px;
     }
 
-    .old{
-      font-size:14px;
-      color:#6f7b76;
-      text-decoration:line-through;
-      margin-bottom:6px;
-      opacity:.9;
+    .price-new {
+      font-size: 56px;
+      font-weight: 900;
+      color: #0aa06a;
+      line-height: 1;
+      margin-bottom: 6px;
     }
 
-    .today{
-      font-size:40px;
-      font-weight:900;
-      color:#0aa06a;
-      margin:0 0 12px;
+    .price-note {
+      font-size: 12px;
+      color: #aaa;
+      font-style: italic;
+      margin-bottom: 20px;
     }
 
-    @keyframes pulseCTA {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46,204,112,0.60); }
-      70% { transform: scale(1.06); box-shadow: 0 0 0 18px rgba(46,204,112,0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46,204,112,0); }
+    /* BULLETS — mínimos, só o essencial */
+    .bullets {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
     }
 
-    .pulse{
-      animation: pulseCTA 1.8s infinite;
-      transform-origin:center;
+    .bullet {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: #333;
+      font-weight: 500;
     }
 
-    .benefits{
-      margin:14px auto 10px;
-      text-align:left;
-      max-width:520px;
-      padding:0 6px;
-    }
-    .benefit{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding:8px 0;
-      font-size:15px;
-      color:#3e3e3e;
-    }
-    .check{
-      color:#0aa06a;
-      font-weight:900;
-      line-height:1;
-      margin-top:2px;
+    .bullet-check {
+      color: #0aa06a;
+      font-weight: 900;
+      font-size: 15px;
+      flex-shrink: 0;
     }
 
-    .bottom-alert{
-      margin:14px auto 0;
-      max-width:520px;
-      background:#f3d6b8;
-      border:1px solid #e7c095;
-      color:#6a4b24;
-      border-radius:10px;
-      padding:10px 12px;
-      font-size:13px;
-      font-weight:800;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      text-align:center;
+    /* MUNDPAY */
+    .cta-wrap {
+      margin-bottom: 10px;
     }
 
-    @media (max-width:480px){
-      h1{ font-size:28px; }
-      .today{ font-size:36px; }
-      .card{ padding:16px 14px; }
-      .sub{ font-size:16px; }
+    /* DECLINE */
+    .decline {
+      display: block;
+      font-size: 11px;
+      color: #ccc;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    /* URGENCY */
+    .urgency {
+      background: #fffbea;
+      border: 1px solid #f0d060;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #7a5a00;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 22px; }
+      .price-new { font-size: 46px; }
     }
   </style>
 </head>
-
 <body>
+
+  <div class="top-bar">⚠️ Espera — Liberamos un descuento AÚN MAYOR para ti</div>
+
   <div class="page">
-    <div class="card">
 
-      <div class="top-alert">⚠️ ¡Atención! Liberamos un descuento <b>AÚN MAYOR</b> para ti</div>
+    <div class="eyebrow">Oferta exclusiva</div>
 
-      <h1>¡DESCUENTO ÚNICO PARA<br>EVITAR LA FLACIDEZ!</h1>
+    <h1>El método completo contra la flacidez<br>por solo <em>$17 USD</em></h1>
 
-      <p class="sub">
-        Antes de cerrar esta página: accede ahora al <strong>Método Contra la Flacidez</strong> con un descuento especial.
-      </p>
+    <p class="one-liner">
+      Bajar de peso rápido sin cuidar la piel puede dejarla floja.<br>
+      Este protocolo de 7 minutos al día lo evita — sin gimnasio, sin equipos.
+    </p>
 
-      <div class="offer-wrap">
-        <p>
-          Muchas alumnas adelgazan rápido con el <b class="green">Truco de la Gelatina</b> pero terminan con la piel floja.
-          Para que eso <b class="dark">NO te pase</b>, hoy tienes el método completo por solo
-          <span class="price-inline">$27 USD</span>.
-        </p>
+    <div class="offer-box">
+      <div class="price-old">Antes: $150 USD</div>
+      <div class="price-new">$17</div>
+      <div class="price-note">Acceso inmediato · Un solo pago</div>
 
-        <div class="price-box">
-          <div class="old">Antes: $150 USD</div>
-          <div class="today">Hoy: $27 USD</div>
-
-          <div data-mndpay-render="019c5509-91b5-7013-a8a7-8170cf72fe6a"></div>
-
-        </div>
+      <div class="bullets">
+        <div class="bullet"><span class="bullet-check">✓</span> 7 minutos al día — cabe en cualquier rutina</div>
+        <div class="bullet"><span class="bullet-check">✓</span> Piel firme mientras bajas de peso</div>
+        <div class="bullet"><span class="bullet-check">✓</span> Sin equipos ni gimnasio</div>
+        <div class="bullet"><span class="bullet-check">✓</span> Resultados en pocos días</div>
       </div>
 
-      <div class="benefits">
-        <div class="benefit"><div class="check">✓</div><div>Protocolo de 7 minutos al día</div></div>
-        <div class="benefit"><div class="check">✓</div><div>Mantiene tu piel firme mientras bajas de peso</div></div>
-        <div class="benefit"><div class="check">✓</div><div>No necesitas equipos ni gimnasio</div></div>
-        <div class="benefit"><div class="check">✓</div><div>Resultados visibles en pocos días</div></div>
+      <div class="cta-wrap">
+        <div data-mndpay-render="019c5509-91b5-7013-a8a7-8170cf72fe6a"></div>
       </div>
 
-      <div class="bottom-alert">⚠️ Oferta ÚNICA — Si sales de esta página, desaparece para siempre.</div>
-
+      <span class="decline">No, prefiero arriesgarme a la flacidez</span>
     </div>
+
+    <div class="urgency">
+      ⚠️ Oferta ÚNICA — Si sales de esta página, desaparece para siempre.
+    </div>
+
   </div>
 
-  
 </body>
 </html>
