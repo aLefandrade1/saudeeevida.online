@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocolo Cóctel Japonés — La Solución Natural para el Lipedema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-deep: #1f4d2b;
+    --green-primary: #2d7a3f;
+    --green-mid: #4a9d5c;
+    --green-soft: #a8d5b3;
+    --green-mist: #e8f3eb;
+    --green-cream: #f4faf5;
+    --white: #ffffff;
+    --ink: #1a2820;
+    --ink-soft: #4a5a4f;
+    --gold: #c9a961;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:18px 5%;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(45,122,63,0.1);
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo{
+    font-family:'Fraunces',serif;
+    font-size:22px;font-weight:600;
+    color:var(--green-deep);
+    letter-spacing:-0.5px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .logo-mark{
+    width:32px;height:32px;
+    background:var(--green-primary);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:white;font-family:'Noto Serif JP',serif;font-size:16px;
+  }
+  .nav-cta{
+    background:var(--green-primary);color:white;
+    padding:10px 22px;border-radius:50px;
+    text-decoration:none;font-weight:600;font-size:14px;
+    transition:all 0.3s;
+  }
+  .nav-cta:hover{background:var(--green-deep);transform:translateY(-2px);}
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;
+    padding:140px 5% 80px;
+    background:
+      radial-gradient(circle at 80% 20%, var(--green-mist) 0%, transparent 50%),
+      radial-gradient(circle at 10% 90%, var(--green-cream) 0%, transparent 60%),
+      linear-gradient(180deg, var(--white) 0%, var(--green-cream) 100%);
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'桜';
+    position:absolute;
+    top:15%;right:-50px;
+    font-family:'Noto Serif JP',serif;
+    font-size:280px;
+    color:var(--green-mist);
+    opacity:0.6;
+    z-index:0;
+    pointer-events:none;
+  }
+  .hero-content{position:relative;z-index:1;}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--green-mist);
+    color:var(--green-deep);
+    padding:8px 18px;
+    border-radius:50px;
+    font-size:13px;font-weight:600;
+    letter-spacing:0.5px;
+    margin-bottom:24px;
+    border:1px solid var(--green-soft);
+  }
+  .badge-dot{width:8px;height:8px;background:var(--green-primary);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+
+  .hero h1{
+    font-family:'Fraunces',serif;
+    font-size:clamp(36px, 5.5vw, 68px);
+    font-weight:600;
+    line-height:1.05;
+    letter-spacing:-1.5px;
+    color:var(--green-deep);
+    margin-bottom:24px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--green-primary);
+    font-weight:400;
+  }
+  .hero h1 .underline{
+    position:relative;
+    display:inline-block;
+  }
+  .hero h1 .underline::after{
+    content:'';
+    position:absolute;
+    bottom:4px;left:0;
+    width:100%;height:8px;
+    background:var(--green-soft);
+    z-index:-1;
+    opacity:0.6;
+  }
+
+  .hero-sub{
+    font-size:19px;
+    color:var(--ink-soft);
+    margin-bottom:36px;
+    max-width:560px;
+    line-height:1.65;
+  }
+
+  .hero-cta-group{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:40px;}
+  .btn-primary{
+    background:var(--green-primary);
+    color:white;
+    padding:18px 38px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+    display:inline-flex;align-items:center;gap:10px;
+    box-shadow:0 8px 24px rgba(45,122,63,0.3);
+    transition:all 0.3s;
+    border:none;cursor:pointer;
+  }
+  .btn-primary:hover{
+    background:var(--green-deep);
+    transform:translateY(-3px);
+    box-shadow:0 12px 32px rgba(45,122,63,0.4);
+  }
+  .btn-arrow{transition:transform 0.3s;}
+  .btn-primary:hover .btn-arrow{transform:translateX(4px);}
+
+  .hero-stats{
+    display:flex;gap:32px;
+    padding-top:32px;
+    border-top:1px solid var(--green-soft);
+  }
+  .stat-num{
+    font-family:'Fraunces',serif;
+    font-size:32px;font-weight:600;
+    color:var(--green-primary);
+    line-height:1;
+  }
+  .stat-label{font-size:13px;color:var(--ink-soft);margin-top:4px;}
+
+  /* ===== HERO VISUAL ===== */
+  .hero-visual{
+    position:relative;
+    height:560px;
+    z-index:1;
+  }
+  .hero-card{
+    position:absolute;
+    background:white;
+    border-radius:24px;
+    box-shadow:0 20px 60px rgba(31,77,43,0.12);
+    padding:24px;
+    border:1px solid var(--green-mist);
+  }
+  .card-1{
+    top:0;right:0;
+    width:280px;
+    transform:rotate(3deg);
+    animation:float1 6s ease-in-out infinite;
+  }
+  .card-2{
+    bottom:40px;left:0;
+    width:300px;
+    transform:rotate(-2deg);
+    animation:float2 7s ease-in-out infinite;
+  }
+  .card-3{
+    top:50%;right:20%;
+    width:220px;
+    transform:rotate(-1deg) translateY(-50%);
+    animation:float1 8s ease-in-out infinite;
+    background:var(--green-deep);
+    color:white;
+  }
+  @keyframes float1{0%,100%{transform:translateY(0) rotate(3deg);}50%{transform:translateY(-12px) rotate(3deg);}}
+  @keyframes float2{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-15px) rotate(-2deg);}}
+
+  .card-icon{
+    width:44px;height:44px;
+    background:var(--green-mist);
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;
+    margin-bottom:14px;
+  }
+  .card-3 .card-icon{background:rgba(255,255,255,0.15);}
+  .card-title{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:6px;}
+  .card-text{font-size:13px;color:var(--ink-soft);line-height:1.5;}
+  .card-3 .card-text{color:rgba(255,255,255,0.85);}
+
+  /* ===== SECTION GENERAL ===== */
+  section{padding:100px 5%;}
+  .section-tag{
+    display:inline-block;
+    color:var(--green-primary);
+    font-size:13px;font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .section-tag::before{content:'— ';}
+  .section-title{
+    font-family:'Fraunces',serif;
+    font-size:clamp(32px, 4vw, 52px);
+    font-weight:600;
+    line-height:1.1;
+    color:var(--green-deep);
+    margin-bottom:24px;
+    letter-spacing:-1px;
+    max-width:800px;
+  }
+  .section-title em{font-style:italic;color:var(--green-primary);}
+  .section-sub{font-size:18px;color:var(--ink-soft);max-width:680px;line-height:1.65;}
+
+  /* ===== PROBLEM ===== */
+  .problem{background:var(--white);}
+  .problem-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
+    margin-top:60px;
+  }
+  .problem-card{
+    background:var(--green-cream);
+    border-radius:20px;
+    padding:32px;
+    border-left:4px solid var(--green-primary);
+    transition:all 0.3s;
+  }
+  .problem-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(31,77,43,0.1);}
+  .problem-emoji{font-size:36px;margin-bottom:16px;display:block;}
+  .problem-card h3{
+    font-family:'Fraunces',serif;
+    font-size:21px;font-weight:600;
+    color:var(--green-deep);
+    margin-bottom:10px;
+  }
+  .problem-card p{font-size:15px;color:var(--ink-soft);}
+
+  /* ===== SOLUTION JAPANESE ===== */
+  .solution{
+    background:var(--green-deep);
+    color:white;
+    position:relative;
+    overflow:hidden;
+  }
+  .solution::before{
+    content:'治';
+    position:absolute;
+    top:50%;right:-100px;
+    transform:translateY(-50%);
+    font-family:'Noto Serif JP',serif;
+    font-size:500px;
+    color:rgba(255,255,255,0.03);
+    pointer-events:none;
+  }
+  .solution .section-tag{color:var(--green-soft);}
+  .solution .section-title{color:white;}
+  .solution .section-title em{color:var(--green-soft);}
+  .solution .section-sub{color:rgba(255,255,255,0.75);}
+
+  .solution-content{position:relative;z-index:1;}
+
+  .ingredients{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+    margin-top:60px;
+  }
+  .ingredient{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:16px;
+    padding:28px;
+    backdrop-filter:blur(10px);
+    transition:all 0.3s;
+  }
+  .ingredient:hover{
+    background:rgba(255,255,255,0.1);
+    transform:translateY(-4px);
+    border-color:var(--green-soft);
+  }
+  .ingredient-num{
+    font-family:'Noto Serif JP',serif;
+    font-size:14px;
+    color:var(--green-soft);
+    margin-bottom:12px;
+    letter-spacing:2px;
+  }
+  .ingredient h4{
+    font-family:'Fraunces',serif;
+    font-size:22px;
+    margin-bottom:10px;
+    color:white;
+  }
+  .ingredient p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;}
+
+  /* ===== PROTOCOL ===== */
+  .protocol{background:var(--green-cream);}
+  .protocol-flow{
+    margin-top:60px;
+    display:grid;
+    gap:24px;
+    max-width:880px;
+  }
+  .step{
+    display:grid;
+    grid-template-columns:80px 1fr;
+    gap:28px;
+    background:white;
+    padding:32px;
+    border-radius:20px;
+    border:1px solid var(--green-mist);
+    align-items:start;
+    transition:all 0.3s;
+  }
+  .step:hover{transform:translateX(6px);box-shadow:0 12px 32px rgba(31,77,43,0.08);}
+  .step-num{
+    width:64px;height:64px;
+    background:var(--green-primary);
+    color:white;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;
+    font-size:26px;font-weight:600;
+  }
+  .step-content h3{
+    font-family:'Fraunces',serif;
+    font-size:24px;
+    color:var(--green-deep);
+    margin-bottom:8px;
+  }
+  .step-content p{color:var(--ink-soft);font-size:15px;}
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials{background:white;}
+  .test-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:28px;
+    margin-top:60px;
+  }
+  .test-card{
+    background:var(--green-cream);
+    padding:32px;
+    border-radius:24px;
+    position:relative;
+    border:1px solid var(--green-mist);
+  }
+  .test-card::before{
+    content:'"';
+    position:absolute;
+    top:-10px;left:24px;
+    font-family:'Fraunces',serif;
+    font-size:80px;
+    color:var(--green-primary);
+    line-height:1;
+  }
+  .test-stars{color:var(--gold);font-size:16px;margin-bottom:12px;letter-spacing:2px;}
+  .test-text{font-size:15px;color:var(--ink);line-height:1.65;margin-bottom:20px;font-style:italic;}
+  .test-author{display:flex;align-items:center;gap:12px;border-top:1px solid var(--green-soft);padding-top:16px;}
+  .test-avatar{
+    width:44px;height:44px;
+    background:var(--green-primary);
+    color:white;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:16px;
+  }
+  .test-name{font-weight:600;color:var(--green-deep);font-size:14px;}
+  .test-role{font-size:12px;color:var(--ink-soft);}
+
+  /* ===== OFFER ===== */
+  .offer{
+    background:linear-gradient(135deg, var(--green-cream) 0%, var(--green-mist) 100%);
+    text-align:center;
+  }
+  .offer-box{
+    max-width:680px;
+    margin:60px auto 0;
+    background:white;
+    border-radius:32px;
+    padding:56px 48px;
+    box-shadow:0 30px 80px rgba(31,77,43,0.12);
+    border:2px solid var(--green-soft);
+    position:relative;
+  }
+  .offer-tag{
+    position:absolute;
+    top:-16px;left:50%;transform:translateX(-50%);
+    background:var(--green-primary);
+    color:white;
+    padding:8px 24px;
+    border-radius:50px;
+    font-size:13px;font-weight:700;
+    letter-spacing:1px;
+  }
+  .offer-title{
+    font-family:'Fraunces',serif;
+    font-size:32px;
+    color:var(--green-deep);
+    margin-bottom:12px;
+  }
+  .offer-desc{color:var(--ink-soft);margin-bottom:32px;}
+  .price-row{
+    display:flex;justify-content:center;align-items:baseline;gap:16px;margin-bottom:8px;
+  }
+  .price-old{
+    color:var(--ink-soft);
+    text-decoration:line-through;
+    font-size:20px;
+  }
+  .price-new{
+    font-family:'Fraunces',serif;
+    font-size:64px;font-weight:600;
+    color:var(--green-primary);
+    line-height:1;
+  }
+  .price-currency{font-size:24px;vertical-align:top;}
+  .price-installments{color:var(--ink-soft);font-size:14px;margin-bottom:32px;}
+
+  .offer-list{
+    text-align:left;
+    margin:32px 0;
+    padding:24px;
+    background:var(--green-cream);
+    border-radius:16px;
+  }
+  .offer-list li{
+    list-style:none;
+    padding:8px 0 8px 32px;
+    position:relative;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .offer-list li::before{
+    content:'✓';
+    position:absolute;
+    left:0;top:8px;
+    width:22px;height:22px;
+    background:var(--green-primary);
+    color:white;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;
+  }
+
+  .btn-large{
+    background:var(--green-primary);
+    color:white;
+    padding:22px 48px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:700;
+    font-size:18px;
+    display:inline-flex;align-items:center;gap:12px;
+    box-shadow:0 10px 30px rgba(45,122,63,0.4);
+    transition:all 0.3s;
+    border:none;cursor:pointer;
+    margin-bottom:16px;
+  }
+  .btn-large:hover{
+    background:var(--green-deep);
+    transform:translateY(-3px);
+    box-shadow:0 14px 40px rgba(45,122,63,0.5);
+  }
+  .guarantee{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--ink-soft);font-size:13px;
+    margin-top:12px;
+  }
+
+  /* ===== FAQ ===== */
+  .faq{background:white;}
+  .faq-list{max-width:780px;margin:60px auto 0;}
+  .faq-item{
+    border-bottom:1px solid var(--green-mist);
+    padding:24px 0;
+    cursor:pointer;
+  }
+  .faq-q{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'Fraunces',serif;
+    font-size:19px;font-weight:600;
+    color:var(--green-deep);
+  }
+  .faq-toggle{
+    width:32px;height:32px;
+    background:var(--green-mist);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--green-primary);
+    font-size:18px;font-weight:700;
+    transition:all 0.3s;
+    flex-shrink:0;
+  }
+  .faq-item.active .faq-toggle{
+    background:var(--green-primary);color:white;
+    transform:rotate(45deg);
+  }
+  .faq-a{
+    max-height:0;overflow:hidden;
+    transition:max-height 0.4s ease, padding 0.4s ease;
+    color:var(--ink-soft);font-size:15px;line-height:1.7;
+  }
+  .faq-item.active .faq-a{
+    max-height:300px;
+    padding-top:14px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--green-deep);
+    color:rgba(255,255,255,0.7);
+    padding:60px 5% 30px;
+    text-align:center;
+  }
+  footer .logo{justify-content:center;color:white;margin-bottom:20px;}
+  .foot-text{max-width:600px;margin:0 auto 24px;font-size:14px;line-height:1.7;}
+  .foot-disclaimer{
+    font-size:11px;
+    color:rgba(255,255,255,0.4);
+    max-width:700px;margin:24px auto 0;
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding-top:24px;
+    line-height:1.6;
+  }
+
+  /* ===== MOBILE ===== */
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;padding-top:120px;}
+    .hero-visual{height:auto;min-height:400px;margin-top:40px;}
+    .card-1{position:relative;margin:0 auto 20px;transform:rotate(0);}
+    .card-2{position:relative;margin:0 auto;transform:rotate(0);}
+    .card-3{display:none;}
+    .step{grid-template-columns:60px 1fr;gap:18px;padding:24px;}
+    .step-num{width:50px;height:50px;font-size:20px;}
+    .offer-box{padding:40px 24px;}
+    .price-new{font-size:48px;}
+    section{padding:70px 5%;}
+    .hero::before{font-size:180px;right:-30px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-mark">桜</div>
+    Sakura Lipo
+  </div>
+  <a href="#oferta" class="nav-cta">Quiero el Protocolo</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge"><span class="badge-dot"></span> MÉTODO ORIENTAL APROBADO</div>
+    <h1>
+      El <em>secreto japonés</em> que está <span class="underline">desinflamando</span> a mujeres con lipedema en casa
+    </h1>
+    <p class="hero-sub">
+      Descubre el protocolo del <strong>Cóctel Japonés</strong> — una combinación ancestral de drenaje, fitoterapia y nutrición que reduce la hinchazón, alivia el dolor y devuelve la ligereza a tus piernas, sin cirugía y sin medicamentos pesados.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#oferta" class="btn-primary">
+        Quiero empezar ahora
+        <span class="btn-arrow">→</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">+12.000</div>
+        <div class="stat-label">Mujeres atendidas</div>
+      </div>
+      <div>
+        <div class="stat-num">94%</div>
+        <div class="stat-label">Sienten alivio en 30 días</div>
+      </div>
+      <div>
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Valoración media</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card card-1">
+      <div class="card-icon">🌿</div>
+      <div class="card-title">Fitoterápicos Naturales</div>
+      <div class="card-text">Castaño de indias, centella asiática y jengibre en sinergia.</div>
+    </div>
+    <div class="hero-card card-3">
+      <div class="card-icon">💧</div>
+      <div class="card-title">Drenaje Linfático</div>
+      <div class="card-text">Técnica japonesa Ashizuri, en casa.</div>
+    </div>
+    <div class="hero-card card-2">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Resultados en semanas</div>
+      <div class="card-text">Piernas más ligeras, menos dolor y reducción visible de la hinchazón.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="problem">
+  <span class="section-tag">¿Te identificas?</span>
+  <h2 class="section-title">El lipedema no es una exageración — es una <em>enfermedad silenciosa</em> que te roba calidad de vida</h2>
+  <p class="section-sub">Si ya lo has intentado todo: dietas restrictivas, gimnasio, drenajes comunes… y nada funciona — el problema es que estás atacando el síntoma equivocado.</p>
+
+  <div class="problem-grid">
+    <div class="problem-card">
+      <span class="problem-emoji">🦵</span>
+      <h3>Piernas pesadas y doloridas</h3>
+      <p>Esa sensación constante de cansancio, peso y dolor al tacto, incluso sin haber hecho esfuerzo.</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-emoji">😣</span>
+      <h3>Hinchazón que no desaparece</h3>
+      <p>Te acuestas hinchada, te levantas hinchada. Ninguna dieta parece reducir el volumen en piernas y caderas.</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-emoji">💔</span>
+      <h3>Vergüenza y aislamiento</h3>
+      <p>Evitas shorts, faldas, playa, piscina. La autoestima se va junto con la desproporción del cuerpo.</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-emoji">🚫</span>
+      <h3>Frustración con tratamientos</h3>
+      <p>Médicos que minimizan, dietas que no responden, ejercicios que empeoran el dolor. Sensación de impotencia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUCIÓN JAPONESA -->
+<section class="solution">
+  <div class="solution-content">
+    <span class="section-tag">El descubrimiento oriental</span>
+    <h2 class="section-title">Conoce el <em>Cóctel Japonés</em> — la fórmula que está transformando el tratamiento del lipedema</h2>
+    <p class="section-sub">En Japón, las mujeres no tratan el lipedema con cirugía. Usan una combinación milenaria de plantas, técnicas de tacto y ritual nutricional que actúa directo sobre la causa: la inflamación linfática crónica.</p>
+
+    <div class="ingredients">
+      <div class="ingredient">
+        <div class="ingredient-num">材料 01</div>
+        <h4>Centella Asiática</h4>
+        <p>Conocida en Japón como "gotu kola", fortalece capilares, reduce la fragilidad vascular y mejora la circulación linfática.</p>
+      </div>
+      <div class="ingredient">
+        <div class="ingredient-num">材料 02</div>
+        <h4>Té Verde Matcha</h4>
+        <p>Antioxidante poderoso que combate la inflamación celular, principal motor del avance del lipedema.</p>
+      </div>
+      <div class="ingredient">
+        <div class="ingredient-num">材料 03</div>
+        <h4>Jengibre Fresco</h4>
+        <p>Termogénico natural que activa la circulación periférica y reduce la retención de líquidos en piernas y caderas.</p>
+      </div>
+      <div class="ingredient">
+        <div class="ingredient-num">材料 04</div>
+        <h4>Drenaje Ashizuri</h4>
+        <p>Técnica japonesa de auto-masaje en puntos linfáticos específicos, que aplicas en 7 minutos al día en casa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTOCOLO -->
+<section class="protocol">
+  <span class="section-tag">Cómo funciona</span>
+  <h2 class="section-title">El protocolo paso a paso, <em>simple y práctico</em></h2>
+  <p class="section-sub">No necesitas ser nutricionista ni acudir a clínicas costosas. Todo está adaptado para tu rutina diaria, con ingredientes accesibles.</p>
+
+  <div class="protocol-flow">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Cóctel matinal antiinflamatorio</h3>
+        <p>En 3 minutos por la mañana, preparas la bebida funcional que desinflama el sistema linfático y prepara al cuerpo para quemar grasa inflamada.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Auto-drenaje Ashizuri (7 min)</h3>
+        <p>Secuencia japonesa de toques específicos en las piernas que activa el flujo linfático y elimina el líquido retenido. Videos guiados paso a paso.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Menú Anti-Lipedema</h3>
+        <p>30 días de menú adaptado, enfocado en alimentos que reducen la inflamación y en retirar los "disparadores silenciosos" que empeoran el cuadro.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Movimiento linfático suave</h3>
+        <p>Secuencia de 12 minutos de ejercicios de bajo impacto que movilizan la linfa sin agredir las articulaciones ni agravar el dolor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonials">
+  <span class="section-tag">Historias reales</span>
+  <h2 class="section-title">Mujeres que <em>recuperaron sus vidas</em></h2>
+
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">En 3 semanas mis piernas dejaron de dolerme al tacto. No podía creer que algo tan simple funcionara después de 8 años sufriendo.</p>
+      <div class="test-author">
+        <div class="test-avatar">M</div>
+        <div>
+          <div class="test-name">Marina S.</div>
+          <div class="test-role">42 años · Madrid</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">Perdí 6 cm de cada muslo en 45 días. Pero lo mejor no fue eso — fue volver a usar shorts en verano después de una década escondida.</p>
+      <div class="test-author">
+        <div class="test-avatar">C</div>
+        <div>
+          <div class="test-name">Camila R.</div>
+          <div class="test-role">35 años · Bogotá</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">Ya había desistido. Había gastado fortunas en clínicas. El cóctel japonés fue lo primero que me dio resultado real y que cabe en mi rutina de madre.</p>
+      <div class="test-author">
+        <div class="test-avatar">P</div>
+        <div>
+          <div class="test-name">Patricia L.</div>
+          <div class="test-role">38 años · Ciudad de México</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="offer" id="oferta">
+  <span class="section-tag">Acceso liberado</span>
+  <h2 class="section-title" style="margin:0 auto;">Comienza <em>hoy mismo</em> tu protocolo</h2>
+
+  <div class="offer-box">
+    <div class="offer-tag">OFERTA POR TIEMPO LIMITADO</div>
+    <h3 class="offer-title">Protocolo Cóctel Japonés Completo</h3>
+    <p class="offer-desc">Todo lo que necesitas para desinflamar, drenar y recuperar tus piernas.</p>
+
+    <ul class="offer-list">
+      <li>Manual completo del Cóctel Japonés (PDF + audio)</li>
+      <li>Videoclases de Drenaje Ashizuri paso a paso</li>
+      <li>Menú Anti-Lipedema de 30 días</li>
+      <li>Secuencia de movimiento linfático en video</li>
+      <li>Lista de compras adaptada</li>
+      <li>Bono: Guía de suplementos naturales</li>
+      <li>Bono: Grupo VIP de acompañamiento</li>
+      <li>Acceso vitalicio y actualizaciones</li>
+    </ul>
+
+    <div class="price-row">
+      <span class="price-old">De $97 USD</span>
+    </div>
+    <div class="price-row">
+      <span class="price-new"><span class="price-currency">$</span>27</span>
+    </div>
+    <div class="price-installments">o en 12 cuotas sin interés</div>
+
+    <a href="#" class="btn-large">
+      QUIERO ACCEDER AL PROTOCOLO →
+    </a>
+
+    <div class="guarantee">
+      🛡️ Garantía incondicional de 7 días — o te devolvemos tu dinero
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <span class="section-tag">Dudas frecuentes</span>
+  <h2 class="section-title">Todo lo que <em>necesitas saber</em></h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">
+        ¿En cuánto tiempo veré resultados?
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">La mayoría de las mujeres reporta reducción de hinchazón en la primera semana. Los resultados visibles en medidas y la disminución del dolor suelen aparecer entre los 21 y 45 días de protocolo constante.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        ¿Funciona para cualquier estadio del lipedema?
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">El protocolo está desarrollado para los estadios 1, 2 y 3. En estadios más avanzados, complementa el tratamiento médico y puede traer un alivio significativo. Consulta siempre con tu médico.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        ¿Los ingredientes son fáciles de encontrar?
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">Sí. Toda la fórmula está adaptada para que encuentres los ingredientes en supermercados, herbolarios o farmacias comunes de cualquier país hispanohablante.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        ¿Y si no me gusta? ¿Hay garantía?
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">Tienes 7 días de garantía incondicional. Si por cualquier motivo no estás satisfecha, basta con enviar un correo y te devolvemos el 100% de tu inversión. Sin preguntas.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        ¿Cómo recibo el material después de la compra?
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">Inmediatamente después de confirmarse el pago, recibes en tu correo el acceso al área de miembros, con todos los PDFs, videos y bonos liberados.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">
+    <div class="logo-mark">桜</div>
+    Sakura Lipo
+  </div>
+  <p class="foot-text">Un protocolo natural inspirado en la sabiduría oriental, adaptado para mujeres que quieren recuperar sus piernas, su ligereza y su autoestima.</p>
+  <p class="foot-disclaimer">
+    Este contenido es informativo y no sustituye una consulta médica. Los resultados pueden variar de una persona a otra y dependen de la constancia en la aplicación del protocolo. En caso de enfermedad diagnosticada, consulta siempre con un profesional de la salud. © 2026 Sakura Lipo — Todos los derechos reservados.
+  </p>
+</footer>
+
+<script>
+  // FAQ toggle
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('active');
+    });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth'});
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
