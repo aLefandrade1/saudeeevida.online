@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UP01</title>
+
+  <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+  <link rel="preload" href="https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/69fce7f3eca19fc28678fa98/v4/player.js" as="script">
+  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+  <link rel="preload" href="https://cdn.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/69fce7ee8b675ed05591c6bf/main.m3u8" as="fetch">
+  <link rel="dns-prefetch" href="https://cdn.converteai.net">
+  <link rel="dns-prefetch" href="https://scripts.converteai.net">
+  <link rel="dns-prefetch" href="https://images.converteai.net">
+  <link rel="dns-prefetch" href="https://api.vturb.com.br">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── WARNING BAR ── */
+    .warning-bar {
+      background: #c0392b;
+      color: #fff;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 12px 16px;
+      line-height: 1.4;
+      width: 100%;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── PROGRESS ── */
+    .progress-wrapper {
+      width: 100%;
+      background: #1a1a1a;
+      padding: 10px 20px;
+    }
+
+    .progress-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #333;
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #e74c3c 0%, #f39c12 50%, #27ae60 100%);
+      border-radius: 999px;
+      transition: width 0.2s linear;
+    }
+
+    .progress-label {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      font-weight: 800;
+      color: #fff;
+      pointer-events: none;
+    }
+
+    .progress-text {
+      max-width: 900px;
+      margin: 6px auto 0;
+      text-align: right;
+      font-size: 11px;
+      color: #aaa;
+      font-style: italic;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 28px 16px 32px;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* ── STOP HEADER ── */
+    .stop-header {
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .stop-badge {
+      display: inline-block;
+      background: #c0392b;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+
+    .stop-title {
+      font-size: clamp(32px, 8vw, 52px);
+      font-weight: 900;
+      color: #c0392b;
+      margin: 0 0 6px;
+      line-height: 1.1;
+    }
+
+    /* ── ALERT MESSAGES ── */
+    .alert-messages {
+      text-align: center;
+      margin: 0 auto 24px;
+      max-width: 680px;
+    }
+
+    .alert-messages p {
+      font-size: 20px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin: 0 0 8px;
+      line-height: 1.4;
+    }
+
+    .alert-divider {
+      border: none;
+      border-top: 3px solid #1a1a1a;
+      margin: 10px auto;
+      max-width: 680px;
+    }
+
+    /* ── VIDEO CONTAINER ── */
+    .video-container {
+      margin: 0 auto 28px;
+      text-align: center;
+      max-width: 760px;
+    }
+
+    /* ── CTA AREA ── */
+    .cta-area {
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    /* ── DISCLAIMER NO FINAL ── */
+    .disclaimer {
+      width: 100%;
+      background: #000;
+      color: #888;
+      font-size: 11px;
+      text-align: center;
+      padding: 16px 20px;
+      line-height: 1.5;
+      border-top: 1px solid #222;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WARNING BAR -->
+  <div class="warning-bar">
+    ⚠️ <strong>IMPORTANTE: NO cierre esta ventana ni haga clic en el botón "Atrás".</strong>
+    Hacer clic en el botón "Atrás" puede provocar un cargo duplicado en su tarjeta.
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrapper">
+    <div class="progress-inner">
+      <div class="progress-bar" id="progressBar"></div>
+      <div class="progress-label"><span id="progressValue">0</span>%</div>
+    </div>
+    <div class="progress-text">Procesando su pedido…</div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="wrap">
+
+    <div class="stop-header">
+      <div class="stop-badge">⛔ Atención</div>
+      <div class="stop-title">¡ALTO!</div>
+    </div>
+
+    <div class="alert-messages">
+      <p>Su pedido aún no está completo.</p>
+      <hr class="alert-divider">
+      <p>Por favor, vea el mensaje importante a continuación.</p>
+    </div>
+
+    <div class="video-container">
+      <vturb-smartplayer id="vid-69fce7f3eca19fc28678fa98" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
+      <script type="text/javascript">
+        var s = document.createElement("script");
+        s.src = "https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/69fce7f3eca19fc28678fa98/v4/player.js";
+        s.async = !0;
+        document.head.appendChild(s);
+      </script>
+    </div>
+
+    <div style="height:16px"></div>
+
+    <div class="cta-area">
+      <!-- Container onde o upsell será exibido -->
+<div id="vendepay-upsell-container"></div>
+<!-- Script do widget Vendepay Upsell -->
+<script src="https://widget.vendepay.com/upsell-widget/v1/vendepay-upsell-widget-1.0.16.js?upsellId=1a332868-7380-4dd1-acb9-aac7841a3a07"
+        onload="window.VendepayUpsellWidget && window.VendepayUpsellWidget.showIframe('vendepay-upsell-container')">
+</script>
+    </div>
+
+  </main>
+
+  <script>
+    (function () {
+      var progress = 0;
+      var max = 89;
+      var bar = document.getElementById('progressBar');
+      var text = document.getElementById('progressValue');
+      var interval = setInterval(function () {
+        if (progress >= max) {
+          clearInterval(interval);
+        } else {
+          progress++;
+          bar.style.width = progress + '%';
+          text.textContent = progress;
+        }
+      }, 30);
+    })();
+  </script>
+
+</body>
+</html>
