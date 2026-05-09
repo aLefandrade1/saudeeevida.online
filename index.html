@@ -1,1 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Descubra Seu Perfil de Produtividade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
+  :root {
+    --bg: #faf7f2;
+    --ink: #1a1a1a;
+    --accent: #ff5733;
+    --accent-soft: #ffe8e0;
+    --muted: #6b6b6b;
+    --line: #e8e4dc;
+    --card: #ffffff;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(255, 87, 51, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(255, 87, 51, 0.06) 0%, transparent 40%);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 640px;
+    background: var(--card);
+    border-radius: 24px;
+    padding: 48px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent) 0%, #ffa07a 100%);
+  }
+
+  /* Progress bar */
+  .progress-wrap {
+    margin-bottom: 32px;
+  }
+
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background: var(--line);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #ff8c66);
+    border-radius: 100px;
+    width: 0%;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Steps */
+  .step {
+    display: none;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .step.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Welcome screen */
+  .welcome-badge {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+
+  /* Question */
+  .question-number {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  .question-text {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  /* Options */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .option {
+    background: var(--bg);
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: inherit;
+    width: 100%;
+  }
+
+  .option:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: translateX(4px);
+  }
+
+  .option-letter {
+    width: 32px;
+    height: 32px;
+    background: white;
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--muted);
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .option:hover .option-letter {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  /* Buttons */
+  .btn {
+    background: var(--ink);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 87, 51, 0.3);
+  }
+
+  .btn-arrow {
+    transition: transform 0.2s;
+  }
+
+  .btn:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Lead form */
+  .lead-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: inherit;
+    background: var(--bg);
+    transition: border-color 0.2s;
+  }
+
+  .input-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  /* Result */
+  .result-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+  }
+
+  .result-title {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+  }
+
+  .result-profile {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .result-description {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .result-traits {
+    background: var(--bg);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+
+  .result-traits h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .result-traits ul {
+    list-style: none;
+  }
+
+  .result-traits li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .result-traits li:last-child {
+    border-bottom: none;
+  }
+
+  .result-traits li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .small-note {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 32px 24px; }
+    h1 { font-size: 32px; }
+    .question-text { font-size: 22px; }
+    .result-title { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progressWrap" style="display:none;">
+    <div class="progress-info">
+      <span id="progressLabel">Pergunta 1 de 10</span>
+      <span id="progressPercent">10%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <!-- Welcome -->
+  <div class="step active" id="welcome">
+    <span class="welcome-badge">Quiz · 2 minutos</span>
+    <h1>Descubra seu <em>perfil de produtividade</em></h1>
+    <p class="subtitle">Responda 10 perguntas rápidas e receba um diagnóstico personalizado sobre como você trabalha melhor — e o que está te travando.</p>
+    <button class="btn" onclick="startQuiz()">
+      Começar agora
+      <span class="btn-arrow">→</span>
+    </button>
+  </div>
+
+  <!-- Quiz container -->
+  <div class="step" id="quiz"></div>
+
+  <!-- Lead capture -->
+  <div class="step" id="lead">
+    <span class="welcome-badge">Quase lá!</span>
+    <h1>Onde enviamos seu <em>resultado</em>?</h1>
+    <p class="subtitle">Seu diagnóstico personalizado está pronto. Preencha abaixo para visualizar:</p>
+    <form class="lead-form" onsubmit="showResult(event)">
+      <div class="input-group">
+        <label for="name">Seu nome</label>
+        <input type="text" id="name" required placeholder="Como você se chama?">
+      </div>
+      <div class="input-group">
+        <label for="email">Seu melhor e-mail</label>
+        <input type="email" id="email" required placeholder="voce@exemplo.com">
+      </div>
+      <button type="submit" class="btn" style="margin-top:8px;">
+        Ver meu resultado
+        <span class="btn-arrow">→</span>
+      </button>
+      <p class="small-note">🔒 Seus dados estão seguros. Nada de spam.</p>
+    </form>
+  </div>
+
+  <!-- Result -->
+  <div class="step" id="result"></div>
+
+</div>
+
+<script>
+  // ============ CONFIG DO QUIZ ============
+  const questions = [
+    {
+      q: "Como você se sente ao começar uma nova semana?",
+      options: [
+        { text: "Animado e cheio de planos", profile: "A" },
+        { text: "Ansioso, com muita coisa pendente", profile: "B" },
+        { text: "Tranquilo, vou levando", profile: "C" },
+        { text: "Sobrecarregado antes mesmo de começar", profile: "B" }
+      ]
+    },
+    {
+      q: "Qual frase combina mais com você?",
+      options: [
+        { text: "Faço listas e cumpro tudo", profile: "A" },
+        { text: "Tenho listas, mas raramente termino", profile: "B" },
+        { text: "Funciono melhor sem listas", profile: "C" },
+        { text: "Listas? Vivo apagando incêndios", profile: "B" }
+      ]
+    },
+    {
+      q: "Em qual horário você produz mais?",
+      options: [
+        { text: "De manhã cedo", profile: "A" },
+        { text: "À tarde", profile: "C" },
+        { text: "À noite/madrugada", profile: "C" },
+        { text: "Depende muito do dia", profile: "B" }
+      ]
+    },
+    {
+      q: "Como você lida com prazos apertados?",
+      options: [
+        { text: "Planejo com antecedência", profile: "A" },
+        { text: "Trabalho melhor sob pressão", profile: "C" },
+        { text: "Travo e procrastino", profile: "B" },
+        { text: "Faço aos poucos e sempre atraso um pouco", profile: "B" }
+      ]
+    },
+    {
+      q: "Quantas tarefas você consegue tocar ao mesmo tempo?",
+      options: [
+        { text: "Foco em uma de cada vez", profile: "A" },
+        { text: "Várias, mas perco o fio", profile: "B" },
+        { text: "Várias e dou conta", profile: "C" },
+        { text: "Só consigo se for uma de cada vez", profile: "A" }
+      ]
+    },
+    {
+      q: "Quando você procrastina, o que costuma fazer?",
+      options: [
+        { text: "Quase nunca procrastino", profile: "A" },
+        { text: "Mexo no celular sem parar", profile: "B" },
+        { text: "Faço outras tarefas menos importantes", profile: "C" },
+        { text: "Fico paralisado sem fazer nada", profile: "B" }
+      ]
+    },
+    {
+      q: "Como é seu ambiente de trabalho ideal?",
+      options: [
+        { text: "Silencioso e organizado", profile: "A" },
+        { text: "Com música e alguma bagunça criativa", profile: "C" },
+        { text: "Não consigo trabalhar bem em nenhum", profile: "B" },
+        { text: "Café, gente, movimento", profile: "C" }
+      ]
+    },
+    {
+      q: "O que mais te atrapalha no dia a dia?",
+      options: [
+        { text: "Reuniões e interrupções", profile: "A" },
+        { text: "Falta de motivação", profile: "B" },
+        { text: "Excesso de ideias ao mesmo tempo", profile: "C" },
+        { text: "Distrações digitais", profile: "B" }
+      ]
+    },
+    {
+      q: "Como você se sente no fim do dia?",
+      options: [
+        { text: "Realizado, com tarefas concluídas", profile: "A" },
+        { text: "Frustrado, fiz menos do que queria", profile: "B" },
+        { text: "Cansado, mas com várias coisas em andamento", profile: "C" },
+        { text: "Exausto e ainda devendo coisas", profile: "B" }
+      ]
+    },
+    {
+      q: "Se pudesse mudar UMA coisa na sua rotina, seria:",
+      options: [
+        { text: "Ter mais tempo para criar", profile: "C" },
+        { text: "Conseguir focar de verdade", profile: "B" },
+        { text: "Otimizar e automatizar tarefas", profile: "A" },
+        { text: "Parar de me cobrar tanto", profile: "B" }
+      ]
+    }
+  ];
+
+  const profiles = {
+    A: {
+      icon: "🎯",
+      title: "O Estrategista",
+      description: "Você é organizado, focado e adora um plano bem traçado. Sua força está na consistência e no método. O cuidado é não ficar tão preso à estrutura que perca espaço para a criatividade e o inesperado.",
+      traits: [
+        "Disciplina e foco acima da média",
+        "Funciona bem com rotinas e listas",
+        "Pode se beneficiar de mais flexibilidade",
+        "Ideal: técnicas como Time Blocking"
+      ]
+    },
+    B: {
+      icon: "🌪️",
+      title: "O Sobrecarregado",
+      description: "Você tem muita coisa na cabeça e sente que o tempo nunca é suficiente. Isso não é falta de capacidade — é falta de um sistema que funcione PRA VOCÊ. Pequenas mudanças podem destravar uma produtividade enorme.",
+      traits: [
+        "Muita energia, mas dispersa",
+        "Procrastinação por excesso, não preguiça",
+        "Precisa de menos tarefas, não mais força de vontade",
+        "Ideal: técnica Pomodoro + Regra dos 2 minutos"
+      ]
+    },
+    C: {
+      icon: "✨",
+      title: "O Criativo Livre",
+      description: "Você produz no seu próprio ritmo e brilha quando tem liberdade. Estruturas rígidas te sufocam, mas um pouco de organização pode multiplicar seu impacto sem matar a espontaneidade.",
+      traits: [
+        "Alta criatividade e adaptabilidade",
+        "Trabalha bem sob pressão",
+        "Pode ter dificuldade com tarefas repetitivas",
+        "Ideal: método Kanban + sprints curtos"
+      ]
+    }
+  };
+
+  // ============ LÓGICA ============
+  let currentQuestion = 0;
+  const answers = [];
+  const TOTAL = questions.length;
+
+  function startQuiz() {
+    document.getElementById('welcome').classList.remove('active');
+    document.getElementById('progressWrap').style.display = 'block';
+    document.getElementById('quiz').classList.add('active');
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q = questions[currentQuestion];
+    const quiz = document.getElementById('quiz');
+
+    quiz.innerHTML = `
+      <div class="question-number">Pergunta ${currentQuestion + 1}</div>
+      <div class="question-text">${q.q}</div>
+      <div class="options">
+        ${q.options.map((opt, i) => `
+          <button class="option" onclick="selectOption(${i})">
+            <span class="option-letter">${String.fromCharCode(65 + i)}</span>
+            <span>${opt.text}</span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+
+    updateProgress();
+  }
+
+  function selectOption(index) {
+    answers.push(questions[currentQuestion].options[index].profile);
+    currentQuestion++;
+
+    if (currentQuestion < TOTAL) {
+      renderQuestion();
+    } else {
+      goToLead();
+    }
+  }
+
+  function updateProgress() {
+    const percent = Math.round(((currentQuestion) / TOTAL) * 100);
+    document.getElementById('progressLabel').textContent = `Pergunta ${currentQuestion + 1} de ${TOTAL}`;
+    document.getElementById('progressPercent').textContent = `${percent}%`;
+    document.getElementById('progressFill').style.width = `${percent}%`;
+  }
+
+  function goToLead() {
+    document.getElementById('quiz').classList.remove('active');
+    document.getElementById('progressFill').style.width = '100%';
+    document.getElementById('progressLabel').textContent = 'Concluído!';
+    document.getElementById('progressPercent').textContent = '100%';
+    document.getElementById('lead').classList.add('active');
+  }
+
+  function showResult(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    // Aqui você poderia enviar para um webhook, Google Sheets, etc.
+    console.log('Lead capturado:', { name, email, answers });
+
+    // Calcular perfil dominante
+    const counts = { A: 0, B: 0, C: 0 };
+    answers.forEach(a => counts[a]++);
+    const winner = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+    const profile = profiles[winner];
+
+    document.getElementById('lead').classList.remove('active');
+    document.getElementById('progressWrap').style.display = 'none';
+
+    const result = document.getElementById('result');
+    result.innerHTML = `
+      <div class="result-icon">${profile.icon}</div>
+      <span class="welcome-badge">Seu resultado, ${name.split(' ')[0]}</span>
+      <h1 class="result-title">Você é <em class="result-profile">${profile.title}</em></h1>
+      <p class="result-description">${profile.description}</p>
+      <div class="result-traits">
+        <h3>Suas características:</h3>
+        <ul>
+          ${profile.traits.map(t => `<li>${t}</li>`).join('')}
+        </ul>
+      </div>
+      <button class="btn" onclick="location.reload()">
+        Refazer o quiz
+        <span class="btn-arrow">↻</span>
+      </button>
+      <p class="small-note">📩 Enviamos uma cópia detalhada para ${email}</p>
+    `;
+    result.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
