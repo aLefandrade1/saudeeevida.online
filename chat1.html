@@ -100,12 +100,15 @@
     font-size: 11.5px; font-weight: 600;
     border-bottom: 1px solid #fde68a;
   }
+
+  /* CHAT - tudo agora flui dentro daqui */
   .chat-area {
     flex: 1; overflow-y: auto;
-    padding: 16px 12px 140px; scroll-behavior: smooth;
+    padding: 16px 12px 30px; scroll-behavior: smooth;
   }
   .chat-area::-webkit-scrollbar { width: 4px; }
   .chat-area::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
+
   .date-separator { text-align: center; margin: 12px 0; }
   .date-separator span {
     background: rgba(255,255,255,0.85);
@@ -113,6 +116,7 @@
     font-weight: 500; padding: 5px 12px;
     border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.08);
   }
+
   .message {
     max-width: 82%; margin-bottom: 8px;
     display: flex; animation: slideIn 0.3s ease;
@@ -123,6 +127,7 @@
   }
   .message.bot { justify-content: flex-start; }
   .message.user { justify-content: flex-end; margin-left: auto; }
+
   .bubble {
     padding: 9px 13px 8px 14px; border-radius: 8px;
     position: relative; word-wrap: break-word;
@@ -186,50 +191,69 @@
     0%, 60%, 100% { transform: translateY(0); opacity: 0.6; }
     30% { transform: translateY(-6px); opacity: 1; }
   }
-  .action-area {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(to top, var(--bg) 70%, rgba(227,236,223,0));
-    padding: 14px 12px 16px;
-    display: flex; flex-direction: column; gap: 8px; z-index: 5;
+
+  /* ============ NOVO: BOTÕES DENTRO DO CHAT ============ */
+  .choices-inline {
+    display: flex; flex-direction: column;
+    gap: 8px; margin-bottom: 12px;
+    width: 100%;
+    animation: slideIn 0.4s ease;
   }
-  .action-btn {
-    background: white; border: 1.5px solid var(--accent);
-    color: var(--accent-dark); padding: 13px 18px;
-    border-radius: 24px; font-size: 14.5px; font-weight: 600;
-    cursor: pointer; font-family: inherit; transition: all 0.2s;
-    width: 100%; text-align: center; animation: slideUp 0.4s ease;
+  .choice-bubble {
+    align-self: flex-end;
+    max-width: 82%;
+    background: white;
+    border: 2px solid var(--accent);
+    color: var(--accent-dark);
+    padding: 11px 16px;
+    border-radius: 18px;
+    font-size: 14.5px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+    transition: all 0.2s;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(22, 163, 74, 0.15);
   }
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+  .choice-bubble:hover, .choice-bubble:active {
+    background: var(--bubble-user);
+    transform: translateX(-4px);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
   }
-  .action-btn:hover { background: var(--bubble-user); transform: translateY(-1px); }
-  .action-btn.primary {
+  .choice-bubble.primary {
     background: linear-gradient(135deg, var(--accent), var(--accent-dark));
     color: white; border: none;
     box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
   }
-  .action-btn.cta {
+  .choice-bubble.primary:hover {
+    box-shadow: 0 6px 16px rgba(22, 163, 74, 0.5);
+  }
+  .choice-bubble.cta {
     background: linear-gradient(135deg, #16a34a, #15803d);
     color: white; border: none;
-    font-size: 15.5px; font-weight: 800; padding: 16px 18px;
+    font-size: 15px; font-weight: 800;
+    padding: 14px 18px;
     box-shadow: 0 6px 18px rgba(22, 163, 74, 0.5);
-    animation: slideUp 0.4s ease, ctaPulse 1.8s infinite 0.5s;
     text-transform: uppercase; letter-spacing: 0.3px;
+    animation: ctaPulse 1.8s infinite;
   }
   @keyframes ctaPulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.025); }
   }
-  .action-btn.cta:hover { box-shadow: 0 8px 26px rgba(22, 163, 74, 0.65); }
-  .action-btn.danger {
+  .choice-bubble.danger {
     background: white; border: 1.5px solid #d1d5db;
-    color: var(--muted); font-size: 13px; padding: 11px 18px;
+    color: var(--muted); font-size: 12.5px;
+    padding: 10px 16px;
+    box-shadow: none;
   }
+
+  /* SLIDER (também dentro do chat) */
   .slider-card {
     background: white; border-radius: 12px;
-    padding: 18px 16px; margin: 4px 0 8px;
-    max-width: 90%; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 18px 16px; margin-bottom: 12px;
+    width: 90%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    align-self: flex-start;
+    animation: slideIn 0.4s ease;
   }
   .slider-value {
     font-size: 38px; font-weight: 800;
@@ -263,11 +287,27 @@
     font-size: 11px; color: var(--muted);
     margin-top: 10px; font-weight: 500;
   }
+  .slider-confirm {
+    margin-top: 14px; width: 100%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: white; border: none;
+    padding: 12px; border-radius: 14px;
+    font-size: 14.5px; font-weight: 700;
+    cursor: pointer; font-family: inherit;
+    box-shadow: 0 3px 10px rgba(22, 163, 74, 0.3);
+  }
+  .slider-confirm:hover {
+    box-shadow: 0 5px 14px rgba(22, 163, 74, 0.45);
+  }
+
+  /* COMPONENTES VISUAIS */
   .testimonial-card {
     background: white; border-radius: 12px;
-    padding: 14px; margin: 4px 0 8px;
+    padding: 14px; margin-bottom: 8px;
     max-width: 88%; box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     border-left: 3px solid var(--accent);
+    align-self: flex-start;
+    animation: slideIn 0.4s ease;
   }
   .testimonial-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
   .testimonial-avatar {
@@ -289,8 +329,10 @@
   .stats-card {
     background: linear-gradient(135deg, #f0fdf4, #dcfce7);
     border-radius: 12px; padding: 14px;
-    margin: 4px 0 8px; max-width: 88%;
+    margin-bottom: 8px; max-width: 88%;
     border: 1.5px solid var(--accent);
+    align-self: flex-start;
+    animation: slideIn 0.4s ease;
   }
   .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .stat-item { text-align: center; }
@@ -305,9 +347,11 @@
   }
   .diagnosis-card {
     background: white; border-radius: 12px;
-    padding: 16px; margin: 4px 0 8px;
+    padding: 16px; margin-bottom: 8px;
     max-width: 90%; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border: 2px solid var(--accent);
+    align-self: flex-start;
+    animation: slideIn 0.4s ease;
   }
   .diagnosis-title {
     font-weight: 700; font-size: 14px;
@@ -328,10 +372,12 @@
   }
   .offer-card {
     background: white; border-radius: 14px;
-    padding: 18px; margin: 4px 0 8px;
+    padding: 18px; margin-bottom: 8px;
     max-width: 92%;
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     border: 3px solid var(--accent); position: relative;
+    align-self: flex-start;
+    animation: slideIn 0.4s ease;
   }
   .offer-badge {
     position: absolute; top: -10px; left: 50%;
@@ -390,7 +436,9 @@
     background: linear-gradient(135deg, #fef2f2, #fee2e2);
     border: 1.5px solid var(--red);
     border-radius: 12px; padding: 12px;
-    text-align: center; margin: 4px 0 8px; max-width: 88%;
+    text-align: center; margin-bottom: 8px; max-width: 88%;
+    align-self: flex-start;
+    animation: slideIn 0.4s ease;
   }
   .timer-label {
     font-size: 11px; color: #991b1b;
@@ -410,7 +458,9 @@
     background: linear-gradient(135deg, #fffbeb, #fef3c7);
     border: 1.5px dashed var(--gold);
     border-radius: 12px; padding: 12px 14px;
-    margin: 4px 0 8px; max-width: 88%;
+    margin-bottom: 8px; max-width: 88%;
+    align-self: flex-start;
+    animation: slideIn 0.4s ease;
   }
   .bonus-tag {
     background: var(--gold); color: white;
@@ -432,8 +482,10 @@
   .guarantee-card {
     background: white; border: 2px solid var(--green);
     border-radius: 12px; padding: 14px;
-    margin: 4px 0 8px; max-width: 88%;
+    margin-bottom: 8px; max-width: 88%;
     display: flex; gap: 12px; align-items: center;
+    align-self: flex-start;
+    animation: slideIn 0.4s ease;
   }
   .guarantee-icon { font-size: 36px; flex-shrink: 0; }
   .guarantee-text { font-size: 12.5px; line-height: 1.4; }
@@ -444,8 +496,10 @@
   .product-image {
     background: linear-gradient(135deg, #dcfce7, #bbf7d0);
     border-radius: 12px; padding: 30px 20px;
-    margin: 4px 0 8px; max-width: 88%;
+    margin-bottom: 8px; max-width: 88%;
     text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    align-self: flex-start;
+    animation: slideIn 0.4s ease;
   }
   .product-emoji { font-size: 80px; line-height: 1; }
   .product-name {
@@ -456,6 +510,7 @@
     font-size: 12px; color: var(--muted);
     margin-top: 4px; font-weight: 600;
   }
+
   .final-screen {
     display: none; flex-direction: column;
     align-items: center; justify-content: center;
@@ -479,6 +534,11 @@
     border-radius: 50%; animation: spin 1s infinite linear;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
+
+  #messages {
+    display: flex;
+    flex-direction: column;
+  }
 </style>
 </head>
 <body>
@@ -497,7 +557,6 @@
     <div class="date-separator"><span>HOY · MENSAJE PERSONAL</span></div>
     <div id="messages"></div>
   </div>
-  <div class="action-area" id="actionArea"></div>
   <div class="final-screen" id="finalScreen">
     <div class="final-icon">🎉</div>
     <div class="final-title">Liberando tu acceso al Chiclete...</div>
@@ -507,26 +566,19 @@
 </div>
 
 <script>
-// ============================================================
-// 🔥 NOVA ARQUITETURA SIMPLES E À PROVA DE BUGS
-// Cada step é um objeto { tipo, conteúdo, próximo }
-// ============================================================
-
 var userData = {};
-var currentStepIndex = 0;
-var sliderIdCounter = 0;
+var stepIdx = 0;
+var sliderCount = 0;
 
 // ============ HELPERS ============
 function getTime() {
   var n = new Date();
   return (n.getHours()<10?'0':'') + n.getHours() + ':' + (n.getMinutes()<10?'0':'') + n.getMinutes();
 }
-
 function scrollDown() {
   var c = document.getElementById('chatArea');
   setTimeout(function(){ c.scrollTop = c.scrollHeight; }, 50);
 }
-
 function showTyping() {
   if (document.getElementById('typingIndicator')) return;
   var m = document.getElementById('messages');
@@ -537,12 +589,10 @@ function showTyping() {
   m.appendChild(t);
   scrollDown();
 }
-
 function hideTyping() {
   var t = document.getElementById('typingIndicator');
   if (t) t.remove();
 }
-
 function addBotMsg(text) {
   var m = document.getElementById('messages');
   var d = document.createElement('div');
@@ -551,7 +601,6 @@ function addBotMsg(text) {
   m.appendChild(d);
   scrollDown();
 }
-
 function addUserMsg(text) {
   var m = document.getElementById('messages');
   var d = document.createElement('div');
@@ -560,20 +609,11 @@ function addUserMsg(text) {
   m.appendChild(d);
   scrollDown();
 }
-
-function addComponent(html) {
+function addComp(html) {
   var m = document.getElementById('messages');
-  var d = document.createElement('div');
-  d.className = 'message bot';
-  d.innerHTML = html;
-  m.appendChild(d);
+  m.insertAdjacentHTML('beforeend', html);
   scrollDown();
 }
-
-function clearActions() {
-  document.getElementById('actionArea').innerHTML = '';
-}
-
 function track(name, params) {
   if (typeof gtag === 'function') {
     gtag('event', name, Object.assign({event_category: 'Typebot'}, params || {}));
@@ -591,9 +631,7 @@ function startTimer() {
     var min = Math.floor(total / 60);
     var sec = total % 60;
     var d = document.getElementById('timerDisplay');
-    if (d) {
-      d.textContent = (min<10?'0':'') + min + ':' + (sec<10?'0':'') + sec;
-    }
+    if (d) d.textContent = (min<10?'0':'') + min + ':' + (sec<10?'0':'') + sec;
     if (total <= 0) {
       clearInterval(iv);
       if (d) d.textContent = 'EXPIRADA';
@@ -602,10 +640,10 @@ function startTimer() {
 }
 
 // ============================================================
-// 📋 ETAPAS DO FUNIL (cada item é um passo)
+// 🎯 ETAPAS DO FUNIL
 // ============================================================
 var STEPS = [
-  // 0 - Abertura
+  // Abertura
   { tipo: 'msg', texto: '¡Hola! 💚 ¿Cómo estás?', delay: 800 },
   { tipo: 'msg', texto: 'Soy el <strong>Dr. Juan Rivera</strong>, médico de celebridades como Adamari López.', delay: 1500 },
   { tipo: 'msg', texto: 'Antes de mostrarte lo que descubrí, necesito hacerte unas preguntas rápidas...', delay: 1500 },
@@ -614,38 +652,38 @@ var STEPS = [
     { texto: '👍 Pregunta, doctor', primary: true }
   ]},
 
-  // 5 - Gênero
-  { tipo: 'msg', texto: 'Primero, dime:', delay: 600 },
-  { tipo: 'msg', texto: '¿Eres mujer u hombre? 👇', delay: 800 },
+  // Gênero
+  { tipo: 'msg', texto: 'Primero, dime:', delay: 800 },
+  { tipo: 'msg', texto: '¿Eres mujer u hombre? 👇', delay: 1000 },
   { tipo: 'choice', botoes: [
     { texto: '👩 Mujer', salvar: { gender: 'mujer' } },
     { texto: '👨 Hombre', salvar: { gender: 'hombre' } }
   ]},
 
-  // 8 - Idade
-  { tipo: 'msg', texto: '¡Perfecto! Ahora dime tu edad...', delay: 800 },
+  // Idade
+  { tipo: 'msg', texto: '¡Perfecto! Ahora dime tu edad...', delay: 1000 },
   { tipo: 'slider', config: {
     chave: 'age', min: 18, max: 75, padrao: 40, unidade: 'años',
     labels: ['18', '40', '75+']
   }},
 
-  // 10 - Peso atual
-  { tipo: 'msg', texto: '¡Excelente! ¿Cuál es tu peso actual? ⚖️', delay: 800 },
-  { tipo: 'msg', texto: 'Arrastra la barrita de abajo:', delay: 800 },
+  // Peso atual
+  { tipo: 'msg', texto: '¡Excelente! ¿Cuál es tu peso actual? ⚖️', delay: 1000 },
+  { tipo: 'msg', texto: 'Arrastra la barrita y confirma:', delay: 1000 },
   { tipo: 'slider', config: {
     chave: 'currentWeight', min: 50, max: 150, padrao: 80, unidade: 'kg',
     labels: ['50kg', '100kg', '150kg+']
   }},
 
-  // 13 - Peso desejado
-  { tipo: 'msg', texto: '¿Y a qué peso QUIERES llegar? 🎯', delay: 800 },
+  // Peso desejado
+  { tipo: 'msg', texto: '¿Y a qué peso QUIERES llegar? 🎯', delay: 1000 },
   { tipo: 'slider', config: {
     chave: 'targetWeight', min: 45, max: 100, padrao: 60, unidade: 'kg',
     labels: ['45kg', '70kg', '100kg+']
   }},
 
-  // 15 - Tempo lutando
-  { tipo: 'msg', texto: '¿Hace cuánto luchas con esos kilos de más? 😔', delay: 1000 },
+  // Tempo lutando
+  { tipo: 'msg', texto: '¿Hace cuánto luchas con esos kilos de más? 😔', delay: 1200 },
   { tipo: 'choice', botoes: [
     { texto: 'Menos de 1 año', salvar: { struggleTime: 'corto' } },
     { texto: 'Entre 1 y 5 años', salvar: { struggleTime: 'medio' } },
@@ -653,8 +691,8 @@ var STEPS = [
     { texto: 'Toda mi vida 💔', salvar: { struggleTime: 'vida' } }
   ]},
 
-  // 17 - O que tentou
-  { tipo: 'msg', texto: '¿Y qué has INTENTADO para adelgazar?', delay: 1000 },
+  // O que tentou
+  { tipo: 'msg', texto: '¿Y qué has INTENTADO para adelgazar?', delay: 1200 },
   { tipo: 'choice', botoes: [
     { texto: 'Dietas restrictivas' },
     { texto: 'Ejercicio pesado' },
@@ -662,46 +700,46 @@ var STEPS = [
     { texto: '¡TODO! Y nada funciona 😩' }
   ]},
 
-  // 19 - Empatia + diagnóstico
-  { tipo: 'msg', texto: 'Te entiendo de verdad...', delay: 1000 },
-  { tipo: 'msg', texto: 'La culpa <strong>NO ES TUYA</strong>. ❌', delay: 1000 },
+  // Empatia + diagnóstico
+  { tipo: 'msg', texto: 'Te entiendo de verdad...', delay: 1200 },
+  { tipo: 'msg', texto: 'La culpa <strong>NO ES TUYA</strong>. ❌', delay: 1200 },
   { tipo: 'msg', texto: 'Calculé aquí tu perfil. Mira lo que descubrí:', delay: 1500 },
   { tipo: 'comp_diagnosis' },
-  { tipo: 'msg', texto: 'Tu cuerpo tiene <em>deficiencia de 2 hormonas esenciales</em> para adelgazar:', delay: 1800 },
-  { tipo: 'msg', texto: '🧬 <strong>GIP</strong> y <strong>GLP-1</strong>', delay: 1000 },
-  { tipo: 'msg', texto: 'Son las MISMAS hormonas que el <strong>Mounjaro</strong> y el <strong>Ozempic</strong> intentan imitar... ¡pero costando hasta <em>$2,000 al mes</em>! 💸', delay: 2000 },
+  { tipo: 'msg', texto: 'Tu cuerpo tiene <em>deficiencia de 2 hormonas esenciales</em> para adelgazar:', delay: 2000 },
+  { tipo: 'msg', texto: '🧬 <strong>GIP</strong> y <strong>GLP-1</strong>', delay: 1200 },
+  { tipo: 'msg', texto: 'Son las MISMAS hormonas que el <strong>Mounjaro</strong> y el <strong>Ozempic</strong> intentan imitar... ¡pero costando hasta <em>$2,000 al mes</em>! 💸', delay: 2200 },
   { tipo: 'choice', botoes: [
     { texto: '😱 ¿Por eso no logro adelgazar?!', primary: true }
   ]},
 
-  // 27 - Explicação
-  { tipo: 'msg', texto: 'EXACTAMENTE.', delay: 800 },
-  { tipo: 'msg', texto: 'Sin esas hormonas, tu cuerpo entra en pánico:', delay: 1000 },
-  { tipo: 'msg', texto: '💭 <em>"¡Nunca estoy satisfecho... necesito almacenar más grasa!"</em>', delay: 1500 },
-  { tipo: 'msg', texto: 'Entonces TODO lo que comes se convierte en grasa atrapada en abdomen, brazos y piernas. 😞', delay: 1500 },
-  { tipo: 'msg', texto: 'No importa si comes poco. No importa si haces ejercicio. Tu cuerpo sigue almacenando.', delay: 2000 },
-  { tipo: 'msg', texto: 'Es como manejar un auto <strong>con el freno de mano puesto</strong>. 🚗', delay: 1500 },
+  // Explicação
+  { tipo: 'msg', texto: 'EXACTAMENTE.', delay: 1000 },
+  { tipo: 'msg', texto: 'Sin esas hormonas, tu cuerpo entra en pánico:', delay: 1200 },
+  { tipo: 'msg', texto: '💭 <em>"¡Nunca estoy satisfecho... necesito almacenar más grasa!"</em>', delay: 1800 },
+  { tipo: 'msg', texto: 'Entonces TODO lo que comes se convierte en grasa atrapada en abdomen, brazos y piernas. 😞', delay: 1800 },
+  { tipo: 'msg', texto: 'No importa si comes poco. No importa si haces ejercicio. Tu cuerpo sigue almacenando.', delay: 2200 },
+  { tipo: 'msg', texto: 'Es como manejar un auto <strong>con el freno de mano puesto</strong>. 🚗', delay: 1800 },
   { tipo: 'choice', botoes: [
     { texto: '😢 ¡Así me siento exactamente!', primary: true }
   ]},
 
-  // 34 - Descoberta
-  { tipo: 'msg', texto: 'Pero tengo una noticia INCREÍBLE para ti... 🌟', delay: 1200 },
-  { tipo: 'msg', texto: 'Descubrí una forma de <strong>ACTIVAR esas hormonas naturalmente</strong>.', delay: 1500 },
-  { tipo: 'msg', texto: 'Sin agujas. Sin medicamentos. Sin efectos secundarios.', delay: 1200 },
-  { tipo: 'msg', texto: 'Es un <em>Mounjaro de gelatina</em>. 🍬', delay: 1000 },
+  // Descoberta
+  { tipo: 'msg', texto: 'Pero tengo una noticia INCREÍBLE para ti... 🌟', delay: 1500 },
+  { tipo: 'msg', texto: 'Descubrí una forma de <strong>ACTIVAR esas hormonas naturalmente</strong>.', delay: 1800 },
+  { tipo: 'msg', texto: 'Sin agujas. Sin medicamentos. Sin efectos secundarios.', delay: 1500 },
+  { tipo: 'msg', texto: 'Es un <em>Mounjaro de gelatina</em>. 🍬', delay: 1200 },
   { tipo: 'msg', texto: 'Yo lo llamo... <strong>CHICLETE</strong>. 💚', delay: 1500 },
   { tipo: 'comp_product' },
   { tipo: 'choice', botoes: [
     { texto: '🤩 ¿Cómo así, doctor?!', primary: true }
   ]},
 
-  // 41 - Como funciona
-  { tipo: 'msg', texto: 'Es un cubito que comes <strong>1 vez al día</strong>, en la mañana. 🌅', delay: 1200 },
-  { tipo: 'msg', texto: 'Su contacto con tu intestino libera las hormonas GIP y GLP-1 INMEDIATAMENTE.', delay: 1800 },
-  { tipo: 'msg', texto: 'Resultado:', delay: 800 },
-  { tipo: 'msg', texto: '🔥 Tu hambre DESAPARECE<br>🔥 Tu cuerpo quema grasa 24h/día<br>🔥 Incluso mientras duermes', delay: 1800 },
-  { tipo: 'msg', texto: 'Mira lo que pasó con <strong>Adamari López</strong>:', delay: 1200 },
+  // Como funciona
+  { tipo: 'msg', texto: 'Es un cubito que comes <strong>1 vez al día</strong>, en la mañana. 🌅', delay: 1500 },
+  { tipo: 'msg', texto: 'Su contacto con tu intestino libera las hormonas GIP y GLP-1 INMEDIATAMENTE.', delay: 2000 },
+  { tipo: 'msg', texto: 'Resultado:', delay: 1000 },
+  { tipo: 'msg', texto: '🔥 Tu hambre DESAPARECE<br>🔥 Tu cuerpo quema grasa 24h/día<br>🔥 Incluso mientras duermes', delay: 2000 },
+  { tipo: 'msg', texto: 'Mira lo que pasó con <strong>Adamari López</strong>:', delay: 1500 },
   { tipo: 'comp_test', config: {
     avatar: 'AL', name: 'Adamari López', meta: '54 años · Actriz',
     text: 'En 2 meses, sin dieta y sin ejercicio, perdí 25 kilos usando solo este Chiclete. ¡Funciona como una inyección de Ozempic, pero sin agujas!'
@@ -710,7 +748,7 @@ var STEPS = [
     { texto: '😍 ¡Quiero conocer más historias!', primary: true }
   ]},
 
-  // 48 - Mais depoimentos
+  // Mais depoimentos
   { tipo: 'comp_test', config: {
     avatar: 'ML', name: 'María León', meta: 'Actriz española',
     text: '¡Perdí 8 kilos en 2 semanas! Fue una locura. Este es mi nuevo secretito incluso comiendo basura todos los días.'
@@ -723,27 +761,27 @@ var STEPS = [
     avatar: 'PS', name: 'Patricia S.', meta: '52 años · Verificada ✓',
     text: 'Perdí 18 kilos en 42 días solo con el Chiclete. ¡Hasta mi piel parece más joven!'
   }},
-  { tipo: 'msg', texto: 'Ya son <strong>+121,300 personas</strong> entre 25 y 80 años transformadas. 📈', delay: 1500 },
+  { tipo: 'msg', texto: 'Ya son <strong>+121,300 personas</strong> entre 25 y 80 años transformadas. 📈', delay: 1800 },
   { tipo: 'comp_stats' },
   { tipo: 'choice', botoes: [
     { texto: '🔥 ¡Yo quiero ese resultado!', primary: true }
   ]},
 
-  // 54 - Projeção
-  { tipo: 'msg', texto: 'Espera... voy a calcular tu proyección personalizada. ⚖️', delay: 1200 },
-  { tipo: 'msg', texto: 'Basado en tus datos, en <strong>30 días</strong> puedes perder...', delay: 1500 },
+  // Projeção
+  { tipo: 'msg', texto: 'Espera... voy a calcular tu proyección personalizada. ⚖️', delay: 1500 },
+  { tipo: 'msg', texto: 'Basado en tus datos, en <strong>30 días</strong> puedes perder...', delay: 1800 },
   { tipo: 'comp_projection' },
-  { tipo: 'msg', texto: 'Y en <strong>90 días</strong>, llegar a tu peso deseado. 🎯', delay: 1500 },
-  { tipo: 'msg', texto: 'Sin dieta. Sin gimnasio. Sin medicamentos. ✨', delay: 1200 },
+  { tipo: 'msg', texto: 'Y en <strong>90 días</strong>, llegar a tu peso deseado. 🎯', delay: 1800 },
+  { tipo: 'msg', texto: 'Sin dieta. Sin gimnasio. Sin medicamentos. ✨', delay: 1500 },
   { tipo: 'choice', botoes: [
     { texto: '😍 ¿Cómo hago para empezar?', primary: true }
   ]},
 
-  // 60 - Apresentação da oferta
-  { tipo: 'msg', texto: 'Mira lo que preparé para ti... 🎁', delay: 1200 },
-  { tipo: 'msg', texto: 'Vas a recibir <strong>TODO ESTO</strong> en una aplicación personalizada:', delay: 1500 },
-  { tipo: 'msg', texto: '📱 App con la receta completa del Chiclete<br>📋 Dosis calculada para TU peso<br>📅 Cronograma de 30 días<br>💬 Mi contacto personal', delay: 2500 },
-  { tipo: 'msg', texto: 'Y 3 BONOS exclusivos más:', delay: 1000 },
+  // Apresentação da oferta
+  { tipo: 'msg', texto: 'Mira lo que preparé para ti... 🎁', delay: 1500 },
+  { tipo: 'msg', texto: 'Vas a recibir <strong>TODO ESTO</strong> en una aplicación personalizada:', delay: 1800 },
+  { tipo: 'msg', texto: '📱 App con la receta completa del Chiclete<br>📋 Dosis calculada para TU peso<br>📅 Cronograma de 30 días<br>💬 Mi contacto personal', delay: 2800 },
+  { tipo: 'msg', texto: 'Y 3 BONOS exclusivos más:', delay: 1200 },
   { tipo: 'comp_bonus', config: {
     tag: 'BONO 1', title: '🔥 Truco del Vientre Plano',
     desc: 'Receta extra que potencia el efecto del Chiclete y aplana el vientre en hasta 7 días',
@@ -763,29 +801,29 @@ var STEPS = [
     { texto: '😱 ¿Cuánto va a costar?!', primary: true }
   ]},
 
-  // 68 - Quebra de preço
-  { tipo: 'msg', texto: 'Aquí es donde vas a entender el tamaño de mi REGALO para ti...', delay: 1200 },
-  { tipo: 'msg', texto: 'Una sola caja de Mounjaro cuesta hasta <strong>$2,000</strong>. 💸', delay: 1500 },
-  { tipo: 'msg', texto: 'Mujeres ya pagaron <strong>$500</strong> por el Chiclete + bonos.', delay: 1500 },
-  { tipo: 'msg', texto: 'Pero hoy no vas a pagar eso...', delay: 1200 },
-  { tipo: 'msg', texto: 'Ni siquiera la mitad.', delay: 1000 },
-  { tipo: 'msg', texto: 'Y ni siquiera $100. 🎯', delay: 1200 },
+  // Quebra de preço
+  { tipo: 'msg', texto: 'Aquí es donde vas a entender el tamaño de mi REGALO para ti...', delay: 1500 },
+  { tipo: 'msg', texto: 'Una sola caja de Mounjaro cuesta hasta <strong>$2,000</strong>. 💸', delay: 1800 },
+  { tipo: 'msg', texto: 'Mujeres ya pagaron <strong>$500</strong> por el Chiclete + bonos.', delay: 1800 },
+  { tipo: 'msg', texto: 'Pero hoy no vas a pagar eso...', delay: 1500 },
+  { tipo: 'msg', texto: 'Ni siquiera la mitad.', delay: 1200 },
+  { tipo: 'msg', texto: 'Y ni siquiera $100. 🎯', delay: 1500 },
   { tipo: 'choice', botoes: [
     { texto: '😱 ¿Cuánto entonces?!', primary: true }
   ]},
 
-  // 75 - Revelação + urgência
+  // Revelação + urgência
   { tipo: 'comp_timer' },
-  { tipo: 'msg', texto: 'Mira la oferta especial que liberé solo para ti AHORA: 👇', delay: 1500 },
+  { tipo: 'msg', texto: 'Mira la oferta especial que liberé solo para ti AHORA: 👇', delay: 1800 },
   { tipo: 'comp_offer' },
-  { tipo: 'msg', texto: 'Así es. <strong>De $500 a $39</strong>. 🤯', delay: 1500 },
-  { tipo: 'msg', texto: 'Menos de <strong>$1.30 al día</strong>. ☕', delay: 1200 },
+  { tipo: 'msg', texto: 'Así es. <strong>De $500 a $39</strong>. 🤯', delay: 1800 },
+  { tipo: 'msg', texto: 'Menos de <strong>$1.30 al día</strong>. ☕', delay: 1500 },
   { tipo: 'choice', botoes: [
     { texto: '🔥 ¡LO QUIERO! ¿Hay algo más?', primary: true }
   ]},
 
-  // 81 - Bônus secretos + garantia
-  { tipo: 'msg', texto: '¡Sí! Como llegaste hasta aquí, voy a liberar 2 BONOS SECRETOS más: 🎁', delay: 1500 },
+  // Bônus secretos + garantia
+  { tipo: 'msg', texto: '¡Sí! Como llegaste hasta aquí, voy a liberar 2 BONOS SECRETOS más: 🎁', delay: 1800 },
   { tipo: 'comp_bonus', config: {
     tag: 'BONO SECRETO 1', title: '🌸 Secretos de la Menopausia',
     desc: 'Videoclase exclusiva de la Dra. Karla Méndez para que vivas ligera en esa fase',
@@ -796,12 +834,12 @@ var STEPS = [
     desc: 'Cómo las coreanas mantienen la piel joven y el cuerpo delgado toda la vida',
     value: '197'
   }},
-  { tipo: 'msg', texto: 'Y más: tienes mi <strong>GARANTÍA INCONDICIONAL de 180 DÍAS</strong>. 🛡️', delay: 1800 },
+  { tipo: 'msg', texto: 'Y más: tienes mi <strong>GARANTÍA INCONDICIONAL de 180 DÍAS</strong>. 🛡️', delay: 2000 },
   { tipo: 'comp_guarantee' },
-  { tipo: 'msg', texto: '¿No funcionó? Te devuelvo el 100% de tu dinero. SIN PREGUNTAS.', delay: 1500 },
-  { tipo: 'msg', texto: '⚠️ Pero el reloj está corriendo. Cuando llegue a cero, la oferta vuelve a $500.', delay: 1800 },
+  { tipo: 'msg', texto: '¿No funcionó? Te devuelvo el 100% de tu dinero. SIN PREGUNTAS.', delay: 1800 },
+  { tipo: 'msg', texto: '⚠️ Pero el reloj está corriendo. Cuando llegue a cero, la oferta vuelve a $500.', delay: 2200 },
 
-  // 88 - CTA final
+  // CTA final
   { tipo: 'choice', botoes: [
     { texto: '✅ ¡SÍ! ¡QUIERO EL CHICLETE AHORA!', cta: true, acao: 'comprar' },
     { texto: 'No, prefiero seguir gorda...', danger: true, acao: 'recusar' }
@@ -809,65 +847,163 @@ var STEPS = [
 ];
 
 // ============================================================
-// 🎬 PROCESSAR CADA STEP
+// 🎬 PROCESSAR ETAPAS
 // ============================================================
-function processNext() {
-  if (currentStepIndex >= STEPS.length) return;
+function next() {
+  if (stepIdx >= STEPS.length) return;
+  var step = STEPS[stepIdx];
 
-  var step = STEPS[currentStepIndex];
-
-  // ============ MENSAGEM DO BOT ============
+  // MENSAGEM
   if (step.tipo === 'msg') {
     showTyping();
     setTimeout(function() {
       hideTyping();
       addBotMsg(step.texto);
-      currentStepIndex++;
-      setTimeout(processNext, 400);
-    }, step.delay || 1000);
+      stepIdx++;
+      setTimeout(next, 500);
+    }, step.delay || 1200);
   }
 
-  // ============ COMPONENTES VISUAIS ============
+  // CHOICE - botões DENTRO do chat
+  else if (step.tipo === 'choice') {
+    track('step_view', { step: stepIdx });
+    setTimeout(function() {
+      var m = document.getElementById('messages');
+      var wrap = document.createElement('div');
+      wrap.className = 'choices-inline';
+      wrap.id = 'currentChoices';
+
+      step.botoes.forEach(function(btn, i) {
+        var b = document.createElement('button');
+        var cls = 'choice-bubble';
+        if (btn.primary) cls += ' primary';
+        if (btn.cta) cls += ' cta';
+        if (btn.danger) cls += ' danger';
+        b.className = cls;
+        b.innerHTML = btn.texto;
+        b.style.animationDelay = (i * 0.08) + 's';
+        b.onclick = function() {
+          // Remove os botões e mostra a resposta como bolha do usuário
+          var w = document.getElementById('currentChoices');
+          if (w) w.remove();
+          addUserMsg(btn.texto);
+          if (btn.salvar) {
+            for (var k in btn.salvar) userData[k] = btn.salvar[k];
+          }
+          track('button_clicked', { label: btn.texto });
+
+          if (btn.acao === 'comprar') {
+            track('cta_clicked', { value: 39 });
+            track('begin_checkout', { value: 39, currency: 'USD' });
+            showFinal();
+            return;
+          }
+          if (btn.acao === 'recusar') {
+            track('declined');
+            handleRecusa();
+            return;
+          }
+
+          stepIdx++;
+          setTimeout(next, 600);
+        };
+        wrap.appendChild(b);
+      });
+
+      m.appendChild(wrap);
+      scrollDown();
+    }, 600);
+  }
+
+  // SLIDER - dentro do chat
+  else if (step.tipo === 'slider') {
+    var cfg = step.config;
+    sliderCount++;
+    var sId = 'slider_' + sliderCount;
+    var vId = 'slval_' + sliderCount;
+    var btnId = 'slbtn_' + sliderCount;
+
+    setTimeout(function() {
+      var m = document.getElementById('messages');
+      var d = document.createElement('div');
+      d.className = 'slider-card';
+      d.innerHTML =
+        '<div class="slider-value" id="' + vId + '">' + cfg.padrao + '<small>' + cfg.unidade + '</small></div>' +
+        '<input type="range" id="' + sId + '" min="' + cfg.min + '" max="' + cfg.max + '" value="' + cfg.padrao + '">' +
+        '<div class="slider-labels"><span>' + cfg.labels[0] + '</span><span>' + cfg.labels[1] + '</span><span>' + cfg.labels[2] + '</span></div>' +
+        '<button class="slider-confirm" id="' + btnId + '">✅ Confirmar</button>';
+      m.appendChild(d);
+      scrollDown();
+
+      // Conectar eventos
+      setTimeout(function() {
+        var input = document.getElementById(sId);
+        var valueEl = document.getElementById(vId);
+        var btn = document.getElementById(btnId);
+
+        if (input && valueEl) {
+          input.oninput = function() {
+            valueEl.innerHTML = this.value + '<small>' + cfg.unidade + '</small>';
+          };
+        }
+
+        if (btn) {
+          btn.onclick = function() {
+            var inp = document.getElementById(sId);
+            if (!inp) return;
+            var val = inp.value;
+            userData[cfg.chave] = parseInt(val);
+            // Remove o card do slider e mostra como mensagem do usuário
+            d.remove();
+            addUserMsg(val + cfg.unidade);
+            track('slider_confirmed', { key: cfg.chave, value: val });
+            stepIdx++;
+            setTimeout(next, 600);
+          };
+        }
+      }, 100);
+    }, 500);
+  }
+
+  // COMPONENTES
   else if (step.tipo === 'comp_diagnosis') {
     setTimeout(function() {
-      var tiempo = userData.struggleTime === 'corto' ? 'Reciente' :
-                   userData.struggleTime === 'medio' ? '1-5 años' :
-                   userData.struggleTime === 'largo' ? '+5 años' : 'Toda la vida';
+      var t = userData.struggleTime === 'corto' ? 'Reciente' :
+              userData.struggleTime === 'medio' ? '1-5 años' :
+              userData.struggleTime === 'largo' ? '+5 años' : 'Toda la vida';
       var diff = (userData.currentWeight || 80) - (userData.targetWeight || 60);
-      addComponent(
+      addComp(
         '<div class="diagnosis-card">' +
         '<div class="diagnosis-title">📋 Tu diagnóstico personalizado</div>' +
         '<div class="diagnosis-row"><span>Edad:</span><strong>' + (userData.age || 40) + ' años</strong></div>' +
         '<div class="diagnosis-row"><span>Peso actual:</span><strong>' + (userData.currentWeight || 80) + 'kg</strong></div>' +
         '<div class="diagnosis-row"><span>Peso deseado:</span><strong>' + (userData.targetWeight || 60) + 'kg</strong></div>' +
-        '<div class="diagnosis-row"><span>Luchando hace:</span><strong>' + tiempo + '</strong></div>' +
+        '<div class="diagnosis-row"><span>Luchando hace:</span><strong>' + t + '</strong></div>' +
         '<div class="diagnosis-row"><span>Exceso de grasa:</span><strong style="color:var(--red);">' + diff + 'kg</strong></div>' +
         '<div class="diagnosis-result">⚠️ Hormonas GIP y GLP-1 INACTIVAS</div>' +
         '</div>'
       );
-      currentStepIndex++;
-      setTimeout(processNext, 600);
-    }, 500);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
   }
-
   else if (step.tipo === 'comp_product') {
     setTimeout(function() {
-      addComponent(
+      addComp(
         '<div class="product-image">' +
         '<div class="product-emoji">🍬</div>' +
         '<div class="product-name">CHICLETE</div>' +
         '<div class="product-tag">Mounjaro de Gelatina · 100% Natural</div>' +
         '</div>'
       );
-      currentStepIndex++;
-      setTimeout(processNext, 600);
-    }, 500);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
   }
-
   else if (step.tipo === 'comp_test') {
     setTimeout(function() {
       var c = step.config;
-      addComponent(
+      addComp(
         '<div class="testimonial-card">' +
         '<div class="testimonial-header">' +
         '<div class="testimonial-avatar">' + c.avatar + '</div>' +
@@ -878,14 +1014,13 @@ function processNext() {
         '<div class="testimonial-text">"' + c.text + '"</div>' +
         '</div>'
       );
-      currentStepIndex++;
-      setTimeout(processNext, 600);
-    }, 500);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
   }
-
   else if (step.tipo === 'comp_stats') {
     setTimeout(function() {
-      addComponent(
+      addComp(
         '<div class="stats-card"><div class="stats-grid">' +
         '<div class="stat-item"><div class="stat-num">+121,300</div><div class="stat-label">Transformados</div></div>' +
         '<div class="stat-item"><div class="stat-num">93%</div><div class="stat-label">Funciona</div></div>' +
@@ -893,30 +1028,28 @@ function processNext() {
         '<div class="stat-item"><div class="stat-num">180</div><div class="stat-label">Días garantía</div></div>' +
         '</div></div>'
       );
-      currentStepIndex++;
-      setTimeout(processNext, 600);
-    }, 500);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
   }
-
   else if (step.tipo === 'comp_projection') {
     setTimeout(function() {
       var diff = (userData.currentWeight || 80) - (userData.targetWeight || 60);
       var lossIn30 = Math.min(9, Math.round(diff * 0.4));
-      addComponent(
+      addComp(
         '<div class="stats-card"><div class="stats-grid">' +
         '<div class="stat-item"><div class="stat-num">-' + lossIn30 + 'kg</div><div class="stat-label">en 30 días</div></div>' +
         '<div class="stat-item"><div class="stat-num">-' + diff + 'kg</div><div class="stat-label">en 90 días</div></div>' +
         '</div></div>'
       );
-      currentStepIndex++;
-      setTimeout(processNext, 600);
-    }, 500);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
   }
-
   else if (step.tipo === 'comp_bonus') {
     setTimeout(function() {
       var c = step.config;
-      addComponent(
+      addComp(
         '<div class="bonus-card">' +
         '<span class="bonus-tag">' + c.tag + '</span>' +
         '<div class="bonus-title">' + c.title + '</div>' +
@@ -924,14 +1057,13 @@ function processNext() {
         '<div class="bonus-value"><s>$' + c.value + '</s> GRATIS hoy</div>' +
         '</div>'
       );
-      currentStepIndex++;
-      setTimeout(processNext, 600);
-    }, 500);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
   }
-
   else if (step.tipo === 'comp_timer') {
     setTimeout(function() {
-      addComponent(
+      addComp(
         '<div class="timer-card">' +
         '<div class="timer-label">⏰ Oferta expira en</div>' +
         '<div class="timer-value" id="timerDisplay">15:00</div>' +
@@ -939,14 +1071,13 @@ function processNext() {
         '</div>'
       );
       startTimer();
-      currentStepIndex++;
-      setTimeout(processNext, 600);
-    }, 500);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
   }
-
   else if (step.tipo === 'comp_offer') {
     setTimeout(function() {
-      addComponent(
+      addComp(
         '<div class="offer-card">' +
         '<span class="offer-badge">⚡ -92% solo hoy</span>' +
         '<div class="offer-title">CHICLETE — Paquete Completo</div>' +
@@ -966,14 +1097,13 @@ function processNext() {
         '<div class="price-installment">o <strong>3x de $13.42</strong> sin intereses</div>' +
         '</div>'
       );
-      currentStepIndex++;
-      setTimeout(processNext, 600);
-    }, 500);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
   }
-
   else if (step.tipo === 'comp_guarantee') {
     setTimeout(function() {
-      addComponent(
+      addComp(
         '<div class="guarantee-card">' +
         '<div class="guarantee-icon">🛡️</div>' +
         '<div class="guarantee-text">' +
@@ -981,106 +1111,13 @@ function processNext() {
         '¿No funcionó? Te devolvemos el 100% de tu dinero. Sin preguntas.' +
         '</div></div>'
       );
-      currentStepIndex++;
-      setTimeout(processNext, 600);
-    }, 500);
-  }
-
-  // ============ ESCOLHA (botões) ============
-  else if (step.tipo === 'choice') {
-    track('step_view', { step: currentStepIndex });
-    var area = document.getElementById('actionArea');
-    area.innerHTML = '';
-
-    step.botoes.forEach(function(btn, i) {
-      var b = document.createElement('button');
-      var cls = 'action-btn';
-      if (btn.primary) cls += ' primary';
-      if (btn.cta) cls += ' cta';
-      if (btn.danger) cls += ' danger';
-      b.className = cls;
-      b.innerHTML = btn.texto;
-      b.style.animationDelay = (i * 0.1) + 's';
-      b.onclick = function() {
-        clearActions();
-        addUserMsg(btn.texto);
-        if (btn.salvar) {
-          for (var k in btn.salvar) userData[k] = btn.salvar[k];
-        }
-        track('button_clicked', { label: btn.texto });
-
-        // Ações especiais
-        if (btn.acao === 'comprar') {
-          track('cta_clicked', { value: 39 });
-          track('begin_checkout', { value: 39, currency: 'USD' });
-          showFinal();
-          return;
-        }
-        if (btn.acao === 'recusar') {
-          track('declined');
-          handleRecusa();
-          return;
-        }
-
-        currentStepIndex++;
-        setTimeout(processNext, 500);
-      };
-      area.appendChild(b);
-    });
-  }
-
-  // ============ SLIDER ============
-  else if (step.tipo === 'slider') {
-    var cfg = step.config;
-    sliderIdCounter++;
-    var sId = 'slider_' + sliderIdCounter;
-    var vId = 'slval_' + sliderIdCounter;
-
-    var m = document.getElementById('messages');
-    var d = document.createElement('div');
-    d.className = 'message bot';
-    d.innerHTML =
-      '<div class="slider-card">' +
-      '<div class="slider-value" id="' + vId + '">' + cfg.padrao + '<small>' + cfg.unidade + '</small></div>' +
-      '<input type="range" id="' + sId + '" min="' + cfg.min + '" max="' + cfg.max + '" value="' + cfg.padrao + '">' +
-      '<div class="slider-labels"><span>' + cfg.labels[0] + '</span><span>' + cfg.labels[1] + '</span><span>' + cfg.labels[2] + '</span></div>' +
-      '</div>';
-    m.appendChild(d);
-    scrollDown();
-
-    // Conecta evento DEPOIS do DOM tar pronto
-    setTimeout(function() {
-      var input = document.getElementById(sId);
-      var valueEl = document.getElementById(vId);
-      if (input && valueEl) {
-        input.oninput = function() {
-          valueEl.innerHTML = this.value + '<small>' + cfg.unidade + '</small>';
-        };
-      }
-
-      // Mostra botão confirmar
-      var area = document.getElementById('actionArea');
-      area.innerHTML = '';
-      var btn = document.createElement('button');
-      btn.className = 'action-btn primary';
-      btn.innerHTML = '✅ Confirmar';
-      btn.onclick = function() {
-        var inp = document.getElementById(sId);
-        if (!inp) return;
-        var val = inp.value;
-        userData[cfg.chave] = parseInt(val);
-        clearActions();
-        addUserMsg(val + cfg.unidade);
-        track('slider_confirmed', { key: cfg.chave, value: val });
-        currentStepIndex++;
-        setTimeout(processNext, 500);
-      };
-      area.appendChild(btn);
-    }, 150);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
   }
 }
 
-// ============ RECUSA + RECUPERAÇÃO ============
+// RECUSA
 function handleRecusa() {
   setTimeout(function() {
     showTyping();
@@ -1098,22 +1135,28 @@ function handleRecusa() {
               hideTyping();
               addBotMsg('Y con <strong>180 días de garantía</strong>. No tienes nada que perder. 💚');
               setTimeout(function() {
-                var area = document.getElementById('actionArea');
-                area.innerHTML = '';
+                var m = document.getElementById('messages');
+                var wrap = document.createElement('div');
+                wrap.className = 'choices-inline';
+                wrap.id = 'recoveryChoices';
+
                 var b1 = document.createElement('button');
-                b1.className = 'action-btn cta';
+                b1.className = 'choice-bubble cta';
                 b1.innerHTML = '✅ ¡Cambié de idea, LO QUIERO!';
                 b1.onclick = function() {
-                  clearActions();
+                  var w = document.getElementById('recoveryChoices');
+                  if (w) w.remove();
                   addUserMsg('✅ ¡Cambié de idea, LO QUIERO!');
                   track('recovered_purchase');
                   showFinal();
                 };
+
                 var b2 = document.createElement('button');
-                b2.className = 'action-btn danger';
+                b2.className = 'choice-bubble danger';
                 b2.innerHTML = 'No, estoy segura';
                 b2.onclick = function() {
-                  clearActions();
+                  var w = document.getElementById('recoveryChoices');
+                  if (w) w.remove();
                   addUserMsg('No, estoy segura');
                   track('declined_final');
                   setTimeout(function() {
@@ -1124,15 +1167,18 @@ function handleRecusa() {
                     }, 1500);
                   }, 500);
                 };
-                area.appendChild(b1);
-                area.appendChild(b2);
-              }, 500);
+
+                wrap.appendChild(b1);
+                wrap.appendChild(b2);
+                m.appendChild(wrap);
+                scrollDown();
+              }, 600);
             }, 1500);
-          }, 500);
+          }, 600);
         }, 1500);
-      }, 500);
+      }, 600);
     }, 1500);
-  }, 600);
+  }, 800);
 }
 
 function showFinal() {
@@ -1144,10 +1190,9 @@ function showFinal() {
   }, 2500);
 }
 
-// ============ INÍCIO ============
 window.addEventListener('load', function() {
   track('typebot_view');
-  setTimeout(processNext, 800);
+  setTimeout(next, 1000);
 });
 </script>
 
