@@ -5,7 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Consulta Gratuita | Dr. Juan Rivera</title>
 
-<!-- 🎯 GOOGLE ANALYTICS 4 -->
+<!-- 🎯 PIXEL UTMIFY -->
+<script>
+  window.pixelId = "68cac216526f0dc841486576";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+<!-- 🎯 SCRIPT UTMIFY -->
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+<!-- 🎯 GOOGLE ANALYTICS 4 - SUBSTITUA G-XXXXXXXXXX -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -117,10 +136,7 @@
     border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.08);
   }
 
-  #messages {
-    display: flex;
-    flex-direction: column;
-  }
+  #messages { display: flex; flex-direction: column; }
 
   .message {
     max-width: 82%; margin-bottom: 8px;
@@ -198,15 +214,14 @@
     30% { transform: translateY(-6px); opacity: 1; }
   }
 
-  /* ========== ÁUDIO PLAYER ========== */
+  /* ÁUDIO */
   .audio-bubble {
     background: var(--bubble-bot);
     padding: 10px 14px;
     border-radius: 8px;
     border-top-left-radius: 0;
     box-shadow: 0 1px 1px rgba(0,0,0,0.08);
-    width: 280px;
-    max-width: 80%;
+    width: 280px; max-width: 80%;
     margin-bottom: 8px;
     align-self: flex-start;
     position: relative;
@@ -218,19 +233,14 @@
     border-style: solid; border-width: 0 8px 10px 0;
     border-color: transparent var(--bubble-bot) transparent transparent;
   }
-  .audio-controls {
-    display: flex; align-items: center; gap: 10px;
-  }
+  .audio-controls { display: flex; align-items: center; gap: 10px; }
   .audio-play-btn {
     width: 38px; height: 38px;
     background: var(--accent);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    color: white;
+    border-radius: 50%; border: none;
+    cursor: pointer; color: white;
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    transition: all 0.2s;
+    flex-shrink: 0; transition: all 0.2s;
   }
   .audio-play-btn:hover { background: var(--accent-dark); }
   .audio-play-btn::before {
@@ -252,28 +262,25 @@
     gap: 2px; height: 24px;
   }
   .wave-bar {
-    flex: 1;
-    background: #cbd5e1;
-    border-radius: 2px;
-    min-height: 4px;
+    flex: 1; background: #cbd5e1;
+    border-radius: 2px; min-height: 4px;
   }
   .wave-bar.played { background: var(--accent); }
   .audio-duration {
     font-size: 11px; color: var(--muted);
     margin-left: 4px; flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
   }
   .audio-mic-icon {
     color: var(--accent); font-size: 14px;
     margin-right: 4px;
   }
 
-  /* ========== IMAGEM ========== */
+  /* IMAGEM */
   .image-bubble {
-    max-width: 80%;
-    margin-bottom: 8px;
+    max-width: 80%; margin-bottom: 8px;
     align-self: flex-start;
-    border-radius: 12px;
-    overflow: hidden;
+    border-radius: 12px; overflow: hidden;
     background: #e5e7eb;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     animation: slideIn 0.3s ease;
@@ -291,40 +298,28 @@
     color: var(--accent-dark);
     padding: 20px; text-align: center;
   }
-  .image-placeholder svg { width: 48px; height: 48px; margin-bottom: 8px; }
   .image-placeholder-text {
     font-size: 12px; font-weight: 600;
     line-height: 1.4;
   }
 
-  /* ========== VÍDEO ========== */
+  /* VÍDEO */
   .video-bubble {
-    max-width: 80%;
-    margin-bottom: 8px;
+    max-width: 90%; margin-bottom: 8px;
     align-self: flex-start;
-    border-radius: 12px;
-    overflow: hidden;
+    border-radius: 12px; overflow: hidden;
     background: #000;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     animation: slideIn 0.3s ease;
-    aspect-ratio: 16/9;
-    position: relative;
   }
   .video-bubble iframe,
-  .video-bubble video {
-    width: 100%; height: 100%;
-    border: none;
+  .video-bubble video,
+  .video-bubble vturb-smartplayer {
+    width: 100% !important;
+    display: block;
   }
-  .video-placeholder {
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, #064e3b, #15803d);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    color: white; padding: 20px; text-align: center;
-  }
-  .video-placeholder svg { width: 48px; height: 48px; margin-bottom: 8px; }
 
-  /* ========== INPUT FIELD ========== */
+  /* INPUT */
   .input-field {
     align-self: flex-end;
     max-width: 82%;
@@ -342,12 +337,9 @@
   }
   .input-row input {
     flex: 1;
-    border: none;
-    outline: none;
-    font-size: 14.5px;
-    font-family: inherit;
-    background: transparent;
-    color: var(--ink);
+    border: none; outline: none;
+    font-size: 14.5px; font-family: inherit;
+    background: transparent; color: var(--ink);
     padding: 8px 0;
   }
   .input-send {
@@ -356,13 +348,12 @@
     border: none; border-radius: 50%;
     color: white; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    transition: all 0.2s;
+    flex-shrink: 0; transition: all 0.2s;
   }
   .input-send:hover { background: var(--accent-dark); transform: scale(1.05); }
   .input-send svg { width: 18px; height: 18px; }
 
-  /* ========== BOTÕES DE ESCOLHA ========== */
+  /* BOTÕES */
   .choices-inline {
     display: flex; flex-direction: column;
     gap: 8px; margin-bottom: 12px;
@@ -406,7 +397,7 @@
     50% { transform: scale(1.025); }
   }
 
-  /* ========== BENEFITS LIST ========== */
+  /* BENEFÍCIOS */
   .benefits-card {
     background: white; border-radius: 12px;
     padding: 16px; margin-bottom: 8px;
@@ -416,9 +407,7 @@
     align-self: flex-start;
     animation: slideIn 0.4s ease;
   }
-  .benefits-card ul {
-    list-style: none; padding: 0; margin: 0;
-  }
+  .benefits-card ul { list-style: none; padding: 0; margin: 0; }
   .benefits-card li {
     padding: 7px 0;
     font-size: 14px;
@@ -428,7 +417,7 @@
   }
   .benefits-card li:last-child { border-bottom: none; }
 
-  /* ========== ANALYZING ========== */
+  /* ANALYZING */
   .analyzing-card {
     background: white; border-radius: 12px;
     padding: 16px; margin-bottom: 8px;
@@ -481,11 +470,7 @@
 
 <div class="phone-container">
   <div class="chat-header">
-    <div class="avatar">
-      <!-- 🖼️ COLOQUE A FOTO DO DR. JUAN AQUI -->
-      <!-- <img src="URL_DA_FOTO_DO_DOUTOR" alt="Dr. Juan"> -->
-      JR
-    </div>
+    <div class="avatar">JR</div>
     <div class="header-info">
       <div class="header-name">Dr. Juan Rivera <span class="verified">✓</span></div>
       <div class="header-status"><span class="online-dot"></span>en línea · escribiendo para ti</div>
@@ -506,6 +491,219 @@
 </div>
 
 <script>
+// ============================================================
+// 🔗 LINK DO CHECKOUT
+// ============================================================
+var CHECKOUT_URL = "https://pay.mycheckoutt.com/019c02e5-b773-7286-9d73-44e7604045cc?ref=";
+
+// ============================================================
+// 📋 LISTA OFICIAL DE MÍDIAS (cada item numerado e único)
+// ============================================================
+var AUDIOS = {
+  1:  { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778441794889", duracao: 18 },
+  2:  { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778432183018", duracao: 16 },
+  3:  { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778432295805", duracao: 7  },
+  4:  { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778432506099", duracao: 25 },
+  5:  { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778432656253", duracao: 32 },
+  6:  { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778432740586", duracao: 27 },
+  7:  { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778432848936", duracao: 25 },
+  8:  { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778432994683", duracao: 27 },
+  9:  { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778433072714", duracao: 13 },
+  10: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778433143709", duracao: 23 },
+  11: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778433235998", duracao: 23 },
+  12: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778433322036", duracao: 22 },
+  13: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778433401136", duracao: 25 },
+  14: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778433480930", duracao: 20 },
+  15: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778433612463", duracao: 23 },
+  16: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778433699748", duracao: 23 },
+  17: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778433786817", duracao: 19 },
+  18: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778433874547", duracao: 24 },
+  19: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778433984195", duracao: 29 },
+  20: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778434912538", duracao: 25 },
+  21: { url: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778434194144", duracao: 18 }
+};
+
+var IMAGENS = {
+  doutor:     "https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/jocpxyakvkylyips7cl8el8e?v=1769562235451",
+  celebridades: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/hb953vutnmhpkgzxbkn0s372?v=1778432043733",
+  carmen:     "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/hb953vutnmhpkgzxbkn0s372?v=1778437423386",
+  patricia:   "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/hb953vutnmhpkgzxbkn0s372?v=1778440837286",
+  mockup:     "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/lsvww1cw6n6sc6ybl0w9cylw?v=1778441107253",
+  ganhadora:  "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/lsvww1cw6n6sc6ybl0w9cylw?v=1778442169235"
+};
+
+// ============================================================
+// 🎬 FLUXO COMPLETO (cada item referencia áudio/imagem por NÚMERO)
+// ============================================================
+var STEPS = [
+  // ============ ABERTURA ============
+  { tipo: 'msg', texto: '<strong>[INICIANDO TU CONSULTA]</strong>', delay: 1000 },
+  { tipo: 'wait', tempo: 1500 },
+  { tipo: 'msg', texto: '<u>Esta consulta es 100% GRATUITA</u> ✅', delay: 1500 },
+  { tipo: 'wait', tempo: 1500 },
+  { tipo: 'msg', texto: '<u>Dr. Juan Rivera entró en la conversación...</u>', delay: 1200 },
+  { tipo: 'choice', botoes: [{ texto: '🩺 INICIAR CONSULTA', primary: true }]},
+
+  // ============ APRESENTAÇÃO ============
+  { tipo: 'msg', texto: 'Mi nombre es <strong>Dr. Juan Rivera</strong>...', delay: 1500 },
+  { tipo: 'msg', texto: 'Soy <strong>creador del Método Mounjaro de Gelatina</strong> 🍮', delay: 2000 },
+  { tipo: 'wait', tempo: 1000 },
+  // IMAGEM 1 - DOUTOR
+  { tipo: 'imagem', img: 'doutor' },
+  { tipo: 'wait', tempo: 2000 },
+  // IMAGEM 2 - CELEBRIDADES
+  { tipo: 'imagem', img: 'celebridades' },
+  { tipo: 'wait', tempo: 2000 },
+  { tipo: 'msg', texto: 'Antes de enseñarte cómo preparar de forma <strong>EFICAZ</strong> el verdadero Mounjaro de Gelatina...', delay: 2000 },
+  { tipo: 'msg', texto: 'Escucha el audio 👇', delay: 1500 },
+  // ÁUDIO 1
+  { tipo: 'audio', num: 1 },
+
+  // ============ EVENTO + CONVITE ============
+  { tipo: 'msg', texto: '⚡ Este <strong>EVENTO solo ocurre 1 VEZ AL AÑO</strong>!', delay: 2000 },
+  { tipo: 'msg', texto: '¿Te gustaría participar de mi programa de adelgazamiento <u>GRATUITO</u> y tener ese cuerpo soñado para el verano? 👙', delay: 2500 },
+  // ÁUDIO 2
+  { tipo: 'audio', num: 2 },
+  { tipo: 'msg', texto: 'Haz clic en el botón abajo para empezar 👇', delay: 1500 },
+  { tipo: 'choice', botoes: [{ texto: '✅ SÍ, QUIERO PARTICIPAR', primary: true }]},
+
+  // ============ NOME ============
+  { tipo: 'msg', texto: 'Excelente decisión! 🎉', delay: 1200 },
+  { tipo: 'msg', texto: 'Para empezar tu consulta, dime tu <strong>primer nombre</strong>:', delay: 1500 },
+  { tipo: 'input', campo: 'nome', placeholder: 'Tu nombre...', tipoInput: 'text' },
+
+  { tipo: 'msg', texto: 'Mucho gusto, <strong>{{NOME}}</strong> 💚', delay: 1500 },
+  // ÁUDIO 3
+  { tipo: 'audio', num: 3 },
+
+  // ============ IDADE ============
+  { tipo: 'msg', texto: 'Ahora dime tu <strong>edad</strong>:', delay: 1500 },
+  { tipo: 'input', campo: 'idade', placeholder: 'Tu edad (ej: 42)...', tipoInput: 'number' },
+
+  // ============ PESO ============
+  { tipo: 'msg', texto: '¿Y cuál es tu <strong>peso actual</strong>? (en kg)', delay: 1500 },
+  { tipo: 'input', campo: 'peso', placeholder: 'Tu peso (ej: 75)...', tipoInput: 'number' },
+
+  // ============ CONFIRMAÇÃO ============
+  { tipo: 'msg', texto: 'Perfecto, <strong>{{NOME}}</strong>', delay: 1500 },
+  { tipo: 'wait', tempo: 1000 },
+  { tipo: 'msg', texto: 'Solo confirmando tus datos...', delay: 1500 },
+  { tipo: 'msg', texto: '👤 Nombre: <strong>{{NOME}}</strong><br>🎂 Edad: <strong>{{IDADE}} años</strong><br>⚖️ Peso: <strong>{{PESO}}kg</strong>', delay: 1800 },
+  { tipo: 'msg', texto: '¿La información es correcta?', delay: 1500 },
+  { tipo: 'choice', botoes: [{ texto: '✅ Sí, está correcto!', primary: true }]},
+
+  // ============ ANÁLISE ============
+  { tipo: 'msg', texto: '{{NOME}}, estoy analizando tu caso... 📊', delay: 1500 },
+  { tipo: 'analyzing' },
+  { tipo: 'wait', tempo: 3500 },
+
+  // ÁUDIO 4 - DIAGNÓSTICO
+  { tipo: 'audio', num: 4 },
+  // ÁUDIO 5 - HORMONIOS
+  { tipo: 'audio', num: 5 },
+  // ÁUDIO 6 - SOLUÇÃO
+  { tipo: 'audio', num: 6 },
+
+  { tipo: 'msg', texto: '{{NOME}}, ¿podemos continuar con la consulta?', delay: 1500 },
+  { tipo: 'choice', botoes: [{ texto: '▶️ Continuar', primary: true }]},
+
+  // ============ PROVAS SOCIAIS ============
+  { tipo: 'msg', texto: 'Mira estas mujeres que ya participaron del programa de adelgazamiento... 👇', delay: 2000 },
+  { tipo: 'wait', tempo: 1500 },
+  // ÁUDIO 7 - CARMEN
+  { tipo: 'audio', num: 7 },
+  // IMAGEM 3 - CARMEN
+  { tipo: 'imagem', img: 'carmen' },
+  { tipo: 'wait', tempo: 2500 },
+
+  // ÁUDIO 8 - PATRICIA
+  { tipo: 'audio', num: 8 },
+  // IMAGEM 4 - PATRICIA
+  { tipo: 'imagem', img: 'patricia' },
+  { tipo: 'wait', tempo: 2500 },
+
+  // VÍDEO ADAMARI
+  { tipo: 'msg', texto: 'Y mira el video de la <strong>Adamari López</strong>: 👇', delay: 1500 },
+  { tipo: 'video_vturb' },
+  { tipo: 'wait', tempo: 3000 },
+
+  { tipo: 'msg', texto: '{{NOME}}, ¿también te gustaría perder más de 10kg?', delay: 1800 },
+  // ÁUDIO 9 - CONVITE
+  { tipo: 'audio', num: 9 },
+  { tipo: 'choice', botoes: [{ texto: '🔥 Sí, me gustaría!', primary: true }]},
+
+  // ============ COMO FUNCIONA ============
+  { tipo: 'msg', texto: '{{NOME}}, te voy a explicar cómo funciona el programa de adelgazamiento... 👇', delay: 2000 },
+  // ÁUDIO 10
+  { tipo: 'audio', num: 10 },
+  // ÁUDIO 11
+  { tipo: 'audio', num: 11 },
+  // ÁUDIO 12
+  { tipo: 'audio', num: 12 },
+  // ÁUDIO 13
+  { tipo: 'audio', num: 13 },
+
+  { tipo: 'msg', texto: '{{NOME}}, ¿te gustaría conocer más sobre el <strong>Desafío de 21 Días</strong>?', delay: 2000 },
+  { tipo: 'choice', botoes: [{ texto: '🚀 ¡Quiero saber más!', primary: true }]},
+
+  // ============ DESAFIO ============
+  // ÁUDIO 14
+  { tipo: 'audio', num: 14 },
+  // IMAGEM 5 - MOCKUP
+  { tipo: 'imagem', img: 'mockup' },
+  { tipo: 'wait', tempo: 2500 },
+
+  { tipo: 'msg', texto: 'Los <strong>BENEFICIOS</strong> al participar del Desafío de 21 Días son:', delay: 1800 },
+  { tipo: 'wait', tempo: 1500 },
+  { tipo: 'beneficios' },
+  { tipo: 'wait', tempo: 2500 },
+
+  // ÁUDIO 15 - AUTORIDADE
+  { tipo: 'audio', num: 15 },
+
+  { tipo: 'msg', texto: '¿Te gustaría <strong>PARTICIPAR</strong>?', delay: 1500 },
+  { tipo: 'choice', botoes: [{ texto: '✅ ¡Sí, quiero participar!', primary: true }]},
+
+  // ============ SURPRESA ============
+  { tipo: 'msg', texto: '{{NOME}}, te guardé una <strong>SORPRESA</strong>... 🎁', delay: 2000 },
+  // ÁUDIO 16 - SURPRESA
+  { tipo: 'audio', num: 16 },
+
+  { tipo: 'msg', texto: 'La <strong>Michele</strong>, además de adelgazar, ¡también ganó <em>$1,000 dólares</em>! 👇', delay: 2500 },
+  // IMAGEM 6 - GANHADORA
+  { tipo: 'imagem', img: 'ganhadora' },
+  { tipo: 'wait', tempo: 2500 },
+
+  // ÁUDIO 17 - EXPLICAÇÃO PRÊMIO
+  { tipo: 'audio', num: 17 },
+
+  // ============ CTA FINAL ============
+  { tipo: 'msg', texto: 'Y bien, <strong>{{NOME}}</strong>...', delay: 1500 },
+  { tipo: 'msg', texto: '¿Te gustaría inscribirte en el <strong>Desafío de 21 Días con Mounjaro de Gelatina</strong>?', delay: 2000 },
+  { tipo: 'choice', botoes: [{ texto: '🔥 ¡SÍ, QUIERO INSCRIBIRME!', primary: true }]},
+
+  // ============ FECHAMENTO ============
+  { tipo: 'msg', texto: 'Excelente decisión, <strong>{{NOME}}</strong> 💚', delay: 1500 },
+  { tipo: 'msg', texto: 'Escucha los audios para finalizar tu inscripción... 👇', delay: 2000 },
+
+  // ÁUDIO 18 - QUEBRA PREÇO 1
+  { tipo: 'audio', num: 18 },
+  // ÁUDIO 19 - QUEBRA PREÇO 2
+  { tipo: 'audio', num: 19 },
+  // ÁUDIO 20 - REVELAÇÃO PREÇO
+  { tipo: 'audio', num: 20 },
+  // ÁUDIO 21 - GARANTIA
+  { tipo: 'audio', num: 21 },
+
+  { tipo: 'msg', texto: '{{NOME}}, espera <strong>5 segundos</strong> que voy a transferirte a la página de <u>INSCRIPCIÓN</u>! 🚀', delay: 2500 },
+  { tipo: 'choice', botoes: [
+    { texto: '✅ FINALIZAR INSCRIPCIÓN', cta: true, acao: 'finalizar' }
+  ]}
+];
+
+// ============================================================
+// ESTADO
+// ============================================================
 var userData = {};
 var stepIdx = 0;
 
@@ -536,7 +734,6 @@ function addBotMsg(text) {
   var m = document.getElementById('messages');
   var d = document.createElement('div');
   d.className = 'message bot';
-  // Substituir variáveis
   text = text.replace(/\{\{NOME\}\}/g, userData.nome || '')
              .replace(/\{\{IDADE\}\}/g, userData.idade || '')
              .replace(/\{\{PESO\}\}/g, userData.peso || '');
@@ -558,9 +755,7 @@ function track(name, params) {
   }
 }
 
-// ============ COMPONENTES ============
-
-// 🔊 ÁUDIO (placeholder ou real)
+// ============ ÁUDIO ============
 function addAudioMsg(audioUrl, durationSeconds) {
   var m = document.getElementById('messages');
   var d = document.createElement('div');
@@ -570,7 +765,6 @@ function addAudioMsg(audioUrl, durationSeconds) {
   var sec = dur % 60;
   var durStr = min + ':' + (sec<10?'0':'') + sec;
 
-  // Gera barras da waveform
   var bars = '';
   for (var i = 0; i < 30; i++) {
     var h = 30 + Math.random() * 70;
@@ -584,7 +778,7 @@ function addAudioMsg(audioUrl, durationSeconds) {
       '<div class="audio-waveform">' + bars + '</div>' +
       '<span class="audio-duration">' + durStr + '</span>' +
     '</div>' +
-    (audioUrl ? '<audio style="display:none;" src="' + audioUrl + '"></audio>' : '');
+    (audioUrl ? '<audio style="display:none;" src="' + audioUrl + '" preload="metadata"></audio>' : '');
 
   m.appendChild(d);
   scrollDown();
@@ -597,14 +791,19 @@ function toggleAudio(btn) {
   var durationEl = bubble.querySelector('.audio-duration');
 
   if (audio) {
-    // Áudio REAL — toca de verdade
+    // Pausa qualquer outro áudio que esteja tocando
+    document.querySelectorAll('.audio-bubble audio').forEach(function(a) {
+      if (a !== audio && !a.paused) {
+        a.pause();
+        var otherBtn = a.parentElement.querySelector('.audio-play-btn');
+        if (otherBtn) otherBtn.classList.remove('playing');
+      }
+    });
+
     if (audio.paused) {
-      audio.play().catch(function(e) {
-        console.log('Erro ao tocar áudio:', e);
-      });
+      audio.play().catch(function(e) { console.log('Erro:', e); });
       btn.classList.add('playing');
 
-      // Atualiza barras conforme áudio toca
       audio.ontimeupdate = function() {
         if (audio.duration) {
           var progress = audio.currentTime / audio.duration;
@@ -613,7 +812,6 @@ function toggleAudio(btn) {
             if (idx < filledBars) b.classList.add('played');
             else b.classList.remove('played');
           });
-          // Atualiza tempo
           if (durationEl) {
             var remaining = Math.max(0, audio.duration - audio.currentTime);
             var min = Math.floor(remaining / 60);
@@ -633,275 +831,47 @@ function toggleAudio(btn) {
       audio.pause();
       btn.classList.remove('playing');
     }
-  } else {
-    // Sem URL, simula reprodução visual
-    if (btn.classList.contains('playing')) {
-      btn.classList.remove('playing');
-      bars.forEach(function(b) { b.classList.remove('played'); });
-      return;
-    }
-    btn.classList.add('playing');
-    var i = 0;
-    var iv = setInterval(function() {
-      if (i < bars.length) {
-        bars[i].classList.add('played');
-        i++;
-      } else {
-        clearInterval(iv);
-        btn.classList.remove('playing');
-        setTimeout(function() {
-          bars.forEach(function(b) { b.classList.remove('played'); });
-        }, 500);
-      }
-    }, 100);
   }
 }
 
-// 🖼️ IMAGEM
-function addImageMsg(imageUrl, placeholderText) {
+// ============ IMAGEM ============
+function addImageMsg(imageUrl) {
   var m = document.getElementById('messages');
   var d = document.createElement('div');
   d.className = 'image-bubble';
 
   if (imageUrl && imageUrl !== '') {
-    d.innerHTML = '<img src="' + imageUrl + '" alt="" onerror="this.parentElement.innerHTML=\'' +
-                  '<div class=\\\'image-placeholder\\\'>' +
-                  '<svg fill=\\\'currentColor\\\' viewBox=\\\'0 0 20 20\\\'><path d=\\\'M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z\\\'/></svg>' +
-                  '<div class=\\\'image-placeholder-text\\\'>📸 Coloque o link da imagem aqui</div>' +
-                  '</div>\'">';
+    d.innerHTML = '<img src="' + imageUrl + '" alt="" onerror="this.parentElement.innerHTML=\'<div class=\\\'image-placeholder\\\'><div class=\\\'image-placeholder-text\\\'>📸 Imagen no disponible</div></div>\'">';
   } else {
-    d.innerHTML =
-      '<div class="image-placeholder">' +
-        '<svg fill="currentColor" viewBox="0 0 20 20"><path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"/></svg>' +
-        '<div class="image-placeholder-text">📸 ' + (placeholderText || 'Coloque o link da imagem aqui') + '</div>' +
-      '</div>';
+    d.innerHTML = '<div class="image-placeholder"><div class="image-placeholder-text">📸 Sin imagen</div></div>';
   }
 
   m.appendChild(d);
   scrollDown();
 }
 
-// 🎥 VÍDEO (YouTube embed ou placeholder)
-function addVideoMsg(videoIdYouTube, placeholderText) {
+// ============ VÍDEO VTURB ============
+function addVturbVideo() {
   var m = document.getElementById('messages');
   var d = document.createElement('div');
   d.className = 'video-bubble';
-
-  if (videoIdYouTube && videoIdYouTube !== '') {
-    d.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoIdYouTube + '" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-  } else {
-    d.innerHTML =
-      '<div class="video-placeholder">' +
-        '<svg fill="currentColor" viewBox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm14.553 1.106A1 1 0 0016 8v4a1 1 0 00.553.894l2 1A1 1 0 0020 13V7a1 1 0 00-1.447-.894l-2 1z"/></svg>' +
-        '<div style="font-size:12px;font-weight:600;line-height:1.4;">🎥 ' + (placeholderText || 'Coloque o ID do vídeo do YouTube aqui') + '</div>' +
-      '</div>';
-  }
-
+  d.innerHTML = '<vturb-smartplayer id="vid-6a00dc3c08dd22f8e6153559" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>';
   m.appendChild(d);
   scrollDown();
+
+  // Carrega o script do vturb (uma vez só)
+  if (!document.querySelector('script[data-vturb]')) {
+    var s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/6a00dc3c08dd22f8e6153559/v4/player.js";
+    s.async = true;
+    s.setAttribute('data-vturb', '1');
+    document.head.appendChild(s);
+  }
 }
 
-// ============ ETAPAS DO FUNIL ============
-var STEPS = [
-  // ============ INÍCIO DO ATENDIMENTO ============
-  { tipo: 'msg', texto: '<strong>[INICIANDO TU CONSULTA]</strong>', delay: 1000 },
-  { tipo: 'wait', tempo: 1500 },
-  { tipo: 'msg', texto: '<u>Esta consulta es 100% GRATUITA</u> ✅', delay: 1500 },
-  { tipo: 'wait', tempo: 1500 },
-  { tipo: 'msg', texto: '<u>Dr. Juan Rivera entró en la conversación...</u>', delay: 1200 },
-  { tipo: 'choice', botoes: [
-    { texto: '🩺 INICIAR CONSULTA', primary: true }
-  ]},
-
-  // ============ APRESENTAÇÃO ============
-  { tipo: 'msg', texto: 'Mi nombre es <strong>Dr. Juan Rivera</strong>...', delay: 1500 },
-  { tipo: 'msg', texto: 'Soy <strong>creador del Método Mounjaro de Gelatina</strong> 🍮', delay: 2000 },
-  { tipo: 'wait', tempo: 1000 },
-  // 🖼️ FOTO DO DR. JUAN
-  { tipo: 'imagem', url: 'https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/jocpxyakvkylyips7cl8el8e?v=1769562235451', placeholder: 'Foto del Dr. Juan Rivera' },
-  { tipo: 'wait', tempo: 2000 },
-  // 🖼️ IMAGEM COM CELEBRIDADES
-  { tipo: 'imagem', url: 'https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/hb953vutnmhpkgzxbkn0s372?v=1778432043733', placeholder: 'Foto del Dr. con Adamari López u otras celebridades' },
-  { tipo: 'wait', tempo: 2000 },
-  { tipo: 'msg', texto: 'Antes de enseñarte cómo preparar de forma <strong>EFICAZ</strong> el verdadero Mounjaro de Gelatina...', delay: 2000 },
-  { tipo: 'msg', texto: 'Escucha el audio 👇', delay: 1500 },
-  // 🔊 ÁUDIO 1 - APRESENTAÇÃO PESSOAL (18s)
-  { tipo: 'audio', url: 'https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778430917907', duracao: 18 },
-  { tipo: 'wait', tempo: 2000 },
-
-  // ============ EVENTO + INSCRIÇÃO ============
-  { tipo: 'msg', texto: '⚡ Este <strong>EVENTO solo ocurre 1 VEZ AL AÑO</strong>!', delay: 2000 },
-  { tipo: 'msg', texto: '¿Te gustaría participar de mi programa de adelgazamiento <u>GRATUITO</u> y tener ese cuerpo soñado para el verano? 👙', delay: 2500 },
-  // 🔊 ÁUDIO 2 - CONVITE (16s)
-  { tipo: 'audio', url: 'https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778432183018', duracao: 16 },
-  { tipo: 'wait', tempo: 1500 },
-  { tipo: 'msg', texto: 'Haz clic en el botón abajo para empezar 👇', delay: 1500 },
-  { tipo: 'choice', botoes: [
-    { texto: '✅ SÍ, QUIERO PARTICIPAR', primary: true }
-  ]},
-
-  // ============ COLETA DE NOME ============
-  { tipo: 'msg', texto: 'Excelente decisión! 🎉', delay: 1200 },
-  { tipo: 'msg', texto: 'Para empezar tu consulta, dime tu <strong>primer nombre</strong>:', delay: 1500 },
-  { tipo: 'input', campo: 'nome', placeholder: 'Tu nombre...', tipoInput: 'text' },
-
-  // ============ APÓS NOME ============
-  { tipo: 'msg', texto: 'Mucho gusto, <strong>{{NOME}}</strong> 💚', delay: 1500 },
-  // 🔊 ÁUDIO 3 - SAUDAÇÃO PESSOAL (7s)
-  { tipo: 'audio', url: 'https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778432295805', duracao: 7 },
-  { tipo: 'wait', tempo: 1500 },
-
-  // ============ COLETA DE IDADE ============
-  { tipo: 'msg', texto: 'Ahora dime tu <strong>edad</strong>:', delay: 1500 },
-  { tipo: 'input', campo: 'idade', placeholder: 'Tu edad (ej: 42)...', tipoInput: 'number' },
-
-  // ============ COLETA DE PESO ============
-  { tipo: 'msg', texto: '¿Y cuál es tu <strong>peso actual</strong>? (en kg)', delay: 1500 },
-  { tipo: 'input', campo: 'peso', placeholder: 'Tu peso (ej: 75)...', tipoInput: 'number' },
-
-  // ============ CONFIRMAÇÃO ============
-  { tipo: 'msg', texto: 'Perfecto, <strong>{{NOME}}</strong>', delay: 1500 },
-  { tipo: 'wait', tempo: 1000 },
-  { tipo: 'msg', texto: 'Solo confirmando tus datos...', delay: 1500 },
-  { tipo: 'msg', texto: '👤 Nombre: <strong>{{NOME}}</strong><br>🎂 Edad: <strong>{{IDADE}} años</strong><br>⚖️ Peso: <strong>{{PESO}}kg</strong>', delay: 1800 },
-  { tipo: 'msg', texto: '¿La información es correcta?', delay: 1500 },
-  { tipo: 'choice', botoes: [
-    { texto: '✅ Sí, está correcto!', primary: true }
-  ]},
-
-  // ============ ANÁLISE ============
-  { tipo: 'msg', texto: '{{NOME}}, estoy analizando tu caso... 📊', delay: 1500 },
-  { tipo: 'analyzing' },
-  { tipo: 'wait', tempo: 3500 },
-
-  // 🔊 ÁUDIO 4 - DIAGNÓSTICO
-  { tipo: 'audio', url: '', duracao: 35 },
-  { tipo: 'wait', tempo: 2000 },
-  // 🔊 ÁUDIO 5 - EXPLICAÇÃO HORMÔNIOS
-  { tipo: 'audio', url: '', duracao: 42 },
-  { tipo: 'wait', tempo: 2000 },
-  // 🔊 ÁUDIO 6 - SOLUÇÃO
-  { tipo: 'audio', url: '', duracao: 38 },
-  { tipo: 'wait', tempo: 2000 },
-
-  { tipo: 'msg', texto: '{{NOME}}, ¿podemos continuar con la consulta?', delay: 1500 },
-  { tipo: 'choice', botoes: [
-    { texto: '▶️ Continuar', primary: true }
-  ]},
-
-  // ============ PROVAS SOCIAIS ============
-  { tipo: 'msg', texto: 'Mira estas mujeres que ya participaron del programa de adelgazamiento... 👇', delay: 2000 },
-  { tipo: 'wait', tempo: 1500 },
-  // 🔊 ÁUDIO 7 - HISTÓRIA DA CARMEN
-  { tipo: 'audio', url: '', duracao: 28 },
-  { tipo: 'wait', tempo: 2000 },
-  // 🖼️ ANTES E DEPOIS - CARMEN
-  { tipo: 'imagem', url: '', placeholder: 'Antes y después de Carmen R. (-30kg)' },
-  { tipo: 'wait', tempo: 2500 },
-
-  // 🔊 ÁUDIO 8 - HISTÓRIA DA PATRICIA
-  { tipo: 'audio', url: '', duracao: 32 },
-  { tipo: 'wait', tempo: 2000 },
-  // 🖼️ ANTES E DEPOIS - PATRICIA
-  { tipo: 'imagem', url: '', placeholder: 'Antes y después de Patricia S. (-18kg en 42 días)' },
-  { tipo: 'wait', tempo: 2500 },
-
-  // 🎥 VÍDEO TESTEMUNHO REAL
-  { tipo: 'msg', texto: 'Y mira el video de la <strong>Adamari López</strong>: 👇', delay: 1500 },
-  { tipo: 'video', id: '', placeholder: 'Coloque o ID del video do testimonio en YouTube' },
-  { tipo: 'wait', tempo: 3000 },
-
-  { tipo: 'msg', texto: '{{NOME}}, ¿también te gustaría perder más de 10kg?', delay: 1800 },
-  // 🔊 ÁUDIO 9 - CONVITE PERSONALIZADO
-  { tipo: 'audio', url: '', duracao: 18 },
-  { tipo: 'wait', tempo: 1500 },
-  { tipo: 'choice', botoes: [
-    { texto: '🔥 Sí, me gustaría!', primary: true }
-  ]},
-
-  // ============ EXPLICAÇÃO DO PROGRAMA ============
-  { tipo: 'msg', texto: '{{NOME}}, te voy a explicar cómo funciona el programa de adelgazamiento... 👇', delay: 2000 },
-  { tipo: 'wait', tempo: 1500 },
-  // 🔊 ÁUDIOS EXPLICANDO O PROGRAMA (sequência)
-  { tipo: 'audio', url: '', duracao: 24 },
-  { tipo: 'wait', tempo: 2000 },
-  { tipo: 'audio', url: '', duracao: 32 },
-  { tipo: 'wait', tempo: 2000 },
-  { tipo: 'audio', url: '', duracao: 28 },
-  { tipo: 'wait', tempo: 2000 },
-  { tipo: 'audio', url: '', duracao: 35 },
-  { tipo: 'wait', tempo: 2000 },
-
-  { tipo: 'msg', texto: '{{NOME}}, ¿te gustaría conocer más sobre el <strong>Desafío de 21 Días</strong>?', delay: 2000 },
-  { tipo: 'choice', botoes: [
-    { texto: '🚀 ¡Quiero saber más!', primary: true }
-  ]},
-
-  // ============ APRESENTAÇÃO DO DESAFIO ============
-  // 🔊 ÁUDIO - APRESENTAÇÃO DO DESAFIO
-  { tipo: 'audio', url: '', duracao: 28 },
-  { tipo: 'wait', tempo: 2500 },
-  // 🖼️ MOCKUP DO PROGRAMA / APP
-  { tipo: 'imagem', url: '', placeholder: 'Mockup del programa / app del Desafío 21 Días' },
-  { tipo: 'wait', tempo: 2500 },
-
-  { tipo: 'msg', texto: 'Los <strong>BENEFICIOS</strong> al participar del Desafío de 21 Días son:', delay: 1800 },
-  { tipo: 'wait', tempo: 1500 },
-  { tipo: 'beneficios' },
-  { tipo: 'wait', tempo: 2500 },
-
-  // 🔊 ÁUDIO - QUEM ELE É
-  { tipo: 'audio', url: '', duracao: 22 },
-  { tipo: 'wait', tempo: 2000 },
-
-  { tipo: 'msg', texto: '¿Te gustaría <strong>PARTICIPAR</strong>?', delay: 1500 },
-  { tipo: 'choice', botoes: [
-    { texto: '✅ ¡Sí, quiero participar!', primary: true }
-  ]},
-
-  // ============ SURPRESA ============
-  { tipo: 'msg', texto: '{{NOME}}, te guardé una <strong>SORPRESA</strong>... 🎁', delay: 2000 },
-  // 🔊 ÁUDIO - REVELAÇÃO DA SURPRESA
-  { tipo: 'audio', url: '', duracao: 30 },
-  { tipo: 'wait', tempo: 2500 },
-
-  { tipo: 'msg', texto: 'La <strong>Michele</strong>, además de adelgazar, ¡también ganó <em>$1,000 dólares</em>! 👇', delay: 2500 },
-  // 🖼️ FOTO DA MICHELE COM PRÊMIO
-  { tipo: 'imagem', url: '', placeholder: 'Foto de Michele con el premio de $1,000' },
-  { tipo: 'wait', tempo: 2500 },
-
-  // 🔊 ÁUDIO - EXPLICAÇÃO DO PRÊMIO
-  { tipo: 'audio', url: '', duracao: 28 },
-  { tipo: 'wait', tempo: 2500 },
-
-  // ============ CTA FINAL ============
-  { tipo: 'msg', texto: 'Y bien, <strong>{{NOME}}</strong>...', delay: 1500 },
-  { tipo: 'msg', texto: '¿Te gustaría inscribirte en el <strong>Desafío de 21 Días con Mounjaro de Gelatina</strong>?', delay: 2000 },
-  { tipo: 'choice', botoes: [
-    { texto: '🔥 ¡SÍ, QUIERO INSCRIBIRME!', primary: true }
-  ]},
-
-  // ============ CHECKOUT ============
-  { tipo: 'msg', texto: 'Excelente decisión, <strong>{{NOME}}</strong> 💚', delay: 1500 },
-  { tipo: 'msg', texto: 'Escucha los audios para finalizar tu inscripción... 👇', delay: 2000 },
-
-  // 🔊 ÁUDIOS FINAIS - QUEBRA DE PREÇO + GARANTIA
-  { tipo: 'audio', url: '', duracao: 30 },
-  { tipo: 'wait', tempo: 2500 },
-  { tipo: 'audio', url: '', duracao: 35 },
-  { tipo: 'wait', tempo: 2500 },
-  { tipo: 'audio', url: '', duracao: 28 },
-  { tipo: 'wait', tempo: 2500 },
-  { tipo: 'audio', url: '', duracao: 22 },
-  { tipo: 'wait', tempo: 2500 },
-
-  { tipo: 'msg', texto: '{{NOME}}, espera <strong>5 segundos</strong> que voy a transferirte a la página de <u>INSCRIPCIÓN</u>! 🚀', delay: 2500 },
-  { tipo: 'choice', botoes: [
-    { texto: '✅ FINALIZAR INSCRIPCIÓN', cta: true, acao: 'finalizar' }
-  ]}
-];
-
-// ============ PROCESSAR ============
+// ============================================================
+// 🎬 PROCESSAR ETAPAS
+// ============================================================
 function next() {
   if (stepIdx >= STEPS.length) return;
   var step = STEPS[stepIdx];
@@ -917,7 +887,7 @@ function next() {
     }, step.delay || 1200);
   }
 
-  // WAIT (apenas espera)
+  // WAIT
   else if (step.tipo === 'wait') {
     setTimeout(function() {
       stepIdx++;
@@ -925,40 +895,52 @@ function next() {
     }, step.tempo || 1500);
   }
 
-  // ÁUDIO - aguarda a duração do áudio (igual Typebot original) + 2s de respiração
-  // Se a pessoa toca play, aguarda ele terminar antes de seguir
+  // ÁUDIO - busca dados do objeto AUDIOS pelo número
   else if (step.tipo === 'audio') {
-    setTimeout(function() {
-      addAudioMsg(step.url, step.duracao);
+    var audioData = AUDIOS[step.num];
+    if (!audioData) {
+      console.error('❌ Áudio ' + step.num + ' não encontrado!');
       stepIdx++;
+      setTimeout(next, 500);
+      return;
+    }
 
-      // Tempo de espera = duração do áudio + 2 segundos de respiração
-      // (igual o Typebot original: você lá colocava "Wait" do tamanho do áudio)
-      var delayFinal = ((step.duracao || 20) + 2) * 1000;
-
+    setTimeout(function() {
+      addAudioMsg(audioData.url, audioData.duracao);
+      stepIdx++;
+      // Delay = duração do áudio + 2s de respiração natural
+      var delayFinal = (audioData.duracao + 2) * 1000;
       setTimeout(next, delayFinal);
     }, 600);
   }
 
-  // IMAGEM
+  // IMAGEM - busca URL do objeto IMAGENS pelo nome
   else if (step.tipo === 'imagem') {
-    setTimeout(function() {
-      addImageMsg(step.url, step.placeholder);
+    var imgUrl = IMAGENS[step.img];
+    if (!imgUrl) {
+      console.error('❌ Imagem "' + step.img + '" não encontrada!');
       stepIdx++;
-      setTimeout(next, 800);
+      setTimeout(next, 500);
+      return;
+    }
+
+    setTimeout(function() {
+      addImageMsg(imgUrl);
+      stepIdx++;
+      setTimeout(next, 1500);
     }, 600);
   }
 
-  // VÍDEO
-  else if (step.tipo === 'video') {
+  // VÍDEO VTURB
+  else if (step.tipo === 'video_vturb') {
     setTimeout(function() {
-      addVideoMsg(step.id, step.placeholder);
+      addVturbVideo();
       stepIdx++;
-      setTimeout(next, 800);
+      setTimeout(next, 1500);
     }, 600);
   }
 
-  // ANALISANDO
+  // ANALYZING
   else if (step.tipo === 'analyzing') {
     setTimeout(function() {
       var m = document.getElementById('messages');
@@ -998,7 +980,7 @@ function next() {
     }, 600);
   }
 
-  // CHOICE - botões dentro do chat
+  // CHOICE
   else if (step.tipo === 'choice') {
     track('step_view', { step: stepIdx });
     setTimeout(function() {
@@ -1019,9 +1001,6 @@ function next() {
           var w = document.getElementById('currentChoices');
           if (w) w.remove();
           addUserMsg(btn.texto);
-          if (btn.salvar) {
-            for (var k in btn.salvar) userData[k] = btn.salvar[k];
-          }
           track('button_clicked', { label: btn.texto });
 
           if (btn.acao === 'finalizar') {
@@ -1042,7 +1021,7 @@ function next() {
     }, 600);
   }
 
-  // INPUT (texto)
+  // INPUT
   else if (step.tipo === 'input') {
     setTimeout(function() {
       var m = document.getElementById('messages');
@@ -1062,7 +1041,6 @@ function next() {
       m.appendChild(wrap);
       scrollDown();
 
-      // Salva o campo atual pra usar no submit
       window.currentInputField = step.campo;
 
       setTimeout(function() {
@@ -1084,10 +1062,8 @@ function submitInput() {
   var val = inp.value.trim();
   if (!val) return;
 
-  // Salva o valor
   userData[window.currentInputField] = val;
 
-  // Remove o campo de input e mostra como mensagem do usuário
   var w = document.getElementById('currentInput');
   if (w) w.remove();
   addUserMsg(val);
@@ -1101,9 +1077,7 @@ function submitInput() {
 function showFinal() {
   document.getElementById('finalScreen').classList.add('active');
   setTimeout(function() {
-    // 🔗 SUBSTITUA pela URL do checkout (Hotmart, Eduzz, Kiwify, etc):
-    alert('🔗 ¡Aquí rediriges al checkout!\n\nEjemplo: window.location.href = "https://pay.hotmart.com/TU_LINK";');
-    // window.location.href = "https://pay.hotmart.com/TU_LINK";
+    window.location.href = CHECKOUT_URL;
   }, 3000);
 }
 
