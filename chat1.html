@@ -593,18 +593,48 @@ function addAudioMsg(audioUrl, durationSeconds) {
 function toggleAudio(btn) {
   var bubble = btn.closest('.audio-bubble');
   var audio = bubble.querySelector('audio');
+  var bars = bubble.querySelectorAll('.wave-bar');
+  var durationEl = bubble.querySelector('.audio-duration');
+
   if (audio) {
+    // Áudio REAL — toca de verdade
     if (audio.paused) {
-      audio.play();
+      audio.play().catch(function(e) {
+        console.log('Erro ao tocar áudio:', e);
+      });
       btn.classList.add('playing');
-      audio.onended = function() { btn.classList.remove('playing'); };
+
+      // Atualiza barras conforme áudio toca
+      audio.ontimeupdate = function() {
+        if (audio.duration) {
+          var progress = audio.currentTime / audio.duration;
+          var filledBars = Math.floor(progress * bars.length);
+          bars.forEach(function(b, idx) {
+            if (idx < filledBars) b.classList.add('played');
+            else b.classList.remove('played');
+          });
+          // Atualiza tempo
+          if (durationEl) {
+            var remaining = Math.max(0, audio.duration - audio.currentTime);
+            var min = Math.floor(remaining / 60);
+            var sec = Math.floor(remaining % 60);
+            durationEl.textContent = min + ':' + (sec<10?'0':'') + sec;
+          }
+        }
+      };
+
+      audio.onended = function() {
+        btn.classList.remove('playing');
+        setTimeout(function() {
+          bars.forEach(function(b) { b.classList.remove('played'); });
+        }, 1000);
+      };
     } else {
       audio.pause();
       btn.classList.remove('playing');
     }
   } else {
     // Sem URL, simula reprodução visual
-    var bars = bubble.querySelectorAll('.wave-bar');
     if (btn.classList.contains('playing')) {
       btn.classList.remove('playing');
       bars.forEach(function(b) { b.classList.remove('played'); });
@@ -688,15 +718,15 @@ var STEPS = [
   { tipo: 'msg', texto: 'Soy <strong>creador del Método Mounjaro de Gelatina</strong> 🍮', delay: 2000 },
   { tipo: 'wait', tempo: 1000 },
   // 🖼️ FOTO DO DR. JUAN
-  { tipo: 'imagem', url: '', placeholder: 'Foto del Dr. Juan Rivera' },
+  { tipo: 'imagem', url: 'https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/jocpxyakvkylyips7cl8el8e?v=1769562235451', placeholder: 'Foto del Dr. Juan Rivera' },
   { tipo: 'wait', tempo: 2000 },
   // 🖼️ IMAGEM COM CELEBRIDADES
   { tipo: 'imagem', url: '', placeholder: 'Foto del Dr. con Adamari López u otras celebridades' },
   { tipo: 'wait', tempo: 2000 },
   { tipo: 'msg', texto: 'Antes de enseñarte cómo preparar de forma <strong>EFICAZ</strong> el verdadero Mounjaro de Gelatina...', delay: 2000 },
   { tipo: 'msg', texto: 'Escucha el audio 👇', delay: 1500 },
-  // 🔊 ÁUDIO 1 - APRESENTAÇÃO PESSOAL
-  { tipo: 'audio', url: '', duracao: 25 },
+  // 🔊 ÁUDIO 1 - APRESENTAÇÃO PESSOAL (18s)
+  { tipo: 'audio', url: 'https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/ot3fpv7n95rindjmh018ccol?v=1778430917907', duracao: 18 },
   { tipo: 'wait', tempo: 2000 },
 
   // ============ EVENTO + INSCRIÇÃO ============
@@ -895,12 +925,18 @@ function next() {
     }, step.tempo || 1500);
   }
 
-  // ÁUDIO
+  // ÁUDIO - aguarda a duração do áudio (igual Typebot original) + 2s de respiração
+  // Se a pessoa toca play, aguarda ele terminar antes de seguir
   else if (step.tipo === 'audio') {
     setTimeout(function() {
       addAudioMsg(step.url, step.duracao);
       stepIdx++;
-      setTimeout(next, 800);
+
+      // Tempo de espera = duração do áudio + 2 segundos de respiração
+      // (igual o Typebot original: você lá colocava "Wait" do tamanho do áudio)
+      var delayFinal = ((step.duracao || 20) + 2) * 1000;
+
+      setTimeout(next, delayFinal);
     }, 600);
   }
 
