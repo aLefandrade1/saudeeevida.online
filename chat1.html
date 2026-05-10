@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Chiclete - Mounjaro Natural | Dr. Juan Rivera</title>
+<title>Consulta Gratuita | Dr. Juan Rivera</title>
 
 <!-- 🎯 GOOGLE ANALYTICS 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -33,7 +33,6 @@
     --accent-dark: #15803d;
     --accent-light: #bbf7d0;
     --green: #10b981;
-    --green-dark: #059669;
     --red: #ef4444;
     --gold: #f59e0b;
   }
@@ -67,12 +66,14 @@
   }
   .avatar {
     width: 44px; height: 44px; border-radius: 50%;
-    background: white; display: flex;
-    align-items: center; justify-content: center;
+    background: white;
+    display: flex; align-items: center; justify-content: center;
     font-weight: 800; font-size: 16px;
     color: var(--header-dark); flex-shrink: 0;
     border: 2px solid rgba(255,255,255,0.4);
+    overflow: hidden;
   }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
   .header-info { flex: 1; min-width: 0; }
   .header-name {
     font-weight: 700; font-size: 15px; line-height: 1.2;
@@ -101,7 +102,6 @@
     border-bottom: 1px solid #fde68a;
   }
 
-  /* CHAT - tudo agora flui dentro daqui */
   .chat-area {
     flex: 1; overflow-y: auto;
     padding: 16px 12px 30px; scroll-behavior: smooth;
@@ -115,6 +115,11 @@
     color: var(--muted); font-size: 11px;
     font-weight: 500; padding: 5px 12px;
     border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
+
+  #messages {
+    display: flex;
+    flex-direction: column;
   }
 
   .message {
@@ -162,6 +167,7 @@
   }
   .check-marks { color: #4fc3f7; font-size: 13px; line-height: 1; }
   .bubble strong { font-weight: 700; }
+  .bubble u { text-decoration: underline; }
   .bubble em {
     font-style: normal; color: var(--accent-dark);
     font-weight: 700;
@@ -192,7 +198,171 @@
     30% { transform: translateY(-6px); opacity: 1; }
   }
 
-  /* ============ NOVO: BOTÕES DENTRO DO CHAT ============ */
+  /* ========== ÁUDIO PLAYER ========== */
+  .audio-bubble {
+    background: var(--bubble-bot);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+    width: 280px;
+    max-width: 80%;
+    margin-bottom: 8px;
+    align-self: flex-start;
+    position: relative;
+    animation: slideIn 0.3s ease;
+  }
+  .audio-bubble::before {
+    content: ''; position: absolute;
+    top: 0; left: -8px; width: 0; height: 0;
+    border-style: solid; border-width: 0 8px 10px 0;
+    border-color: transparent var(--bubble-bot) transparent transparent;
+  }
+  .audio-controls {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .audio-play-btn {
+    width: 38px; height: 38px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .audio-play-btn:hover { background: var(--accent-dark); }
+  .audio-play-btn::before {
+    content: '';
+    border-style: solid;
+    border-width: 7px 0 7px 11px;
+    border-color: transparent transparent transparent white;
+    margin-left: 3px;
+  }
+  .audio-play-btn.playing::before {
+    border-width: 0;
+    width: 10px; height: 12px;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+    margin-left: 0;
+  }
+  .audio-waveform {
+    flex: 1; display: flex; align-items: center;
+    gap: 2px; height: 24px;
+  }
+  .wave-bar {
+    flex: 1;
+    background: #cbd5e1;
+    border-radius: 2px;
+    min-height: 4px;
+  }
+  .wave-bar.played { background: var(--accent); }
+  .audio-duration {
+    font-size: 11px; color: var(--muted);
+    margin-left: 4px; flex-shrink: 0;
+  }
+  .audio-mic-icon {
+    color: var(--accent); font-size: 14px;
+    margin-right: 4px;
+  }
+
+  /* ========== IMAGEM ========== */
+  .image-bubble {
+    max-width: 80%;
+    margin-bottom: 8px;
+    align-self: flex-start;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s ease;
+    cursor: pointer;
+  }
+  .image-bubble img {
+    width: 100%; display: block;
+    border-radius: 12px;
+  }
+  .image-placeholder {
+    width: 100%; aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--accent-dark);
+    padding: 20px; text-align: center;
+  }
+  .image-placeholder svg { width: 48px; height: 48px; margin-bottom: 8px; }
+  .image-placeholder-text {
+    font-size: 12px; font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* ========== VÍDEO ========== */
+  .video-bubble {
+    max-width: 80%;
+    margin-bottom: 8px;
+    align-self: flex-start;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    animation: slideIn 0.3s ease;
+    aspect-ratio: 16/9;
+    position: relative;
+  }
+  .video-bubble iframe,
+  .video-bubble video {
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .video-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #064e3b, #15803d);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: white; padding: 20px; text-align: center;
+  }
+  .video-placeholder svg { width: 48px; height: 48px; margin-bottom: 8px; }
+
+  /* ========== INPUT FIELD ========== */
+  .input-field {
+    align-self: flex-end;
+    max-width: 82%;
+    margin-bottom: 8px;
+    width: 100%;
+    animation: slideIn 0.4s ease;
+  }
+  .input-row {
+    display: flex; gap: 8px;
+    background: white;
+    border-radius: 24px;
+    padding: 4px 4px 4px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 2px solid var(--accent);
+  }
+  .input-row input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14.5px;
+    font-family: inherit;
+    background: transparent;
+    color: var(--ink);
+    padding: 8px 0;
+  }
+  .input-send {
+    width: 38px; height: 38px;
+    background: var(--accent);
+    border: none; border-radius: 50%;
+    color: white; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .input-send:hover { background: var(--accent-dark); transform: scale(1.05); }
+  .input-send svg { width: 18px; height: 18px; }
+
+  /* ========== BOTÕES DE ESCOLHA ========== */
   .choices-inline {
     display: flex; flex-direction: column;
     gap: 8px; margin-bottom: 12px;
@@ -216,15 +386,11 @@
   .choice-bubble:hover, .choice-bubble:active {
     background: var(--bubble-user);
     transform: translateX(-4px);
-    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
   }
   .choice-bubble.primary {
     background: linear-gradient(135deg, var(--accent), var(--accent-dark));
     color: white; border: none;
     box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
-  }
-  .choice-bubble.primary:hover {
-    box-shadow: 0 6px 16px rgba(22, 163, 74, 0.5);
   }
   .choice-bubble.cta {
     background: linear-gradient(135deg, #16a34a, #15803d);
@@ -239,276 +405,52 @@
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.025); }
   }
-  .choice-bubble.danger {
-    background: white; border: 1.5px solid #d1d5db;
-    color: var(--muted); font-size: 12.5px;
-    padding: 10px 16px;
-    box-shadow: none;
-  }
 
-  /* SLIDER (também dentro do chat) */
-  .slider-card {
-    background: white; border-radius: 12px;
-    padding: 18px 16px; margin-bottom: 12px;
-    width: 90%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    align-self: flex-start;
-    animation: slideIn 0.4s ease;
-  }
-  .slider-value {
-    font-size: 38px; font-weight: 800;
-    color: var(--accent-dark); text-align: center;
-    margin-bottom: 12px; line-height: 1;
-  }
-  .slider-value small { font-size: 16px; color: var(--muted); margin-left: 4px; }
-  input[type="range"] {
-    width: 100%; -webkit-appearance: none;
-    background: transparent; height: 8px; cursor: pointer;
-  }
-  input[type="range"]::-webkit-slider-runnable-track {
-    height: 8px; background: var(--accent-light); border-radius: 100px;
-  }
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none; width: 26px; height: 26px;
-    background: var(--accent); border-radius: 50%;
-    cursor: pointer; margin-top: -9px;
-    box-shadow: 0 4px 10px rgba(22, 163, 74, 0.4);
-  }
-  input[type="range"]::-moz-range-track {
-    height: 8px; background: var(--accent-light); border-radius: 100px; border: none;
-  }
-  input[type="range"]::-moz-range-thumb {
-    width: 26px; height: 26px; background: var(--accent);
-    border-radius: 50%; cursor: pointer; border: none;
-    box-shadow: 0 4px 10px rgba(22, 163, 74, 0.4);
-  }
-  .slider-labels {
-    display: flex; justify-content: space-between;
-    font-size: 11px; color: var(--muted);
-    margin-top: 10px; font-weight: 500;
-  }
-  .slider-confirm {
-    margin-top: 14px; width: 100%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    color: white; border: none;
-    padding: 12px; border-radius: 14px;
-    font-size: 14.5px; font-weight: 700;
-    cursor: pointer; font-family: inherit;
-    box-shadow: 0 3px 10px rgba(22, 163, 74, 0.3);
-  }
-  .slider-confirm:hover {
-    box-shadow: 0 5px 14px rgba(22, 163, 74, 0.45);
-  }
-
-  /* COMPONENTES VISUAIS */
-  .testimonial-card {
-    background: white; border-radius: 12px;
-    padding: 14px; margin-bottom: 8px;
-    max-width: 88%; box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    border-left: 3px solid var(--accent);
-    align-self: flex-start;
-    animation: slideIn 0.4s ease;
-  }
-  .testimonial-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .testimonial-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    color: white; font-weight: 700; font-size: 14px;
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .testimonial-name { font-weight: 700; font-size: 13.5px; line-height: 1.2; }
-  .testimonial-meta {
-    font-size: 11px; color: var(--muted);
-    display: flex; align-items: center; gap: 4px;
-  }
-  .testimonial-stars { color: var(--gold); font-size: 11px; }
-  .testimonial-text {
-    font-size: 13.5px; line-height: 1.4;
-    font-style: italic; color: var(--ink);
-  }
-  .stats-card {
-    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-    border-radius: 12px; padding: 14px;
-    margin-bottom: 8px; max-width: 88%;
-    border: 1.5px solid var(--accent);
-    align-self: flex-start;
-    animation: slideIn 0.4s ease;
-  }
-  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .stat-item { text-align: center; }
-  .stat-num {
-    font-size: 20px; font-weight: 800;
-    color: var(--accent-dark); line-height: 1;
-  }
-  .stat-label {
-    font-size: 10px; color: var(--muted);
-    text-transform: uppercase; letter-spacing: 0.5px;
-    font-weight: 600; margin-top: 4px;
-  }
-  .diagnosis-card {
+  /* ========== BENEFITS LIST ========== */
+  .benefits-card {
     background: white; border-radius: 12px;
     padding: 16px; margin-bottom: 8px;
-    max-width: 90%; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    max-width: 88%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--accent);
+    align-self: flex-start;
+    animation: slideIn 0.4s ease;
+  }
+  .benefits-card ul {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .benefits-card li {
+    padding: 7px 0;
+    font-size: 14px;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px dashed #f3f4f6;
+  }
+  .benefits-card li:last-child { border-bottom: none; }
+
+  /* ========== ANALYZING ========== */
+  .analyzing-card {
+    background: white; border-radius: 12px;
+    padding: 16px; margin-bottom: 8px;
+    max-width: 88%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border: 2px solid var(--accent);
     align-self: flex-start;
     animation: slideIn 0.4s ease;
+    text-align: center;
   }
-  .diagnosis-title {
-    font-weight: 700; font-size: 14px;
-    color: var(--accent-dark); margin-bottom: 10px;
-    display: flex; align-items: center; gap: 6px;
+  .analyzing-spinner {
+    width: 40px; height: 40px;
+    border: 3px solid #e5e7eb;
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    margin: 8px auto;
+    animation: spin 1s infinite linear;
   }
-  .diagnosis-row {
-    display: flex; justify-content: space-between;
-    padding: 6px 0; border-bottom: 1px dashed #f3f4f6; font-size: 13px;
-  }
-  .diagnosis-row:last-child { border-bottom: none; }
-  .diagnosis-row strong { color: var(--accent-dark); }
-  .diagnosis-result {
-    background: #fef3c7; border-radius: 8px;
-    padding: 10px; margin-top: 10px;
-    font-size: 13px; font-weight: 600;
-    color: #92400e; text-align: center;
-  }
-  .offer-card {
-    background: white; border-radius: 14px;
-    padding: 18px; margin-bottom: 8px;
-    max-width: 92%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    border: 3px solid var(--accent); position: relative;
-    align-self: flex-start;
-    animation: slideIn 0.4s ease;
-  }
-  .offer-badge {
-    position: absolute; top: -10px; left: 50%;
-    transform: translateX(-50%);
-    background: var(--gold); color: white;
-    padding: 4px 12px; border-radius: 100px;
-    font-size: 10px; font-weight: 800;
-    text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
-  }
-  .offer-title {
-    font-weight: 800; font-size: 18px;
-    color: var(--accent-dark); text-align: center;
-    margin: 6px 0 4px;
-  }
-  .offer-subtitle {
-    font-size: 12px; color: var(--muted);
-    text-align: center; margin-bottom: 12px;
-  }
-  .offer-includes {
-    background: #f9fafb; border-radius: 10px;
-    padding: 12px; margin: 12px 0; font-size: 12.5px;
-  }
-  .offer-includes-title {
-    font-weight: 700; font-size: 11px;
-    color: var(--accent-dark); margin-bottom: 8px;
-    text-transform: uppercase; letter-spacing: 0.5px;
-  }
-  .includes-row {
-    display: flex; justify-content: space-between;
-    padding: 4px 0; font-size: 12.5px;
-  }
-  .includes-row span:last-child {
-    text-decoration: line-through; color: var(--muted);
-  }
-  .includes-total {
-    border-top: 1.5px solid #e5e7eb;
-    padding-top: 8px; margin-top: 8px;
-    display: flex; justify-content: space-between; font-weight: 700;
-  }
-  .includes-total span:last-child { color: var(--red); }
-  .price-old {
-    text-align: center; color: var(--muted);
-    text-decoration: line-through;
-    font-size: 16px; font-weight: 600;
-  }
-  .price-new {
-    text-align: center; font-size: 38px; font-weight: 900;
-    color: var(--green-dark); line-height: 1; margin: 6px 0;
-  }
-  .price-new small { font-size: 16px; font-weight: 700; }
-  .price-installment {
-    text-align: center; font-size: 12px; color: var(--muted); margin-bottom: 8px;
-  }
-  .price-installment strong { color: var(--ink); }
-  .timer-card {
-    background: linear-gradient(135deg, #fef2f2, #fee2e2);
-    border: 1.5px solid var(--red);
-    border-radius: 12px; padding: 12px;
-    text-align: center; margin-bottom: 8px; max-width: 88%;
-    align-self: flex-start;
-    animation: slideIn 0.4s ease;
-  }
-  .timer-label {
-    font-size: 11px; color: #991b1b;
-    text-transform: uppercase; font-weight: 700;
-    letter-spacing: 0.8px; margin-bottom: 6px;
-  }
-  .timer-value {
-    font-size: 32px; font-weight: 900;
-    color: var(--red); line-height: 1;
-    letter-spacing: 2px; font-variant-numeric: tabular-nums;
-  }
-  .timer-warning {
-    font-size: 10.5px; color: #7f1d1d;
-    margin-top: 4px; font-weight: 600;
-  }
-  .bonus-card {
-    background: linear-gradient(135deg, #fffbeb, #fef3c7);
-    border: 1.5px dashed var(--gold);
-    border-radius: 12px; padding: 12px 14px;
-    margin-bottom: 8px; max-width: 88%;
-    align-self: flex-start;
-    animation: slideIn 0.4s ease;
-  }
-  .bonus-tag {
-    background: var(--gold); color: white;
-    padding: 2px 8px; border-radius: 4px;
-    font-size: 10px; font-weight: 800;
-    text-transform: uppercase; letter-spacing: 0.5px;
-    display: inline-block; margin-bottom: 6px;
-  }
-  .bonus-title {
-    font-weight: 700; font-size: 14px;
-    color: #78350f; margin-bottom: 4px; line-height: 1.3;
-  }
-  .bonus-desc {
-    font-size: 12.5px; color: #92400e;
-    line-height: 1.4; margin-bottom: 6px;
-  }
-  .bonus-value { font-size: 12px; font-weight: 700; color: var(--green-dark); }
-  .bonus-value s { color: var(--muted); margin-right: 6px; }
-  .guarantee-card {
-    background: white; border: 2px solid var(--green);
-    border-radius: 12px; padding: 14px;
-    margin-bottom: 8px; max-width: 88%;
-    display: flex; gap: 12px; align-items: center;
-    align-self: flex-start;
-    animation: slideIn 0.4s ease;
-  }
-  .guarantee-icon { font-size: 36px; flex-shrink: 0; }
-  .guarantee-text { font-size: 12.5px; line-height: 1.4; }
-  .guarantee-text strong {
-    display: block; color: var(--green-dark);
-    font-size: 14px; margin-bottom: 2px;
-  }
-  .product-image {
-    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
-    border-radius: 12px; padding: 30px 20px;
-    margin-bottom: 8px; max-width: 88%;
-    text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    align-self: flex-start;
-    animation: slideIn 0.4s ease;
-  }
-  .product-emoji { font-size: 80px; line-height: 1; }
-  .product-name {
-    font-size: 24px; font-weight: 900;
-    color: var(--accent-dark); margin-top: 8px; letter-spacing: -0.5px;
-  }
-  .product-tag {
-    font-size: 12px; color: var(--muted);
-    margin-top: 4px; font-weight: 600;
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .analyzing-text {
+    font-size: 14px; font-weight: 600;
+    color: var(--accent-dark);
   }
 
   .final-screen {
@@ -533,34 +475,32 @@
     border-top-color: var(--accent);
     border-radius: 50%; animation: spin 1s infinite linear;
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  #messages {
-    display: flex;
-    flex-direction: column;
-  }
 </style>
 </head>
 <body>
 
 <div class="phone-container">
   <div class="chat-header">
-    <div class="avatar">JR</div>
+    <div class="avatar">
+      <!-- 🖼️ COLOQUE A FOTO DO DR. JUAN AQUI -->
+      <!-- <img src="URL_DA_FOTO_DO_DOUTOR" alt="Dr. Juan"> -->
+      JR
+    </div>
     <div class="header-info">
       <div class="header-name">Dr. Juan Rivera <span class="verified">✓</span></div>
       <div class="header-status"><span class="online-dot"></span>en línea · escribiendo para ti</div>
     </div>
     <div style="font-size: 20px; opacity: 0.9;">⋮</div>
   </div>
-  <div class="warning-banner">⚠️ Atención: no cierres esta página</div>
+  <div class="warning-banner">⚠️ Consulta gratuita en curso · No cierres esta página</div>
   <div class="chat-area" id="chatArea">
-    <div class="date-separator"><span>HOY · MENSAJE PERSONAL</span></div>
+    <div class="date-separator"><span>HOY · CONSULTA PERSONAL</span></div>
     <div id="messages"></div>
   </div>
   <div class="final-screen" id="finalScreen">
     <div class="final-icon">🎉</div>
-    <div class="final-title">Liberando tu acceso al Chiclete...</div>
-    <div class="final-text">Espera, te estamos redirigiendo al pago seguro.</div>
+    <div class="final-title">¡Felicitaciones!</div>
+    <div class="final-text">Te estamos redirigiendo a la página de inscripción del programa.</div>
     <div class="loader"></div>
   </div>
 </div>
@@ -568,7 +508,6 @@
 <script>
 var userData = {};
 var stepIdx = 0;
-var sliderCount = 0;
 
 // ============ HELPERS ============
 function getTime() {
@@ -597,6 +536,10 @@ function addBotMsg(text) {
   var m = document.getElementById('messages');
   var d = document.createElement('div');
   d.className = 'message bot';
+  // Substituir variáveis
+  text = text.replace(/\{\{NOME\}\}/g, userData.nome || '')
+             .replace(/\{\{IDADE\}\}/g, userData.idade || '')
+             .replace(/\{\{PESO\}\}/g, userData.peso || '');
   d.innerHTML = '<div class="bubble">' + text + '<div class="bubble-time">' + getTime() + '</div></div>';
   m.appendChild(d);
   scrollDown();
@@ -609,246 +552,326 @@ function addUserMsg(text) {
   m.appendChild(d);
   scrollDown();
 }
-function addComp(html) {
-  var m = document.getElementById('messages');
-  m.insertAdjacentHTML('beforeend', html);
-  scrollDown();
-}
 function track(name, params) {
   if (typeof gtag === 'function') {
     gtag('event', name, Object.assign({event_category: 'Typebot'}, params || {}));
   }
 }
 
-// ============ TIMER ============
-var timerStarted = false;
-function startTimer() {
-  if (timerStarted) return;
-  timerStarted = true;
-  var total = 15 * 60;
-  var iv = setInterval(function() {
-    total--;
-    var min = Math.floor(total / 60);
-    var sec = total % 60;
-    var d = document.getElementById('timerDisplay');
-    if (d) d.textContent = (min<10?'0':'') + min + ':' + (sec<10?'0':'') + sec;
-    if (total <= 0) {
-      clearInterval(iv);
-      if (d) d.textContent = 'EXPIRADA';
-    }
-  }, 1000);
+// ============ COMPONENTES ============
+
+// 🔊 ÁUDIO (placeholder ou real)
+function addAudioMsg(audioUrl, durationSeconds) {
+  var m = document.getElementById('messages');
+  var d = document.createElement('div');
+  d.className = 'audio-bubble';
+  var dur = durationSeconds || 30;
+  var min = Math.floor(dur / 60);
+  var sec = dur % 60;
+  var durStr = min + ':' + (sec<10?'0':'') + sec;
+
+  // Gera barras da waveform
+  var bars = '';
+  for (var i = 0; i < 30; i++) {
+    var h = 30 + Math.random() * 70;
+    bars += '<div class="wave-bar" style="height:' + h + '%"></div>';
+  }
+
+  d.innerHTML =
+    '<div class="audio-controls">' +
+      '<button class="audio-play-btn" onclick="toggleAudio(this)"></button>' +
+      '<span class="audio-mic-icon">🎤</span>' +
+      '<div class="audio-waveform">' + bars + '</div>' +
+      '<span class="audio-duration">' + durStr + '</span>' +
+    '</div>' +
+    (audioUrl ? '<audio style="display:none;" src="' + audioUrl + '"></audio>' : '');
+
+  m.appendChild(d);
+  scrollDown();
 }
 
-// ============================================================
-// 🎯 ETAPAS DO FUNIL
-// ============================================================
+function toggleAudio(btn) {
+  var bubble = btn.closest('.audio-bubble');
+  var audio = bubble.querySelector('audio');
+  if (audio) {
+    if (audio.paused) {
+      audio.play();
+      btn.classList.add('playing');
+      audio.onended = function() { btn.classList.remove('playing'); };
+    } else {
+      audio.pause();
+      btn.classList.remove('playing');
+    }
+  } else {
+    // Sem URL, simula reprodução visual
+    var bars = bubble.querySelectorAll('.wave-bar');
+    if (btn.classList.contains('playing')) {
+      btn.classList.remove('playing');
+      bars.forEach(function(b) { b.classList.remove('played'); });
+      return;
+    }
+    btn.classList.add('playing');
+    var i = 0;
+    var iv = setInterval(function() {
+      if (i < bars.length) {
+        bars[i].classList.add('played');
+        i++;
+      } else {
+        clearInterval(iv);
+        btn.classList.remove('playing');
+        setTimeout(function() {
+          bars.forEach(function(b) { b.classList.remove('played'); });
+        }, 500);
+      }
+    }, 100);
+  }
+}
+
+// 🖼️ IMAGEM
+function addImageMsg(imageUrl, placeholderText) {
+  var m = document.getElementById('messages');
+  var d = document.createElement('div');
+  d.className = 'image-bubble';
+
+  if (imageUrl && imageUrl !== '') {
+    d.innerHTML = '<img src="' + imageUrl + '" alt="" onerror="this.parentElement.innerHTML=\'' +
+                  '<div class=\\\'image-placeholder\\\'>' +
+                  '<svg fill=\\\'currentColor\\\' viewBox=\\\'0 0 20 20\\\'><path d=\\\'M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z\\\'/></svg>' +
+                  '<div class=\\\'image-placeholder-text\\\'>📸 Coloque o link da imagem aqui</div>' +
+                  '</div>\'">';
+  } else {
+    d.innerHTML =
+      '<div class="image-placeholder">' +
+        '<svg fill="currentColor" viewBox="0 0 20 20"><path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"/></svg>' +
+        '<div class="image-placeholder-text">📸 ' + (placeholderText || 'Coloque o link da imagem aqui') + '</div>' +
+      '</div>';
+  }
+
+  m.appendChild(d);
+  scrollDown();
+}
+
+// 🎥 VÍDEO (YouTube embed ou placeholder)
+function addVideoMsg(videoIdYouTube, placeholderText) {
+  var m = document.getElementById('messages');
+  var d = document.createElement('div');
+  d.className = 'video-bubble';
+
+  if (videoIdYouTube && videoIdYouTube !== '') {
+    d.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoIdYouTube + '" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  } else {
+    d.innerHTML =
+      '<div class="video-placeholder">' +
+        '<svg fill="currentColor" viewBox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm14.553 1.106A1 1 0 0016 8v4a1 1 0 00.553.894l2 1A1 1 0 0020 13V7a1 1 0 00-1.447-.894l-2 1z"/></svg>' +
+        '<div style="font-size:12px;font-weight:600;line-height:1.4;">🎥 ' + (placeholderText || 'Coloque o ID do vídeo do YouTube aqui') + '</div>' +
+      '</div>';
+  }
+
+  m.appendChild(d);
+  scrollDown();
+}
+
+// ============ ETAPAS DO FUNIL ============
 var STEPS = [
-  // Abertura
-  { tipo: 'msg', texto: '¡Hola! 💚 ¿Cómo estás?', delay: 800 },
-  { tipo: 'msg', texto: 'Soy el <strong>Dr. Juan Rivera</strong>, médico de celebridades como Adamari López.', delay: 1500 },
-  { tipo: 'msg', texto: 'Antes de mostrarte lo que descubrí, necesito hacerte unas preguntas rápidas...', delay: 1500 },
-  { tipo: 'msg', texto: 'Es para calcular tu potencial REAL de adelgazamiento. ⚖️', delay: 1200 },
+  // ============ INÍCIO DO ATENDIMENTO ============
+  { tipo: 'msg', texto: '<strong>[INICIANDO TU CONSULTA]</strong>', delay: 1000 },
+  { tipo: 'wait', tempo: 1500 },
+  { tipo: 'msg', texto: '<u>Esta consulta es 100% GRATUITA</u> ✅', delay: 1500 },
+  { tipo: 'wait', tempo: 1500 },
+  { tipo: 'msg', texto: '<u>Dr. Juan Rivera entró en la conversación...</u>', delay: 1200 },
   { tipo: 'choice', botoes: [
-    { texto: '👍 Pregunta, doctor', primary: true }
+    { texto: '🩺 INICIAR CONSULTA', primary: true }
   ]},
 
-  // Gênero
-  { tipo: 'msg', texto: 'Primero, dime:', delay: 800 },
-  { tipo: 'msg', texto: '¿Eres mujer u hombre? 👇', delay: 1000 },
+  // ============ APRESENTAÇÃO ============
+  { tipo: 'msg', texto: 'Mi nombre es <strong>Dr. Juan Rivera</strong>...', delay: 1500 },
+  { tipo: 'msg', texto: 'Soy <strong>creador del Método Mounjaro de Gelatina</strong> 🍮', delay: 2000 },
+  { tipo: 'wait', tempo: 1000 },
+  // 🖼️ FOTO DO DR. JUAN
+  { tipo: 'imagem', url: '', placeholder: 'Foto del Dr. Juan Rivera' },
+  { tipo: 'wait', tempo: 2000 },
+  // 🖼️ IMAGEM COM CELEBRIDADES
+  { tipo: 'imagem', url: '', placeholder: 'Foto del Dr. con Adamari López u otras celebridades' },
+  { tipo: 'wait', tempo: 2000 },
+  { tipo: 'msg', texto: 'Antes de enseñarte cómo preparar de forma <strong>EFICAZ</strong> el verdadero Mounjaro de Gelatina...', delay: 2000 },
+  { tipo: 'msg', texto: 'Escucha el audio 👇', delay: 1500 },
+  // 🔊 ÁUDIO 1 - APRESENTAÇÃO PESSOAL
+  { tipo: 'audio', url: '', duracao: 25 },
+  { tipo: 'wait', tempo: 2000 },
+
+  // ============ EVENTO + INSCRIÇÃO ============
+  { tipo: 'msg', texto: '⚡ Este <strong>EVENTO solo ocurre 1 VEZ AL AÑO</strong>!', delay: 2000 },
+  { tipo: 'msg', texto: '¿Te gustaría participar de mi programa de adelgazamiento <u>GRATUITO</u> y tener ese cuerpo soñado para el verano? 👙', delay: 2500 },
+  // 🔊 ÁUDIO 2 - CONVITE
+  { tipo: 'audio', url: '', duracao: 18 },
+  { tipo: 'wait', tempo: 1500 },
+  { tipo: 'msg', texto: 'Haz clic en el botón abajo para empezar 👇', delay: 1500 },
   { tipo: 'choice', botoes: [
-    { texto: '👩 Mujer', salvar: { gender: 'mujer' } },
-    { texto: '👨 Hombre', salvar: { gender: 'hombre' } }
+    { texto: '✅ SÍ, QUIERO PARTICIPAR', primary: true }
   ]},
 
-  // Idade
-  { tipo: 'msg', texto: '¡Perfecto! Ahora dime tu edad...', delay: 1000 },
-  { tipo: 'slider', config: {
-    chave: 'age', min: 18, max: 75, padrao: 40, unidade: 'años',
-    labels: ['18', '40', '75+']
-  }},
+  // ============ COLETA DE NOME ============
+  { tipo: 'msg', texto: 'Excelente decisión! 🎉', delay: 1200 },
+  { tipo: 'msg', texto: 'Para empezar tu consulta, dime tu <strong>primer nombre</strong>:', delay: 1500 },
+  { tipo: 'input', campo: 'nome', placeholder: 'Tu nombre...', tipoInput: 'text' },
 
-  // Peso atual
-  { tipo: 'msg', texto: '¡Excelente! ¿Cuál es tu peso actual? ⚖️', delay: 1000 },
-  { tipo: 'msg', texto: 'Arrastra la barrita y confirma:', delay: 1000 },
-  { tipo: 'slider', config: {
-    chave: 'currentWeight', min: 50, max: 150, padrao: 80, unidade: 'kg',
-    labels: ['50kg', '100kg', '150kg+']
-  }},
+  // ============ APÓS NOME ============
+  { tipo: 'msg', texto: 'Mucho gusto, <strong>{{NOME}}</strong> 💚', delay: 1500 },
+  // 🔊 ÁUDIO 3 - SAUDAÇÃO PESSOAL
+  { tipo: 'audio', url: '', duracao: 12 },
+  { tipo: 'wait', tempo: 1500 },
 
-  // Peso desejado
-  { tipo: 'msg', texto: '¿Y a qué peso QUIERES llegar? 🎯', delay: 1000 },
-  { tipo: 'slider', config: {
-    chave: 'targetWeight', min: 45, max: 100, padrao: 60, unidade: 'kg',
-    labels: ['45kg', '70kg', '100kg+']
-  }},
+  // ============ COLETA DE IDADE ============
+  { tipo: 'msg', texto: 'Ahora dime tu <strong>edad</strong>:', delay: 1500 },
+  { tipo: 'input', campo: 'idade', placeholder: 'Tu edad (ej: 42)...', tipoInput: 'number' },
 
-  // Tempo lutando
-  { tipo: 'msg', texto: '¿Hace cuánto luchas con esos kilos de más? 😔', delay: 1200 },
+  // ============ COLETA DE PESO ============
+  { tipo: 'msg', texto: '¿Y cuál es tu <strong>peso actual</strong>? (en kg)', delay: 1500 },
+  { tipo: 'input', campo: 'peso', placeholder: 'Tu peso (ej: 75)...', tipoInput: 'number' },
+
+  // ============ CONFIRMAÇÃO ============
+  { tipo: 'msg', texto: 'Perfecto, <strong>{{NOME}}</strong>', delay: 1500 },
+  { tipo: 'wait', tempo: 1000 },
+  { tipo: 'msg', texto: 'Solo confirmando tus datos...', delay: 1500 },
+  { tipo: 'msg', texto: '👤 Nombre: <strong>{{NOME}}</strong><br>🎂 Edad: <strong>{{IDADE}} años</strong><br>⚖️ Peso: <strong>{{PESO}}kg</strong>', delay: 1800 },
+  { tipo: 'msg', texto: '¿La información es correcta?', delay: 1500 },
   { tipo: 'choice', botoes: [
-    { texto: 'Menos de 1 año', salvar: { struggleTime: 'corto' } },
-    { texto: 'Entre 1 y 5 años', salvar: { struggleTime: 'medio' } },
-    { texto: 'Más de 5 años', salvar: { struggleTime: 'largo' } },
-    { texto: 'Toda mi vida 💔', salvar: { struggleTime: 'vida' } }
+    { texto: '✅ Sí, está correcto!', primary: true }
   ]},
 
-  // O que tentou
-  { tipo: 'msg', texto: '¿Y qué has INTENTADO para adelgazar?', delay: 1200 },
+  // ============ ANÁLISE ============
+  { tipo: 'msg', texto: '{{NOME}}, estoy analizando tu caso... 📊', delay: 1500 },
+  { tipo: 'analyzing' },
+  { tipo: 'wait', tempo: 3500 },
+
+  // 🔊 ÁUDIO 4 - DIAGNÓSTICO
+  { tipo: 'audio', url: '', duracao: 35 },
+  { tipo: 'wait', tempo: 2000 },
+  // 🔊 ÁUDIO 5 - EXPLICAÇÃO HORMÔNIOS
+  { tipo: 'audio', url: '', duracao: 42 },
+  { tipo: 'wait', tempo: 2000 },
+  // 🔊 ÁUDIO 6 - SOLUÇÃO
+  { tipo: 'audio', url: '', duracao: 38 },
+  { tipo: 'wait', tempo: 2000 },
+
+  { tipo: 'msg', texto: '{{NOME}}, ¿podemos continuar con la consulta?', delay: 1500 },
   { tipo: 'choice', botoes: [
-    { texto: 'Dietas restrictivas' },
-    { texto: 'Ejercicio pesado' },
-    { texto: 'Pastillas para adelgazar' },
-    { texto: '¡TODO! Y nada funciona 😩' }
+    { texto: '▶️ Continuar', primary: true }
   ]},
 
-  // Empatia + diagnóstico
-  { tipo: 'msg', texto: 'Te entiendo de verdad...', delay: 1200 },
-  { tipo: 'msg', texto: 'La culpa <strong>NO ES TUYA</strong>. ❌', delay: 1200 },
-  { tipo: 'msg', texto: 'Calculé aquí tu perfil. Mira lo que descubrí:', delay: 1500 },
-  { tipo: 'comp_diagnosis' },
-  { tipo: 'msg', texto: 'Tu cuerpo tiene <em>deficiencia de 2 hormonas esenciales</em> para adelgazar:', delay: 2000 },
-  { tipo: 'msg', texto: '🧬 <strong>GIP</strong> y <strong>GLP-1</strong>', delay: 1200 },
-  { tipo: 'msg', texto: 'Son las MISMAS hormonas que el <strong>Mounjaro</strong> y el <strong>Ozempic</strong> intentan imitar... ¡pero costando hasta <em>$2,000 al mes</em>! 💸', delay: 2200 },
+  // ============ PROVAS SOCIAIS ============
+  { tipo: 'msg', texto: 'Mira estas mujeres que ya participaron del programa de adelgazamiento... 👇', delay: 2000 },
+  { tipo: 'wait', tempo: 1500 },
+  // 🔊 ÁUDIO 7 - HISTÓRIA DA CARMEN
+  { tipo: 'audio', url: '', duracao: 28 },
+  { tipo: 'wait', tempo: 2000 },
+  // 🖼️ ANTES E DEPOIS - CARMEN
+  { tipo: 'imagem', url: '', placeholder: 'Antes y después de Carmen R. (-30kg)' },
+  { tipo: 'wait', tempo: 2500 },
+
+  // 🔊 ÁUDIO 8 - HISTÓRIA DA PATRICIA
+  { tipo: 'audio', url: '', duracao: 32 },
+  { tipo: 'wait', tempo: 2000 },
+  // 🖼️ ANTES E DEPOIS - PATRICIA
+  { tipo: 'imagem', url: '', placeholder: 'Antes y después de Patricia S. (-18kg en 42 días)' },
+  { tipo: 'wait', tempo: 2500 },
+
+  // 🎥 VÍDEO TESTEMUNHO REAL
+  { tipo: 'msg', texto: 'Y mira el video de la <strong>Adamari López</strong>: 👇', delay: 1500 },
+  { tipo: 'video', id: '', placeholder: 'Coloque o ID del video do testimonio en YouTube' },
+  { tipo: 'wait', tempo: 3000 },
+
+  { tipo: 'msg', texto: '{{NOME}}, ¿también te gustaría perder más de 10kg?', delay: 1800 },
+  // 🔊 ÁUDIO 9 - CONVITE PERSONALIZADO
+  { tipo: 'audio', url: '', duracao: 18 },
+  { tipo: 'wait', tempo: 1500 },
   { tipo: 'choice', botoes: [
-    { texto: '😱 ¿Por eso no logro adelgazar?!', primary: true }
+    { texto: '🔥 Sí, me gustaría!', primary: true }
   ]},
 
-  // Explicação
-  { tipo: 'msg', texto: 'EXACTAMENTE.', delay: 1000 },
-  { tipo: 'msg', texto: 'Sin esas hormonas, tu cuerpo entra en pánico:', delay: 1200 },
-  { tipo: 'msg', texto: '💭 <em>"¡Nunca estoy satisfecho... necesito almacenar más grasa!"</em>', delay: 1800 },
-  { tipo: 'msg', texto: 'Entonces TODO lo que comes se convierte en grasa atrapada en abdomen, brazos y piernas. 😞', delay: 1800 },
-  { tipo: 'msg', texto: 'No importa si comes poco. No importa si haces ejercicio. Tu cuerpo sigue almacenando.', delay: 2200 },
-  { tipo: 'msg', texto: 'Es como manejar un auto <strong>con el freno de mano puesto</strong>. 🚗', delay: 1800 },
+  // ============ EXPLICAÇÃO DO PROGRAMA ============
+  { tipo: 'msg', texto: '{{NOME}}, te voy a explicar cómo funciona el programa de adelgazamiento... 👇', delay: 2000 },
+  { tipo: 'wait', tempo: 1500 },
+  // 🔊 ÁUDIOS EXPLICANDO O PROGRAMA (sequência)
+  { tipo: 'audio', url: '', duracao: 24 },
+  { tipo: 'wait', tempo: 2000 },
+  { tipo: 'audio', url: '', duracao: 32 },
+  { tipo: 'wait', tempo: 2000 },
+  { tipo: 'audio', url: '', duracao: 28 },
+  { tipo: 'wait', tempo: 2000 },
+  { tipo: 'audio', url: '', duracao: 35 },
+  { tipo: 'wait', tempo: 2000 },
+
+  { tipo: 'msg', texto: '{{NOME}}, ¿te gustaría conocer más sobre el <strong>Desafío de 21 Días</strong>?', delay: 2000 },
   { tipo: 'choice', botoes: [
-    { texto: '😢 ¡Así me siento exactamente!', primary: true }
+    { texto: '🚀 ¡Quiero saber más!', primary: true }
   ]},
 
-  // Descoberta
-  { tipo: 'msg', texto: 'Pero tengo una noticia INCREÍBLE para ti... 🌟', delay: 1500 },
-  { tipo: 'msg', texto: 'Descubrí una forma de <strong>ACTIVAR esas hormonas naturalmente</strong>.', delay: 1800 },
-  { tipo: 'msg', texto: 'Sin agujas. Sin medicamentos. Sin efectos secundarios.', delay: 1500 },
-  { tipo: 'msg', texto: 'Es un <em>Mounjaro de gelatina</em>. 🍬', delay: 1200 },
-  { tipo: 'msg', texto: 'Yo lo llamo... <strong>CHICLETE</strong>. 💚', delay: 1500 },
-  { tipo: 'comp_product' },
+  // ============ APRESENTAÇÃO DO DESAFIO ============
+  // 🔊 ÁUDIO - APRESENTAÇÃO DO DESAFIO
+  { tipo: 'audio', url: '', duracao: 28 },
+  { tipo: 'wait', tempo: 2500 },
+  // 🖼️ MOCKUP DO PROGRAMA / APP
+  { tipo: 'imagem', url: '', placeholder: 'Mockup del programa / app del Desafío 21 Días' },
+  { tipo: 'wait', tempo: 2500 },
+
+  { tipo: 'msg', texto: 'Los <strong>BENEFICIOS</strong> al participar del Desafío de 21 Días son:', delay: 1800 },
+  { tipo: 'wait', tempo: 1500 },
+  { tipo: 'beneficios' },
+  { tipo: 'wait', tempo: 2500 },
+
+  // 🔊 ÁUDIO - QUEM ELE É
+  { tipo: 'audio', url: '', duracao: 22 },
+  { tipo: 'wait', tempo: 2000 },
+
+  { tipo: 'msg', texto: '¿Te gustaría <strong>PARTICIPAR</strong>?', delay: 1500 },
   { tipo: 'choice', botoes: [
-    { texto: '🤩 ¿Cómo así, doctor?!', primary: true }
+    { texto: '✅ ¡Sí, quiero participar!', primary: true }
   ]},
 
-  // Como funciona
-  { tipo: 'msg', texto: 'Es un cubito que comes <strong>1 vez al día</strong>, en la mañana. 🌅', delay: 1500 },
-  { tipo: 'msg', texto: 'Su contacto con tu intestino libera las hormonas GIP y GLP-1 INMEDIATAMENTE.', delay: 2000 },
-  { tipo: 'msg', texto: 'Resultado:', delay: 1000 },
-  { tipo: 'msg', texto: '🔥 Tu hambre DESAPARECE<br>🔥 Tu cuerpo quema grasa 24h/día<br>🔥 Incluso mientras duermes', delay: 2000 },
-  { tipo: 'msg', texto: 'Mira lo que pasó con <strong>Adamari López</strong>:', delay: 1500 },
-  { tipo: 'comp_test', config: {
-    avatar: 'AL', name: 'Adamari López', meta: '54 años · Actriz',
-    text: 'En 2 meses, sin dieta y sin ejercicio, perdí 25 kilos usando solo este Chiclete. ¡Funciona como una inyección de Ozempic, pero sin agujas!'
-  }},
+  // ============ SURPRESA ============
+  { tipo: 'msg', texto: '{{NOME}}, te guardé una <strong>SORPRESA</strong>... 🎁', delay: 2000 },
+  // 🔊 ÁUDIO - REVELAÇÃO DA SURPRESA
+  { tipo: 'audio', url: '', duracao: 30 },
+  { tipo: 'wait', tempo: 2500 },
+
+  { tipo: 'msg', texto: 'La <strong>Michele</strong>, además de adelgazar, ¡también ganó <em>$1,000 dólares</em>! 👇', delay: 2500 },
+  // 🖼️ FOTO DA MICHELE COM PRÊMIO
+  { tipo: 'imagem', url: '', placeholder: 'Foto de Michele con el premio de $1,000' },
+  { tipo: 'wait', tempo: 2500 },
+
+  // 🔊 ÁUDIO - EXPLICAÇÃO DO PRÊMIO
+  { tipo: 'audio', url: '', duracao: 28 },
+  { tipo: 'wait', tempo: 2500 },
+
+  // ============ CTA FINAL ============
+  { tipo: 'msg', texto: 'Y bien, <strong>{{NOME}}</strong>...', delay: 1500 },
+  { tipo: 'msg', texto: '¿Te gustaría inscribirte en el <strong>Desafío de 21 Días con Mounjaro de Gelatina</strong>?', delay: 2000 },
   { tipo: 'choice', botoes: [
-    { texto: '😍 ¡Quiero conocer más historias!', primary: true }
+    { texto: '🔥 ¡SÍ, QUIERO INSCRIBIRME!', primary: true }
   ]},
 
-  // Mais depoimentos
-  { tipo: 'comp_test', config: {
-    avatar: 'ML', name: 'María León', meta: 'Actriz española',
-    text: '¡Perdí 8 kilos en 2 semanas! Fue una locura. Este es mi nuevo secretito incluso comiendo basura todos los días.'
-  }},
-  { tipo: 'comp_test', config: {
-    avatar: 'CR', name: 'Carmen R.', meta: '47 años · Verificada ✓',
-    text: 'Hace 60 días que comencé y ya eliminé 30 kilos. ¡No sé qué descubriste, Dr. Juan, pero esto es un milagro!'
-  }},
-  { tipo: 'comp_test', config: {
-    avatar: 'PS', name: 'Patricia S.', meta: '52 años · Verificada ✓',
-    text: 'Perdí 18 kilos en 42 días solo con el Chiclete. ¡Hasta mi piel parece más joven!'
-  }},
-  { tipo: 'msg', texto: 'Ya son <strong>+121,300 personas</strong> entre 25 y 80 años transformadas. 📈', delay: 1800 },
-  { tipo: 'comp_stats' },
-  { tipo: 'choice', botoes: [
-    { texto: '🔥 ¡Yo quiero ese resultado!', primary: true }
-  ]},
+  // ============ CHECKOUT ============
+  { tipo: 'msg', texto: 'Excelente decisión, <strong>{{NOME}}</strong> 💚', delay: 1500 },
+  { tipo: 'msg', texto: 'Escucha los audios para finalizar tu inscripción... 👇', delay: 2000 },
 
-  // Projeção
-  { tipo: 'msg', texto: 'Espera... voy a calcular tu proyección personalizada. ⚖️', delay: 1500 },
-  { tipo: 'msg', texto: 'Basado en tus datos, en <strong>30 días</strong> puedes perder...', delay: 1800 },
-  { tipo: 'comp_projection' },
-  { tipo: 'msg', texto: 'Y en <strong>90 días</strong>, llegar a tu peso deseado. 🎯', delay: 1800 },
-  { tipo: 'msg', texto: 'Sin dieta. Sin gimnasio. Sin medicamentos. ✨', delay: 1500 },
-  { tipo: 'choice', botoes: [
-    { texto: '😍 ¿Cómo hago para empezar?', primary: true }
-  ]},
+  // 🔊 ÁUDIOS FINAIS - QUEBRA DE PREÇO + GARANTIA
+  { tipo: 'audio', url: '', duracao: 30 },
+  { tipo: 'wait', tempo: 2500 },
+  { tipo: 'audio', url: '', duracao: 35 },
+  { tipo: 'wait', tempo: 2500 },
+  { tipo: 'audio', url: '', duracao: 28 },
+  { tipo: 'wait', tempo: 2500 },
+  { tipo: 'audio', url: '', duracao: 22 },
+  { tipo: 'wait', tempo: 2500 },
 
-  // Apresentação da oferta
-  { tipo: 'msg', texto: 'Mira lo que preparé para ti... 🎁', delay: 1500 },
-  { tipo: 'msg', texto: 'Vas a recibir <strong>TODO ESTO</strong> en una aplicación personalizada:', delay: 1800 },
-  { tipo: 'msg', texto: '📱 App con la receta completa del Chiclete<br>📋 Dosis calculada para TU peso<br>📅 Cronograma de 30 días<br>💬 Mi contacto personal', delay: 2800 },
-  { tipo: 'msg', texto: 'Y 3 BONOS exclusivos más:', delay: 1200 },
-  { tipo: 'comp_bonus', config: {
-    tag: 'BONO 1', title: '🔥 Truco del Vientre Plano',
-    desc: 'Receta extra que potencia el efecto del Chiclete y aplana el vientre en hasta 7 días',
-    value: '47'
-  }},
-  { tipo: 'comp_bonus', config: {
-    tag: 'BONO 2', title: '🍑 Truco del Glúteo',
-    desc: 'Cómo redefinir las pompas mientras pierdes peso (sin flacidez)',
-    value: '57'
-  }},
-  { tipo: 'comp_bonus', config: {
-    tag: 'BONO 3', title: '💃 Truco de las Modelos',
-    desc: 'El secreto de las pasarelas para acabar con la celulitis invisible',
-    value: '67'
-  }},
+  { tipo: 'msg', texto: '{{NOME}}, espera <strong>5 segundos</strong> que voy a transferirte a la página de <u>INSCRIPCIÓN</u>! 🚀', delay: 2500 },
   { tipo: 'choice', botoes: [
-    { texto: '😱 ¿Cuánto va a costar?!', primary: true }
-  ]},
-
-  // Quebra de preço
-  { tipo: 'msg', texto: 'Aquí es donde vas a entender el tamaño de mi REGALO para ti...', delay: 1500 },
-  { tipo: 'msg', texto: 'Una sola caja de Mounjaro cuesta hasta <strong>$2,000</strong>. 💸', delay: 1800 },
-  { tipo: 'msg', texto: 'Mujeres ya pagaron <strong>$500</strong> por el Chiclete + bonos.', delay: 1800 },
-  { tipo: 'msg', texto: 'Pero hoy no vas a pagar eso...', delay: 1500 },
-  { tipo: 'msg', texto: 'Ni siquiera la mitad.', delay: 1200 },
-  { tipo: 'msg', texto: 'Y ni siquiera $100. 🎯', delay: 1500 },
-  { tipo: 'choice', botoes: [
-    { texto: '😱 ¿Cuánto entonces?!', primary: true }
-  ]},
-
-  // Revelação + urgência
-  { tipo: 'comp_timer' },
-  { tipo: 'msg', texto: 'Mira la oferta especial que liberé solo para ti AHORA: 👇', delay: 1800 },
-  { tipo: 'comp_offer' },
-  { tipo: 'msg', texto: 'Así es. <strong>De $500 a $39</strong>. 🤯', delay: 1800 },
-  { tipo: 'msg', texto: 'Menos de <strong>$1.30 al día</strong>. ☕', delay: 1500 },
-  { tipo: 'choice', botoes: [
-    { texto: '🔥 ¡LO QUIERO! ¿Hay algo más?', primary: true }
-  ]},
-
-  // Bônus secretos + garantia
-  { tipo: 'msg', texto: '¡Sí! Como llegaste hasta aquí, voy a liberar 2 BONOS SECRETOS más: 🎁', delay: 1800 },
-  { tipo: 'comp_bonus', config: {
-    tag: 'BONO SECRETO 1', title: '🌸 Secretos de la Menopausia',
-    desc: 'Videoclase exclusiva de la Dra. Karla Méndez para que vivas ligera en esa fase',
-    value: '127'
-  }},
-  { tipo: 'comp_bonus', config: {
-    tag: 'BONO SECRETO 2', title: '🇰🇷 El Secreto de las Coreanas',
-    desc: 'Cómo las coreanas mantienen la piel joven y el cuerpo delgado toda la vida',
-    value: '197'
-  }},
-  { tipo: 'msg', texto: 'Y más: tienes mi <strong>GARANTÍA INCONDICIONAL de 180 DÍAS</strong>. 🛡️', delay: 2000 },
-  { tipo: 'comp_guarantee' },
-  { tipo: 'msg', texto: '¿No funcionó? Te devuelvo el 100% de tu dinero. SIN PREGUNTAS.', delay: 1800 },
-  { tipo: 'msg', texto: '⚠️ Pero el reloj está corriendo. Cuando llegue a cero, la oferta vuelve a $500.', delay: 2200 },
-
-  // CTA final
-  { tipo: 'choice', botoes: [
-    { texto: '✅ ¡SÍ! ¡QUIERO EL CHICLETE AHORA!', cta: true, acao: 'comprar' },
-    { texto: 'No, prefiero seguir gorda...', danger: true, acao: 'recusar' }
+    { texto: '✅ FINALIZAR INSCRIPCIÓN', cta: true, acao: 'finalizar' }
   ]}
 ];
 
-// ============================================================
-// 🎬 PROCESSAR ETAPAS
-// ============================================================
+// ============ PROCESSAR ============
 function next() {
   if (stepIdx >= STEPS.length) return;
   var step = STEPS[stepIdx];
@@ -860,11 +883,86 @@ function next() {
       hideTyping();
       addBotMsg(step.texto);
       stepIdx++;
-      setTimeout(next, 500);
+      setTimeout(next, 600);
     }, step.delay || 1200);
   }
 
-  // CHOICE - botões DENTRO do chat
+  // WAIT (apenas espera)
+  else if (step.tipo === 'wait') {
+    setTimeout(function() {
+      stepIdx++;
+      next();
+    }, step.tempo || 1500);
+  }
+
+  // ÁUDIO
+  else if (step.tipo === 'audio') {
+    setTimeout(function() {
+      addAudioMsg(step.url, step.duracao);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
+  }
+
+  // IMAGEM
+  else if (step.tipo === 'imagem') {
+    setTimeout(function() {
+      addImageMsg(step.url, step.placeholder);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
+  }
+
+  // VÍDEO
+  else if (step.tipo === 'video') {
+    setTimeout(function() {
+      addVideoMsg(step.id, step.placeholder);
+      stepIdx++;
+      setTimeout(next, 800);
+    }, 600);
+  }
+
+  // ANALISANDO
+  else if (step.tipo === 'analyzing') {
+    setTimeout(function() {
+      var m = document.getElementById('messages');
+      var d = document.createElement('div');
+      d.className = 'analyzing-card';
+      d.innerHTML =
+        '<div class="analyzing-spinner"></div>' +
+        '<div class="analyzing-text">📊 Analizando tu perfil...</div>';
+      m.appendChild(d);
+      scrollDown();
+      stepIdx++;
+      setTimeout(next, 600);
+    }, 600);
+  }
+
+  // BENEFÍCIOS
+  else if (step.tipo === 'beneficios') {
+    setTimeout(function() {
+      var m = document.getElementById('messages');
+      var d = document.createElement('div');
+      d.className = 'benefits-card';
+      d.innerHTML =
+        '<ul>' +
+        '<li>✅ Pérdida de peso rápida</li>' +
+        '<li>✅ Reducción de celulitis</li>' +
+        '<li>✅ Aumento de la autoestima</li>' +
+        '<li>✅ Reducción de ansiedad</li>' +
+        '<li>✅ Menor caída de cabello</li>' +
+        '<li>✅ Eliminación de dolores corporales</li>' +
+        '<li>✅ Más energía y disposición</li>' +
+        '<li>✅ Mejor calidad de sueño</li>' +
+        '</ul>';
+      m.appendChild(d);
+      scrollDown();
+      stepIdx++;
+      setTimeout(next, 600);
+    }, 600);
+  }
+
+  // CHOICE - botões dentro do chat
   else if (step.tipo === 'choice') {
     track('step_view', { step: stepIdx });
     setTimeout(function() {
@@ -878,12 +976,10 @@ function next() {
         var cls = 'choice-bubble';
         if (btn.primary) cls += ' primary';
         if (btn.cta) cls += ' cta';
-        if (btn.danger) cls += ' danger';
         b.className = cls;
         b.innerHTML = btn.texto;
         b.style.animationDelay = (i * 0.08) + 's';
         b.onclick = function() {
-          // Remove os botões e mostra a resposta como bolha do usuário
           var w = document.getElementById('currentChoices');
           if (w) w.remove();
           addUserMsg(btn.texto);
@@ -892,15 +988,10 @@ function next() {
           }
           track('button_clicked', { label: btn.texto });
 
-          if (btn.acao === 'comprar') {
-            track('cta_clicked', { value: 39 });
+          if (btn.acao === 'finalizar') {
+            track('cta_clicked');
             track('begin_checkout', { value: 39, currency: 'USD' });
             showFinal();
-            return;
-          }
-          if (btn.acao === 'recusar') {
-            track('declined');
-            handleRecusa();
             return;
           }
 
@@ -915,279 +1006,69 @@ function next() {
     }, 600);
   }
 
-  // SLIDER - dentro do chat
-  else if (step.tipo === 'slider') {
-    var cfg = step.config;
-    sliderCount++;
-    var sId = 'slider_' + sliderCount;
-    var vId = 'slval_' + sliderCount;
-    var btnId = 'slbtn_' + sliderCount;
-
+  // INPUT (texto)
+  else if (step.tipo === 'input') {
     setTimeout(function() {
       var m = document.getElementById('messages');
-      var d = document.createElement('div');
-      d.className = 'slider-card';
-      d.innerHTML =
-        '<div class="slider-value" id="' + vId + '">' + cfg.padrao + '<small>' + cfg.unidade + '</small></div>' +
-        '<input type="range" id="' + sId + '" min="' + cfg.min + '" max="' + cfg.max + '" value="' + cfg.padrao + '">' +
-        '<div class="slider-labels"><span>' + cfg.labels[0] + '</span><span>' + cfg.labels[1] + '</span><span>' + cfg.labels[2] + '</span></div>' +
-        '<button class="slider-confirm" id="' + btnId + '">✅ Confirmar</button>';
-      m.appendChild(d);
+      var wrap = document.createElement('div');
+      wrap.className = 'input-field';
+      wrap.id = 'currentInput';
+
+      var inputType = step.tipoInput || 'text';
+      wrap.innerHTML =
+        '<div class="input-row">' +
+          '<input type="' + inputType + '" id="userInput" placeholder="' + step.placeholder + '" autofocus>' +
+          '<button class="input-send" onclick="submitInput()">' +
+            '<svg fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/></svg>' +
+          '</button>' +
+        '</div>';
+
+      m.appendChild(wrap);
       scrollDown();
 
-      // Conectar eventos
+      // Salva o campo atual pra usar no submit
+      window.currentInputField = step.campo;
+
       setTimeout(function() {
-        var input = document.getElementById(sId);
-        var valueEl = document.getElementById(vId);
-        var btn = document.getElementById(btnId);
-
-        if (input && valueEl) {
-          input.oninput = function() {
-            valueEl.innerHTML = this.value + '<small>' + cfg.unidade + '</small>';
-          };
-        }
-
-        if (btn) {
-          btn.onclick = function() {
-            var inp = document.getElementById(sId);
-            if (!inp) return;
-            var val = inp.value;
-            userData[cfg.chave] = parseInt(val);
-            // Remove o card do slider e mostra como mensagem do usuário
-            d.remove();
-            addUserMsg(val + cfg.unidade);
-            track('slider_confirmed', { key: cfg.chave, value: val });
-            stepIdx++;
-            setTimeout(next, 600);
+        var inp = document.getElementById('userInput');
+        if (inp) {
+          inp.focus();
+          inp.onkeypress = function(e) {
+            if (e.key === 'Enter') submitInput();
           };
         }
       }, 100);
-    }, 500);
-  }
-
-  // COMPONENTES
-  else if (step.tipo === 'comp_diagnosis') {
-    setTimeout(function() {
-      var t = userData.struggleTime === 'corto' ? 'Reciente' :
-              userData.struggleTime === 'medio' ? '1-5 años' :
-              userData.struggleTime === 'largo' ? '+5 años' : 'Toda la vida';
-      var diff = (userData.currentWeight || 80) - (userData.targetWeight || 60);
-      addComp(
-        '<div class="diagnosis-card">' +
-        '<div class="diagnosis-title">📋 Tu diagnóstico personalizado</div>' +
-        '<div class="diagnosis-row"><span>Edad:</span><strong>' + (userData.age || 40) + ' años</strong></div>' +
-        '<div class="diagnosis-row"><span>Peso actual:</span><strong>' + (userData.currentWeight || 80) + 'kg</strong></div>' +
-        '<div class="diagnosis-row"><span>Peso deseado:</span><strong>' + (userData.targetWeight || 60) + 'kg</strong></div>' +
-        '<div class="diagnosis-row"><span>Luchando hace:</span><strong>' + t + '</strong></div>' +
-        '<div class="diagnosis-row"><span>Exceso de grasa:</span><strong style="color:var(--red);">' + diff + 'kg</strong></div>' +
-        '<div class="diagnosis-result">⚠️ Hormonas GIP y GLP-1 INACTIVAS</div>' +
-        '</div>'
-      );
-      stepIdx++;
-      setTimeout(next, 800);
-    }, 600);
-  }
-  else if (step.tipo === 'comp_product') {
-    setTimeout(function() {
-      addComp(
-        '<div class="product-image">' +
-        '<div class="product-emoji">🍬</div>' +
-        '<div class="product-name">CHICLETE</div>' +
-        '<div class="product-tag">Mounjaro de Gelatina · 100% Natural</div>' +
-        '</div>'
-      );
-      stepIdx++;
-      setTimeout(next, 800);
-    }, 600);
-  }
-  else if (step.tipo === 'comp_test') {
-    setTimeout(function() {
-      var c = step.config;
-      addComp(
-        '<div class="testimonial-card">' +
-        '<div class="testimonial-header">' +
-        '<div class="testimonial-avatar">' + c.avatar + '</div>' +
-        '<div>' +
-        '<div class="testimonial-name">' + c.name + '</div>' +
-        '<div class="testimonial-meta"><span class="testimonial-stars">★★★★★</span> · ' + c.meta + '</div>' +
-        '</div></div>' +
-        '<div class="testimonial-text">"' + c.text + '"</div>' +
-        '</div>'
-      );
-      stepIdx++;
-      setTimeout(next, 800);
-    }, 600);
-  }
-  else if (step.tipo === 'comp_stats') {
-    setTimeout(function() {
-      addComp(
-        '<div class="stats-card"><div class="stats-grid">' +
-        '<div class="stat-item"><div class="stat-num">+121,300</div><div class="stat-label">Transformados</div></div>' +
-        '<div class="stat-item"><div class="stat-num">93%</div><div class="stat-label">Funciona</div></div>' +
-        '<div class="stat-item"><div class="stat-num">9kg</div><div class="stat-label">cada 15 días</div></div>' +
-        '<div class="stat-item"><div class="stat-num">180</div><div class="stat-label">Días garantía</div></div>' +
-        '</div></div>'
-      );
-      stepIdx++;
-      setTimeout(next, 800);
-    }, 600);
-  }
-  else if (step.tipo === 'comp_projection') {
-    setTimeout(function() {
-      var diff = (userData.currentWeight || 80) - (userData.targetWeight || 60);
-      var lossIn30 = Math.min(9, Math.round(diff * 0.4));
-      addComp(
-        '<div class="stats-card"><div class="stats-grid">' +
-        '<div class="stat-item"><div class="stat-num">-' + lossIn30 + 'kg</div><div class="stat-label">en 30 días</div></div>' +
-        '<div class="stat-item"><div class="stat-num">-' + diff + 'kg</div><div class="stat-label">en 90 días</div></div>' +
-        '</div></div>'
-      );
-      stepIdx++;
-      setTimeout(next, 800);
-    }, 600);
-  }
-  else if (step.tipo === 'comp_bonus') {
-    setTimeout(function() {
-      var c = step.config;
-      addComp(
-        '<div class="bonus-card">' +
-        '<span class="bonus-tag">' + c.tag + '</span>' +
-        '<div class="bonus-title">' + c.title + '</div>' +
-        '<div class="bonus-desc">' + c.desc + '</div>' +
-        '<div class="bonus-value"><s>$' + c.value + '</s> GRATIS hoy</div>' +
-        '</div>'
-      );
-      stepIdx++;
-      setTimeout(next, 800);
-    }, 600);
-  }
-  else if (step.tipo === 'comp_timer') {
-    setTimeout(function() {
-      addComp(
-        '<div class="timer-card">' +
-        '<div class="timer-label">⏰ Oferta expira en</div>' +
-        '<div class="timer-value" id="timerDisplay">15:00</div>' +
-        '<div class="timer-warning">Después vuelve a $500</div>' +
-        '</div>'
-      );
-      startTimer();
-      stepIdx++;
-      setTimeout(next, 800);
-    }, 600);
-  }
-  else if (step.tipo === 'comp_offer') {
-    setTimeout(function() {
-      addComp(
-        '<div class="offer-card">' +
-        '<span class="offer-badge">⚡ -92% solo hoy</span>' +
-        '<div class="offer-title">CHICLETE — Paquete Completo</div>' +
-        '<div class="offer-subtitle">Mounjaro Natural de Gelatina</div>' +
-        '<div class="offer-includes">' +
-        '<div class="offer-includes-title">✨ Recibes TODO ESTO:</div>' +
-        '<div class="includes-row"><span>📱 App + Receta</span><span>$197</span></div>' +
-        '<div class="includes-row"><span>🔥 Truco Vientre Plano</span><span>$47</span></div>' +
-        '<div class="includes-row"><span>🍑 Truco del Glúteo</span><span>$57</span></div>' +
-        '<div class="includes-row"><span>💃 Truco de las Modelos</span><span>$67</span></div>' +
-        '<div class="includes-row"><span>🌸 Secretos Menopausia</span><span>$127</span></div>' +
-        '<div class="includes-row"><span>🇰🇷 Secreto Coreanas</span><span>$197</span></div>' +
-        '<div class="includes-total"><span>Valor total:</span><span>$692</span></div>' +
-        '</div>' +
-        '<div class="price-old">De $500</div>' +
-        '<div class="price-new">$<small>39</small></div>' +
-        '<div class="price-installment">o <strong>3x de $13.42</strong> sin intereses</div>' +
-        '</div>'
-      );
-      stepIdx++;
-      setTimeout(next, 800);
-    }, 600);
-  }
-  else if (step.tipo === 'comp_guarantee') {
-    setTimeout(function() {
-      addComp(
-        '<div class="guarantee-card">' +
-        '<div class="guarantee-icon">🛡️</div>' +
-        '<div class="guarantee-text">' +
-        '<strong>Garantía de 180 días</strong>' +
-        '¿No funcionó? Te devolvemos el 100% de tu dinero. Sin preguntas.' +
-        '</div></div>'
-      );
-      stepIdx++;
-      setTimeout(next, 800);
     }, 600);
   }
 }
 
-// RECUSA
-function handleRecusa() {
-  setTimeout(function() {
-    showTyping();
-    setTimeout(function() {
-      hideTyping();
-      addBotMsg('Espera, querida... 🥺');
-      setTimeout(function() {
-        showTyping();
-        setTimeout(function() {
-          hideTyping();
-          addBotMsg('Por <strong>$39</strong> (menos de $1.30/día) puedes finalmente vencer esta lucha.');
-          setTimeout(function() {
-            showTyping();
-            setTimeout(function() {
-              hideTyping();
-              addBotMsg('Y con <strong>180 días de garantía</strong>. No tienes nada que perder. 💚');
-              setTimeout(function() {
-                var m = document.getElementById('messages');
-                var wrap = document.createElement('div');
-                wrap.className = 'choices-inline';
-                wrap.id = 'recoveryChoices';
+function submitInput() {
+  var inp = document.getElementById('userInput');
+  if (!inp) return;
+  var val = inp.value.trim();
+  if (!val) return;
 
-                var b1 = document.createElement('button');
-                b1.className = 'choice-bubble cta';
-                b1.innerHTML = '✅ ¡Cambié de idea, LO QUIERO!';
-                b1.onclick = function() {
-                  var w = document.getElementById('recoveryChoices');
-                  if (w) w.remove();
-                  addUserMsg('✅ ¡Cambié de idea, LO QUIERO!');
-                  track('recovered_purchase');
-                  showFinal();
-                };
+  // Salva o valor
+  userData[window.currentInputField] = val;
 
-                var b2 = document.createElement('button');
-                b2.className = 'choice-bubble danger';
-                b2.innerHTML = 'No, estoy segura';
-                b2.onclick = function() {
-                  var w = document.getElementById('recoveryChoices');
-                  if (w) w.remove();
-                  addUserMsg('No, estoy segura');
-                  track('declined_final');
-                  setTimeout(function() {
-                    showTyping();
-                    setTimeout(function() {
-                      hideTyping();
-                      addBotMsg('Está bien... respeto tu decisión. 💔 Cuídate mucho.');
-                    }, 1500);
-                  }, 500);
-                };
+  // Remove o campo de input e mostra como mensagem do usuário
+  var w = document.getElementById('currentInput');
+  if (w) w.remove();
+  addUserMsg(val);
 
-                wrap.appendChild(b1);
-                wrap.appendChild(b2);
-                m.appendChild(wrap);
-                scrollDown();
-              }, 600);
-            }, 1500);
-          }, 600);
-        }, 1500);
-      }, 600);
-    }, 1500);
-  }, 800);
+  track('input_submitted', { field: window.currentInputField });
+
+  stepIdx++;
+  setTimeout(next, 600);
 }
 
 function showFinal() {
   document.getElementById('finalScreen').classList.add('active');
   setTimeout(function() {
-    // 🔗 SUBSTITUA pela URL do checkout:
+    // 🔗 SUBSTITUA pela URL do checkout (Hotmart, Eduzz, Kiwify, etc):
     alert('🔗 ¡Aquí rediriges al checkout!\n\nEjemplo: window.location.href = "https://pay.hotmart.com/TU_LINK";');
     // window.location.href = "https://pay.hotmart.com/TU_LINK";
-  }, 2500);
+  }, 3000);
 }
 
 window.addEventListener('load', function() {
