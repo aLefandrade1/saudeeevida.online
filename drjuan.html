@@ -469,7 +469,9 @@
 
 <div class="phone-container">
   <div class="chat-header">
-    <div class="avatar">JR</div>
+    <div class="avatar">
+      <img src="https://i.postimg.cc/0NTWp4M7/unnamed.jpg" alt="Dr. Juan Rivera">
+    </div>
     <div class="header-info">
       <div class="header-name">Dr. Juan Rivera <span class="verified">✓</span></div>
       <div class="header-status"><span class="online-dot"></span>en línea · escribiendo para ti</div>
@@ -524,7 +526,7 @@ var AUDIOS = {
 
 var IMAGENS = {
   doutor:     "https://i.postimg.cc/0NTWp4M7/unnamed.jpg",
-  celebridades: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/hb953vutnmhpkgzxbkn0s372?v=1778432043733",
+  celebridades: "https://i.postimg.cc/0NTWp4M7/unnamed.jpg",
   carmen:     "https://i.postimg.cc/Bv7rKNsm/Chat-GPT-Image-10-de-mai-de-2026-20-01-43.png",
   patricia:   "https://i.postimg.cc/SNLHrmkW/Chat-GPT-Image-10-de-mai-de-2026-20-02-50.png",
   mockup:     "https://i.postimg.cc/xjMZf9J9/Chat-GPT-Image-10-de-mai-de-2026-20-04-17.png",
@@ -840,9 +842,30 @@ function addImageMsg(imageUrl) {
   d.className = 'image-bubble';
 
   if (imageUrl && imageUrl !== '') {
-    d.innerHTML = '<img src="' + imageUrl + '" alt="" onerror="this.parentElement.innerHTML=\'<div class=\\\'image-placeholder\\\'><div class=\\\'image-placeholder-text\\\'>📸 Imagen no disponible</div></div>\'">';
+    // Cria a tag <img> via createElement (mais seguro que innerHTML)
+    var img = document.createElement('img');
+    img.alt = '';
+    img.style.width = '100%';
+    img.style.display = 'block';
+    img.style.borderRadius = '12px';
+
+    // Trata erro de forma segura
+    img.onerror = function() {
+      d.innerHTML = '';
+      var ph = document.createElement('div');
+      ph.className = 'image-placeholder';
+      ph.innerHTML = '<div class="image-placeholder-text">📸 Imagen no disponible</div>';
+      d.appendChild(ph);
+    };
+
+    // Define o src DEPOIS de configurar tudo (evita race condition)
+    img.src = imageUrl;
+    d.appendChild(img);
   } else {
-    d.innerHTML = '<div class="image-placeholder"><div class="image-placeholder-text">📸 Sin imagen</div></div>';
+    var ph = document.createElement('div');
+    ph.className = 'image-placeholder';
+    ph.innerHTML = '<div class="image-placeholder-text">📸 Sin imagen</div>';
+    d.appendChild(ph);
   }
 
   m.appendChild(d);
