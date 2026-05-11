@@ -313,8 +313,7 @@
     animation: slideIn 0.3s ease;
   }
   .video-bubble iframe,
-  .video-bubble video,
-  .video-bubble vturb-smartplayer {
+  .video-bubble video {
     width: 100% !important;
     display: block;
   }
@@ -524,7 +523,7 @@ var AUDIOS = {
 };
 
 var IMAGENS = {
-  doutor:     "https://s3.typebot.io/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/jocpxyakvkylyips7cl8el8e?v=1769562235451",
+  doutor:     "https://i.postimg.cc/0NTWp4M7/unnamed.jpg",
   celebridades: "https://s3.typebotstorage.com/public/workspaces/cln0yaw1h000pmi0fy7dik8za/typebots/o5mvqbuyponf9lcs55stb5x0/blocks/hb953vutnmhpkgzxbkn0s372?v=1778432043733",
   carmen:     "https://i.postimg.cc/Bv7rKNsm/Chat-GPT-Image-10-de-mai-de-2026-20-01-43.png",
   patricia:   "https://i.postimg.cc/SNLHrmkW/Chat-GPT-Image-10-de-mai-de-2026-20-02-50.png",
@@ -850,23 +849,18 @@ function addImageMsg(imageUrl) {
   scrollDown();
 }
 
-// ============ VÍDEO VTURB ============
+// ============ VÍDEO MP4 (Cloudinary) ============
 function addVturbVideo() {
   var m = document.getElementById('messages');
   var d = document.createElement('div');
   d.className = 'video-bubble';
-  d.innerHTML = '<vturb-smartplayer id="vid-6a00dc3c08dd22f8e6153559" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>';
+  d.innerHTML =
+    '<video controls playsinline preload="metadata" style="width:100%;display:block;">' +
+      '<source src="https://res.cloudinary.com/dtqfjin6k/video/upload/q_auto/f_auto/v1778464071/0510_1_-1_lodvoj.mp4" type="video/mp4">' +
+      'Tu navegador no soporta video.' +
+    '</video>';
   m.appendChild(d);
   scrollDown();
-
-  // Carrega o script do vturb (uma vez só)
-  if (!document.querySelector('script[data-vturb]')) {
-    var s = document.createElement("script");
-    s.src = "https://scripts.converteai.net/a863f268-2fb0-429d-88e9-42f82a5da6f4/players/6a00dc3c08dd22f8e6153559/v4/player.js";
-    s.async = true;
-    s.setAttribute('data-vturb', '1');
-    document.head.appendChild(s);
-  }
 }
 
 // ============================================================
