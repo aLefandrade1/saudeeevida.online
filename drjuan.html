@@ -525,12 +525,13 @@ var AUDIOS = {
 };
 
 var IMAGENS = {
-  doutor:     "https://i.postimg.cc/0NTWp4M7/unnamed.jpg",
-  celebridades: "https://i.postimg.cc/0NTWp4M7/unnamed.jpg",
-  carmen:     "https://i.postimg.cc/Bv7rKNsm/Chat-GPT-Image-10-de-mai-de-2026-20-01-43.png",
-  patricia:   "https://i.postimg.cc/SNLHrmkW/Chat-GPT-Image-10-de-mai-de-2026-20-02-50.png",
-  mockup:     "https://i.postimg.cc/xjMZf9J9/Chat-GPT-Image-10-de-mai-de-2026-20-04-17.png",
-  ganhadora:  "https://i.postimg.cc/GmhgxYXg/Gemini-Generated-Image-5yey9b5yey9b5yey.png"
+  inicio:      "https://i.postimg.cc/5ySfcLdR/jocpxyakvkylyips7cl8el8e.png",
+  celebridades: "https://i.postimg.cc/ZKjJV8xX/Toca-para-activar-el-sonido.png",
+  doutor:      "https://i.postimg.cc/0NTWp4M7/unnamed.jpg",
+  carmen:      "https://i.postimg.cc/Bv7rKNsm/Chat-GPT-Image-10-de-mai-de-2026-20-01-43.png",
+  patricia:    "https://i.postimg.cc/SNLHrmkW/Chat-GPT-Image-10-de-mai-de-2026-20-02-50.png",
+  mockup:      "https://i.postimg.cc/xjMZf9J9/Chat-GPT-Image-10-de-mai-de-2026-20-04-17.png",
+  ganhadora:   "https://i.postimg.cc/GmhgxYXg/Gemini-Generated-Image-5yey9b5yey9b5yey.png"
 };
 
 // ============================================================
@@ -549,11 +550,14 @@ var STEPS = [
   { tipo: 'msg', texto: 'Mi nombre es <strong>Dr. Juan Rivera</strong>...', delay: 1500 },
   { tipo: 'msg', texto: 'Soy <strong>creador del Método Mounjaro de Gelatina</strong> 🍮', delay: 2000 },
   { tipo: 'wait', tempo: 1000 },
-  // IMAGEM 1 - DOUTOR
-  { tipo: 'imagem', img: 'doutor' },
+  // IMAGEM 1 - INÍCIO
+  { tipo: 'imagem', img: 'inicio' },
   { tipo: 'wait', tempo: 2000 },
   // IMAGEM 2 - CELEBRIDADES
   { tipo: 'imagem', img: 'celebridades' },
+  { tipo: 'wait', tempo: 2000 },
+  // IMAGEM 3 - DOUTOR
+  { tipo: 'imagem', img: 'doutor' },
   { tipo: 'wait', tempo: 2000 },
   { tipo: 'msg', texto: 'Antes de enseñarte cómo preparar de forma <strong>EFICAZ</strong> el verdadero Mounjaro de Gelatina...', delay: 2000 },
   { tipo: 'msg', texto: 'Escucha el audio 👇', delay: 1500 },
