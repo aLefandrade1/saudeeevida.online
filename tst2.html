@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heitor - 1 aninho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sky: #d9ecf4;
+    --sky-2: #c6e3ee;
+    --blue-deep: #4a90c9;
+    --blue-mid: #6fb0dd;
+    --blue-soft: #a8d2ea;
+    --ink: #2c5d8a;
+    --text: #3a6b94;
+    --coral: #f4a896;
+    --green-soft: #b8d8c2;
+    --green-deep: #7fb088;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #e8f3f8 0%, #d4e8f1 60%, #c0dceb 100%);
+    font-family: 'Quicksand', sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 15px;
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    aspect-ratio: 720 / 1080;
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(255,255,255,0.6) 0%, transparent 40%),
+      radial-gradient(ellipse at 80% 85%, rgba(184,216,194,0.4) 0%, transparent 50%),
+      linear-gradient(180deg, #e3f0f6 0%, #d2e7f0 50%, #bcdae8 100%);
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(74, 144, 201, 0.25), 0 4px 12px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+
+  /* === Decorative SVG positioning === */
+  .deco {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .dolphin-left   { top: 2%;   left: -3%;  width: 32%; transform: rotate(-8deg); }
+  .whale-right    { top: 0%;   right: -2%; width: 30%; transform: rotate(8deg); }
+  .octopus        { top: 28%;  left: -1%;  width: 16%; }
+  .turtle         { top: 33%;  right: 0%;  width: 18%; }
+  .jellyfish      { top: 60%;  left: 2%;   width: 13%; }
+  .shark          { top: 58%;  right: -2%; width: 22%; transform: rotate(-5deg); }
+  .whale-bottom   { top: 75%;  left: 32%;  width: 30%; }
+  .seaweed-left   { bottom: 0; left: 0;    width: 22%; }
+  .seaweed-right  { bottom: 0; right: 0;   width: 25%; }
+  .fish-1         { bottom: 8%; left: 18%; width: 9%; }
+  .fish-2         { bottom: 4%; left: 30%; width: 6%; }
+  .fish-3         { bottom: 10%; right: 30%; width: 9%; }
+  .fish-4         { bottom: 7%; right: 18%; width: 8%; }
+  .stingray       { bottom: 3%; right: 8%; width: 11%; }
+  .green-blob     {
+    position: absolute;
+    bottom: 25%;
+    left: -5%;
+    width: 45%;
+    height: 30%;
+    background: radial-gradient(ellipse at center, rgba(184,216,194,0.65) 0%, rgba(184,216,194,0) 65%);
+    pointer-events: none;
+  }
+
+  /* === Floating animations === */
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+    50%      { transform: translateY(-8px) rotate(var(--rot, 0deg)); }
+  }
+  @keyframes float-x {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(6px); }
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-2deg); }
+    50%      { transform: rotate(2deg); }
+  }
+
+  .dolphin-left   { --rot: -8deg; animation: float-y 5s ease-in-out infinite; }
+  .whale-right    { --rot: 8deg;  animation: float-y 6s ease-in-out infinite 0.5s; }
+  .whale-bottom   { animation: float-x 7s ease-in-out infinite; }
+  .turtle         { animation: float-y 4.5s ease-in-out infinite 1s; }
+  .jellyfish      { animation: float-y 4s ease-in-out infinite; }
+  .seaweed-left, .seaweed-right { transform-origin: bottom center; animation: sway 6s ease-in-out infinite; }
+  .fish-1, .fish-3 { animation: float-x 3.5s ease-in-out infinite; }
+  .fish-2, .fish-4 { animation: float-x 4s ease-in-out infinite 0.5s; }
+
+  /* === Bubbles === */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.2));
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+
+  /* === Text content === */
+  .content {
+    position: relative;
+    z-index: 2;
+    padding: 8% 10% 0;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(3.5rem, 11vw, 5.5rem);
+    color: var(--blue-deep);
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-top: 4%;
+    text-shadow:
+      2px 2px 0 #fff,
+      -1px -1px 0 rgba(255,255,255,0.8),
+      0 4px 8px rgba(74,144,201,0.15);
+    -webkit-text-stroke: 1px rgba(74,144,201,0.3);
+  }
+
+  .age {
+    font-family: 'Sacramento', cursive;
+    font-size: clamp(1.6rem, 4.5vw, 2.3rem);
+    color: var(--blue-deep);
+    margin-top: -2%;
+    margin-bottom: 8%;
+  }
+
+  .section-title {
+    font-family: 'Sacramento', cursive;
+    font-size: clamp(1.5rem, 4.2vw, 2.1rem);
+    color: var(--ink);
+    margin-bottom: 6%;
+    position: relative;
+    display: inline-block;
+    align-self: center;
+  }
+
+  .section-title::before,
+  .section-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 22px;
+    height: 14px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 14'><path d='M2 7 Q 6 2, 10 7 T 18 7' stroke='%234a90c9' stroke-width='1.5' fill='none' stroke-linecap='round'/><circle cx='20' cy='7' r='1.5' fill='%234a90c9'/></svg>");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .section-title::before { right: 100%; margin-right: 14px; transform: translateY(-50%) scaleX(-1); }
+  .section-title::after  { left: 100%;  margin-left: 14px;  transform: translateY(-50%); }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    text-align: left;
+    position: relative;
+  }
+
+  .item + .item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 18%;
+    right: 18%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(74,144,201,0.4) 20%, rgba(74,144,201,0.4) 80%, transparent);
+  }
+  .item + .item::after {
+    content: '';
+    position: absolute;
+    top: -3.5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--blue-soft);
+    border-radius: 50%;
+    border: 1px solid var(--blue-mid);
+  }
+
+  .item .icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .item .icon svg { width: 100%; height: 100%; }
+
+  .item h3 {
+    font-family: 'Sacramento', cursive;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .item p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: clamp(0.85rem, 2.6vw, 1rem);
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  @media (max-width: 420px) {
+    body { padding: 15px 8px; }
+    .card { border-radius: 14px; }
+    .item { grid-template-columns: 55px 1fr; gap: 10px; }
+    .item .icon { width: 55px; height: 55px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- ============ DECORATIVE SEA CREATURES (SVG) ============ -->
+
+  <!-- Dolphin top-left -->
+  <svg class="deco dolphin-left" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="dolphinG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e8f0f7"/>
+        <stop offset="60%" stop-color="#b8d4e8"/>
+        <stop offset="100%" stop-color="#88b5d4"/>
+      </linearGradient>
+    </defs>
+    <path d="M20,80 Q40,40 90,45 Q140,50 170,75 Q175,80 170,85 L150,90 Q145,100 130,105 Q100,115 60,110 Q35,108 22,95 Z" fill="url(#dolphinG)" opacity="0.95"/>
+    <path d="M25,75 Q15,55 35,50 Q40,65 35,78 Z" fill="url(#dolphinG)" opacity="0.9"/>
+    <path d="M165,78 Q185,70 180,90 Q170,92 160,86 Z" fill="url(#dolphinG)"/>
+    <path d="M140,92 Q150,110 135,115 Q128,108 130,98 Z" fill="url(#dolphinG)" opacity="0.85"/>
+    <circle cx="55" cy="78" r="3" fill="#2c3e50"/>
+    <path d="M40,85 Q50,90 60,87" stroke="#88b5d4" stroke-width="1" fill="none" stroke-linecap="round"/>
+    <ellipse cx="100" cy="70" rx="35" ry="8" fill="#ffffff" opacity="0.4"/>
+  </svg>
+
+  <!-- Whale top-right -->
+  <svg class="deco whale-right" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="whaleG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#d8e8f2"/>
+        <stop offset="100%" stop-color="#6fa8d0"/>
+      </linearGradient>
+    </defs>
+    <path d="M30,80 Q50,40 110,45 Q160,50 175,80 Q170,110 130,115 Q70,118 35,105 Q25,95 30,80 Z" fill="url(#whaleG)"/>
+    <path d="M15,75 Q5,60 25,55 Q35,65 30,82 Z" fill="url(#whaleG)" opacity="0.9"/>
+    <path d="M165,75 Q185,65 180,85 Q170,90 160,82 Z" fill="url(#whaleG)" opacity="0.85"/>
+    <path d="M55,98 Q105,108 150,100" stroke="#88b5d4" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <circle cx="135" cy="78" r="3" fill="#2c3e50"/>
+    <path d="M120,90 Q130,95 140,92" stroke="#e88" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <ellipse cx="90" cy="62" rx="30" ry="6" fill="#fff" opacity="0.5"/>
+  </svg>
+
+  <!-- Octopus left -->
+  <svg class="deco octopus" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="octoG" cx="50%" cy="40%">
+        <stop offset="0%" stop-color="#5a7ba8"/>
+        <stop offset="100%" stop-color="#2c4a6e"/>
+      </radialGradient>
+    </defs>
+    <circle cx="60" cy="60" r="42" fill="rgba(255,255,255,0.5)"/>
+    <ellipse cx="60" cy="50" rx="35" ry="32" fill="url(#octoG)"/>
+    <path d="M30,65 Q20,90 25,115 Q30,120 35,115 Q40,95 38,72 Z" fill="url(#octoG)"/>
+    <path d="M45,72 Q35,100 45,125 Q52,128 55,120 Q55,95 52,75 Z" fill="url(#octoG)"/>
+    <path d="M60,75 Q58,105 65,128 Q72,128 72,118 Q72,95 70,75 Z" fill="url(#octoG)"/>
+    <path d="M75,75 Q82,100 78,125 Q72,128 70,118 Q72,95 80,72 Z" fill="url(#octoG)"/>
+    <path d="M90,65 Q100,90 95,115 Q90,120 85,115 Q80,95 82,72 Z" fill="url(#octoG)"/>
+    <circle cx="48" cy="48" r="4" fill="#fff"/>
+    <circle cx="49" cy="49" r="2" fill="#2c3e50"/>
+    <circle cx="72" cy="48" r="4" fill="#fff"/>
+    <circle cx="73" cy="49" r="2" fill="#2c3e50"/>
+  </svg>
+
+  <!-- Turtle right -->
+  <svg class="deco turtle" viewBox="0 0 140 110" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="shellG" cx="40%" cy="40%">
+        <stop offset="0%" stop-color="#c8d8a8"/>
+        <stop offset="100%" stop-color="#7fa085"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="70" cy="60" rx="50" ry="35" fill="url(#shellG)"/>
+    <path d="M40,55 Q50,40 65,45 Q70,55 60,65 Z" fill="#9bb898" opacity="0.7"/>
+    <path d="M75,42 Q90,38 95,55 Q90,65 78,58 Z" fill="#9bb898" opacity="0.7"/>
+    <path d="M50,68 Q65,72 75,80 Q65,85 50,80 Z" fill="#9bb898" opacity="0.7"/>
+    <path d="M85,65 Q100,68 100,80 Q90,82 82,75 Z" fill="#9bb898" opacity="0.7"/>
+    <ellipse cx="125" cy="55" rx="15" ry="12" fill="#a8c2a5"/>
+    <ellipse cx="25" cy="75" rx="12" ry="8" fill="#a8c2a5" transform="rotate(-20 25 75)"/>
+    <ellipse cx="105" cy="88" rx="10" ry="6" fill="#a8c2a5"/>
+    <path d="M118,52 Q120,55 122,52" stroke="#5a7048" stroke-width="1" fill="none"/>
+    <circle cx="130" cy="52" r="1.5" fill="#2c3e50"/>
+  </svg>
+
+  <!-- Jellyfish -->
+  <svg class="deco jellyfish" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="jellyG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e0a8d8"/>
+        <stop offset="100%" stop-color="#a878b8"/>
+      </linearGradient>
+    </defs>
+    <path d="M15,55 Q15,15 50,12 Q85,15 85,55 Q70,65 50,62 Q30,65 15,55 Z" fill="url(#jellyG)" opacity="0.85"/>
+    <path d="M20,55 Q25,75 22,100 Q20,115 25,128" stroke="#c89ad0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <path d="M35,58 Q30,85 35,110 Q38,125 33,135" stroke="#c89ad0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <path d="M50,60 Q55,90 48,115 Q50,130 55,138" stroke="#c89ad0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <path d="M65,58 Q70,85 65,110 Q68,125 62,135" stroke="#c89ad0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <path d="M80,55 Q75,80 80,105 Q82,120 75,130" stroke="#c89ad0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <ellipse cx="40" cy="28" rx="15" ry="6" fill="#fff" opacity="0.6"/>
+  </svg>
+
+  <!-- Shark right middle -->
+  <svg class="deco shark" viewBox="0 0 180 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sharkG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#a8c0d4"/>
+        <stop offset="100%" stop-color="#5a7a98"/>
+      </linearGradient>
+    </defs>
+    <path d="M20,55 Q40,30 100,35 Q150,40 165,55 Q160,65 150,68 Q100,75 50,72 Q25,68 20,55 Z" fill="url(#sharkG)"/>
+    <path d="M85,30 Q90,10 100,30 Z" fill="url(#sharkG)"/>
+    <path d="M160,52 Q175,40 175,65 Q170,68 162,62 Z" fill="url(#sharkG)"/>
+    <path d="M130,60 Q140,75 125,78 Q120,72 125,62 Z" fill="url(#sharkG)" opacity="0.85"/>
+    <path d="M40,55 Q90,62 145,58" stroke="#7a98b4" stroke-width="0.5" fill="none" opacity="0.6"/>
+    <circle cx="50" cy="55" r="2" fill="#2c3e50"/>
+    <path d="M25,58 Q35,62 45,60" stroke="#2c3e50" stroke-width="0.8" fill="none"/>
+  </svg>
+
+  <!-- Whale bottom -->
+  <svg class="deco whale-bottom" viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="whaleG2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#d8e8f2"/>
+        <stop offset="100%" stop-color="#7fb0d4"/>
+      </linearGradient>
+    </defs>
+    <path d="M25,70 Q45,30 105,35 Q155,40 170,70 Q165,95 125,100 Q65,103 30,90 Q20,82 25,70 Z" fill="url(#whaleG2)"/>
+    <path d="M10,68 Q0,55 20,50 Q30,60 25,75 Z" fill="url(#whaleG2)" opacity="0.9"/>
+    <path d="M160,68 Q180,58 175,78 Q165,82 155,75 Z" fill="url(#whaleG2)" opacity="0.85"/>
+    <path d="M55,85 Q105,95 145,88" stroke="#88b5d4" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <circle cx="130" cy="65" r="2.5" fill="#2c3e50"/>
+    <path d="M115,76 Q125,80 135,78" stroke="#e88" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <ellipse cx="90" cy="50" rx="28" ry="5" fill="#fff" opacity="0.5"/>
+  </svg>
+
+  <!-- Stingray -->
+  <svg class="deco stingray" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="rayG" cx="50%" cy="40%">
+        <stop offset="0%" stop-color="#6a8a98"/>
+        <stop offset="100%" stop-color="#3a5868"/>
+      </radialGradient>
+    </defs>
+    <path d="M10,40 Q30,15 50,20 Q70,15 90,40 Q70,55 50,52 Q30,55 10,40 Z" fill="url(#rayG)"/>
+    <path d="M50,50 Q52,65 50,78" stroke="#3a5868" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <circle cx="42" cy="32" r="1.5" fill="#1a2838"/>
+    <circle cx="58" cy="32" r="1.5" fill="#1a2838"/>
+  </svg>
+
+  <!-- Seaweed left -->
+  <svg class="deco seaweed-left" viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg">
+    <path d="M30,220 Q20,170 30,130 Q40,100 25,70 Q20,40 35,15" stroke="#7fa085" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M30,200 Q15,195 10,180 M30,160 Q45,155 50,140 M30,120 Q15,115 12,100 M30,80 Q45,75 48,60" stroke="#7fa085" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <path d="M70,220 Q65,180 75,150 Q80,120 70,90 Q65,60 80,30" stroke="#9bb898" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.85"/>
+    <path d="M70,190 Q85,185 88,170 M70,140 Q55,135 52,120 M70,100 Q85,95 88,80" stroke="#9bb898" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <ellipse cx="50" cy="210" rx="60" ry="15" fill="#a8d2ea" opacity="0.6"/>
+    <path d="M100,220 Q120,200 130,170 Q140,140 145,110" stroke="#c8d8a8" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.75"/>
+  </svg>
+
+  <!-- Seaweed right -->
+  <svg class="deco seaweed-right" viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="100" cy="200" rx="80" ry="20" fill="#a8d2ea" opacity="0.6"/>
+    <path d="M30,220 Q35,180 25,150 Q20,120 35,90 Q40,60 30,30" stroke="#c8d8a8" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.75"/>
+    <path d="M30,190 Q15,185 12,170 M30,140 Q45,135 50,120 M30,100 Q15,95 12,80" stroke="#c8d8a8" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
+    <path d="M80,220 Q75,180 85,150 Q90,120 80,90" stroke="#7fa085" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M120,220 Q130,180 125,150 Q120,120 130,90 Q135,60 125,30" stroke="#9bb898" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.85"/>
+    <path d="M120,190 Q135,185 140,170 M120,140 Q105,135 102,120 M120,100 Q135,95 140,80" stroke="#9bb898" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <path d="M160,220 Q165,180 155,150 Q150,120 160,90" stroke="#7fa085" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.75"/>
+  </svg>
+
+  <!-- Clownfish 1 -->
+  <svg class="deco fish-1" viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="40" cy="25" rx="25" ry="15" fill="#f4a060"/>
+    <path d="M65,25 L78,12 L78,38 Z" fill="#f4a060"/>
+    <path d="M28,15 Q30,25 28,35 M45,12 Q47,25 45,38" stroke="#fff" stroke-width="4" fill="none"/>
+    <circle cx="20" cy="22" r="2" fill="#2c3e50"/>
+    <circle cx="20" cy="22" r="0.8" fill="#fff"/>
+  </svg>
+
+  <!-- Yellow fish small -->
+  <svg class="deco fish-2" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="30" cy="20" rx="18" ry="10" fill="#f4d060"/>
+    <path d="M48,20 L58,10 L58,30 Z" fill="#f4d060"/>
+    <circle cx="18" cy="18" r="1.5" fill="#2c3e50"/>
+  </svg>
+
+  <!-- Clownfish 2 -->
+  <svg class="deco fish-3" viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="40" cy="25" rx="25" ry="15" fill="#f4a060"/>
+    <path d="M65,25 L78,12 L78,38 Z" fill="#f4a060"/>
+    <path d="M28,15 Q30,25 28,35 M45,12 Q47,25 45,38" stroke="#fff" stroke-width="4" fill="none"/>
+    <circle cx="20" cy="22" r="2" fill="#2c3e50"/>
+    <circle cx="20" cy="22" r="0.8" fill="#fff"/>
+  </svg>
+
+  <!-- Clownfish 4 -->
+  <svg class="deco fish-4" viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="40" cy="25" rx="25" ry="15" fill="#f4a060"/>
+    <path d="M65,25 L78,12 L78,38 Z" fill="#f4a060"/>
+    <path d="M28,15 Q30,25 28,35 M45,12 Q47,25 45,38" stroke="#fff" stroke-width="4" fill="none"/>
+    <circle cx="20" cy="22" r="2" fill="#2c3e50"/>
+  </svg>
+
+  <!-- Green soft blob -->
+  <div class="green-blob"></div>
+
+  <!-- Bubbles -->
+  <div class="bubble" style="top:18%; left:8%; width:14px; height:14px;"></div>
+  <div class="bubble" style="top:22%; left:14%; width:8px; height:8px;"></div>
+  <div class="bubble" style="top:50%; left:35%; width:6px; height:6px;"></div>
+  <div class="bubble" style="top:65%; right:8%; width:10px; height:10px;"></div>
+  <div class="bubble" style="top:70%; right:14%; width:6px; height:6px;"></div>
+
+  <!-- ============ CONTENT ============ -->
+  <div class="content">
+    <h1 class="name">Heitor</h1>
+    <p class="age">1 aninho</p>
+
+    <h2 class="section-title">Sugestão de presentes</h2>
+
+    <div class="items">
+
+      <!-- Roupas -->
+      <div class="item">
+        <div class="icon">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="shirtG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#a8c8e0"/>
+                <stop offset="100%" stop-color="#5a85b0"/>
+              </linearGradient>
+            </defs>
+            <path d="M20,25 L30,15 L35,18 Q40,22 45,18 L50,15 L60,25 L68,32 L60,40 L55,35 L55,65 Q40,68 25,65 L25,35 L20,40 L12,32 Z" fill="url(#shirtG)" stroke="#4a75a0" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M35,18 Q40,24 45,18" stroke="#4a75a0" stroke-width="1.2" fill="none"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Roupas</h3>
+          <p>2 ou 3 anos</p>
+        </div>
+      </div>
+
+      <!-- Calçados -->
+      <div class="item">
+        <div class="icon">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="shoeG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#a8c8e0"/>
+                <stop offset="100%" stop-color="#4a75a0"/>
+              </linearGradient>
+            </defs>
+            <path d="M12,55 L12,42 Q15,38 22,40 L30,30 Q35,25 42,30 L52,42 Q62,45 68,52 L68,58 Q65,62 60,62 L18,62 Q12,60 12,55 Z" fill="url(#shoeG)" stroke="#3a5878" stroke-width="1.2"/>
+            <path d="M12,52 L68,52" stroke="#fff" stroke-width="3"/>
+            <path d="M30,35 L35,45 M38,32 L43,42 M46,35 L51,45" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+            <ellipse cx="40" cy="40" rx="3" ry="1.5" fill="#fff" opacity="0.6"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Calçados</h3>
+          <p>20/21</p>
+        </div>
+      </div>
+
+      <!-- Brinquedos -->
+      <div class="item">
+        <div class="icon">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="blockA" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#d8c0e0"/>
+                <stop offset="100%" stop-color="#a888c0"/>
+              </linearGradient>
+              <linearGradient id="blockB" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f0d090"/>
+                <stop offset="100%" stop-color="#c8a058"/>
+              </linearGradient>
+              <linearGradient id="blockC" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#a8d4e8"/>
+                <stop offset="100%" stop-color="#6098c0"/>
+              </linearGradient>
+            </defs>
+            <!-- Block back -->
+            <rect x="18" y="22" width="22" height="22" fill="url(#blockA)" stroke="#7858a0" stroke-width="1" rx="2"/>
+            <path d="M28,28 L30,33 L35,33 L31,36 L33,41 L28,38 L23,41 L25,36 L21,33 L26,33 Z" fill="#fff"/>
+            <!-- Block front-left -->
+            <rect x="14" y="44" width="22" height="22" fill="url(#blockB)" stroke="#a07840" stroke-width="1" rx="2"/>
+            <circle cx="20" cy="50" r="2" fill="#fff"/>
+            <circle cx="30" cy="50" r="2" fill="#fff"/>
+            <circle cx="20" cy="60" r="2" fill="#fff"/>
+            <circle cx="30" cy="60" r="2" fill="#fff"/>
+            <circle cx="25" cy="55" r="2" fill="#fff"/>
+            <!-- Block front-right -->
+            <rect x="40" y="44" width="22" height="22" fill="url(#blockC)" stroke="#487090" stroke-width="1" rx="2"/>
+            <path d="M51,49 Q53,46 56,49 Q58,53 51,58 Q44,53 46,49 Q49,46 51,49 Z" fill="#fff"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Brinquedos</h3>
+          <p>Brinquedos educativos</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
